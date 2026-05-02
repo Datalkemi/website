@@ -1,3 +1,16 @@
+# ── React / Node leftovers (old stack) ───────────────────────────────────
+node_modules/
+dist/
+.nvmrc
+index.html
+package.json
+package-lock.json
+yarn.lock
+postcss.config.js
+tailwind.config.js
+vite.config.js
+src/
+
 # ── WordPress core (installed separately on server) ───────────────────────
 wp-admin/
 wp-includes/
