@@ -1,3 +1,46 @@
+<?php
+/**
+ * Custom nav walker — must be defined before wp_nav_menu() is called.
+ */
+if ( ! class_exists( 'Datalkemi_Nav_Walker' ) ) :
+class Datalkemi_Nav_Walker extends Walker_Nav_Menu {
+	public function start_lvl( &$output, $depth = 0, $args = null ) {
+		$indent = str_repeat( "\t", $depth );
+		$class  = $depth === 0 ? 'sub-menu nav-dropdown' : 'sub-menu nav-sub-dropdown';
+		$output .= "\n$indent<ul class=\"$class\">\n";
+	}
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+		$classes   = empty( $item->classes ) ? [] : (array) $item->classes;
+		$classes[] = 'menu-item-' . $item->ID;
+		if ( $item->current ) { $classes[] = 'current-menu-item'; }
+		if ( in_array( 'menu-item-has-children', $classes, true ) && $depth === 0 ) {
+			$classes[] = 'nav-has-dropdown';
+		}
+		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+		$output .= '<li class="' . esc_attr( $class_names ) . '">';
+		$atts = [
+			'href'   => $item->url,
+			'title'  => $item->attr_title,
+			'target' => $item->target,
+			'rel'    => $item->xfn,
+			'class'  => 'nav-link',
+		];
+		if ( $depth > 0 ) { $atts['class'] = 'nav-dropdown-link'; }
+		$attr_string = '';
+		foreach ( $atts as $key => $val ) {
+			if ( ! empty( $val ) ) {
+				$attr_string .= ' ' . $key . '="' . esc_attr( $val ) . '"';
+			}
+		}
+		$title   = apply_filters( 'the_title', $item->title, $item->ID );
+		$arrow   = ( in_array( 'menu-item-has-children', $classes, true ) && $depth === 0 )
+			? '<span class="nav-arrow">&#8963;</span>'
+			: '';
+		$output .= "<a{$attr_string}>{$title}{$arrow}</a>";
+	}
+}
+endif;
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -62,47 +105,3 @@
 		</div>
 	</nav>
 </header>
-
-<?php
-/**
- * Custom nav walker for mega menu support.
- */
-if ( ! class_exists( 'Datalkemi_Nav_Walker' ) ) :
-class Datalkemi_Nav_Walker extends Walker_Nav_Menu {
-	public function start_lvl( &$output, $depth = 0, $args = null ) {
-		$indent = str_repeat( "\t", $depth );
-		$class  = $depth === 0 ? 'sub-menu nav-dropdown' : 'sub-menu nav-sub-dropdown';
-		$output .= "\n$indent<ul class=\"$class\">\n";
-	}
-	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
-		$classes   = empty( $item->classes ) ? [] : (array) $item->classes;
-		$classes[] = 'menu-item-' . $item->ID;
-		if ( $item->current ) { $classes[] = 'current-menu-item'; }
-		if ( in_array( 'menu-item-has-children', $classes, true ) && $depth === 0 ) {
-			$classes[] = 'nav-has-dropdown';
-		}
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-		$output .= '<li class="' . esc_attr( $class_names ) . '">';
-		$atts = [
-			'href'   => $item->url,
-			'title'  => $item->attr_title,
-			'target' => $item->target,
-			'rel'    => $item->xfn,
-			'class'  => 'nav-link',
-		];
-		if ( $depth > 0 ) { $atts['class'] = 'nav-dropdown-link'; }
-		$attr_string = '';
-		foreach ( $atts as $key => $val ) {
-			if ( ! empty( $val ) ) {
-				$attr_string .= ' ' . $key . '="' . esc_attr( $val ) . '"';
-			}
-		}
-		$title   = apply_filters( 'the_title', $item->title, $item->ID );
-		$arrow   = ( in_array( 'menu-item-has-children', $classes, true ) && $depth === 0 )
-			? '<span class="nav-arrow">&#8963;</span>'
-			: '';
-		$output .= "<a{$attr_string}>{$title}{$arrow}</a>";
-	}
-}
-endif;
-?>
