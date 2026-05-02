@@ -50,11 +50,11 @@
 				<p class="footer-heading"><?php esc_html_e( 'Get in Touch', 'datalkemi' ); ?></p>
 				<ul class="footer-contact-list">
 					<li>
-						<span class="footer-contact-icon">&#9993;</span>
+						<span class="footer-contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
 						<a href="mailto:info@datalkemi.com" class="footer-contact-link">info@datalkemi.com</a>
 					</li>
 					<li>
-						<span class="footer-contact-icon">&#128205;</span>
+						<span class="footer-contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
 						<span style="color:var(--color-text-muted);"><?php esc_html_e( 'Remote-first. Global reach.', 'datalkemi' ); ?></span>
 					</li>
 				</ul>

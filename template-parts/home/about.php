@@ -1,56 +1,53 @@
 <?php
 /**
- * About section
+ * About section — homepage
  */
 $usps = [
-	__( 'Client-Centric Approach: Your success is our priority.', 'datalkemi' ),
-	__( 'Innovative Solutions: Leveraging cutting-edge technologies.', 'datalkemi' ),
-	__( 'Transparent Communication: Keeping you informed every step.', 'datalkemi' ),
-	__( 'Quality Driven: Delivering excellence in every project.', 'datalkemi' ),
-	__( 'Data-Powered Insights: Making decisions based on facts.', 'datalkemi' ),
+	[ 'title' => 'One team, full stack',     'desc' => 'Design through data in-house. No outsourcing, no broken handoffs.' ],
+	[ 'title' => 'Defined before it starts', 'desc' => 'Scope, timeline, and deliverables fixed in writing before any invoice is raised.' ],
+	[ 'title' => 'Outcomes, not outputs',    'desc' => 'We agree on success metrics at kickoff. You always know what return you are getting.' ],
+	[ 'title' => 'Support past go-live',     'desc' => 'Every project includes a structured post-launch period. We do not disappear after delivery.' ],
 ];
 ?>
 <section id="about" class="dk-section">
 	<div class="dk-container">
 
-		<div class="dk-section-header">
-			<span class="dk-section-title"><?php esc_html_e( 'About Datalkemi', 'datalkemi' ); ?></span>
-			<p class="dk-section-subtitle"><?php esc_html_e( 'Pioneering digital transformation through expert web development and insightful data analytics.', 'datalkemi' ); ?></p>
-		</div>
+		<div class="dk-grid-2" style="gap:4rem; align-items:center;">
 
-		<div class="dk-grid-2">
-
-			<!-- Story / Mission / Vision -->
+			<!-- Story -->
 			<div>
-				<h3 class="about-story-title">&#128101; <?php esc_html_e( 'Our Story', 'datalkemi' ); ?></h3>
+				<p class="section-eyebrow">About Datalkemi</p>
+				<h2 class="dk-section-title" style="text-align:left; margin-bottom:1.5rem !important;">
+					Built at the Intersection of<br>
+					<span class="gradient-text">Design, Code, and Data</span>
+				</h2>
 				<p class="about-text">
-					<?php esc_html_e( 'Datalkemi was founded with a singular vision: to empower businesses by bridging the gap between innovative technology and actionable intelligence. We are a team of passionate developers, designers, and data scientists dedicated to crafting bespoke digital solutions that drive growth and efficiency.', 'datalkemi' ); ?>
+					Most businesses have great products but lack the digital presence and data capability to show it. That gap is not a talent problem. It is a technology and strategy problem. Datalkemi was built to close it.
 				</p>
-				<div>
-					<h4 class="about-subtitle">&#127919; <?php esc_html_e( 'Our Mission', 'datalkemi' ); ?></h4>
-					<p class="about-text">
-						<?php esc_html_e( 'To deliver exceptional digital experiences and data-driven strategies that enable businesses to thrive in an ever-evolving technological landscape.', 'datalkemi' ); ?>
-					</p>
-				</div>
-				<div>
-					<h4 class="about-subtitle">&#9889; <?php esc_html_e( 'Our Vision', 'datalkemi' ); ?></h4>
-					<p class="about-text">
-						<?php esc_html_e( 'To be a leading partner in digital innovation, recognised for our expertise, integrity, and transformative impact on businesses globally.', 'datalkemi' ); ?>
-					</p>
-				</div>
+				<p class="about-text">
+					We combine web development, strategic design, and data science so clients get the full digital stack they actually need — handled by one team, from brief to delivery.
+				</p>
+				<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="dk-btn dk-btn-outline" style="margin-top:1.5rem;">
+					<?php esc_html_e( 'More About Us', 'datalkemi' ); ?>
+				</a>
 			</div>
 
 			<!-- Why Choose Us -->
-			<div class="dk-glass" style="padding:2rem;">
-				<h3 class="about-story-title"><?php esc_html_e( 'Why Choose Us?', 'datalkemi' ); ?></h3>
-				<ul class="usp-list">
-					<?php foreach ( $usps as $usp ) : ?>
-						<li class="usp-item">
-							<span class="usp-check">&#10003;</span>
-							<span class="usp-text"><?php echo esc_html( $usp ); ?></span>
-						</li>
-					<?php endforeach; ?>
-				</ul>
+			<div class="dk-glass" style="padding:2rem 2.25rem;">
+				<p style="font-size:0.8125rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-accent); margin-bottom:1.25rem;">
+					<?php esc_html_e( 'Why Datalkemi', 'datalkemi' ); ?>
+				</p>
+				<?php foreach ( $usps as $usp ) : ?>
+				<div class="usp-item" style="margin-bottom:1rem;">
+					<span class="usp-check">&#10003;</span>
+					<div>
+						<strong style="color:#f9fafb; font-size:0.9375rem; display:block; margin-bottom:0.2rem;">
+							<?php echo esc_html( $usp['title'] ); ?>
+						</strong>
+						<span class="usp-text"><?php echo esc_html( $usp['desc'] ); ?></span>
+					</div>
+				</div>
+				<?php endforeach; ?>
 			</div>
 
 		</div>

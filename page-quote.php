@@ -8,9 +8,9 @@ get_header();
 $wpforms_quote_id = get_option( 'datalkemi_quote_form_id', '' );
 
 $what_happens = [
-	[ 'icon' => '&#128235;', 'step' => '01', 'title' => 'We Review Your Brief',   'desc' => 'Within 24 hours of your submission, a senior team member reviews your requirements and prepares initial thoughts.' ],
-	[ 'icon' => '&#128222;', 'step' => '02', 'title' => 'Discovery Call',          'desc' => 'We schedule a free 30–45 minute call to clarify requirements, answer your questions, and understand your goals in depth.' ],
-	[ 'icon' => '&#128196;', 'step' => '03', 'title' => 'Detailed Proposal',       'desc' => 'You receive a comprehensive proposal covering scope, timeline, approach, and transparent pricing — usually within 48 hours of the discovery call.' ],
+	[ 'step' => '01', 'title' => 'We Review Your Brief',   'desc' => 'Within 24 hours of your submission, a senior team member reviews your requirements and prepares initial thoughts.' ],
+	[ 'step' => '02', 'title' => 'Discovery Call',          'desc' => 'We schedule a free 30-45 minute call to clarify requirements, answer your questions, and understand your goals in depth.' ],
+	[ 'step' => '03', 'title' => 'Detailed Proposal',       'desc' => 'You receive a comprehensive proposal covering scope, timeline, approach, and transparent pricing, usually within 48 hours of the discovery call.' ],
 ];
 
 $services = [
@@ -20,7 +20,7 @@ $services = [
 ?>
 
 <!-- Page Hero -->
-<section class="page-hero" style="min-height:55vh;">
+<section class="page-hero page-hero--compact">
 	<div class="page-hero-overlay"></div>
 	<div class="dk-container page-hero-content">
 		<p class="page-hero-eyebrow"><?php esc_html_e( 'Work With Us', 'datalkemi' ); ?></p>
@@ -29,7 +29,7 @@ $services = [
 			<span class="gradient-text"><?php esc_html_e( 'Project Proposal', 'datalkemi' ); ?></span>
 		</h1>
 		<p class="page-hero-subtitle">
-			<?php esc_html_e( "Tell us about your project. We'll review your requirements and send a detailed, transparent proposal — no vague estimates, no obligation.", 'datalkemi' ); ?>
+			<?php esc_html_e( "Tell us about your project. We will review your requirements and send a detailed, transparent proposal. No vague estimates, no obligation.", 'datalkemi' ); ?>
 		</p>
 	</div>
 </section>
@@ -147,7 +147,7 @@ $services = [
 					</h3>
 					<?php foreach ( $what_happens as $step ) : ?>
 						<div class="quote-step">
-							<div class="quote-step-number"><?php echo $step['icon']; ?></div>
+							<div class="quote-step-number"><?php echo esc_html( $step['step'] ); ?></div>
 							<div>
 								<h4 style="font-size:0.9375rem; font-weight:600; color:#f9fafb; margin-bottom:0.25rem;">
 									<?php echo esc_html( $step['title'] ); ?>
@@ -166,9 +166,9 @@ $services = [
 						<?php esc_html_e( 'Our Promises to You', 'datalkemi' ); ?>
 					</h3>
 					<?php $promises = [
-						'Response within 24 hours — guaranteed.',
-						'No obligation — the consultation is completely free.',
-						'Transparent pricing — no hidden costs.',
+						'Response within 24 hours, guaranteed.',
+						'No obligation. The consultation is completely free.',
+						'Transparent pricing, no hidden costs.',
 						'Your information is never shared or sold.',
 					]; foreach ( $promises as $p ) : ?>
 						<div class="usp-item" style="padding:0.625rem 0.75rem;">

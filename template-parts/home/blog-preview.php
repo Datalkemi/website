@@ -12,7 +12,7 @@ $blog_posts = new WP_Query( [
 	<div class="dk-container">
 
 		<div class="dk-section-header">
-			<span class="dk-section-title">&#128218; <?php esc_html_e( 'Insights & Latest Tech', 'datalkemi' ); ?></span>
+			<span class="dk-section-title"><?php esc_html_e( 'Insights & Latest Tech', 'datalkemi' ); ?></span>
 			<p class="dk-section-subtitle"><?php esc_html_e( 'Stay updated with the latest trends, tips, and insights from the world of web development and data analytics.', 'datalkemi' ); ?></p>
 		</div>
 

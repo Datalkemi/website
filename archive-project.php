@@ -10,7 +10,7 @@ $types      = get_terms( [ 'taxonomy' => 'project_type',     'hide_empty' => tru
 ?>
 
 <!-- Page Hero -->
-<section class="page-hero">
+<section class="page-hero page-hero--compact">
 	<div class="page-hero-overlay"></div>
 	<div class="dk-container page-hero-content">
 		<p class="page-hero-eyebrow"><?php esc_html_e( 'Our Work', 'datalkemi' ); ?></p>

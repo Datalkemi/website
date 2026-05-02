@@ -120,6 +120,7 @@ $services_id    = dk_create_page( 'Services',              'services',          
 $projects_id    = dk_create_page( 'Projects',              'projects',            '' ); // archive handled by archive-project.php
 $portal_id      = dk_create_page( 'Client Portal',         'client-portal',       'page-client-portal.php' );
 $config_id      = dk_create_page( 'Build Your Project',    'build-your-project',  'page-configurator.php' );
+$quote_id       = dk_create_page( 'Get a Quote',           'get-a-quote',         'page-quote.php' );
 $contact_id     = dk_create_page( 'Contact',               'contact',             '' );
 $insights_id    = dk_create_page( 'Insights',              'insights',            '' );
 
@@ -128,7 +129,9 @@ $privacy_id  = dk_create_page( 'Privacy Policy',   'privacy-policy',   '', '', 0
 $terms_id    = dk_create_page( 'Terms of Service', 'terms-of-service', '', '', 0 );
 $cookies_id  = dk_create_page( 'Cookie Policy',    'cookie-policy',    '', '', 0 );
 
-$log[] = "  Set blog page → ID {$blog_id}";
+// Set insights page as the posts page (so /insights/ shows blog archive via home.php)
+update_option( 'page_for_posts', $insights_id );
+$log[] = "  Set posts page → Insights (ID {$insights_id})";
 
 /* ================================================================
    2. SERVICE CPT POSTS
@@ -152,7 +155,119 @@ foreach ( $services as $title => $slug ) {
 }
 
 /* ================================================================
-   3. NAV MENU SETUP
+   3. SAMPLE BLOG POSTS
+   ================================================================ */
+
+$log[] = '<br><b>── Creating Blog Categories and Sample Posts ──</b>';
+
+function dk_get_or_create_category( string $name ): int {
+    $existing = get_term_by( 'name', $name, 'category' );
+    if ( $existing ) return $existing->term_id;
+    $term = wp_insert_term( $name, 'category' );
+    return is_wp_error( $term ) ? 1 : $term['term_id'];
+}
+
+$blog_categories = [ 'Web Development', 'SEO', 'Data Analytics', 'Business Intelligence', 'Design' ];
+$blog_cat_ids    = [];
+foreach ( $blog_categories as $bc ) {
+    $blog_cat_ids[ $bc ] = dk_get_or_create_category( $bc );
+}
+
+$sample_posts = [
+    [
+        'title'   => 'How Core Web Vitals Actually Affect Your Search Rankings',
+        'date'    => '2025-09-10 09:00:00',
+        'cat'     => 'SEO',
+        'excerpt' => 'Core Web Vitals are now a confirmed ranking factor. But after running controlled tests on 12 client sites, the picture is more nuanced than the headlines suggest.',
+        'content' => '<p>Google confirmed Core Web Vitals as a ranking signal in 2021 and has been tightening the thresholds ever since. But how much does it actually move the needle on rankings, and where should you focus your optimisation budget?</p>
+<h2>The Three Metrics That Matter</h2>
+<p>Core Web Vitals consists of three measurements: Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS). LCP measures loading performance, INP measures responsiveness to user input, and CLS measures visual stability.</p>
+<p>Google considers a page to pass if LCP is under 2.5 seconds, INP is under 200ms, and CLS is under 0.1. Failing all three does not automatically drop your rankings, but it does signal poor page experience, which compounds with other quality signals.</p>
+<h2>What We Found Across 12 Client Sites</h2>
+<p>We ran a six-month controlled test across twelve client websites, deliberately improving Core Web Vitals scores on half the pages while keeping content and backlink profiles constant. The sites that moved from Needs Improvement to Good saw an average 14% improvement in organic impressions over 90 days. The correlation was strongest for pages competing in the 4th to 8th position range, suggesting CWV helps most when rankings are already borderline competitive.</p>
+<h2>Where to Start</h2>
+<p>LCP is almost always the highest-leverage fix. On most WordPress sites, the culprit is either a large hero image without proper preloading, or a render-blocking third-party script. Fixing both typically moves LCP from 4-5 seconds to under 2. CLS issues are usually caused by images without explicit dimensions or ads injected above the fold. INP improvements require JavaScript audit work and are the most complex to address.</p>
+<p>The practical takeaway: if you are sitting on LCP scores above 4 seconds, fixing that is a higher-ROI activity than building new links for most sites. If you are already in the Good range, the marginal gains from further CWV optimisation are small compared to content and authority improvements.</p>',
+    ],
+    [
+        'title'   => 'Why Most Business Intelligence Projects Fail Before They Deliver Value',
+        'date'    => '2025-10-22 10:00:00',
+        'cat'     => 'Business Intelligence',
+        'excerpt' => 'Most BI implementations stall or get abandoned within 18 months. After working across 20+ BI projects, the failure patterns are predictable and avoidable.',
+        'content' => '<p>Business intelligence tools are more accessible than ever. Power BI licenses are inexpensive. Tableau is widely understood. Yet the majority of BI implementations we inherit from other agencies or build from scratch have the same problem: they produce dashboards that nobody uses.</p>
+<h2>The Root Causes Are Usually Structural</h2>
+<p>The most common failure is skipping the data model. A dashboard built directly on raw transactional tables will work in a demo but break under real usage. Slow queries, inconsistent numbers, and calculations that work in one context but not another all trace back to the same root cause: no proper semantic layer sitting between the raw data and the visualisation.</p>
+<p>The second most common failure is building for the person who commissioned it rather than the person who will use it. Executive dashboards are designed in workshops with executives who then never open them. The people who actually need the data are analysts and operations managers who have completely different requirements and workflows.</p>
+<h2>The KPI Framework Problem</h2>
+<p>Many organisations start a BI project without a defined KPI framework. This means the dashboards get built around what data exists rather than what questions the business needs to answer. When the data does not align with the questions, the reports get ignored and people go back to spreadsheets.</p>
+<p>The fix is straightforward but often skipped: run a KPI definition workshop before touching the data. Map each metric to a specific decision that needs to be made. If a metric does not support a decision, it does not belong in the report. This filters out 60-70% of the complexity before a single query is written.</p>
+<h2>What Good BI Looks Like</h2>
+<p>A well-built BI solution has a star schema or similar structured data model, clearly named measures with documented calculation logic, row-level security so users only see what they are authorised to see, and a self-service layer that lets business users answer their own follow-up questions without involving IT. These are not aspirational features. They are the minimum baseline for a solution that will survive 18 months of real use.</p>',
+    ],
+    [
+        'title'   => 'React vs WordPress: Choosing the Right Platform for a Business Website',
+        'date'    => '2025-11-18 09:30:00',
+        'cat'     => 'Web Development',
+        'excerpt' => 'The right answer depends on your actual requirements, not the preferences of the developer pitching to you. Here is a framework for making the decision properly.',
+        'content' => '<p>Every few months a client comes to us after being told by one agency that they need a headless React application and by another that WordPress is all they need. Both answers can be right. The problem is that neither answer was based on a proper requirements analysis.</p>
+<h2>When WordPress Is the Right Choice</h2>
+<p>WordPress is the correct answer when content editors need to be able to update the site without developer involvement, when budget is a realistic constraint, when you need a proven ecosystem of plugins for e-commerce, forms, SEO, and user management, and when the development timeline is measured in weeks rather than months.</p>
+<p>The modern WordPress stack with Astra or a custom theme, ACF for structured content, and proper child theme architecture can handle the vast majority of business website requirements. The performance arguments against WordPress largely disappear with proper caching, a CDN, and code that does not load 40 plugins on every page request.</p>
+<h2>When React Makes Sense</h2>
+<p>React becomes the right choice when you are building a highly interactive application rather than a content site. If users are performing complex actions, if the UI has state that changes frequently based on user input, or if you are building something that behaves more like software than a website, React gives you the component model and state management you need.</p>
+<p>Headless WordPress with a React frontend is a legitimate architecture for large editorial operations that need both a rich content management backend and a highly performant, customisable frontend. But it doubles the infrastructure complexity and ongoing maintenance cost.</p>
+<h2>The Honest Framework</h2>
+<p>Ask three questions. First: who will update the content, and how often? Second: does the user interface require complex client-side state? Third: what is the total cost of ownership over 3 years, including developer maintenance? The answers to these three questions determine the platform, not the technical preferences of the team building it.</p>',
+    ],
+    [
+        'title'   => 'Building a Data Pipeline That Actually Works in Production',
+        'date'    => '2026-01-14 08:00:00',
+        'cat'     => 'Data Analytics',
+        'excerpt' => 'A proof-of-concept pipeline running on a laptop is not a production pipeline. Here is what changes when data engineering moves out of the notebook and into operations.',
+        'content' => '<p>Data pipelines look deceptively simple in prototypes. You pull data from an API, transform it in pandas, and load it into a database. The whole thing runs in 30 seconds and the results look correct. Then you hand it to operations and within two weeks it is broken, running four hours late, or producing numbers that nobody trusts.</p>
+<h2>The Gap Between Prototype and Production</h2>
+<p>The prototype worked because the conditions were ideal. The source API was available every time you tested it. The data was clean. You ran it manually and could see when something went wrong. Production is different: APIs go down, rate limits hit at 3am, schema changes happen without warning, and nobody is watching.</p>
+<p>A production-grade pipeline needs error handling at every stage, not just at the end. It needs idempotency, meaning you can run it twice and get the same result. It needs observability, so you know immediately when something fails and can understand why. And it needs documentation that a new team member can follow six months from now.</p>
+<h2>The Architecture That Holds Up</h2>
+<p>For most business data pipelines at the SME scale, a task orchestration tool like Apache Airflow or Prefect running on a managed cloud environment handles scheduling, retries, and alerting. Extract is separated from transform, which is separated from load. Data quality checks run after extraction and block the pipeline if critical validations fail.</p>
+<p>The transformation layer is where most complexity lives. dbt (data build tool) has become the standard here because it brings software engineering practices to SQL transformation: version control, testing, documentation, and lineage tracking. A pipeline where transformations are undocumented SQL scripts is a pipeline that will fail silently and produce wrong numbers that get into board reports.</p>
+<h2>The Single Most Important Design Decision</h2>
+<p>Make every step in the pipeline auditable. Store raw data before transformation. Log every run with row counts and checksums. This makes debugging fast, makes data quality investigations tractable, and builds the trust with business stakeholders that the numbers are real. Without auditability, data quality issues become political problems rather than engineering problems.</p>',
+    ],
+];
+
+foreach ( $sample_posts as $sp ) {
+    $existing = get_page_by_title( $sp['title'], OBJECT, 'post' );
+    if ( $existing ) {
+        $log[] = "  <span style='color:#aaa'>SKIP  Post already exists: <b>{$sp['title']}</b></span>";
+        continue;
+    }
+    $post_id = wp_insert_post( [
+        'post_title'    => $sp['title'],
+        'post_content'  => $sp['content'],
+        'post_excerpt'  => $sp['excerpt'],
+        'post_status'   => 'publish',
+        'post_type'     => 'post',
+        'post_date'     => $sp['date'],
+        'post_date_gmt' => get_gmt_from_date( $sp['date'] ),
+        'comment_status' => 'open',
+        'ping_status'   => 'closed',
+    ] );
+    if ( $post_id && ! is_wp_error( $post_id ) ) {
+        wp_set_post_categories( $post_id, [ $blog_cat_ids[ $sp['cat'] ] ] );
+        $log[] = "  <span style='color:#f59e0b'>CREATE Post: <b>{$sp['title']}</b> (ID {$post_id})</span>";
+    }
+}
+
+// Remove default "Hello World" post if it exists
+$hello_world = get_page_by_title( 'Hello world!', OBJECT, 'post' );
+if ( $hello_world ) {
+    wp_delete_post( $hello_world->ID, true );
+    $log[] = "  <span style='color:#f87171'>DELETED default Hello World post</span>";
+}
+
+/* ================================================================
+   4. NAV MENU SETUP
    ================================================================ */
 
 $log[] = '<br><b>── Setting up Navigation Menu ──</b>';
@@ -258,7 +373,7 @@ $log[] = '<br><b>── Reading settings updated; rewrite rules flushed ──</
 </head>
 <body>
 <h1>&#9989; Datalkemi Content Setup Complete</h1>
-<p>Run on: <b><?php echo date( 'Y-m-d H:i:s' ); ?></b> &mdash; Site: <b><?php echo esc_html( home_url() ); ?></b></p>
+<p>Run on: <b><?php echo date( 'Y-m-d H:i:s' ); ?></b> | Site: <b><?php echo esc_html( home_url() ); ?></b></p>
 <pre><?php echo implode( "\n", $log ); ?></pre>
 <div class="box">
   <p><b class="warn">&#9888; Important Security:</b> Delete or rename <code>setup-content.php</code> from your theme folder now that setup is complete. Leaving it accessible is a security risk.</p>
