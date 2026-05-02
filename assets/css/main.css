@@ -1219,12 +1219,14 @@ a:hover { color: var(--color-accent) !important; }
 /* ── Page Hero (inner pages) ────────────────────────────────────── */
 .page-hero {
   position: relative;
-  min-height: 65vh;
+  min-height: 44vh;
   display: flex;
   align-items: center;
   overflow: hidden;
   background: linear-gradient(135deg, #0a0f1e 0%, #111827 50%, #0d1520 100%);
 }
+
+.page-hero--compact { min-height: 38vh; }
 
 .page-hero-overlay {
   position: absolute;
@@ -1237,7 +1239,7 @@ a:hover { color: var(--color-accent) !important; }
 .page-hero-content {
   position: relative;
   z-index: 2;
-  padding: 6rem 1.5rem 4rem;
+  padding: 4.5rem 1.5rem 3rem;
   max-width: 800px;
 }
 
@@ -2623,4 +2625,525 @@ a:hover { color: var(--color-accent) !important; }
   .footer-grid-4 { grid-template-columns: 1fr; }
   .process-timeline::before { display: none; }
   .nav-actions { display: none; }
+  .page-hero { min-height: 38vh; }
+  .page-hero-content { padding: 4rem 1.5rem 2.5rem; }
+  .page-hero-title { font-size: 2rem !important; }
+  .service-list-item { flex-direction: column; gap: 1.25rem; }
+  .service-list-action { width: 100%; }
+  .service-list-action .dk-btn { width: 100%; justify-content: center; }
+  .config-layout { grid-template-columns: 1fr; }
+  .config-sidebar { position: static; }
+  .config-price-card { position: static; }
+  .config-promo { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .config-promo-action { display: flex; flex-direction: column; align-items: center; }
+  .outcomes-grid { grid-template-columns: repeat(2,1fr); }
+}
+
+/* ================================================================
+   SERVICE LIST — new services page layout
+   ================================================================ */
+
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.service-list-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.2s ease;
+}
+
+.service-list-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+
+.service-list-num {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, rgba(2,132,199,0.3), rgba(6,182,212,0.2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex-shrink: 0;
+  width: 3.5rem;
+  line-height: 1;
+}
+
+.service-list-body { flex: 1; min-width: 0; }
+
+.service-list-title {
+  font-size: 1.375rem !important;
+  font-weight: 700 !important;
+  color: #f9fafb !important;
+  -webkit-text-fill-color: #f9fafb !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.service-list-desc {
+  font-size: 0.9375rem !important;
+  color: #9ca3af !important;
+  -webkit-text-fill-color: #9ca3af !important;
+  line-height: 1.7 !important;
+  margin-bottom: 0.875rem !important;
+  max-width: 48rem;
+}
+
+.service-list-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.service-tag {
+  font-size: 0.75rem;
+  background: rgba(2,132,199,0.08);
+  color: var(--color-accent) !important;
+  -webkit-text-fill-color: var(--color-accent) !important;
+  border: 1px solid rgba(6,182,212,0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.service-list-action { flex-shrink: 0; }
+
+/* ── Config promo block ─────────────────────────────────────────── */
+.config-promo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.config-promo-text { flex: 1; min-width: 0; }
+
+.config-promo-action { flex-shrink: 0; }
+
+/* ── Service hero (reduced height) ─────────────────────────────── */
+.service-hero {
+  min-height: 52vh;
+}
+
+.service-hero-content { padding: 5rem 1.5rem 3.5rem; }
+
+/* ── Outcomes grid ──────────────────────────────────────────────── */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.outcome-card {
+  padding: 2rem;
+  text-align: center;
+}
+
+.outcome-metric {
+  font-size: 2.25rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.outcome-label {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+/* ── Config hero ────────────────────────────────────────────────── */
+.config-hero {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #070d1a 0%, #0f1f35 50%, #070d1a 100%);
+}
+
+.config-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 35% 50%, rgba(2,132,199,0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.config-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 4.5rem 1.5rem 3rem;
+}
+
+/* ── Configurator layout ────────────────────────────────────────── */
+.config-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.config-sections { min-width: 0; }
+
+/* Section blocks */
+.config-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.config-section:last-of-type { border-bottom: none; }
+
+.config-section-header { margin-bottom: 1.5rem; }
+
+.config-section-title {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  color: #f9fafb !important;
+  -webkit-text-fill-color: #f9fafb !important;
+  margin-bottom: 0.375rem !important;
+}
+
+.config-section-note {
+  font-size: 0.875rem !important;
+  color: #6b7280 !important;
+  -webkit-text-fill-color: #6b7280 !important;
+  margin: 0 !important;
+}
+
+/* Option rows — radio */
+.config-options--radio,
+.config-options--checkbox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.config-option {
+  cursor: pointer;
+  display: block;
+}
+
+.config-option input { position: absolute; opacity: 0; pointer-events: none; }
+
+.config-option-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(30,41,59,0.5);
+  border: 1.5px solid rgba(255,255,255,0.07);
+  border-radius: 0.625rem;
+  transition: all 0.2s ease;
+}
+
+.config-option:hover .config-option-inner {
+  border-color: rgba(2,132,199,0.35);
+  background: rgba(2,132,199,0.06);
+}
+
+.config-option.is-selected .config-option-inner {
+  border-color: var(--color-primary);
+  background: rgba(2,132,199,0.1);
+}
+
+.config-option-text { flex: 1; min-width: 0; }
+
+.config-option-label {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 0.125rem;
+}
+
+.config-option-desc {
+  display: block;
+  font-size: 0.8125rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.config-option-price {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.config-option-check {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.config-option.is-selected .config-option-check {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.config-option.is-selected .config-check-icon::after {
+  content: '✓';
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Contact fields */
+.config-contact-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.config-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.config-field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #e5e7eb;
+}
+
+.config-field input,
+.config-field textarea {
+  background: rgba(17,24,39,0.7) !important;
+  border: 1.5px solid rgba(255,255,255,0.1) !important;
+  border-radius: 0.5rem !important;
+  padding: 0.75rem 1rem !important;
+  color: #f9fafb !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.9375rem !important;
+  transition: border-color 0.2s ease !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.config-field input:focus,
+.config-field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(2,132,199,0.12) !important;
+}
+
+.config-field textarea { resize: vertical; min-height: 100px; }
+
+/* Submit */
+#config-submit-wrap { padding-top: 1rem; }
+
+.config-submit-note {
+  margin-top: 0.875rem !important;
+  font-size: 0.8125rem !important;
+  color: #6b7280 !important;
+  -webkit-text-fill-color: #6b7280 !important;
+}
+
+.config-success-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: rgba(74,222,128,0.08);
+  border: 1px solid rgba(74,222,128,0.25);
+  border-radius: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.config-success-icon {
+  font-size: 1.5rem;
+  color: #4ade80;
+}
+
+.config-success-card h3 {
+  font-size: 1.0625rem !important;
+  color: #f9fafb !important;
+  -webkit-text-fill-color: #f9fafb !important;
+  margin: 0 !important;
+}
+
+.config-success-card p {
+  font-size: 0.9rem !important;
+  color: #9ca3af !important;
+  -webkit-text-fill-color: #9ca3af !important;
+  margin: 0 !important;
+}
+
+.config-error-msg {
+  font-size: 0.875rem !important;
+  color: #f87171 !important;
+  -webkit-text-fill-color: #f87171 !important;
+  padding: 0.75rem 1rem;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 0.5rem;
+  margin-top: 1rem !important;
+}
+
+/* ── Price sidebar ──────────────────────────────────────────────── */
+.config-sidebar {
+  position: sticky;
+  top: 5.5rem;
+}
+
+.config-price-card {
+  background: rgba(30,41,59,0.7);
+  border: 1px solid rgba(2,132,199,0.2);
+  border-radius: 1rem;
+  padding: 1.75rem;
+}
+
+.config-price-label {
+  font-size: 0.75rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent) !important;
+  -webkit-text-fill-color: var(--color-accent) !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.625rem !important;
+}
+
+.config-price-total {
+  display: flex;
+  align-items: baseline;
+  gap: 0.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.config-currency {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #f9fafb;
+  line-height: 1;
+}
+
+#config-total-num {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.config-price-note {
+  font-size: 0.8rem !important;
+  color: #6b7280 !important;
+  -webkit-text-fill-color: #6b7280 !important;
+  margin-bottom: 1.25rem !important;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  line-height: 1.6 !important;
+}
+
+/* Breakdown list */
+.config-breakdown { margin-bottom: 1.5rem; }
+
+.config-breakdown-title {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4b5563 !important;
+  -webkit-text-fill-color: #4b5563 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+#config-breakdown-list {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.config-breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.8125rem !important;
+}
+
+.config-breakdown-name {
+  color: #d1d5db !important;
+  -webkit-text-fill-color: #d1d5db !important;
+  flex: 1;
+  min-width: 0;
+}
+
+.config-breakdown-price {
+  color: var(--color-accent) !important;
+  -webkit-text-fill-color: var(--color-accent) !important;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.config-incl { color: #4ade80 !important; -webkit-text-fill-color: #4ade80 !important; }
+
+.config-breakdown-empty {
+  color: #4b5563 !important;
+  -webkit-text-fill-color: #4b5563 !important;
+  font-size: 0.8125rem !important;
+  font-style: italic;
+}
+
+/* Sidebar CTA */
+.config-sidebar-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.config-sidebar-alt {
+  text-align: center;
+  font-size: 0.8125rem !important;
+  color: #6b7280 !important;
+  -webkit-text-fill-color: #6b7280 !important;
+  transition: color 0.2s ease !important;
+}
+
+.config-sidebar-alt:hover {
+  color: var(--color-primary) !important;
+  -webkit-text-fill-color: var(--color-primary) !important;
+}
+
+/* ── Responsive: configurator ───────────────────────────────────── */
+@media (max-width: 1024px) {
+  .config-layout { grid-template-columns: 1fr; }
+  .config-sidebar { position: static; }
+  .config-price-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-hero { min-height: 45vh; }
+}
+
+@media (max-width: 768px) {
+  .config-contact-fields { grid-template-columns: 1fr; }
+  .config-price-card { grid-template-columns: 1fr; }
+  .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-hero { min-height: 40vh; }
+  .service-hero-content { padding: 4rem 1.5rem 2.5rem; }
 }

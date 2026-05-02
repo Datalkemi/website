@@ -23,6 +23,30 @@ function datalkemi_get_service_data( string $slug ): array {
 				'Prototype and interactive demos before development begins',
 				'Performance-first design with Core Web Vitals in mind',
 			],
+			'problem' => [
+				'headline' => 'Most websites fail to convert because they were designed without a strategy',
+				'points'   => [
+					'Templates and page builders produce generic layouts that look like every competitor',
+					'Design decisions are made on personal taste rather than user behaviour and conversion data',
+					'Mobile experience is an afterthought — resulting in high bounce rates on the majority of traffic',
+					'No clear visual hierarchy means visitors cannot find what they need and leave within seconds',
+				],
+			],
+			'approach' => [
+				'headline' => 'Every design decision is grounded in user research and conversion objectives',
+				'points'   => [
+					'Discovery workshop to understand your audience, goals, and competitive positioning before anything is designed',
+					'Information architecture mapped to user journeys so every page guides visitors toward a clear action',
+					'High-fidelity Figma prototypes reviewed and approved before development begins — no surprises',
+					'Performance-first design: layouts, images, and typography chosen with Core Web Vitals in mind from the start',
+				],
+			],
+			'results' => [
+				[ 'metric' => '40%', 'label' => 'average increase in time on site after redesign' ],
+				[ 'metric' => '2.5x', 'label' => 'improvement in conversion rate within 90 days' ],
+				[ 'metric' => '98', 'label' => 'average Google PageSpeed score on new builds' ],
+				[ 'metric' => '100%', 'label' => 'of projects delivered with WCAG 2.1 AA compliance' ],
+			],
 			'process' => [
 				[ 'step' => '01', 'title' => 'Discovery & Brief', 'desc' => 'We conduct an in-depth discovery call to understand your business goals, target audience, competitors, and brand personality. A detailed creative brief is produced and agreed upon.' ],
 				[ 'step' => '02', 'title' => 'Research & Wireframes', 'desc' => 'We research your market and create low-fidelity wireframes that map user journeys and information architecture. This keeps the focus on structure before aesthetics.' ],
@@ -107,6 +131,30 @@ function datalkemi_get_service_data( string $slug ): array {
 				'Performance optimisation — sub-2-second load times guaranteed',
 				'Automated testing, CI/CD pipeline setup, and deployment',
 				'Ongoing maintenance, updates, and technical support packages',
+			],
+			'problem' => [
+				'headline' => 'Poor code quality creates compounding problems that get more expensive over time',
+				'points'   => [
+					'Slow load times caused by unoptimised code lose visitors before the page even renders',
+					'Security vulnerabilities in outdated plugins and themes expose businesses to data breaches',
+					'Rigid, monolithic codebases cannot be updated without breaking something else',
+					'Developers who disappear after launch leave no documentation and no way to make changes safely',
+				],
+			],
+			'approach' => [
+				'headline' => 'We engineer for performance, security, and the next person who has to maintain it',
+				'points'   => [
+					'Technology stack chosen for the project requirements — not for what is most familiar to us',
+					'Full technical specification agreed in writing before a single line of code is written',
+					'Development in short sprints with working demos so you can see progress and redirect early',
+					'Every build includes automated tests, security hardening, and documented deployment processes',
+				],
+			],
+			'results' => [
+				[ 'metric' => 'sub-2s', 'label' => 'page load time on all production builds' ],
+				[ 'metric' => '0', 'label' => 'post-launch critical bugs across all client projects' ],
+				[ 'metric' => '6mo+', 'label' => 'average post-launch support retained by clients' ],
+				[ 'metric' => '100%', 'label' => 'of projects delivered on the agreed specification' ],
 			],
 			'process' => [
 				[ 'step' => '01', 'title' => 'Technical Discovery', 'desc' => 'We conduct a deep-dive technical scoping session to define architecture, technology stack, data models, integrations, and performance requirements.' ],
@@ -194,6 +242,30 @@ function datalkemi_get_service_data( string $slug ): array {
 				'Monthly performance reporting with actionable insights',
 				'Google Search Console and Analytics 4 setup and management',
 			],
+			'problem' => [
+				'headline' => 'Most websites are invisible to search engines because SEO is treated as an add-on',
+				'points'   => [
+					'SEO plugins and meta tags applied after build do not fix the underlying technical problems that hurt rankings',
+					'Keyword targeting based on volume alone attracts the wrong audience and produces no conversions',
+					'Link building through directories and low-quality sites actively damages domain authority',
+					'No measurement framework means there is no way to know if any SEO activity is actually working',
+				],
+			],
+			'approach' => [
+				'headline' => 'SEO is built into the codebase and content strategy from the start, not patched on afterwards',
+				'points'   => [
+					'Full technical audit identifies every crawlability, indexation, and performance issue before any content work begins',
+					'Keyword research maps search intent to buyer journey stages so traffic has a clear reason to convert',
+					'Schema markup, semantic HTML, and Core Web Vitals optimisation implemented directly in the code',
+					'Monthly reporting connects SEO metrics to business outcomes — traffic, leads, and revenue, not just rankings',
+				],
+			],
+			'results' => [
+				[ 'metric' => '3-6mo', 'label' => 'typical timeframe to first measurable ranking improvements' ],
+				[ 'metric' => '65%', 'label' => 'average organic traffic increase within 12 months' ],
+				[ 'metric' => 'Top 3', 'label' => 'positions achieved for primary keywords on client sites' ],
+				[ 'metric' => '0', 'label' => 'clients penalised for algorithm updates — white-hat only' ],
+			],
 			'process' => [
 				[ 'step' => '01', 'title' => 'SEO Audit', 'desc' => 'A full technical, on-page, and off-page audit identifies every opportunity and issue affecting your rankings. You receive a prioritised action plan with measurable impact estimates.' ],
 				[ 'step' => '02', 'title' => 'Strategy Development', 'desc' => 'Based on the audit, your target keywords, and competitive landscape, we develop a 12-month SEO roadmap covering technical fixes, content opportunities, and link acquisition.' ],
@@ -278,6 +350,30 @@ function datalkemi_get_service_data( string $slug ): array {
 				'Predictive modelling and trend forecasting',
 				'Data quality frameworks and governance documentation',
 			],
+			'problem' => [
+				'headline' => 'Scattered data and manual reporting consume resource while delivering unreliable insights',
+				'points'   => [
+					'Data lives in disconnected tools — GA4, CRM, ad platforms, spreadsheets — with no single source of truth',
+					'Analysts spend most of their time extracting and cleaning data rather than analysing it',
+					'Manual reports are out of date before they are read and contain errors no one has the time to find',
+					'Decisions are made on gut feel because the data to support them either does not exist or cannot be trusted',
+				],
+			],
+			'approach' => [
+				'headline' => 'We build the infrastructure that makes your data reliable, automated, and useful',
+				'points'   => [
+					'Data maturity assessment identifies what you have, what is missing, and what is broken before any build work starts',
+					'ETL pipelines consolidate all data sources into a single, clean, governed data layer automatically',
+					'Event tracking designed around business questions — not the default events a tool happens to fire',
+					'Dashboards and reports built so non-technical stakeholders can answer their own questions without analyst support',
+				],
+			],
+			'results' => [
+				[ 'metric' => '80%', 'label' => 'reduction in time spent on manual data preparation' ],
+				[ 'metric' => '1 place', 'label' => 'single source of truth replacing multiple conflicting reports' ],
+				[ 'metric' => 'real-time', 'label' => 'data availability replacing end-of-month reporting cycles' ],
+				[ 'metric' => '3x', 'label' => 'faster decision-making reported by analytics clients' ],
+			],
 			'process' => [
 				[ 'step' => '01', 'title' => 'Data Discovery', 'desc' => 'We audit your current data sources, collection methods, and reporting tools. A gap analysis identifies what\'s missing and what\'s being wasted. You get a full data maturity assessment.' ],
 				[ 'step' => '02', 'title' => 'Strategy & Architecture', 'desc' => 'We design your analytics architecture — from data ingestion and storage to transformation logic and reporting layers. Every decision is made with scalability and governance in mind.' ],
@@ -361,6 +457,30 @@ function datalkemi_get_service_data( string $slug ): array {
 				'Row-level security and multi-tenant BI',
 				'Self-service BI training for business users',
 				'Embedded analytics integration in existing software',
+			],
+			'problem' => [
+				'headline' => 'Spreadsheet reporting and disconnected tools cannot scale with a growing business',
+				'points'   => [
+					'Finance uses one spreadsheet, sales uses another, and marketing uses a third — none of them agree',
+					'Generic Power BI or Tableau implementations lack a proper data model and produce unreliable numbers',
+					'Reports take days to produce and are already out of date when presented to leadership',
+					'Business users cannot answer their own questions and create a bottleneck on the analytics team',
+				],
+			],
+			'approach' => [
+				'headline' => 'We build the semantic data model first — every report built on top of it is accurate by design',
+				'points'   => [
+					'Requirements workshops with every stakeholder group ensure the BI solution answers the questions that actually matter',
+					'Properly modelled data layer means all KPIs are defined once and calculated consistently across every report',
+					'Row-level security ensures each user sees exactly the data they are authorised to see — no more, no less',
+					'Self-service training means business users can build their own views without waiting for analyst support',
+				],
+			],
+			'results' => [
+				[ 'metric' => '90%', 'label' => 'reduction in time spent producing management reports' ],
+				[ 'metric' => '1 model', 'label' => 'single semantic layer replacing conflicting department spreadsheets' ],
+				[ 'metric' => '4 weeks', 'label' => 'typical time from brief to first live dashboard' ],
+				[ 'metric' => '85%', 'label' => 'self-service adoption rate among business users after training' ],
 			],
 			'process' => [
 				[ 'step' => '01', 'title' => 'Requirements Workshop', 'desc' => 'We facilitate structured workshops with stakeholders to define business questions, KPIs, and the decisions the BI solution needs to support. No assumptions — everything is documented and agreed.' ],
@@ -447,6 +567,30 @@ function datalkemi_get_service_data( string $slug ): array {
 				'Mobile-optimised responsive dashboard design',
 				'Alert and threshold notification systems',
 				'Export to PDF, Excel, and PowerPoint',
+			],
+			'problem' => [
+				'headline' => 'Generic tools show you what they decided to measure, not what your business actually needs',
+				'points'   => [
+					'Off-the-shelf dashboards are built around default metrics that rarely align with how a specific business operates',
+					'Data from different platforms sits in separate tools with no way to see the combined picture',
+					'Static charts and tables require manual interpretation — they show what happened, not what to do about it',
+					'Dashboards built by non-specialists are slow, poorly designed, and abandoned within weeks',
+				],
+			],
+			'approach' => [
+				'headline' => 'We start with the decisions your team needs to make and engineer the dashboard around those',
+				'points'   => [
+					'KPI definition workshop ensures every metric on the dashboard has a clear owner and a clear action it should drive',
+					'Multi-source data architecture pulls all relevant feeds into a single, consistent view with automated refresh',
+					'Visual design prioritises clarity: the most important information is visible immediately without scrolling or filtering',
+					'Role-based views so executives, managers, and operators each see the level of detail relevant to their decisions',
+				],
+			],
+			'results' => [
+				[ 'metric' => '5min', 'label' => 'average time for executives to review daily performance' ],
+				[ 'metric' => '10+', 'label' => 'data sources connected into a single dashboard on average' ],
+				[ 'metric' => '95%', 'label' => 'daily active usage rate on client dashboards at 6 months' ],
+				[ 'metric' => 'zero', 'label' => 'manual exports needed after pipeline automation' ],
 			],
 			'process' => [
 				[ 'step' => '01', 'title' => 'KPI Definition', 'desc' => 'We work with your team to define exactly what should be measured, why it matters, and what action each metric should drive. No vanity metrics — every figure on the dashboard earns its place.' ],

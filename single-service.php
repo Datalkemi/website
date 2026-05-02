@@ -1,14 +1,12 @@
 <?php
 /**
- * Individual service page template.
- * Pulls content from the Service CPT post + inc/service-data.php.
+ * Single service page — in-depth service template.
  */
 get_header();
 
 $service_slug = get_post_field( 'post_name', get_the_ID() );
 $data         = datalkemi_get_service_data( $service_slug );
 
-// Related projects
 $related_projects = new WP_Query( [
 	'post_type'      => 'project',
 	'posts_per_page' => 3,
@@ -20,30 +18,29 @@ $related_projects = new WP_Query( [
 <section class="service-hero">
 	<div class="service-hero-overlay"></div>
 	<div class="dk-container service-hero-content">
-		<div class="service-hero-breadcrumb">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'datalkemi' ); ?></a>
-			<span>&#8250;</span>
-			<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Services', 'datalkemi' ); ?></a>
-			<span>&#8250;</span>
+		<nav class="service-hero-breadcrumb">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+			<span>/</span>
+			<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
+			<span>/</span>
 			<span><?php the_title(); ?></span>
-		</div>
-		<div class="service-hero-icon"><?php echo isset( $data['icon'] ) ? $data['icon'] : '&#9998;'; ?></div>
+		</nav>
 		<h1 class="service-hero-title"><?php the_title(); ?></h1>
 		<?php if ( ! empty( $data['tagline'] ) ) : ?>
 			<p class="service-hero-tagline"><?php echo esc_html( $data['tagline'] ); ?></p>
 		<?php endif; ?>
 		<div class="hero-buttons">
-			<a href="<?php echo esc_url( home_url( '/get-a-quote/' ) ); ?>" class="dk-btn dk-btn-primary">
-				<?php esc_html_e( 'Get a Quote', 'datalkemi' ); ?>
+			<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="dk-btn dk-btn-primary">
+				Configure Your Project
 			</a>
-			<a href="#pricing" class="dk-btn dk-btn-outline">
-				<?php esc_html_e( 'View Pricing', 'datalkemi' ); ?>
+			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="dk-btn dk-btn-outline">
+				Talk to Us First
 			</a>
 		</div>
 	</div>
 </section>
 
-<!-- Overview / Post Content -->
+<!-- Overview + Features -->
 <section class="dk-section service-overview-section">
 	<div class="dk-container">
 		<div class="dk-grid-2" style="gap:4rem; align-items:start;">
@@ -56,162 +53,175 @@ $related_projects = new WP_Query( [
 					</p>
 				<?php endif; ?>
 			</div>
-
-			<!-- Features list -->
 			<?php if ( ! empty( $data['features'] ) ) : ?>
-				<div class="dk-glass" style="padding:2rem;">
-					<h3 style="font-size:1.125rem; font-weight:700; color:#f9fafb; margin-bottom:1.25rem;">
-						<?php esc_html_e( "What's Included", 'datalkemi' ); ?>
-					</h3>
-					<ul class="feature-list">
-						<?php foreach ( $data['features'] as $feature ) : ?>
-							<li class="feature-item">
-								<span class="feature-check">&#10003;</span>
-								<span class="feature-text"><?php echo esc_html( $feature ); ?></span>
-							</li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
+			<div class="dk-glass" style="padding:2rem;">
+				<h3 style="font-size:0.875rem; font-weight:700; color:#f9fafb; margin-bottom:1.25rem; text-transform:uppercase; letter-spacing:0.08em;">What is included</h3>
+				<ul class="feature-list">
+					<?php foreach ( $data['features'] as $feature ) : ?>
+						<li class="feature-item">
+							<span class="feature-check">&#10003;</span>
+							<span class="feature-text"><?php echo esc_html( $feature ); ?></span>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
 			<?php endif; ?>
 		</div>
 	</div>
 </section>
 
-<!-- Process steps -->
+<!-- Problem + Approach -->
+<?php if ( ! empty( $data['problem'] ) || ! empty( $data['approach'] ) ) : ?>
+<section class="dk-section" style="background:rgba(17,24,39,0.95);">
+	<div class="dk-container">
+		<div class="dk-grid-2" style="gap:4rem; align-items:start;">
+			<?php if ( ! empty( $data['problem'] ) ) : ?>
+			<div>
+				<p class="section-eyebrow" style="margin-bottom:0.75rem;">The Problem</p>
+				<h2 style="font-size:1.625rem; font-weight:800; color:#f9fafb; margin-bottom:1.5rem; line-height:1.25;">
+					<?php echo esc_html( $data['problem']['headline'] ); ?>
+				</h2>
+				<?php foreach ( $data['problem']['points'] as $pt ) : ?>
+				<div style="display:flex; gap:1rem; margin-bottom:1.125rem; align-items:flex-start;">
+					<span style="color:#ef4444; font-size:1rem; flex-shrink:0; margin-top:0.15rem;">&#215;</span>
+					<p style="color:#9ca3af; font-size:0.9375rem; line-height:1.75; margin:0;"><?php echo esc_html( $pt ); ?></p>
+				</div>
+				<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
+			<?php if ( ! empty( $data['approach'] ) ) : ?>
+			<div>
+				<p class="section-eyebrow" style="margin-bottom:0.75rem;">Our Approach</p>
+				<h2 style="font-size:1.625rem; font-weight:800; color:#f9fafb; margin-bottom:1.5rem; line-height:1.25;">
+					<?php echo esc_html( $data['approach']['headline'] ); ?>
+				</h2>
+				<?php foreach ( $data['approach']['points'] as $pt ) : ?>
+				<div style="display:flex; gap:1rem; margin-bottom:1.125rem; align-items:flex-start;">
+					<span style="color:#4ade80; font-size:1rem; flex-shrink:0; margin-top:0.15rem;">&#10003;</span>
+					<p style="color:#9ca3af; font-size:0.9375rem; line-height:1.75; margin:0;"><?php echo esc_html( $pt ); ?></p>
+				</div>
+				<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+<!-- Process -->
 <?php if ( ! empty( $data['process'] ) ) : ?>
 <section class="dk-section process-section">
 	<div class="dk-container">
 		<div class="dk-section-header">
-			<p class="section-eyebrow"><?php esc_html_e( 'How It Works', 'datalkemi' ); ?></p>
-			<span class="dk-section-title"><?php esc_html_e( 'Our Delivery Process', 'datalkemi' ); ?></span>
-			<p class="dk-section-subtitle">
-				<?php esc_html_e( 'A clear, structured process that keeps you informed and in control at every stage.', 'datalkemi' ); ?>
-			</p>
+			<p class="section-eyebrow">How It Works</p>
+			<span class="dk-section-title">The Delivery Process</span>
+			<p class="dk-section-subtitle">Structured milestones, clear communication, no guesswork.</p>
 		</div>
 		<div class="process-steps-grid">
 			<?php foreach ( $data['process'] as $step ) : ?>
-				<div class="process-card">
-					<span class="process-card-number"><?php echo esc_html( $step['step'] ); ?></span>
-					<h3 class="process-card-title"><?php echo esc_html( $step['title'] ); ?></h3>
-					<p class="process-card-desc"><?php echo esc_html( $step['desc'] ); ?></p>
-				</div>
+			<div class="process-card dk-glass">
+				<span class="process-card-number"><?php echo esc_html( $step['step'] ); ?></span>
+				<h3 class="process-card-title"><?php echo esc_html( $step['title'] ); ?></h3>
+				<p class="process-card-desc"><?php echo esc_html( $step['desc'] ); ?></p>
+			</div>
 			<?php endforeach; ?>
 		</div>
 	</div>
 </section>
 <?php endif; ?>
 
-<!-- Pricing tables -->
-<?php if ( ! empty( $data['pricing'] ) ) : ?>
-<section class="dk-section pricing-section" id="pricing">
+<!-- Results -->
+<?php if ( ! empty( $data['results'] ) ) : ?>
+<section class="dk-section" style="background:var(--color-bg); padding:4rem 0;">
 	<div class="dk-container">
-		<div class="dk-section-header">
-			<p class="section-eyebrow"><?php esc_html_e( 'Transparent Pricing', 'datalkemi' ); ?></p>
-			<span class="dk-section-title"><?php esc_html_e( 'Choose Your Plan', 'datalkemi' ); ?></span>
-			<p class="dk-section-subtitle">
-				<?php esc_html_e( 'No hidden costs, no surprises. Every price reflects the full scope of work. Enterprise? Contact us for a custom quote.', 'datalkemi' ); ?>
-			</p>
+		<div class="dk-section-header" style="margin-bottom:2.5rem;">
+			<p class="section-eyebrow">Typical Outcomes</p>
+			<span class="dk-section-title">What Our Clients See</span>
 		</div>
-		<div class="pricing-grid">
-			<?php foreach ( $data['pricing'] as $tier ) :
-				$is_featured = ! empty( $tier['featured'] );
-			?>
-				<div class="pricing-card<?php echo $is_featured ? ' pricing-card--featured' : ''; ?>">
-					<?php if ( $is_featured ) : ?>
-						<div class="pricing-badge"><?php esc_html_e( 'Most Popular', 'datalkemi' ); ?></div>
-					<?php endif; ?>
-					<h3 class="pricing-tier-name"><?php echo esc_html( $tier['name'] ); ?></h3>
-					<div class="pricing-price-block">
-						<span class="pricing-price"><?php echo esc_html( $tier['price'] ); ?></span>
-						<?php if ( $tier['period'] !== 'quote' ) : ?>
-							<span class="pricing-period"><?php echo esc_html( $tier['period'] ); ?></span>
-						<?php endif; ?>
-					</div>
-					<p class="pricing-desc"><?php echo esc_html( $tier['desc'] ); ?></p>
-					<ul class="pricing-features">
-						<?php foreach ( $tier['features'] as $feature ) : ?>
-							<li>
-								<span class="pricing-check">&#10003;</span>
-								<?php echo esc_html( $feature ); ?>
-							</li>
-						<?php endforeach; ?>
-					</ul>
-					<a href="<?php echo esc_url( home_url( '/get-a-quote/?service=' . $service_slug . '&tier=' . strtolower( $tier['name'] ) ) ); ?>"
-						class="dk-btn <?php echo $is_featured ? 'dk-btn-primary' : 'dk-btn-outline'; ?> pricing-cta">
-						<?php echo esc_html( $tier['cta'] ); ?>
-					</a>
-				</div>
+		<div class="outcomes-grid">
+			<?php foreach ( $data['results'] as $result ) : ?>
+			<div class="outcome-card dk-glass">
+				<div class="outcome-metric"><?php echo esc_html( $result['metric'] ); ?></div>
+				<div class="outcome-label"><?php echo esc_html( $result['label'] ); ?></div>
+			</div>
 			<?php endforeach; ?>
 		</div>
-		<p class="pricing-footnote">
-			&#128204; <?php esc_html_e( 'All prices exclusive of VAT. Payment terms and instalments available. Contact us to discuss your specific requirements.', 'datalkemi' ); ?>
-		</p>
 	</div>
 </section>
 <?php endif; ?>
 
-<!-- Related Projects -->
+<!-- Related projects -->
 <?php if ( $related_projects->have_posts() ) : ?>
-<section class="dk-section">
+<section class="dk-section" style="background:rgba(17,24,39,0.95);">
 	<div class="dk-container">
 		<div class="dk-section-header">
-			<span class="dk-section-title"><?php esc_html_e( 'Recent Work', 'datalkemi' ); ?></span>
-			<p class="dk-section-subtitle"><?php esc_html_e( "A selection of projects we've delivered. See what's possible.", 'datalkemi' ); ?></p>
+			<span class="dk-section-title">Work We Have Done</span>
 		</div>
 		<div class="dk-grid-3">
 			<?php while ( $related_projects->have_posts() ) : $related_projects->the_post();
 				$category = get_post_meta( get_the_ID(), '_project_category', true );
-				$live_url = get_post_meta( get_the_ID(), '_project_live_url', true );
 			?>
-				<a href="<?php the_permalink(); ?>" class="dk-card project-card-link" style="text-decoration:none !important;">
-					<?php if ( has_post_thumbnail() ) : ?>
-						<div class="project-thumbnail"><?php the_post_thumbnail( 'medium_large' ); ?></div>
-					<?php endif; ?>
-					<?php if ( $category ) : ?>
-						<p class="project-category"><?php echo esc_html( $category ); ?></p>
-					<?php endif; ?>
-					<h3 class="project-title"><?php the_title(); ?></h3>
-					<p class="project-desc"><?php the_excerpt(); ?></p>
-				</a>
+			<a href="<?php the_permalink(); ?>" class="dk-card" style="text-decoration:none !important;">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<div class="project-thumbnail"><?php the_post_thumbnail( 'medium_large' ); ?></div>
+				<?php endif; ?>
+				<?php if ( $category ) : ?>
+					<p class="project-category"><?php echo esc_html( $category ); ?></p>
+				<?php endif; ?>
+				<h3 class="project-title"><?php the_title(); ?></h3>
+				<p class="project-desc"><?php the_excerpt(); ?></p>
+			</a>
 			<?php endwhile; wp_reset_postdata(); ?>
 		</div>
 		<div style="text-align:center; margin-top:2.5rem;">
-			<a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>" class="dk-btn dk-btn-outline">
-				<?php esc_html_e( 'View All Projects', 'datalkemi' ); ?>
-			</a>
+			<a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>" class="dk-btn dk-btn-outline">View All Projects</a>
 		</div>
 	</div>
 </section>
 <?php endif; ?>
 
-<!-- FAQs -->
+<!-- Pricing / Configurator -->
+<section class="dk-section" style="background:var(--color-bg); padding:4rem 0;">
+	<div class="dk-container">
+		<div class="config-promo">
+			<div class="config-promo-text">
+				<p class="section-eyebrow">Pricing</p>
+				<h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem); font-weight:800; color:#f9fafb; margin-bottom:0.75rem; line-height:1.25;">
+					Configure your project, price it instantly
+				</h2>
+				<p style="color:#9ca3af; font-size:1rem; max-width:32rem; line-height:1.75;">
+					Select only the components your project needs. Your estimate updates in real time, and we follow up with a full written proposal.
+				</p>
+			</div>
+			<div class="config-promo-action">
+				<a href="<?php echo esc_url( home_url( '/build-your-project/?service=' . $service_slug ) ); ?>" class="dk-btn dk-btn-primary" style="font-size:1rem; padding:0.9rem 2rem;">
+					Open Configurator
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- FAQ -->
 <?php if ( ! empty( $data['faqs'] ) ) : ?>
 <section class="dk-section faq-section">
 	<div class="dk-container">
 		<div class="dk-section-header">
-			<span class="dk-section-title"><?php esc_html_e( 'Frequently Asked Questions', 'datalkemi' ); ?></span>
-			<p class="dk-section-subtitle"><?php esc_html_e( "Everything you need to know before getting started. Can't find your answer? Just ask us.", 'datalkemi' ); ?></p>
+			<span class="dk-section-title">Frequently Asked Questions</span>
 		</div>
 		<div class="faq-list">
 			<?php foreach ( $data['faqs'] as $i => $faq ) : ?>
-				<div class="faq-item" id="faq-<?php echo esc_attr( $i ); ?>">
-					<button class="faq-question" aria-expanded="false" aria-controls="faq-answer-<?php echo esc_attr( $i ); ?>">
-						<span><?php echo esc_html( $faq['q'] ); ?></span>
-						<span class="faq-icon">&#43;</span>
-					</button>
-					<div class="faq-answer" id="faq-answer-<?php echo esc_attr( $i ); ?>" hidden>
-						<p><?php echo esc_html( $faq['a'] ); ?></p>
-					</div>
+			<div class="faq-item" id="faq-<?php echo esc_attr( $i ); ?>">
+				<button class="faq-question" aria-expanded="false" aria-controls="faq-answer-<?php echo esc_attr( $i ); ?>">
+					<span><?php echo esc_html( $faq['q'] ); ?></span>
+					<span class="faq-icon">&#43;</span>
+				</button>
+				<div class="faq-answer" id="faq-answer-<?php echo esc_attr( $i ); ?>" hidden>
+					<p><?php echo esc_html( $faq['a'] ); ?></p>
 				</div>
+			</div>
 			<?php endforeach; ?>
 		</div>
-		<p style="text-align:center; margin-top:2rem;" class="dk-section-subtitle">
-			<?php esc_html_e( 'Still have questions?', 'datalkemi' ); ?>
-			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" style="color:var(--color-primary) !important;">
-				<?php esc_html_e( 'Contact us', 'datalkemi' ); ?>
-			</a>
-			<?php esc_html_e( 'and we\'ll be happy to help.', 'datalkemi' ); ?>
-		</p>
 	</div>
 </section>
 <?php endif; ?>
@@ -220,16 +230,12 @@ $related_projects = new WP_Query( [
 <section class="cta-banner">
 	<div class="dk-container cta-banner-inner">
 		<div>
-			<h2 class="cta-banner-title"><?php printf( esc_html__( "Ready to Get Started with %s?", 'datalkemi' ), get_the_title() ); ?></h2>
-			<p class="cta-banner-subtitle"><?php esc_html_e( "Tell us about your project and we'll put together a detailed proposal within 48 hours.", 'datalkemi' ); ?></p>
+			<h2 class="cta-banner-title">Ready to start your <?php the_title(); ?> project?</h2>
+			<p class="cta-banner-subtitle">Configure online and get an instant estimate, or book a free 30-minute call to talk through your requirements.</p>
 		</div>
 		<div class="cta-banner-actions">
-			<a href="<?php echo esc_url( home_url( '/get-a-quote/?service=' . $service_slug ) ); ?>" class="dk-btn dk-btn-primary">
-				<?php esc_html_e( 'Request a Proposal', 'datalkemi' ); ?>
-			</a>
-			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="dk-btn dk-btn-outline" style="border-color:#fff; color:#fff;">
-				<?php esc_html_e( 'Ask a Question', 'datalkemi' ); ?>
-			</a>
+			<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="dk-btn dk-btn-primary">Configure Your Project</a>
+			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="dk-btn dk-btn-outline" style="border-color:#fff; color:#fff;">Book a Free Call</a>
 		</div>
 	</div>
 </section>

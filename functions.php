@@ -15,6 +15,7 @@ require_once DATALKEMI_DIR . '/inc/menus.php';
 require_once DATALKEMI_DIR . '/inc/post-types.php';
 require_once DATALKEMI_DIR . '/inc/service-data.php';
 require_once DATALKEMI_DIR . '/inc/client-portal.php';
+require_once DATALKEMI_DIR . '/inc/configurator-data.php';
 
 // ── Theme setup ────────────────────────────────────────────────────────────
 function datalkemi_setup() {
@@ -61,3 +62,57 @@ function datalkemi_disable_comments( $open, $post_id ) {
 }
 add_filter( 'comments_open', 'datalkemi_disable_comments', 20, 2 );
 add_filter( 'pings_open',    'datalkemi_disable_comments', 20, 2 );
+
+// ── Configurator AJAX handler ───────────────────────────────────────────────
+function datalkemi_configurator_submit() {
+	check_ajax_referer( 'dk_configurator_submit', 'nonce' );
+
+	$name    = sanitize_text_field( $_POST['name']    ?? '' );
+	$email   = sanitize_email(      $_POST['email']   ?? '' );
+	$company = sanitize_text_field( $_POST['company'] ?? '' );
+	$notes   = sanitize_textarea_field( $_POST['notes'] ?? '' );
+	$summary = sanitize_textarea_field( $_POST['summary'] ?? '' );
+	$total   = absint( $_POST['total'] ?? 0 );
+
+	if ( ! $name || ! is_email( $email ) ) {
+		wp_send_json_error( 'Invalid submission.' );
+	}
+
+	$admin_email = get_option( 'admin_email' );
+	$subject     = 'New Project Quote — £' . number_format( $total ) . ' — ' . $name;
+
+	$body  = "New project quote request received via the Datalkemi configurator.\n\n";
+	$body .= "Name:    {$name}\n";
+	$body .= "Email:   {$email}\n";
+	$body .= "Company: {$company}\n\n";
+	$body .= $summary . "\n\n";
+	if ( $notes ) {
+		$body .= "Additional notes:\n{$notes}\n\n";
+	}
+	$body .= "---\nReply to this email to follow up with " . $name . " directly.\n";
+
+	$headers = [
+		'Content-Type: text/plain; charset=UTF-8',
+		'Reply-To: ' . $name . ' <' . $email . '>',
+	];
+
+	$sent = wp_mail( $admin_email, $subject, $body, $headers );
+
+	// Confirmation to client
+	$client_body  = "Hi {$name},\n\n";
+	$client_body .= "Thank you for configuring your project with Datalkemi.\n\n";
+	$client_body .= "We have received your estimated quote of £" . number_format( $total ) . " and will review it personally.\n";
+	$client_body .= "A member of our team will be in touch within one business day.\n\n";
+	$client_body .= $summary . "\n\n";
+	$client_body .= "Questions? Just reply to this email.\n\nThe Datalkemi Team\nhttps://datalkemi.com\n";
+
+	wp_mail( $email, 'Your Datalkemi Project Quote', $client_body, [ 'Content-Type: text/plain; charset=UTF-8' ] );
+
+	if ( $sent ) {
+		wp_send_json_success( 'Quote sent.' );
+	} else {
+		wp_send_json_error( 'Mail failed.' );
+	}
+}
+add_action( 'wp_ajax_dk_submit_configurator',        'datalkemi_configurator_submit' );
+add_action( 'wp_ajax_nopriv_dk_submit_configurator', 'datalkemi_configurator_submit' );
