@@ -9,8 +9,7 @@ get_header(); ?>
 	<?php get_template_part( 'template-parts/home/hero' ); ?>
 	<?php get_template_part( 'template-parts/home/about' ); ?>
 	<?php get_template_part( 'template-parts/home/services' ); ?>
-	<?php get_template_part( 'template-parts/home/tech-stack' ); ?>
-	<?php get_template_part( 'template-parts/home/projects' ); ?>
+<?php get_template_part( 'template-parts/home/projects' ); ?>
 	<?php get_template_part( 'template-parts/home/testimonials' ); ?>
 	<?php get_template_part( 'template-parts/home/blog-preview' ); ?>
 	<?php get_template_part( 'template-parts/home/contact' ); ?>

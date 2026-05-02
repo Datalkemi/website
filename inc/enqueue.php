@@ -46,5 +46,12 @@ function datalkemi_enqueue_assets() {
 		DATALKEMI_VERSION,
 		true
 	);
+
+	// Localize AJAX data (contact form + reactions)
+	wp_localize_script( 'datalkemi-main-js', 'DK_AJAX', [
+		'url'            => admin_url( 'admin-ajax.php' ),
+		'contact_nonce'  => wp_create_nonce( 'dk_contact_submit' ),
+		'reaction_nonce' => wp_create_nonce( 'dk_post_reaction' ),
+	] );
 }
 add_action( 'wp_enqueue_scripts', 'datalkemi_enqueue_assets' );
