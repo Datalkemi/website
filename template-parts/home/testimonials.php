@@ -8,53 +8,51 @@ $testimonials = new WP_Query( [
 	'post_status'    => 'publish',
 ] );
 ?>
-<section id="testimonials" style="background: var(--color-bg);">
-	<div class="container">
+<section id="testimonials" class="dk-section">
+	<div class="dk-container">
 
-		<div style="text-align:center; margin-bottom:4rem;">
-			<h2 class="section-title gradient-text"><?php esc_html_e( 'Client Testimonials', 'datalkemi' ); ?></h2>
-			<p class="section-subtitle"><?php esc_html_e( 'Hear what our satisfied clients have to say about their experience with Datalkemi.', 'datalkemi' ); ?></p>
+		<div class="dk-section-header">
+			<span class="dk-section-title"><?php esc_html_e( 'Client Testimonials', 'datalkemi' ); ?></span>
+			<p class="dk-section-subtitle"><?php esc_html_e( 'Hear what our satisfied clients have to say about their experience with Datalkemi.', 'datalkemi' ); ?></p>
 		</div>
 
 		<?php if ( $testimonials->have_posts() ) : ?>
-			<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:2rem;">
+			<div class="dk-grid-3">
 				<?php while ( $testimonials->have_posts() ) : $testimonials->the_post();
-					$rating   = (int) get_post_meta( get_the_ID(), '_testimonial_rating', true );
-					$role     = get_post_meta( get_the_ID(), '_testimonial_role', true );
-					$rating   = $rating ?: 5;
+					$rating = (int) get_post_meta( get_the_ID(), '_testimonial_rating', true );
+					$role   = get_post_meta( get_the_ID(), '_testimonial_role', true );
+					$rating = $rating ?: 5;
 				?>
-					<div class="glassmorphism" style="padding:2rem; border-radius:0.75rem; display:flex; flex-direction:column;">
-						<div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
-							<?php if ( has_post_thumbnail() ) : ?>
-								<div style="width:3rem; height:3rem; border-radius:50%; overflow:hidden; flex-shrink:0;">
-									<?php the_post_thumbnail( 'thumbnail', [ 'style' => 'width:100%;height:100%;object-fit:cover;' ] ); ?>
-								</div>
-							<?php else : ?>
-								<div style="width:3rem; height:3rem; border-radius:50%; background:var(--color-bg-alt); display:flex; align-items:center; justify-content:center; font-size:1.25rem; flex-shrink:0;">&#128100;</div>
-							<?php endif; ?>
+					<div class="dk-glass" style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+						<div style="display:flex; align-items:center; gap:1rem;">
+							<div class="testimonial-avatar">
+								<?php if ( has_post_thumbnail() ) :
+									the_post_thumbnail( 'thumbnail' );
+								else : ?>
+									&#128100;
+								<?php endif; ?>
+							</div>
 							<div>
-								<p style="font-weight:600; color:#f9fafb; margin:0;"><?php the_title(); ?></p>
+								<p class="testimonial-name"><?php the_title(); ?></p>
 								<?php if ( $role ) : ?>
-									<p style="font-size:0.75rem; color:var(--color-text-muted); margin:0;"><?php echo esc_html( $role ); ?></p>
+									<p class="testimonial-role"><?php echo esc_html( $role ); ?></p>
 								<?php endif; ?>
 							</div>
 						</div>
-						<div style="display:flex; gap:0.25rem; margin-bottom:1rem;">
+						<div class="testimonial-stars">
 							<?php for ( $i = 1; $i <= 5; $i++ ) : ?>
-								<span style="color:<?php echo $i <= $rating ? '#facc15' : 'var(--color-border)'; ?>; font-size:1.125rem;">&#9733;</span>
+								<span class="<?php echo $i <= $rating ? 'star-filled' : 'star-empty'; ?>">&#9733;</span>
 							<?php endfor; ?>
 						</div>
-						<p style="color:#d1d5db; line-height:1.7; font-style:italic; flex:1;">
+						<p class="testimonial-text">
 							&ldquo;<?php echo wp_kses_post( get_the_content() ); ?>&rdquo;
 						</p>
-						<p style="font-size:0.75rem; color:var(--color-text-muted); margin-top:1rem;">
-							<?php esc_html_e( 'Verified Client Feedback', 'datalkemi' ); ?>
-						</p>
+						<p class="testimonial-verified"><?php esc_html_e( 'Verified Client Feedback', 'datalkemi' ); ?></p>
 					</div>
 				<?php endwhile; wp_reset_postdata(); ?>
 			</div>
 		<?php else : ?>
-			<p style="text-align:center; color:var(--color-text-muted);">
+			<p style="text-align:center;" class="dk-section-subtitle">
 				<?php esc_html_e( 'Client testimonials coming soon.', 'datalkemi' ); ?>
 			</p>
 		<?php endif; ?>

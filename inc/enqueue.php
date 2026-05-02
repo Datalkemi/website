@@ -30,9 +30,17 @@ function datalkemi_enqueue_assets() {
 		null
 	);
 
+	// Component + override styles
+	wp_enqueue_style(
+		'datalkemi-main',
+		DATALKEMI_URI . '/assets/css/main.css',
+		[ 'datalkemi-style' ],
+		DATALKEMI_VERSION
+	);
+
 	// Main JS
 	wp_enqueue_script(
-		'datalkemi-main',
+		'datalkemi-main-js',
 		DATALKEMI_URI . '/assets/js/main.js',
 		[],
 		DATALKEMI_VERSION,

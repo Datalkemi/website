@@ -10,9 +10,6 @@ Tags:        custom-theme, dark, business
 Text Domain: datalkemi
 */
 
-/* ─── Import parent theme styles ─── */
-@import url('../astra/style.css');
-
 /* ─── CSS Custom Properties ─── */
 :root {
   --color-primary:    #0284c7;

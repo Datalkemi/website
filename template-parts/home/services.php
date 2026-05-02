@@ -11,24 +11,20 @@ $services = [
 	[ 'icon' => '&#128200;', 'title' => __( 'Custom Dashboards', 'datalkemi' ),            'desc' => __( 'Creating tailored dashboards that provide a clear, real-time view of your key performance indicators.', 'datalkemi' ) ],
 ];
 ?>
-<section id="services" style="background: rgba(31,41,55,0.3);">
-	<div class="container">
+<section id="services" class="dk-section">
+	<div class="dk-container">
 
-		<div style="text-align:center; margin-bottom:4rem;">
-			<h2 class="section-title gradient-text"><?php esc_html_e( 'Our Expertise', 'datalkemi' ); ?></h2>
-			<p class="section-subtitle"><?php esc_html_e( 'We provide a wide array of services designed to elevate your business in the digital and data-driven landscape.', 'datalkemi' ); ?></p>
+		<div class="dk-section-header">
+			<span class="dk-section-title"><?php esc_html_e( 'Our Expertise', 'datalkemi' ); ?></span>
+			<p class="dk-section-subtitle"><?php esc_html_e( 'We provide a wide array of services designed to elevate your business in the digital and data-driven landscape.', 'datalkemi' ); ?></p>
 		</div>
 
-		<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:2rem;">
+		<div class="dk-grid-3">
 			<?php foreach ( $services as $service ) : ?>
-				<div class="card" style="text-align:center;">
-					<div style="font-size:2.5rem; margin-bottom:1rem;"><?php echo $service['icon']; ?></div>
-					<h3 style="font-size:1.25rem; font-weight:600; color:#f9fafb; margin-bottom:0.75rem;">
-						<?php echo esc_html( $service['title'] ); ?>
-					</h3>
-					<p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">
-						<?php echo esc_html( $service['desc'] ); ?>
-					</p>
+				<div class="dk-card" style="text-align:center;">
+					<span class="service-icon"><?php echo $service['icon']; ?></span>
+					<h3 class="service-title"><?php echo esc_html( $service['title'] ); ?></h3>
+					<p class="service-desc"><?php echo esc_html( $service['desc'] ); ?></p>
 				</div>
 			<?php endforeach; ?>
 		</div>
