@@ -79,7 +79,7 @@ function datalkemi_configurator_submit() {
 	}
 
 	$admin_email = get_option( 'admin_email' );
-	$subject     = 'New Project Quote — £' . number_format( $total ) . ' — ' . $name;
+	$subject     = 'New Project Quote £' . number_format( $total ) . ' ' . $name;
 
 	$body  = "New project quote request received via the Datalkemi configurator.\n\n";
 	$body .= "Name:    {$name}\n";

@@ -1,6 +1,6 @@
 <?php
 /**
- * Datalkemi — One-time content setup script.
+ * Datalkemi One-time content setup script.
  *
  * Run ONCE via browser: https://yourdomain.com/wp-content/themes/datalkemi/setup-content.php
  * Delete or password-protect this file after running.
@@ -26,7 +26,7 @@ if ( ! current_user_can( 'manage_options' ) ) {
 }
 
 $log   = [];
-$log[] = '<b>Datalkemi Content Setup — ' . date( 'Y-m-d H:i:s' ) . '</b>';
+$log[] = '<b>Datalkemi Content Setup ' . date( 'Y-m-d H:i:s' ) . '</b>';
 
 /* ================================================================
    HELPER FUNCTIONS
@@ -115,20 +115,18 @@ $blog_id = dk_create_page( 'Blog', 'blog' );
 update_option( 'page_for_posts', $blog_id );
 
 // Primary inner pages
-$about_id    = dk_create_page( 'About Us',        'about',           'page-about.php' );
-$services_id = dk_create_page( 'Services',        'services',        'page-services.php' );
-$projects_id = dk_create_page( 'Projects',        'projects',        '' ); // archive handled by archive-project.php
-$portal_id   = dk_create_page( 'Client Portal',   'client-portal',   'page-client-portal.php' );
-$quote_id    = dk_create_page( 'Get a Quote',     'get-a-quote',     'page-quote.php' );
-$contact_id  = dk_create_page( 'Contact',         'contact',         'page-contact.php' );
+$about_id       = dk_create_page( 'About Us',              'about',               'page-about.php' );
+$services_id    = dk_create_page( 'Services',              'services',            'page-services.php' );
+$projects_id    = dk_create_page( 'Projects',              'projects',            '' ); // archive handled by archive-project.php
+$portal_id      = dk_create_page( 'Client Portal',         'client-portal',       'page-client-portal.php' );
+$config_id      = dk_create_page( 'Build Your Project',    'build-your-project',  'page-configurator.php' );
+$contact_id     = dk_create_page( 'Contact',               'contact',             '' );
+$insights_id    = dk_create_page( 'Insights',              'insights',            '' );
 
 // Legal pages
-$privacy_id  = dk_create_page( 'Privacy Policy',  'privacy-policy',  '',      '', 0 );
-$terms_id    = dk_create_page( 'Terms of Service','terms-of-service','',      '', 0 );
-$cookies_id  = dk_create_page( 'Cookie Policy',   'cookie-policy',   '',      '', 0 );
-
-// Insights / Blog hub
-$insights_id = dk_create_page( 'Insights',        'insights',        'page-insights.php' );
+$privacy_id  = dk_create_page( 'Privacy Policy',   'privacy-policy',   '', '', 0 );
+$terms_id    = dk_create_page( 'Terms of Service', 'terms-of-service', '', '', 0 );
+$cookies_id  = dk_create_page( 'Cookie Policy',    'cookie-policy',    '', '', 0 );
 
 $log[] = "  Set blog page → ID {$blog_id}";
 
@@ -181,13 +179,13 @@ $log[] = "  Assigned to location: <b>{$menu_location}</b>";
 $menu_items = wp_get_nav_menu_items( $menu_id );
 if ( empty( $menu_items ) ) {
     $items = [
-        [ 'title' => 'Home',          'url' => home_url( '/' ),            'object_id' => $home_id,     'order' => 1 ],
-        [ 'title' => 'About',         'url' => home_url( '/about/' ),       'object_id' => $about_id,    'order' => 2 ],
-        [ 'title' => 'Services',      'url' => home_url( '/services/' ),    'object_id' => $services_id, 'order' => 3 ],
-        [ 'title' => 'Projects',      'url' => home_url( '/projects/' ),    'object_id' => $projects_id, 'order' => 4 ],
-        [ 'title' => 'Insights',      'url' => home_url( '/insights/' ),    'object_id' => $insights_id, 'order' => 5 ],
-        [ 'title' => 'Contact',       'url' => home_url( '/contact/' ),     'object_id' => $contact_id,  'order' => 6 ],
-        [ 'title' => 'Get a Quote',   'url' => home_url( '/get-a-quote/' ), 'object_id' => $quote_id,    'order' => 7 ],
+        [ 'title' => 'Home',         'url' => home_url( '/' ),                    'object_id' => $home_id,     'order' => 1 ],
+        [ 'title' => 'About',        'url' => home_url( '/about/' ),              'object_id' => $about_id,    'order' => 2 ],
+        [ 'title' => 'Services',     'url' => home_url( '/services/' ),           'object_id' => $services_id, 'order' => 3 ],
+        [ 'title' => 'Projects',     'url' => home_url( '/projects/' ),           'object_id' => $projects_id, 'order' => 4 ],
+        [ 'title' => 'Insights',     'url' => home_url( '/insights/' ),           'object_id' => $insights_id, 'order' => 5 ],
+        [ 'title' => 'Contact',      'url' => home_url( '/contact/' ),            'object_id' => $contact_id,  'order' => 6 ],
+        [ 'title' => 'My Portal',    'url' => home_url( '/client-portal/' ),      'object_id' => $portal_id,   'order' => 7 ],
     ];
 
     foreach ( $items as $item ) {
@@ -263,7 +261,7 @@ $log[] = '<br><b>── Reading settings updated; rewrite rules flushed ──</
 <p>Run on: <b><?php echo date( 'Y-m-d H:i:s' ); ?></b> &mdash; Site: <b><?php echo esc_html( home_url() ); ?></b></p>
 <pre><?php echo implode( "\n", $log ); ?></pre>
 <div class="box">
-  <p><b class="warn">&#9888; Important — Security:</b> Delete or rename <code>setup-content.php</code> from your theme folder now that setup is complete. Leaving it accessible is a security risk.</p>
+  <p><b class="warn">&#9888; Important Security:</b> Delete or rename <code>setup-content.php</code> from your theme folder now that setup is complete. Leaving it accessible is a security risk.</p>
   <p>You can also verify the setup by visiting <a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>" style="color:#38bdf8">Appearance &rarr; Menus</a> and <a href="<?php echo esc_url( admin_url( 'options-reading.php' ) ); ?>" style="color:#38bdf8">Settings &rarr; Reading</a>.</p>
 </div>
 </body>

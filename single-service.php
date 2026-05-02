@@ -1,6 +1,6 @@
 <?php
 /**
- * Single service page — in-depth service template.
+ * Single service page in-depth service template.
  */
 get_header();
 

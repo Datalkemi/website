@@ -1,6 +1,6 @@
 <?php
 /**
- * Datalkemi — Project Configurator pricing data.
+ * Datalkemi Project Configurator pricing data.
  * Each option carries a price (GBP). JS reads this as inline JSON.
  */
 

@@ -19,7 +19,7 @@ $config_json = wp_json_encode( $config );
 			<span class="gradient-text"><?php esc_html_e( 'See Your Price', 'datalkemi' ); ?></span>
 		</h1>
 		<p class="page-hero-subtitle" style="max-width:36rem;">
-			<?php esc_html_e( 'Select the components your project needs. Your estimate updates in real time. No forms, no waiting — just a clear number to start from.', 'datalkemi' ); ?>
+			<?php esc_html_e( 'Select the components your project needs. Your estimate updates in real time. No forms, no waiting just a clear number to start from.', 'datalkemi' ); ?>
 		</p>
 	</div>
 </section>

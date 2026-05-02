@@ -60,7 +60,7 @@ get_header();
 	$user     = wp_get_current_user();
 	$is_admin = current_user_can( 'manage_options' ) || current_user_can( 'edit_posts' );
 
-	// If admin, redirect to WP admin — handled by PHP, but also show a notice
+	// If admin, redirect to WP admin handled by PHP, but also show a notice
 	if ( $is_admin ) : ?>
 		<section class="dk-section">
 			<div class="dk-container" style="text-align:center; padding:4rem 0;">

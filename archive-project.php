@@ -1,6 +1,6 @@
 <?php
 /**
- * Projects archive — portfolio / case studies listing.
+ * Projects archive portfolio / case studies listing.
  */
 get_header();
 
@@ -19,7 +19,7 @@ $types      = get_terms( [ 'taxonomy' => 'project_type',     'hide_empty' => tru
 			<span class="gradient-text"><?php esc_html_e( 'Case Studies', 'datalkemi' ); ?></span>
 		</h1>
 		<p class="page-hero-subtitle">
-			<?php esc_html_e( 'A selection of the work we\'re most proud of. Every project here represents a real business challenge — and the solution we built to solve it.', 'datalkemi' ); ?>
+			<?php esc_html_e( 'A selection of the work we\'re most proud of. Every project here represents a real business challenge and the solution we built to solve it.', 'datalkemi' ); ?>
 		</p>
 	</div>
 </section>
@@ -117,7 +117,7 @@ $types      = get_terms( [ 'taxonomy' => 'project_type',     'hide_empty' => tru
 				<p style="font-size:4rem; margin-bottom:1rem;">&#127775;</p>
 				<h2 class="dk-section-title"><?php esc_html_e( 'Projects Coming Soon', 'datalkemi' ); ?></h2>
 				<p class="dk-section-subtitle" style="margin-bottom:2rem;">
-					<?php esc_html_e( 'We\'re preparing our case studies showcase. Check back shortly — there\'s a lot in the pipeline.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'We\'re preparing our case studies showcase. Check back shortly there\'s a lot in the pipeline.', 'datalkemi' ); ?>
 				</p>
 				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="dk-btn dk-btn-primary">
 					<?php esc_html_e( 'Discuss Your Project', 'datalkemi' ); ?>

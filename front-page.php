@@ -1,6 +1,6 @@
 <?php
 /**
- * Homepage template — displays all sections
+ * Homepage template displays all sections
  */
 get_header(); ?>
 

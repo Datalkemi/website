@@ -1,6 +1,6 @@
 <?php
 /**
- * Projects section — pulls from Projects CPT
+ * Projects section pulls from Projects CPT
  */
 $projects = new WP_Query( [
 	'post_type'      => 'project',

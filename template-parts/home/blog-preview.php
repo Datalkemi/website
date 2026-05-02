@@ -1,6 +1,6 @@
 <?php
 /**
- * Blog preview section — latest 3 posts
+ * Blog preview section latest 3 posts
  */
 $blog_posts = new WP_Query( [
 	'post_type'      => 'post',

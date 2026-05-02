@@ -1,6 +1,6 @@
 <?php
 /**
- * Testimonials section — pulls from Testimonials CPT
+ * Testimonials section pulls from Testimonials CPT
  */
 $testimonials = new WP_Query( [
 	'post_type'      => 'testimonial',

@@ -1,6 +1,6 @@
 <?php
 /**
- * Fallback template — WordPress requires this file.
+ * Fallback template WordPress requires this file.
  * Actual homepage is handled by front-page.php
  */
 get_header(); ?>

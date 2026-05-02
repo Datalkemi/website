@@ -1,6 +1,6 @@
 <?php
 /**
- * Client Portal — role management, helpers, and admin meta boxes.
+ * Client Portal role management, helpers, and admin meta boxes.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -97,7 +97,7 @@ function datalkemi_render_client_meta_box( WP_Post $post ): void {
 	?>
 	<p style="margin-bottom:8px;"><strong><?php esc_html_e( 'Assign to Client:', 'datalkemi' ); ?></strong></p>
 	<select name="datalkemi_assigned_client" style="width:100%; margin-bottom:12px;">
-		<option value=""><?php esc_html_e( '— No client —', 'datalkemi' ); ?></option>
+		<option value=""><?php esc_html_e( '- No client -', 'datalkemi' ); ?></option>
 		<?php foreach ( $clients as $client ) : ?>
 			<option value="<?php echo esc_attr( $client->ID ); ?>" <?php selected( $assigned_client, $client->ID ); ?>>
 				<?php echo esc_html( $client->display_name . ' (' . $client->user_email . ')' ); ?>

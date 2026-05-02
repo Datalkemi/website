@@ -1,6 +1,6 @@
 <?php
 /**
- * Service data — pricing, features, process steps, FAQs for all 6 services.
+ * Service data pricing, features, process steps, FAQs for all 6 services.
  * Edit this file to update service content site-wide.
  */
 
@@ -13,7 +13,7 @@ function datalkemi_get_service_data( string $slug ): array {
 		'website-design' => [
 			'icon'     => '&#127912;',
 			'tagline'  => 'Pixel-perfect designs that captivate and convert',
-			'overview' => 'Your website is the digital face of your business — and first impressions are everything. At Datalkemi, we craft bespoke website designs that seamlessly blend aesthetic beauty with strategic conversion architecture. Every pixel, colour choice, and interaction is purposefully designed to tell your brand story and guide visitors toward action.',
+			'overview' => 'Your website is the digital face of your business and first impressions are everything. At Datalkemi, we craft bespoke website designs that seamlessly blend aesthetic beauty with strategic conversion architecture. Every pixel, colour choice, and interaction is purposefully designed to tell your brand story and guide visitors toward action.',
 			'features' => [
 				'Custom UI/UX design tailored to your brand identity and audience',
 				'Fully responsive layouts optimised for every device and screen size',
@@ -28,7 +28,7 @@ function datalkemi_get_service_data( string $slug ): array {
 				'points'   => [
 					'Templates and page builders produce generic layouts that look like every competitor',
 					'Design decisions are made on personal taste rather than user behaviour and conversion data',
-					'Mobile experience is an afterthought — resulting in high bounce rates on the majority of traffic',
+					'Mobile experience is an afterthought resulting in high bounce rates on the majority of traffic',
 					'No clear visual hierarchy means visitors cannot find what they need and leave within seconds',
 				],
 			],
@@ -37,7 +37,7 @@ function datalkemi_get_service_data( string $slug ): array {
 				'points'   => [
 					'Discovery workshop to understand your audience, goals, and competitive positioning before anything is designed',
 					'Information architecture mapped to user journeys so every page guides visitors toward a clear action',
-					'High-fidelity Figma prototypes reviewed and approved before development begins — no surprises',
+					'High-fidelity Figma prototypes reviewed and approved before development begins no surprises',
 					'Performance-first design: layouts, images, and typography chosen with Core Web Vitals in mind from the start',
 				],
 			],
@@ -50,7 +50,7 @@ function datalkemi_get_service_data( string $slug ): array {
 			'process' => [
 				[ 'step' => '01', 'title' => 'Discovery & Brief', 'desc' => 'We conduct an in-depth discovery call to understand your business goals, target audience, competitors, and brand personality. A detailed creative brief is produced and agreed upon.' ],
 				[ 'step' => '02', 'title' => 'Research & Wireframes', 'desc' => 'We research your market and create low-fidelity wireframes that map user journeys and information architecture. This keeps the focus on structure before aesthetics.' ],
-				[ 'step' => '03', 'title' => 'Visual Design', 'desc' => 'High-fidelity mockups are produced in Figma — complete with colour, typography, imagery, and interactive states. You see exactly what the finished site will look like.' ],
+				[ 'step' => '03', 'title' => 'Visual Design', 'desc' => 'High-fidelity mockups are produced in Figma complete with colour, typography, imagery, and interactive states. You see exactly what the finished site will look like.' ],
 				[ 'step' => '04', 'title' => 'Feedback & Refinement', 'desc' => 'We work through revision rounds using structured feedback. Every comment is addressed promptly and transparently, with a shared Figma workspace for real-time collaboration.' ],
 				[ 'step' => '05', 'title' => 'Handoff & Support', 'desc' => 'Final files are delivered including annotated specs for developers, asset libraries, and a comprehensive brand style guide. Post-launch support is included in all packages.' ],
 			],
@@ -112,7 +112,7 @@ function datalkemi_get_service_data( string $slug ): array {
 				[ 'q' => 'How long does a website design project take?', 'a' => 'Typically 2–6 weeks depending on scope. A Starter project (5 pages) usually completes in 2–3 weeks. Professional projects take 4–6 weeks. We provide a precise timeline after the discovery call.' ],
 				[ 'q' => 'Do I own the design files after delivery?', 'a' => 'Yes, absolutely. All Figma source files, exported assets, and the brand style guide are included in your delivery package. You have full ownership of everything we create for you.' ],
 				[ 'q' => 'What do I need to provide to get started?', 'a' => 'A clear brief or project overview, your logo and brand guidelines (if you have them), any existing content you want to use, and examples of websites you admire. We provide a detailed intake form to help structure this.' ],
-				[ 'q' => 'Can you redesign my existing website?', 'a' => 'Absolutely. Redesigns are one of our most common project types. We begin with a full audit of your existing site — analysing analytics, usability, and SEO — and use those insights to inform the new design strategy.' ],
+				[ 'q' => 'Can you redesign my existing website?', 'a' => 'Absolutely. Redesigns are one of our most common project types. We begin with a full audit of your existing site analysing analytics, usability, and SEO and use those insights to inform the new design strategy.' ],
 				[ 'q' => 'Do you also build the website after designing it?', 'a' => 'Yes. Our Full-Stack Web Development service can take your design from Figma to a fully functional WordPress or custom-coded website. Many clients combine both services for end-to-end delivery.' ],
 			],
 		],
@@ -121,14 +121,14 @@ function datalkemi_get_service_data( string $slug ): array {
 		'web-development' => [
 			'icon'     => '&#128187;',
 			'tagline'  => 'Robust, scalable web applications built to perform',
-			'overview' => 'From marketing websites to complex web applications, our full-stack development team builds with precision, performance, and scalability in mind. We write clean, maintainable code using industry-best practices — delivering products that not only work flawlessly today but grow seamlessly with your business tomorrow.',
+			'overview' => 'From marketing websites to complex web applications, our full-stack development team builds with precision, performance, and scalability in mind. We write clean, maintainable code using industry-best practices delivering products that not only work flawlessly today but grow seamlessly with your business tomorrow.',
 			'features' => [
 				'Custom WordPress development with advanced theme and plugin architecture',
 				'React, Next.js, and modern JavaScript framework expertise',
 				'RESTful API design and third-party integration',
 				'Secure user authentication and role-based access control',
 				'Database design and optimisation (PostgreSQL, MySQL, MongoDB)',
-				'Performance optimisation — sub-2-second load times guaranteed',
+				'Performance optimisation sub-2-second load times guaranteed',
 				'Automated testing, CI/CD pipeline setup, and deployment',
 				'Ongoing maintenance, updates, and technical support packages',
 			],
@@ -144,7 +144,7 @@ function datalkemi_get_service_data( string $slug ): array {
 			'approach' => [
 				'headline' => 'We engineer for performance, security, and the next person who has to maintain it',
 				'points'   => [
-					'Technology stack chosen for the project requirements — not for what is most familiar to us',
+					'Technology stack chosen for the project requirements not for what is most familiar to us',
 					'Full technical specification agreed in writing before a single line of code is written',
 					'Development in short sprints with working demos so you can see progress and redirect early',
 					'Every build includes automated tests, security hardening, and documented deployment processes',
@@ -231,9 +231,9 @@ function datalkemi_get_service_data( string $slug ): array {
 		'seo-optimisation' => [
 			'icon'     => '&#128269;',
 			'tagline'  => 'Rank higher, reach further, grow sustainably',
-			'overview' => 'Search engine optimisation isn\'t a one-time task — it\'s a strategic, ongoing investment in your business\'s long-term visibility. Datalkemi builds SEO directly into the DNA of your digital presence, from technical site architecture and in-code optimisation to content strategy and authoritative link building. We don\'t chase algorithm hacks; we build sustainable search authority.',
+			'overview' => 'Search engine optimisation isn\'t a one-time task it\'s a strategic, ongoing investment in your business\'s long-term visibility. Datalkemi builds SEO directly into the DNA of your digital presence, from technical site architecture and in-code optimisation to content strategy and authoritative link building. We don\'t chase algorithm hacks; we build sustainable search authority.',
 			'features' => [
-				'Comprehensive SEO audit — technical, on-page, and off-page',
+				'Comprehensive SEO audit technical, on-page, and off-page',
 				'In-code SEO: schema markup, semantic HTML, Core Web Vitals',
 				'Keyword research and search intent mapping',
 				'Content strategy and optimisation planning',
@@ -257,19 +257,19 @@ function datalkemi_get_service_data( string $slug ): array {
 					'Full technical audit identifies every crawlability, indexation, and performance issue before any content work begins',
 					'Keyword research maps search intent to buyer journey stages so traffic has a clear reason to convert',
 					'Schema markup, semantic HTML, and Core Web Vitals optimisation implemented directly in the code',
-					'Monthly reporting connects SEO metrics to business outcomes — traffic, leads, and revenue, not just rankings',
+					'Monthly reporting connects SEO metrics to business outcomes traffic, leads, and revenue, not just rankings',
 				],
 			],
 			'results' => [
 				[ 'metric' => '3-6mo', 'label' => 'typical timeframe to first measurable ranking improvements' ],
 				[ 'metric' => '65%', 'label' => 'average organic traffic increase within 12 months' ],
 				[ 'metric' => 'Top 3', 'label' => 'positions achieved for primary keywords on client sites' ],
-				[ 'metric' => '0', 'label' => 'clients penalised for algorithm updates — white-hat only' ],
+				[ 'metric' => '0', 'label' => 'clients penalised for algorithm updates white-hat only' ],
 			],
 			'process' => [
 				[ 'step' => '01', 'title' => 'SEO Audit', 'desc' => 'A full technical, on-page, and off-page audit identifies every opportunity and issue affecting your rankings. You receive a prioritised action plan with measurable impact estimates.' ],
 				[ 'step' => '02', 'title' => 'Strategy Development', 'desc' => 'Based on the audit, your target keywords, and competitive landscape, we develop a 12-month SEO roadmap covering technical fixes, content opportunities, and link acquisition.' ],
-				[ 'step' => '03', 'title' => 'Technical Implementation', 'desc' => 'Technical SEO fixes are implemented directly in your website\'s code — schema markup, page speed improvements, crawlability enhancements, and Core Web Vitals optimisation.' ],
+				[ 'step' => '03', 'title' => 'Technical Implementation', 'desc' => 'Technical SEO fixes are implemented directly in your website\'s code schema markup, page speed improvements, crawlability enhancements, and Core Web Vitals optimisation.' ],
 				[ 'step' => '04', 'title' => 'Content & On-Page', 'desc' => 'Existing pages are optimised for target keywords. New content is planned and executed based on search intent and topical authority strategy.' ],
 				[ 'step' => '05', 'title' => 'Monitor & Iterate', 'desc' => 'Monthly reporting covers rankings, traffic, conversions, and ROI. We continuously refine the strategy based on what the data tells us.' ],
 			],
@@ -329,9 +329,9 @@ function datalkemi_get_service_data( string $slug ): array {
 			],
 			'faqs' => [
 				[ 'q' => 'How long does SEO take to show results?', 'a' => 'SEO is a long-term investment. Technical fixes can show impact within weeks. Ranking improvements for competitive keywords typically take 3–6 months. Significant traffic and revenue impact is usually visible at the 6–12 month mark. We set realistic expectations from day one.' ],
-				[ 'q' => 'Do you guarantee first-page rankings?', 'a' => 'No ethical SEO agency can guarantee rankings — search algorithms are controlled by Google, not us. What we guarantee is transparent, white-hat work and measurable improvement in organic performance over time.' ],
-				[ 'q' => 'What\'s "in-code SEO" and why does it matter?', 'a' => 'In-code SEO means implementing SEO best practices directly in the website\'s HTML, CSS, and JavaScript — not just meta tags. This includes proper semantic heading structure, schema markup for rich snippets, image optimisation, lazy loading, and performance engineering. It has a significantly higher impact than surface-level SEO.' ],
-				[ 'q' => 'Do you work with WordPress sites?', 'a' => 'Yes — the majority of our SEO clients use WordPress. We configure RankMath Pro (our preferred SEO plugin), optimise your theme\'s code output, and implement advanced schema markup that most WordPress sites lack.' ],
+				[ 'q' => 'Do you guarantee first-page rankings?', 'a' => 'No ethical SEO agency can guarantee rankings search algorithms are controlled by Google, not us. What we guarantee is transparent, white-hat work and measurable improvement in organic performance over time.' ],
+				[ 'q' => 'What\'s "in-code SEO" and why does it matter?', 'a' => 'In-code SEO means implementing SEO best practices directly in the website\'s HTML, CSS, and JavaScript not just meta tags. This includes proper semantic heading structure, schema markup for rich snippets, image optimisation, lazy loading, and performance engineering. It has a significantly higher impact than surface-level SEO.' ],
+				[ 'q' => 'Do you work with WordPress sites?', 'a' => 'Yes the majority of our SEO clients use WordPress. We configure RankMath Pro (our preferred SEO plugin), optimise your theme\'s code output, and implement advanced schema markup that most WordPress sites lack.' ],
 			],
 		],
 
@@ -339,7 +339,7 @@ function datalkemi_get_service_data( string $slug ): array {
 		'data-analytics' => [
 			'icon'     => '&#128202;',
 			'tagline'  => 'Transform raw data into strategic competitive advantage',
-			'overview' => 'Data is only valuable when it\'s understandable and actionable. Datalkemi bridges the gap between raw data and meaningful business intelligence — designing analytics frameworks, ETL pipelines, and visualisation layers that give you a clear, real-time picture of what\'s happening in your business and why. Stop guessing. Start knowing.',
+			'overview' => 'Data is only valuable when it\'s understandable and actionable. Datalkemi bridges the gap between raw data and meaningful business intelligence designing analytics frameworks, ETL pipelines, and visualisation layers that give you a clear, real-time picture of what\'s happening in your business and why. Stop guessing. Start knowing.',
 			'features' => [
 				'Data infrastructure audit and gap analysis',
 				'ETL pipeline design and implementation (Python, SQL, cloud tools)',
@@ -353,7 +353,7 @@ function datalkemi_get_service_data( string $slug ): array {
 			'problem' => [
 				'headline' => 'Scattered data and manual reporting consume resource while delivering unreliable insights',
 				'points'   => [
-					'Data lives in disconnected tools — GA4, CRM, ad platforms, spreadsheets — with no single source of truth',
+					'Data lives in disconnected tools GA4, CRM, ad platforms, spreadsheets with no single source of truth',
 					'Analysts spend most of their time extracting and cleaning data rather than analysing it',
 					'Manual reports are out of date before they are read and contain errors no one has the time to find',
 					'Decisions are made on gut feel because the data to support them either does not exist or cannot be trusted',
@@ -364,7 +364,7 @@ function datalkemi_get_service_data( string $slug ): array {
 				'points'   => [
 					'Data maturity assessment identifies what you have, what is missing, and what is broken before any build work starts',
 					'ETL pipelines consolidate all data sources into a single, clean, governed data layer automatically',
-					'Event tracking designed around business questions — not the default events a tool happens to fire',
+					'Event tracking designed around business questions not the default events a tool happens to fire',
 					'Dashboards and reports built so non-technical stakeholders can answer their own questions without analyst support',
 				],
 			],
@@ -376,7 +376,7 @@ function datalkemi_get_service_data( string $slug ): array {
 			],
 			'process' => [
 				[ 'step' => '01', 'title' => 'Data Discovery', 'desc' => 'We audit your current data sources, collection methods, and reporting tools. A gap analysis identifies what\'s missing and what\'s being wasted. You get a full data maturity assessment.' ],
-				[ 'step' => '02', 'title' => 'Strategy & Architecture', 'desc' => 'We design your analytics architecture — from data ingestion and storage to transformation logic and reporting layers. Every decision is made with scalability and governance in mind.' ],
+				[ 'step' => '02', 'title' => 'Strategy & Architecture', 'desc' => 'We design your analytics architecture from data ingestion and storage to transformation logic and reporting layers. Every decision is made with scalability and governance in mind.' ],
 				[ 'step' => '03', 'title' => 'Pipeline Build', 'desc' => 'ETL pipelines are built and tested, connecting your data sources (CRM, website, ads, ERP) into a unified, reliable data layer. Automation reduces manual reporting to zero.' ],
 				[ 'step' => '04', 'title' => 'Dashboard Creation', 'desc' => 'Interactive dashboards are built that surface the KPIs that matter most. Role-based access ensures the right people see the right data.' ],
 				[ 'step' => '05', 'title' => 'Training & Handover', 'desc' => 'Comprehensive training is provided so your team can self-serve on data. Documentation, user guides, and ongoing support ensure the investment delivers long-term value.' ],
@@ -436,10 +436,10 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 			],
 			'faqs' => [
-				[ 'q' => 'What data sources can you work with?', 'a' => 'We connect to virtually any data source — Google Analytics, Google Ads, Facebook Ads, Salesforce, HubSpot, Shopify, WooCommerce, SQL databases, spreadsheets, and more. If there\'s an API or exportable data, we can work with it.' ],
-				[ 'q' => 'Do we need to have existing analytics in place?', 'a' => 'No. Many clients come to us with no analytics setup at all. We help build everything from scratch — tracking strategy, data collection, storage, and reporting. Starting fresh is often easier than fixing a broken setup.' ],
+				[ 'q' => 'What data sources can you work with?', 'a' => 'We connect to virtually any data source Google Analytics, Google Ads, Facebook Ads, Salesforce, HubSpot, Shopify, WooCommerce, SQL databases, spreadsheets, and more. If there\'s an API or exportable data, we can work with it.' ],
+				[ 'q' => 'Do we need to have existing analytics in place?', 'a' => 'No. Many clients come to us with no analytics setup at all. We help build everything from scratch tracking strategy, data collection, storage, and reporting. Starting fresh is often easier than fixing a broken setup.' ],
 				[ 'q' => 'What tools do you use for dashboards?', 'a' => 'We primarily use Power BI, Tableau, Looker Studio (Google Data Studio), and custom-built dashboards. The tool choice depends on your existing tech stack, team preferences, and budget.' ],
-				[ 'q' => 'How do you ensure data accuracy?', 'a' => 'Data quality is built into every pipeline we design — with validation checks, anomaly detection, and reconciliation processes. We document every transformation and provide data quality reports as part of our standard delivery.' ],
+				[ 'q' => 'How do you ensure data accuracy?', 'a' => 'Data quality is built into every pipeline we design with validation checks, anomaly detection, and reconciliation processes. We document every transformation and provide data quality reports as part of our standard delivery.' ],
 			],
 		],
 
@@ -447,10 +447,10 @@ function datalkemi_get_service_data( string $slug ): array {
 		'business-intelligence' => [
 			'icon'     => '&#128203;',
 			'tagline'  => 'Connect your data, empower your decisions',
-			'overview' => 'Business Intelligence transforms your organisation\'s data into a strategic asset. Datalkemi designs and builds enterprise-grade BI solutions — from data models and semantic layers to interactive reports and executive dashboards. We don\'t just deliver reports; we build intelligence systems that help you understand the past, optimise the present, and anticipate the future.',
+			'overview' => 'Business Intelligence transforms your organisation\'s data into a strategic asset. Datalkemi designs and builds enterprise-grade BI solutions from data models and semantic layers to interactive reports and executive dashboards. We don\'t just deliver reports; we build intelligence systems that help you understand the past, optimise the present, and anticipate the future.',
 			'features' => [
 				'Power BI and Tableau enterprise implementation',
-				'Data model design — star schema, dimensional modelling',
+				'Data model design star schema, dimensional modelling',
 				'DAX and SQL measure development for complex KPIs',
 				'Cross-departmental report suites (Sales, Finance, Marketing, Ops)',
 				'Automated report distribution and scheduling',
@@ -461,18 +461,18 @@ function datalkemi_get_service_data( string $slug ): array {
 			'problem' => [
 				'headline' => 'Spreadsheet reporting and disconnected tools cannot scale with a growing business',
 				'points'   => [
-					'Finance uses one spreadsheet, sales uses another, and marketing uses a third — none of them agree',
+					'Finance uses one spreadsheet, sales uses another, and marketing uses a third none of them agree',
 					'Generic Power BI or Tableau implementations lack a proper data model and produce unreliable numbers',
 					'Reports take days to produce and are already out of date when presented to leadership',
 					'Business users cannot answer their own questions and create a bottleneck on the analytics team',
 				],
 			],
 			'approach' => [
-				'headline' => 'We build the semantic data model first — every report built on top of it is accurate by design',
+				'headline' => 'We build the semantic data model first every report built on top of it is accurate by design',
 				'points'   => [
 					'Requirements workshops with every stakeholder group ensure the BI solution answers the questions that actually matter',
 					'Properly modelled data layer means all KPIs are defined once and calculated consistently across every report',
-					'Row-level security ensures each user sees exactly the data they are authorised to see — no more, no less',
+					'Row-level security ensures each user sees exactly the data they are authorised to see no more, no less',
 					'Self-service training means business users can build their own views without waiting for analyst support',
 				],
 			],
@@ -483,9 +483,9 @@ function datalkemi_get_service_data( string $slug ): array {
 				[ 'metric' => '85%', 'label' => 'self-service adoption rate among business users after training' ],
 			],
 			'process' => [
-				[ 'step' => '01', 'title' => 'Requirements Workshop', 'desc' => 'We facilitate structured workshops with stakeholders to define business questions, KPIs, and the decisions the BI solution needs to support. No assumptions — everything is documented and agreed.' ],
+				[ 'step' => '01', 'title' => 'Requirements Workshop', 'desc' => 'We facilitate structured workshops with stakeholders to define business questions, KPIs, and the decisions the BI solution needs to support. No assumptions everything is documented and agreed.' ],
 				[ 'step' => '02', 'title' => 'Data Modelling', 'desc' => 'A robust, scalable data model is designed that forms the semantic layer of your BI solution. Proper modelling ensures reports are accurate, fast, and maintainable.' ],
-				[ 'step' => '03', 'title' => 'Report & Dashboard Build', 'desc' => 'Reports and dashboards are built iteratively, with regular feedback sessions. We focus on clarity, usability, and actionability — not just data volume.' ],
+				[ 'step' => '03', 'title' => 'Report & Dashboard Build', 'desc' => 'Reports and dashboards are built iteratively, with regular feedback sessions. We focus on clarity, usability, and actionability not just data volume.' ],
 				[ 'step' => '04', 'title' => 'Testing & Validation', 'desc' => 'All figures are validated against source systems. Edge cases, filter interactions, and performance under data load are thoroughly tested before handover.' ],
 				[ 'step' => '05', 'title' => 'Deployment & Training', 'desc' => 'BI solution is deployed to your environment with appropriate access controls. Comprehensive training for both administrators and business users is included.' ],
 			],
@@ -546,8 +546,8 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 			],
 			'faqs' => [
-				[ 'q' => 'Power BI vs Tableau — which should I choose?', 'a' => 'Both are excellent. Power BI is generally more cost-effective (especially if you\'re already in the Microsoft ecosystem) and has strong self-service capabilities. Tableau excels in advanced visualisation and handles complex data exploration brilliantly. We help you choose based on your budget, existing tools, and team skills.' ],
-				[ 'q' => 'Can you integrate BI with our existing systems?', 'a' => 'Yes. We connect Power BI and Tableau to virtually any data source — SQL databases, Excel files, cloud platforms, CRMs, ERPs, and marketing tools. We build the connectors and ensure data refreshes automatically.' ],
+				[ 'q' => 'Power BI vs Tableau which should I choose?', 'a' => 'Both are excellent. Power BI is generally more cost-effective (especially if you\'re already in the Microsoft ecosystem) and has strong self-service capabilities. Tableau excels in advanced visualisation and handles complex data exploration brilliantly. We help you choose based on your budget, existing tools, and team skills.' ],
+				[ 'q' => 'Can you integrate BI with our existing systems?', 'a' => 'Yes. We connect Power BI and Tableau to virtually any data source SQL databases, Excel files, cloud platforms, CRMs, ERPs, and marketing tools. We build the connectors and ensure data refreshes automatically.' ],
 				[ 'q' => 'How long does a BI project take to deliver?', 'a' => 'A Starter project typically takes 3–4 weeks. A Professional project is usually 6–10 weeks. Enterprise projects are scoped individually. Timelines depend primarily on the complexity of your data sources and the number of reports required.' ],
 				[ 'q' => 'What training do you provide for our team?', 'a' => 'All projects include training tailored to two audiences: technical administrators (managing the BI environment, data refreshes, security) and business users (navigating reports, using filters, creating basic visuals). Training materials and recorded sessions are provided.' ],
 			],
@@ -559,10 +559,10 @@ function datalkemi_get_service_data( string $slug ): array {
 			'tagline'  => 'Real-time clarity on every metric that matters',
 			'overview' => 'Off-the-shelf dashboards show you generic metrics. Datalkemi builds bespoke, interactive dashboards engineered around the specific KPIs that drive your business. Whether you need an operational command centre, an executive summary, or a customer-facing analytics portal, we design and build it to be fast, intuitive, and always up-to-date.',
 			'features' => [
-				'Fully custom dashboard design — unique to your brand and needs',
+				'Fully custom dashboard design unique to your brand and needs',
 				'Real-time and scheduled data refresh capabilities',
 				'Multi-source data aggregation into a single view',
-				'Role-based dashboards — different views for different users',
+				'Role-based dashboards different views for different users',
 				'Embedded in your website, intranet, or application',
 				'Mobile-optimised responsive dashboard design',
 				'Alert and threshold notification systems',
@@ -573,7 +573,7 @@ function datalkemi_get_service_data( string $slug ): array {
 				'points'   => [
 					'Off-the-shelf dashboards are built around default metrics that rarely align with how a specific business operates',
 					'Data from different platforms sits in separate tools with no way to see the combined picture',
-					'Static charts and tables require manual interpretation — they show what happened, not what to do about it',
+					'Static charts and tables require manual interpretation they show what happened, not what to do about it',
 					'Dashboards built by non-specialists are slow, poorly designed, and abandoned within weeks',
 				],
 			],
@@ -593,8 +593,8 @@ function datalkemi_get_service_data( string $slug ): array {
 				[ 'metric' => 'zero', 'label' => 'manual exports needed after pipeline automation' ],
 			],
 			'process' => [
-				[ 'step' => '01', 'title' => 'KPI Definition', 'desc' => 'We work with your team to define exactly what should be measured, why it matters, and what action each metric should drive. No vanity metrics — every figure on the dashboard earns its place.' ],
-				[ 'step' => '02', 'title' => 'Data Source Mapping', 'desc' => 'We audit your available data sources and design the connection architecture — whether that\'s live API feeds, scheduled imports, or a centralised data warehouse.' ],
+				[ 'step' => '01', 'title' => 'KPI Definition', 'desc' => 'We work with your team to define exactly what should be measured, why it matters, and what action each metric should drive. No vanity metrics every figure on the dashboard earns its place.' ],
+				[ 'step' => '02', 'title' => 'Data Source Mapping', 'desc' => 'We audit your available data sources and design the connection architecture whether that\'s live API feeds, scheduled imports, or a centralised data warehouse.' ],
 				[ 'step' => '03', 'title' => 'UX Design', 'desc' => 'Dashboard wireframes and visual designs are produced before any code is written. We ensure the layout guides the user\'s eye to the most important information first.' ],
 				[ 'step' => '04', 'title' => 'Build & Test', 'desc' => 'The dashboard is built with performance optimisation at the core. We test data accuracy, load times, responsiveness, and edge cases such as empty states and data gaps.' ],
 				[ 'step' => '05', 'title' => 'Deploy & Train', 'desc' => 'Deployment to your environment (Power BI Service, web server, intranet) with access controls configured. Training and documentation ensure your team gets maximum value from day one.' ],
@@ -655,7 +655,7 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 			],
 			'faqs' => [
-				[ 'q' => 'Can the dashboard pull data from multiple tools?', 'a' => 'Yes. We routinely build dashboards that aggregate data from 5–10+ sources into a single view — combining website analytics, ad platforms, CRM, accounting software, and operational data. The more sources you connect, the more powerful the picture becomes.' ],
+				[ 'q' => 'Can the dashboard pull data from multiple tools?', 'a' => 'Yes. We routinely build dashboards that aggregate data from 5–10+ sources into a single view combining website analytics, ad platforms, CRM, accounting software, and operational data. The more sources you connect, the more powerful the picture becomes.' ],
 				[ 'q' => 'How often is the data updated?', 'a' => 'This depends on your data sources and requirements. We support daily batch refreshes, hourly updates, and real-time streaming depending on what\'s technically possible from each data source and your tier.' ],
 				[ 'q' => 'Can the dashboard be embedded in our website or app?', 'a' => 'Yes. We build embed-ready dashboards for client portals, SaaS products, intranets, and marketing sites. Embedded dashboards can be styled to match your brand and secured with row-level permissions so each user only sees their own data.' ],
 				[ 'q' => 'What if we want to add more dashboards later?', 'a' => 'All our dashboard builds are designed for extensibility. Adding new dashboards or data sources is straightforward and priced as a separate project. Many clients start with Essential and grow into Advanced over time.' ],

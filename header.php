@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom nav walker — must be defined before wp_nav_menu() is called.
+ * Custom nav walker must be defined before wp_nav_menu() is called.
  */
 if ( ! class_exists( 'Datalkemi_Nav_Walker' ) ) :
 class Datalkemi_Nav_Walker extends Walker_Nav_Menu {
