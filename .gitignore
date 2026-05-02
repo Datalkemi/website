@@ -1,0 +1,49 @@
+# ── WordPress core (installed separately on server) ───────────────────────
+wp-admin/
+wp-includes/
+wp-login.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config.php
+wp-config-sample.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+license.txt
+readme.html
+
+# ── WordPress uploads (managed on server) ────────────────────────────────
+uploads/
+
+# ── Other plugins/themes (not part of this repo) ─────────────────────────
+plugins/
+themes/
+
+# ── Environment & secrets ─────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+wp-config.php
+
+# ── OS & editor ───────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+*.log
+
+# ── IDE ───────────────────────────────────────────────────────────────────
+.idea/
+*.swp
+*.swo
+
+# ── Claude Code ───────────────────────────────────────────────────────────
+.claude/
