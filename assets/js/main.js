@@ -7,10 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Sticky header ───────────────────────────────────────────────────────
   const header = document.getElementById('masthead');
   if (header) {
+    const adminBar = document.getElementById('wpadminbar');
+    const threshold = adminBar ? adminBar.offsetHeight + 20 : 20;
     const onScroll = () => {
-      header.classList.toggle('scrolled', window.scrollY > 20);
+      header.classList.toggle('scrolled', window.scrollY > threshold);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // set correct initial state on page load
   }
 
   // ── Mobile nav toggle ───────────────────────────────────────────────────
