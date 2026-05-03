@@ -38,4 +38,11 @@ function datalkemi_configure_smtp( PHPMailer\PHPMailer\PHPMailer $mailer ): void
 	$mailer->Password   = DK_SMTP_PASS;
 	$mailer->From       = defined( 'DK_MAIL_FROM' )      ? DK_MAIL_FROM      : get_option( 'admin_email' );
 	$mailer->FromName   = defined( 'DK_MAIL_FROM_NAME' ) ? DK_MAIL_FROM_NAME : get_option( 'blogname' );
+
+	// Verbose debug — writes SMTP conversation to PHP error log
+	// Remove once email is confirmed working
+	$mailer->SMTPDebug  = 2;
+	$mailer->Debugoutput = function( string $msg, int $level ): void {
+		error_log( '[Datalkemi SMTP debug] ' . trim( $msg ) );
+	};
 }
