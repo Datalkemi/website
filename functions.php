@@ -17,6 +17,7 @@ require_once DATALKEMI_DIR . '/inc/service-data.php';
 require_once DATALKEMI_DIR . '/inc/client-portal.php';
 require_once DATALKEMI_DIR . '/inc/admin-clients.php';
 require_once DATALKEMI_DIR . '/inc/configurator-data.php';
+require_once DATALKEMI_DIR . '/inc/smtp.php';
 
 // ── Theme setup ────────────────────────────────────────────────────────────
 function datalkemi_setup() {
