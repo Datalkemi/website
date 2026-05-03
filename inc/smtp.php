@@ -37,6 +37,7 @@ function datalkemi_configure_smtp( PHPMailer\PHPMailer\PHPMailer $mailer ): void
 	$mailer->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
 	$mailer->Username   = DK_SMTP_USER;
 	$mailer->Password   = DK_SMTP_PASS;
+	error_log( '[Datalkemi SMTP] Attempting auth as: ' . DK_SMTP_USER . ' | Key length: ' . strlen( DK_SMTP_PASS ) . ' chars' );
 	$mailer->From       = defined( 'DK_MAIL_FROM' )      ? DK_MAIL_FROM      : get_option( 'admin_email' );
 	$mailer->FromName   = defined( 'DK_MAIL_FROM_NAME' ) ? DK_MAIL_FROM_NAME : get_option( 'blogname' );
 
