@@ -67,7 +67,6 @@ get_header();
 	if ( $is_admin ) : ?>
 		<section class="dk-section">
 			<div class="dk-container" style="text-align:center; padding:4rem 0;">
-				<p style="font-size:2rem; margin-bottom:1rem;">&#128640;</p>
 				<h2 class="dk-section-title"><?php esc_html_e( 'Welcome back!', 'datalkemi' ); ?></h2>
 				<p class="dk-section-subtitle" style="margin-bottom:2rem;">
 					<?php printf( esc_html__( 'You are logged in as %s (Admin). Manage the site from WP Admin.', 'datalkemi' ), '<strong>' . esc_html( $user->display_name ) . '</strong>' ); ?>
@@ -102,16 +101,16 @@ get_header();
 			<!-- Dashboard nav tabs -->
 			<div class="portal-tabs">
 				<button class="portal-tab portal-tab--active" data-tab="projects">
-					&#128196; <?php esc_html_e( 'My Projects', 'datalkemi' ); ?>
+					<?php esc_html_e( 'My Projects', 'datalkemi' ); ?>
 				</button>
 				<button class="portal-tab" data-tab="documents">
-					&#128193; <?php esc_html_e( 'Documents', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Documents', 'datalkemi' ); ?>
 				</button>
 				<button class="portal-tab" data-tab="support">
-					&#128172; <?php esc_html_e( 'Support', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Support', 'datalkemi' ); ?>
 				</button>
 				<button class="portal-tab" data-tab="account">
-					&#128100; <?php esc_html_e( 'My Account', 'datalkemi' ); ?>
+					<?php esc_html_e( 'My Account', 'datalkemi' ); ?>
 				</button>
 			</div>
 

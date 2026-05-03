@@ -15,6 +15,7 @@ require_once DATALKEMI_DIR . '/inc/menus.php';
 require_once DATALKEMI_DIR . '/inc/post-types.php';
 require_once DATALKEMI_DIR . '/inc/service-data.php';
 require_once DATALKEMI_DIR . '/inc/client-portal.php';
+require_once DATALKEMI_DIR . '/inc/admin-clients.php';
 require_once DATALKEMI_DIR . '/inc/configurator-data.php';
 
 // ── Theme setup ────────────────────────────────────────────────────────────
