@@ -3675,3 +3675,106 @@ a:hover { color: var(--color-accent) !important; }
   .insights-grid { grid-template-columns: 1fr; }
   .insights-card-footer { flex-direction: column; align-items: flex-start; }
 }
+
+/* ── Portal login form hard overrides ──────────────────────────── */
+.portal-login-card form,
+#dk-portal-login form,
+#loginform {
+  display: block !important;
+  width: 100% !important;
+  margin-top: 1.5rem !important;
+}
+
+.portal-login-card .login-username,
+.portal-login-card .login-password,
+.portal-login-card .login-remember,
+.portal-login-card .submit,
+#loginform .login-username,
+#loginform .login-password,
+#loginform .login-remember,
+#loginform .submit {
+  display: block !important;
+  width: 100% !important;
+  margin-bottom: 1.25rem !important;
+  padding: 0 !important;
+  float: none !important;
+}
+
+.portal-login-card .login-username label,
+.portal-login-card .login-password label,
+#loginform .login-username label,
+#loginform .login-password label {
+  display: block !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  color: #d1d5db !important;
+  -webkit-text-fill-color: #d1d5db !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.portal-login-card input[type="text"],
+.portal-login-card input[type="password"],
+#loginform input[type="text"],
+#loginform input[type="password"] {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: rgba(17,24,39,0.8) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  color: #f9fafb !important;
+  font-size: 0.9375rem !important;
+  font-family: 'Inter', sans-serif !important;
+  height: auto !important;
+  min-height: 0 !important;
+  line-height: 1.5 !important;
+}
+
+.portal-login-card input[type="text"]:focus,
+.portal-login-card input[type="password"]:focus,
+#loginform input[type="text"]:focus,
+#loginform input[type="password"]:focus {
+  outline: none !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(2,132,199,0.15) !important;
+}
+
+.portal-login-card .login-remember label,
+#loginform .login-remember label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-size: 0.875rem !important;
+  color: #9ca3af !important;
+  -webkit-text-fill-color: #9ca3af !important;
+  cursor: pointer !important;
+}
+
+.portal-login-card input[type="submit"],
+#loginform input[type="submit"] {
+  display: block !important;
+  width: 100% !important;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent)) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 0.875rem 2rem !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  font-family: 'Inter', sans-serif !important;
+  cursor: pointer !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+  box-shadow: 0 4px 20px rgba(2,132,199,0.35) !important;
+  margin-top: 0.5rem !important;
+  box-sizing: border-box !important;
+}
+
+.portal-login-card input[type="submit"]:hover,
+#loginform input[type="submit"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(2,132,199,0.5) !important;
+}
+
+.portal-login-card input[type="hidden"] { display: none !important; }
