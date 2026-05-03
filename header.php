@@ -72,9 +72,16 @@ endif;
 			<span></span><span></span><span></span>
 		</button>
 
-		<!-- Primary menu + portal button -->
+		<!-- Primary menu + CTA -->
 		<div class="nav-menu-wrap" id="primary-menu-wrap">
-			<?php wp_nav_menu( [
+			<?php
+			// Strip client-portal item from the public nav — it is not a marketing page
+			add_filter( 'wp_nav_menu_objects', function( $items ) {
+				return array_filter( $items, function( $item ) {
+					return strpos( $item->url, '/client-portal' ) === false;
+				} );
+			} );
+			wp_nav_menu( [
 				'theme_location' => 'primary',
 				'menu_id'        => 'primary-menu',
 				'container'      => false,
@@ -85,20 +92,21 @@ endif;
 
 			<div class="nav-actions">
 				<?php if ( is_user_logged_in() ) :
-					$user = wp_get_current_user();
-					$portal_url = in_array( 'client', (array) $user->roles, true )
-						? home_url( '/client-portal/' )
-						: admin_url();
+					$user       = wp_get_current_user();
+					$is_client  = in_array( 'client', (array) $user->roles, true );
+					$portal_url = $is_client ? home_url( '/client-portal/' ) : admin_url();
 				?>
 					<a href="<?php echo esc_url( $portal_url ); ?>" class="dk-btn dk-btn-outline nav-portal-btn">
-						<?php esc_html_e( 'My Portal', 'datalkemi' ); ?>
+						<?php echo $is_client ? esc_html__( 'My Portal', 'datalkemi' ) : esc_html__( 'Dashboard', 'datalkemi' ); ?>
 					</a>
+					<?php if ( $is_client ) : ?>
 					<a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>" class="nav-text-link">
 						<?php esc_html_e( 'Sign Out', 'datalkemi' ); ?>
 					</a>
+					<?php endif; ?>
 				<?php else : ?>
-					<a href="<?php echo esc_url( home_url( '/client-portal/' ) ); ?>" class="dk-btn dk-btn-outline nav-portal-btn">
-						<?php esc_html_e( 'Client Portal', 'datalkemi' ); ?>
+					<a href="<?php echo esc_url( home_url( '/get-a-quote/' ) ); ?>" class="dk-btn dk-btn-primary nav-portal-btn">
+						<?php esc_html_e( 'Get a Quote', 'datalkemi' ); ?>
 					</a>
 				<?php endif; ?>
 			</div>
