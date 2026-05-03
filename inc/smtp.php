@@ -33,6 +33,7 @@ function datalkemi_configure_smtp( PHPMailer\PHPMailer\PHPMailer $mailer ): void
 	$mailer->Host       = DK_SMTP_HOST;
 	$mailer->Port       = defined( 'DK_SMTP_PORT' ) ? (int) DK_SMTP_PORT : 587;
 	$mailer->SMTPAuth   = true;
+	$mailer->AuthType   = 'LOGIN'; // Brevo requires LOGIN, not CRAM-MD5
 	$mailer->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
 	$mailer->Username   = DK_SMTP_USER;
 	$mailer->Password   = DK_SMTP_PASS;
