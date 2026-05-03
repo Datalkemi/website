@@ -22,6 +22,12 @@ if ( ! defined( 'DK_SMTP_HOST' ) || ! defined( 'DK_SMTP_PASS' ) ) {
 
 add_action( 'phpmailer_init', 'datalkemi_configure_smtp' );
 
+// Capture and log any mail failures (disable in production once confirmed working)
+add_action( 'wp_mail_failed', function ( WP_Error $error ) {
+	error_log( '[Datalkemi SMTP] wp_mail failed: ' . $error->get_error_message() );
+	error_log( '[Datalkemi SMTP] Error data: ' . print_r( $error->get_error_data(), true ) );
+} );
+
 function datalkemi_configure_smtp( PHPMailer\PHPMailer\PHPMailer $mailer ): void {
 	$mailer->isSMTP();
 	$mailer->Host       = DK_SMTP_HOST;
