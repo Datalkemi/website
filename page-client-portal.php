@@ -9,16 +9,19 @@ get_header();
 <?php if ( ! is_user_logged_in() ) : ?>
 
 	<!-- Login gate -->
-	<section class="page-hero" style="min-height:100vh; align-items:center; display:flex;">
-		<div class="page-hero-overlay"></div>
-		<div class="dk-container" style="position:relative; z-index:2; display:flex; justify-content:center;">
+	<section style="min-height:100vh; display:flex; align-items:center; background:linear-gradient(135deg,#070c18 0%,#0d1520 100%); position:relative; overflow:hidden;">
+		<div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(2,132,199,0.15) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;"></div>
+		<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(2,132,199,0.12) 0%,transparent 60%);pointer-events:none;"></div>
+		<div class="dk-container" style="position:relative;z-index:2;display:flex;justify-content:center;padding:2rem 1.5rem;">
 			<div class="dk-glass portal-login-card">
 				<div style="text-align:center; margin-bottom:2rem;">
-					<span style="font-size:3rem;">&#128274;</span>
-					<h1 style="font-size:1.75rem !important; font-weight:700 !important; color:#f9fafb; margin:0.75rem 0 0.5rem !important;">
+					<div style="width:52px;height:52px;border-radius:14px;background:rgba(2,132,199,0.15);border:1px solid rgba(2,132,199,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(2,132,199,0.9)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+					</div>
+					<h1 style="font-size:1.625rem !important; font-weight:700 !important; color:#f9fafb !important; margin:0 0 0.5rem !important; -webkit-text-fill-color:#f9fafb !important;">
 						<?php esc_html_e( 'Client Portal', 'datalkemi' ); ?>
 					</h1>
-					<p style="color:var(--color-text-muted); font-size:0.9375rem;">
+					<p style="color:var(--color-text-muted); font-size:0.9375rem; margin:0;">
 						<?php esc_html_e( 'Sign in to access your projects, documents, and support.', 'datalkemi' ); ?>
 					</p>
 				</div>

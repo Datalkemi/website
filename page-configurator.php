@@ -5,7 +5,7 @@
  */
 get_header();
 
-require_once get_template_directory() . '/inc/configurator-data.php';
+require_once get_stylesheet_directory() . '/inc/configurator-data.php';
 $config = datalkemi_get_configurator_data();
 $config_json = wp_json_encode( $config );
 ?>
