@@ -35,9 +35,9 @@ function datalkemi_configure_smtp( PHPMailer\PHPMailer\PHPMailer $mailer ): void
 	$mailer->SMTPAuth   = true;
 	$mailer->AuthType   = 'LOGIN'; // Brevo requires LOGIN, not CRAM-MD5
 	$mailer->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
-	$mailer->Username   = DK_SMTP_USER;
-	$mailer->Password   = DK_SMTP_PASS;
-	error_log( '[Datalkemi SMTP] Attempting auth as: ' . DK_SMTP_USER . ' | Key length: ' . strlen( DK_SMTP_PASS ) . ' chars' );
+	$mailer->Username   = trim( DK_SMTP_USER );
+	$mailer->Password   = trim( DK_SMTP_PASS );
+	error_log( '[Datalkemi SMTP] Attempting auth as: ' . trim( DK_SMTP_USER ) . ' | Key length: ' . strlen( trim( DK_SMTP_PASS ) ) . ' | Has whitespace: ' . ( trim( DK_SMTP_PASS ) !== DK_SMTP_PASS ? 'YES - fix wp-config!' : 'no' ) . ' | Starts with: ' . substr( trim( DK_SMTP_PASS ), 0, 9 ) );
 	$mailer->From       = defined( 'DK_MAIL_FROM' )      ? DK_MAIL_FROM      : get_option( 'admin_email' );
 	$mailer->FromName   = defined( 'DK_MAIL_FROM_NAME' ) ? DK_MAIL_FROM_NAME : get_option( 'blogname' );
 
