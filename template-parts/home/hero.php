@@ -34,6 +34,8 @@
 
 <section class="hp-hero" aria-labelledby="hero-headline">
 	<div class="hp-hero-overlay" aria-hidden="true"></div>
+	<div class="hp-hero-orb hp-hero-orb--1" aria-hidden="true"></div>
+	<div class="hp-hero-orb hp-hero-orb--2" aria-hidden="true"></div>
 	<div class="hp-container">
 		<div class="hp-hero-inner">
 
