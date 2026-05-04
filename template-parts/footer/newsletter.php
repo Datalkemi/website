@@ -1,11 +1,11 @@
 <?php
 /**
- * Template Part: Footer — Newsletter signup (middle band)
+ * Template Part: Footer  -  Newsletter signup (middle band)
  *
  * Submits via AJAX to wp_ajax_datalkemi_newsletter (inc/newsletter.php).
  * Falls back to a standard POST when JavaScript is unavailable.
  *
- * Heading options — rendering Option A:
+ * Heading options  -  rendering Option A:
  *
  * A (active): Practical insights for finance businesses building better systems.
  *
@@ -30,7 +30,7 @@ $show_notice = ( ! $hs_portal || ! $hs_form ) && current_user_can( 'manage_optio
 				<h3 class="ft-newsletter-title">
 					<?php
 					/*
-					 * Heading — rendering Option A.
+					 * Heading  -  rendering Option A.
 					 *
 					 * A (active): Practical insights for finance businesses building better systems.
 					 * B: Ideas and examples from finance and data projects, sent occasionally.

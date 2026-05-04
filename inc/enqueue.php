@@ -48,7 +48,7 @@ function datalkemi_enqueue_assets() {
 		);
 	}
 
-	// Footer stylesheet — site-wide
+	// Footer stylesheet  -  site-wide
 	wp_enqueue_style(
 		'datalkemi-footer',
 		DATALKEMI_URI . '/assets/css/footer.css',

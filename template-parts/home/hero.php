@@ -2,13 +2,13 @@
 /**
  * Template Part: Homepage Hero
  *
- * Headline options — rendering Option A:
+ * Headline options  -  rendering Option A:
  *
  * A (active): Custom software and data systems for businesses that have
  *             outgrown their current tools.
  *             Accent span on "data systems".
  *
- * B: We build the systems your business depends on —
+ * B: We build the systems your business depends on,
  *    properly engineered, end-to-end.
  *    Accent span on "properly engineered".
  *
@@ -16,7 +16,7 @@
  *    purpose-built systems, not off-the-shelf compromises.
  *    Accent span on "purpose-built systems".
  *
- * Sub-headline options — rendering Option A:
+ * Sub-headline options  -  rendering Option A:
  *
  * A (active): We build custom web applications, data platforms, document
  *             intelligence tools, internal tools, and operational software
@@ -24,11 +24,11 @@
  *             working with clients across Australia and beyond.
  *
  * B: From web applications to data pipelines, document intelligence, and
- *    internal tools — we build the systems that run your operations.
+ *    internal tools, we build the systems that run your operations.
  *    Perth-based, working with clients across Australia and beyond.
  *
  * C: Custom software, data platforms, document intelligence, and operational
- *    tools — built properly, integrated end-to-end. Perth-based, working
+ *    tools, built properly, integrated end-to-end. Perth-based, working
  *    with clients across Australia and beyond.
  *
  * @package Datalkemi

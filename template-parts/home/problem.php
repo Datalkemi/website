@@ -2,7 +2,7 @@
 /**
  * Template Part: Homepage Problem Section
  *
- * Section heading options — rendering Option A:
+ * Section heading options  -  rendering Option A:
  *
  * A (active): Most businesses are held back by the systems they rely on.
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * Homepage template — includes ten section template parts in order.
+ * Homepage template  -  includes ten section template parts in order.
  * Do not add section logic here; edit the individual template parts.
  */
 get_header();

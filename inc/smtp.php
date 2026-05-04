@@ -1,6 +1,6 @@
 <?php
 /**
- * Datalkemi — Transactional email via Brevo REST API
+ * Datalkemi  -  Transactional email via Brevo REST API
  *
  * Uses wp_remote_post() instead of SMTP so there are no auth issues.
  * Add ONE constant to wp-config.php (remove any old DK_SMTP_* lines):

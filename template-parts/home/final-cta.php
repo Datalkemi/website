@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Part: Homepage — Final CTA
+ * Template Part: Homepage  -  Final CTA
  *
- * Closing call-to-action section. Heading options — rendering Option A:
+ * Closing call-to-action section. Heading options  -  rendering Option A:
  *
  * A (active): Let's see if we are a good fit.
  *

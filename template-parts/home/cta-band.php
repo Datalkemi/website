@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Part: Homepage — CTA Band
+ * Template Part: Homepage  -  CTA Band
  *
- * Mid-page call-to-action strip. Heading options — rendering Option A:
+ * Mid-page call-to-action strip. Heading options  -  rendering Option A:
  *
  * A (active): If your systems create more work than they remove, let us take
  *             a look.

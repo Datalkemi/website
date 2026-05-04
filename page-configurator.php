@@ -21,7 +21,7 @@ $total_steps = 1 + count( $config ) + 1; // country + sections + summary
 			<span class="gradient-text"><?php esc_html_e( 'See Your Price', 'datalkemi' ); ?></span>
 		</h1>
 		<p class="page-hero-subtitle" style="max-width:34rem;">
-			<?php esc_html_e( 'Walk through your requirements step by step. Your personalised estimate appears at the end — no forms, no waiting.', 'datalkemi' ); ?>
+			<?php esc_html_e( 'Walk through your requirements step by step. Your personalised estimate appears at the end, no forms, no waiting.', 'datalkemi' ); ?>
 		</p>
 	</div>
 </section>
@@ -118,7 +118,7 @@ $total_steps = 1 + count( $config ) + 1; // country + sections + summary
 							<div id="cfg-success" hidden class="cfg-success-msg">
 								<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
 								<h3>Quote sent!</h3>
-								<p>Check your inbox — we'll follow up within one business day with a full proposal.</p>
+								<p>Check your inbox. We'll follow up within one business day with a full proposal.</p>
 							</div>
 							<p id="cfg-error" hidden class="cfg-error-msg">
 								Something went wrong. Email us at <a href="mailto:info@datalkemi.com">info@datalkemi.com</a>.

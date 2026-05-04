@@ -1,10 +1,10 @@
 <?php
 /**
- * Template Part: Footer — Columns (top band)
+ * Template Part: Footer  -  Columns (top band)
  *
  * Five-column grid: brand (2fr) + three service categories (1fr each) + company (1fr).
  *
- * Tagline options — rendering Option A:
+ * Tagline options  -  rendering Option A:
  *
  * A (active): We build the software and data systems finance businesses depend on.
  *             Perth-based, working with clients across Australia.
@@ -41,7 +41,7 @@
 				<p class="ft-tagline">
 					<?php
 					/*
-					 * Tagline — rendering Option A.
+					 * Tagline  -  rendering Option A.
 					 * Change the esc_html_e() call below to switch options.
 					 *
 					 * A (active): We build the software and data systems finance businesses

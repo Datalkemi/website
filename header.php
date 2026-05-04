@@ -75,7 +75,7 @@ endif;
 		<!-- Primary menu + CTA -->
 		<div class="nav-menu-wrap" id="primary-menu-wrap">
 			<?php
-			// Strip client-portal item from the public nav — it is not a marketing page
+			// Strip client-portal item from the public nav  -  it is not a marketing page
 			add_filter( 'wp_nav_menu_objects', function( $items ) {
 				return array_filter( $items, function( $item ) {
 					return strpos( $item->url, '/client-portal' ) === false;

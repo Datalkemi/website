@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Part: Footer — Legal row (bottom band)
+ * Template Part: Footer  -  Legal row (bottom band)
  *
  * ABN line renders only when DATALKEMI_ABN constant is defined and non-empty.
  * Client Portal is a plain utility link, not a button.

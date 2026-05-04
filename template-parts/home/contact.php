@@ -1,6 +1,6 @@
 <?php
 /**
- * Contact section — homepage
+ * Contact section  -  homepage
  */
 $services = [
 	'Website Design', 'Web Development', 'SEO Optimisation',

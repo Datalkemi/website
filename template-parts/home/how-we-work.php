@@ -1,10 +1,10 @@
 <?php
 /**
- * Template Part: Homepage — How We Work
+ * Template Part: Homepage  -  How We Work
  *
  * Four-step process section. No copy options needed for this section.
  * The horizontal connector line between steps is rendered via CSS
- * (.hp-process-steps::before) — see assets/css/home.css.
+ * (.hp-process-steps::before)  -  see assets/css/home.css.
  *
  * Step numbers are displayed as large faint numerals (01–04) using
  * .hp-step-number, styled with low-opacity primary colour.

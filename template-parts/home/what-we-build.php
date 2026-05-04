@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Part: Homepage — What We Build
+ * Template Part: Homepage  -  What We Build
  *
- * Section heading options — rendering Option A:
+ * Section heading options  -  rendering Option A:
  *
  * A (active): What we build
  *
@@ -13,7 +13,7 @@
  * Three columns separated by borders (no card shadows).
  * Column links point to anchor sections on the Services page.
  *
- * Industries strip label options — rendering Option A:
+ * Industries strip label options  -  rendering Option A:
  *
  * A (active): Industries we work with
  *
@@ -101,7 +101,7 @@
 			<p class="hp-industries-label">
 				<?php
 				/*
-				 * Label options — rendering Option A:
+				 * Label options  -  rendering Option A:
 				 *
 				 * A (active): Industries we work with
 				 * B: Who we work with
