@@ -2,45 +2,48 @@
 /**
  * Template Part: Homepage Logo Strip
  *
- * Section heading options  -  rendering Option A:
- *
- * A: Trusted by businesses that take their systems seriously.
- *
- * B: Businesses that have replaced guesswork with engineered systems.
- *
- * C (active): Working with finance and operations teams across Australia.
- *
- * Client logo images should be placed at:
- * /assets/img/clients/client-1.svg through client-6.svg
+ * Real client logo files (PNG) are in /assets/img/clients/.
+ * Add or remove entries from the $logos array as clients change.
  *
  * @package Datalkemi
  * @since   2.0.0
  */
+
+$logos = [
+	[
+		'file' => 'KRZ-ColourLogo-FinalPNG.png',
+		'alt'  => 'KRZ',
+	],
+	[
+		'file' => 'OzViz_Migration_Logo_Transparent.png',
+		'alt'  => 'OzViz Migration',
+	],
+	[
+		'file' => 'Logo.png',
+		'alt'  => 'Client',
+	],
+];
 ?>
 
 <section class="hp-logos">
 	<div class="hp-container">
 
 		<p class="hp-logos-label">
-			<?php esc_html_e( 'Working with finance and operations teams across Australia.', 'datalkemi' ); ?>
+			<?php esc_html_e( 'Working with businesses across Australia.', 'datalkemi' ); ?>
 		</p>
 
 		<div class="hp-logos-grid">
 
-			<?php for ( $i = 1; $i <= 6; $i++ ) : ?>
+			<?php foreach ( $logos as $logo ) : ?>
 				<div class="hp-logo-item">
 					<img
-						src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/clients/client-' . $i . '.svg' ); ?>"
+						src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/clients/' . $logo['file'] ); ?>"
 						loading="lazy"
-						alt="<?php
-							/* translators: %d: client logo number */
-							echo esc_attr( sprintf( __( 'Client logo %d', 'datalkemi' ), $i ) );
-						?>"
-						width="160"
+						alt="<?php echo esc_attr( $logo['alt'] ); ?>"
 						height="40"
 					/>
 				</div>
-			<?php endfor; ?>
+			<?php endforeach; ?>
 
 		</div><!-- /.hp-logos-grid -->
 
