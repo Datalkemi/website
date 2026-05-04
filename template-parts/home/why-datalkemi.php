@@ -52,7 +52,7 @@
 					<div class="hp-why-point-body">
 						<h3><?php esc_html_e( 'Enterprise-scale data experience', 'datalkemi' ); ?></h3>
 						<p>
-							<?php esc_html_e( 'Real experience with ERPs, large-scale data migration, Azure data platforms, and production systems — not toy projects or tutorial demos.', 'datalkemi' ); ?>
+							<?php esc_html_e( 'Real experience with ERPs, large-scale data migration, Azure data platforms, and enterprise integrations — not toy projects or tutorial demos.', 'datalkemi' ); ?>
 						</p>
 					</div>
 				</div>
@@ -70,9 +70,9 @@
 				<div class="hp-why-point">
 					<span class="hp-why-point-num">04</span>
 					<div class="hp-why-point-body">
-						<h3><?php esc_html_e( 'Small and senior — you work with us directly', 'datalkemi' ); ?></h3>
+						<h3><?php esc_html_e( 'You work directly with the person building your system', 'datalkemi' ); ?></h3>
 						<p>
-							<?php esc_html_e( 'No account managers, no handoffs to junior developers. The people scoping your project are the people building it.', 'datalkemi' ); ?>
+							<?php esc_html_e( 'No account managers, no handoffs.', 'datalkemi' ); ?>
 						</p>
 					</div>
 				</div>

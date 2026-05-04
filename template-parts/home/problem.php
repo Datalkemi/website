@@ -55,7 +55,7 @@
 
 				<h3><?php esc_html_e( 'Manual work that should not exist', 'datalkemi' ); ?></h3>
 				<p>
-					<?php esc_html_e( 'Invoices, receipts, reconciliations, and approvals that move through email and spreadsheets introduce errors and cost hours every week. These are engineering problems, not people problems.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Invoices, receipts, reconciliations, and approvals that move through email and spreadsheets introduce errors and cost hours every week. These are problems software should solve, not people.', 'datalkemi' ); ?>
 				</p>
 			</div><!-- /.hp-problem-card -->
 
@@ -123,7 +123,7 @@
 
 				<h3><?php esc_html_e( 'Reporting that lags behind the business', 'datalkemi' ); ?></h3>
 				<p>
-					<?php esc_html_e( 'When management reports take a day to compile and are out of date by the time they are read, decisions get made on old information. Dashboards should be live, not laborious.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'When management reports take a day to compile and are out of date by the time they are read, decisions get made on old information. Dashboards should run themselves.', 'datalkemi' ); ?>
 				</p>
 			</div><!-- /.hp-problem-card -->
 
