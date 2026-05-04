@@ -43,7 +43,7 @@
 .ft-grid {
 	display: grid;
 	grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-	gap: 3rem;
+	gap: 2.5rem;
 	align-items: start;
 }
 
@@ -57,7 +57,7 @@
 
 .ft-logo-link {
 	display: inline-block;
-	margin-bottom: 1.25rem;
+	margin-bottom: 1rem;
 	text-decoration: none !important;
 }
 
@@ -77,8 +77,10 @@
 }
 
 .ft-btn-primary {
-	display: inline-block;
-	align-self: flex-start;
+	display: inline-block !important;
+	align-self: flex-start !important;
+	width: auto !important;
+	max-width: max-content !important;
 	background-color: var(--color-primary);
 	color: #ffffff !important;
 	-webkit-text-fill-color: #ffffff !important;
@@ -193,9 +195,9 @@
 
 .ft-newsletter-inner {
 	display: grid;
-	grid-template-columns: 1.4fr 1fr;
-	gap: 3rem;
-	align-items: start;
+	grid-template-columns: 1fr 1fr;
+	gap: 4rem;
+	align-items: center;
 }
 
 .ft-newsletter-title {

@@ -386,12 +386,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	filter: grayscale(1) opacity(0.45);
+	filter: brightness(0) invert(1) opacity(0.5);
 	transition: filter 0.25s;
 }
 
 .hp-logo-item:hover {
-	filter: grayscale(0) opacity(1);
+	filter: brightness(0) invert(1) opacity(0.9);
 }
 
 .hp-logo-item img {
@@ -834,7 +834,7 @@
 }
 
 /* ==========================================================================
-   14. ABOUT SNIPPET — single column
+   14. ABOUT SNIPPET — two-column: text left, credentials right
    ========================================================================== */
 
 .hp-about {
@@ -842,8 +842,11 @@
 	background: var(--hp-surface);
 }
 
-.hp-about-text {
-	max-width: 720px;
+.hp-about-layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 5rem;
+	align-items: start;
 }
 
 .hp-about h2 {
@@ -863,6 +866,65 @@
 
 .hp-about p:last-of-type {
 	margin-bottom: 2rem;
+}
+
+/* Credentials panel */
+.hp-about-creds {
+	padding-top: 0.5rem;
+}
+
+.hp-cred-list {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: flex;
+	flex-direction: column;
+}
+
+.hp-cred-item {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+	padding: 1.25rem 0;
+	border-bottom: 1px solid var(--hp-border);
+}
+
+.hp-cred-item:first-child {
+	padding-top: 0;
+}
+
+.hp-cred-item:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.hp-cred-icon {
+	flex-shrink: 0;
+	width: 2.25rem;
+	height: 2.25rem;
+	background: rgba(2, 132, 199, 0.1);
+	border: 1px solid rgba(2, 132, 199, 0.2);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--hp-primary);
+	margin-top: 0.1rem;
+}
+
+.hp-cred-item strong {
+	display: block;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--hp-text);
+	margin-bottom: 0.25rem;
+}
+
+.hp-cred-item span {
+	display: block;
+	font-size: 0.8125rem;
+	color: var(--hp-text-muted);
+	line-height: 1.5;
 }
 
 /* ==========================================================================
@@ -1013,6 +1075,12 @@
 	.hp-insights-header {
 		flex-direction: column;
 		gap: 1rem;
+	}
+
+	/* About */
+	.hp-about-layout {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
 	}
 }
 
