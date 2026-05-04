@@ -1,0 +1,899 @@
+/**
+ * home.css — Datalkemi Homepage Styles
+ *
+ * Standalone stylesheet for the homepage rebuild.
+ * Inheriting Inter from parent enqueue. For display headings,
+ * DM Serif Display is a strong pairing option — add to enqueue.php if approved.
+ *
+ * @package Datalkemi
+ * @since   2.0.0
+ */
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+	--hp-bg:            #070b14;
+	--hp-surface:       #0d1424;
+	--hp-surface-2:     #121c30;
+	--hp-border:        rgba(255, 255, 255, 0.07);
+	--hp-border-med:    rgba(255, 255, 255, 0.12);
+	--hp-primary:       #0284c7;
+	--hp-primary-light: #38bdf8;
+	--hp-text:          #e8edf5;
+	--hp-text-muted:    #7a8a9e;
+	--hp-text-faint:    #3d4f63;
+	--hp-font:          'Inter', system-ui, sans-serif;
+	--hp-max-w:         1200px;
+	--hp-max-w-sm:      760px;
+
+	/* Spacing scale — 0.5 rem steps up to 4 rem, then 5 rem, 6 rem, 8 rem */
+	--hp-s1: 0.5rem;
+	--hp-s2: 1rem;
+	--hp-s3: 1.5rem;
+	--hp-s4: 2rem;
+	--hp-s5: 2.5rem;
+	--hp-s6: 3rem;
+	--hp-s7: 3.5rem;
+	--hp-s8: 4rem;
+	--hp-s9: 5rem;
+	--hp-s10: 6rem;
+	--hp-s11: 8rem;
+}
+
+/* ==========================================================================
+   2. BASE CONTAINER
+   ========================================================================== */
+
+.hp-container {
+	max-width: var(--hp-max-w);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   3. BUTTON COMPONENTS
+   ========================================================================== */
+
+.hp-btn-primary,
+.hp-btn-outline,
+.hp-btn-text {
+	font-family: var(--hp-font);
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s, gap 0.2s;
+}
+
+/* Primary button */
+.hp-btn-primary {
+	background-color: var(--hp-primary);
+	color: #ffffff;
+	padding: 0.875rem 2rem;
+	border-radius: 8px;
+	border: 2px solid var(--hp-primary);
+}
+
+.hp-btn-primary:hover {
+	background-color: #0272ae;
+	border-color: #0272ae;
+	color: #ffffff;
+}
+
+.hp-btn-primary:focus-visible {
+	outline: 2px solid var(--hp-primary);
+	outline-offset: 3px;
+}
+
+/* Outline button */
+.hp-btn-outline {
+	background-color: transparent;
+	color: var(--hp-primary);
+	padding: 0.875rem 2rem;
+	border-radius: 8px;
+	border: 2px solid var(--hp-primary);
+}
+
+.hp-btn-outline:hover {
+	background-color: rgba(2, 132, 199, 0.08);
+	color: var(--hp-primary);
+}
+
+.hp-btn-outline:focus-visible {
+	outline: 2px solid var(--hp-primary);
+	outline-offset: 3px;
+}
+
+/* Text button — inline with arrow appended */
+.hp-btn-text {
+	background: none;
+	border: none;
+	color: var(--hp-primary);
+	padding: 0;
+	font-weight: 500;
+	text-decoration: none;
+	gap: 0.375rem;
+}
+
+.hp-btn-text::after {
+	content: '→';
+	display: inline-block;
+	transition: transform 0.2s;
+}
+
+.hp-btn-text:hover {
+	color: var(--hp-primary-light);
+	text-decoration: underline;
+}
+
+.hp-btn-text:hover::after {
+	transform: translateX(3px);
+}
+
+.hp-btn-text:focus-visible {
+	outline: 2px solid var(--hp-primary);
+	outline-offset: 3px;
+}
+
+/* ==========================================================================
+   4. EYEBROW LABEL
+   ========================================================================== */
+
+.hp-eyebrow {
+	display: block;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--hp-primary);
+	margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   5. SECTION HEADINGS
+   ========================================================================== */
+
+.hp-section-title {
+	font-size: clamp(1.625rem, 3.5vw, 2.375rem);
+	font-weight: 700;
+	line-height: 1.2;
+	color: var(--hp-text);
+	margin-bottom: 1rem;
+}
+
+.hp-section-sub {
+	font-size: 1.0625rem;
+	color: var(--hp-text-muted);
+	max-width: 600px;
+	line-height: 1.65;
+	margin: 0;
+}
+
+/* ==========================================================================
+   6. HERO SECTION
+   ========================================================================== */
+
+.hp-hero {
+	min-height: calc(100vh - 72px);
+	display: grid;
+	place-items: center;
+	padding: 5rem 0 4rem;
+	background: var(--hp-bg);
+}
+
+.hp-hero-inner {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 4rem;
+	align-items: center;
+	width: 100%;
+}
+
+.hp-hero-headline {
+	font-size: clamp(2rem, 5vw, 3.5rem);
+	font-weight: 800;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+	color: var(--hp-text);
+	margin-bottom: 1.5rem;
+	margin-top: 0;
+}
+
+.hp-accent-text {
+	color: var(--hp-primary-light);
+}
+
+.hp-hero-sub {
+	font-size: 1.125rem;
+	color: var(--hp-text-muted);
+	max-width: 520px;
+	line-height: 1.7;
+	margin-bottom: 2.5rem;
+}
+
+.hp-hero-actions {
+	display: flex;
+	gap: 1.5rem;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.hp-hero-graphic {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hp-hero-graphic svg {
+	max-width: 100%;
+	opacity: 0.85;
+}
+
+/* ==========================================================================
+   7. LOGO STRIP
+   ========================================================================== */
+
+.hp-logos {
+	padding: 2.5rem 0;
+	border-top: 1px solid var(--hp-border);
+	border-bottom: 1px solid var(--hp-border);
+	background: var(--hp-surface);
+}
+
+.hp-logos-label {
+	font-size: 0.8125rem;
+	text-align: center;
+	color: var(--hp-text-faint);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin-bottom: 2rem;
+}
+
+.hp-logos-grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 2rem;
+	align-items: center;
+}
+
+.hp-logo-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	filter: grayscale(1) opacity(0.45);
+	transition: filter 0.25s;
+}
+
+.hp-logo-item:hover {
+	filter: grayscale(0) opacity(1);
+}
+
+.hp-logo-item img,
+.hp-logo-item svg {
+	max-height: 40px;
+	width: auto;
+}
+
+/* ==========================================================================
+   8. PROBLEM SECTION
+   ========================================================================== */
+
+.hp-problem {
+	padding: 5rem 0;
+	background: var(--hp-bg);
+}
+
+.hp-problem-intro {
+	margin-bottom: 3rem;
+}
+
+.hp-problem-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+}
+
+.hp-problem-card {
+	padding: 1.75rem;
+	border: 1px solid var(--hp-border);
+	border-radius: 10px;
+	background: var(--hp-surface);
+	transition: border-color 0.2s;
+}
+
+.hp-problem-card:hover {
+	border-color: var(--hp-border-med);
+}
+
+.hp-problem-icon {
+	width: 40px;
+	height: 40px;
+	margin-bottom: 1.25rem;
+	color: var(--hp-primary);
+	display: block;
+}
+
+.hp-problem-card h3 {
+	font-size: 1.0625rem;
+	font-weight: 600;
+	color: var(--hp-text);
+	margin-bottom: 0.625rem;
+	margin-top: 0;
+}
+
+.hp-problem-card p {
+	font-size: 0.9375rem;
+	color: var(--hp-text-muted);
+	line-height: 1.65;
+	margin: 0;
+}
+
+/* ==========================================================================
+   9. WHAT WE BUILD
+   ========================================================================== */
+
+.hp-build {
+	padding: 5rem 0;
+	background: var(--hp-surface);
+}
+
+.hp-build-intro {
+	margin-bottom: 3rem;
+}
+
+.hp-build-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0;
+	border: 1px solid var(--hp-border);
+	border-radius: 12px;
+	overflow: hidden;
+}
+
+.hp-build-col {
+	padding: 2.25rem;
+	border-right: 1px solid var(--hp-border);
+}
+
+.hp-build-col:last-child {
+	border-right: none;
+}
+
+.hp-build-col-label {
+	display: block;
+	font-size: 0.6875rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--hp-primary);
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+
+.hp-build-col h3 {
+	font-size: 1.1875rem;
+	font-weight: 700;
+	color: var(--hp-text);
+	margin-bottom: 0.875rem;
+	margin-top: 0;
+}
+
+.hp-build-col p {
+	font-size: 0.9375rem;
+	color: var(--hp-text-muted);
+	line-height: 1.65;
+	margin-bottom: 1.5rem;
+}
+
+.hp-build-link {
+	font-size: 0.875rem;
+	color: var(--hp-primary-light);
+	font-weight: 500;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.375rem;
+	transition: gap 0.2s;
+}
+
+.hp-build-link:hover {
+	gap: 0.625rem;
+}
+
+.hp-build-link:focus-visible {
+	outline: 2px solid var(--hp-primary);
+	outline-offset: 3px;
+}
+
+/* ==========================================================================
+   10. WHY DATALKEMI
+   ========================================================================== */
+
+.hp-why {
+	padding: 5rem 0;
+	background: var(--hp-bg);
+}
+
+.hp-why-layout {
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	gap: 4rem;
+	align-items: start;
+}
+
+.hp-why-intro {
+	font-size: 1.0625rem;
+	color: var(--hp-text-muted);
+	line-height: 1.7;
+	margin-top: 1.25rem;
+	margin-bottom: 0;
+}
+
+.hp-why-points {
+	display: flex;
+	flex-direction: column;
+}
+
+.hp-why-point {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid var(--hp-border);
+	margin-bottom: 1.5rem;
+}
+
+.hp-why-point:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.hp-why-point-num {
+	font-size: 0.75rem;
+	font-weight: 700;
+	color: var(--hp-primary);
+	background: rgba(2, 132, 199, 0.1);
+	border: 1px solid rgba(2, 132, 199, 0.2);
+	border-radius: 4px;
+	padding: 0.2rem 0.5rem;
+	flex-shrink: 0;
+	margin-top: 0.125rem;
+	line-height: 1.4;
+	white-space: nowrap;
+}
+
+.hp-why-point-body h3 {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--hp-text);
+	margin-bottom: 0.375rem;
+	margin-top: 0;
+}
+
+.hp-why-point-body p {
+	font-size: 0.875rem;
+	color: var(--hp-text-muted);
+	line-height: 1.6;
+	margin: 0;
+}
+
+/* ==========================================================================
+   11. HOW WE WORK
+   ========================================================================== */
+
+.hp-process {
+	padding: 5rem 0;
+	background: var(--hp-surface);
+}
+
+.hp-process-intro {
+	margin-bottom: 0;
+}
+
+.hp-process-steps {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 0;
+	position: relative;
+	margin-top: 3rem;
+}
+
+/* Horizontal connector line — desktop only */
+.hp-process-steps::before {
+	content: '';
+	position: absolute;
+	top: 2.75rem;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		var(--hp-primary) 0%,
+		rgba(2, 132, 199, 0.1) 100%
+	);
+}
+
+.hp-process-step {
+	padding: 2rem 1.5rem 2rem 0;
+	position: relative;
+}
+
+.hp-step-number {
+	font-size: 2.5rem;
+	font-weight: 800;
+	color: rgba(2, 132, 199, 0.15);
+	line-height: 1;
+	margin-bottom: 1rem;
+	font-variant-numeric: tabular-nums;
+	display: block;
+}
+
+.hp-step-title {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--hp-text);
+	margin-bottom: 0.5rem;
+	margin-top: 0;
+}
+
+.hp-step-desc {
+	font-size: 0.875rem;
+	color: var(--hp-text-muted);
+	line-height: 1.6;
+	margin: 0;
+}
+
+/* ==========================================================================
+   12. CTA BAND
+   ========================================================================== */
+
+.hp-cta-band {
+	padding: 4.5rem 0;
+	background: rgba(2, 132, 199, 0.05);
+	border-top: 1px solid rgba(2, 132, 199, 0.15);
+	border-bottom: 1px solid rgba(2, 132, 199, 0.15);
+	text-align: center;
+}
+
+.hp-cta-band-line {
+	font-size: clamp(1.25rem, 3vw, 1.875rem);
+	font-weight: 700;
+	color: var(--hp-text);
+	max-width: 640px;
+	margin: 0 auto 2rem;
+	line-height: 1.35;
+}
+
+/* ==========================================================================
+   13. INSIGHTS
+   ========================================================================== */
+
+.hp-insights {
+	padding: 5rem 0;
+	background: var(--hp-bg);
+}
+
+.hp-insights-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	margin-bottom: 2.5rem;
+}
+
+.hp-insights-header h2 {
+	font-size: clamp(1.375rem, 3vw, 1.875rem);
+	font-weight: 700;
+	color: var(--hp-text);
+	margin: 0;
+}
+
+.hp-insights-header a {
+	font-size: 0.875rem;
+	color: var(--hp-primary-light);
+	text-decoration: none;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.hp-insights-header a:hover {
+	text-decoration: underline;
+}
+
+.hp-insights-header a:focus-visible {
+	outline: 2px solid var(--hp-primary);
+	outline-offset: 3px;
+}
+
+.hp-insights-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+}
+
+.hp-insight-card {
+	border-top: 2px solid var(--hp-border-med);
+	padding-top: 1.25rem;
+	transition: border-top-color 0.2s;
+}
+
+.hp-insight-card:hover {
+	border-top-color: var(--hp-primary);
+}
+
+.hp-insight-meta {
+	font-size: 0.75rem;
+	color: var(--hp-text-faint);
+	margin-bottom: 0.625rem;
+}
+
+.hp-insight-title {
+	font-size: 1.0625rem;
+	font-weight: 600;
+	color: var(--hp-text);
+	line-height: 1.4;
+	margin-bottom: 0.625rem;
+	text-decoration: none;
+	display: block;
+	transition: color 0.2s;
+}
+
+.hp-insight-title:hover {
+	color: var(--hp-primary-light);
+}
+
+.hp-insight-title:focus-visible {
+	outline: 2px solid var(--hp-primary);
+	outline-offset: 3px;
+}
+
+.hp-insight-excerpt {
+	font-size: 0.875rem;
+	color: var(--hp-text-muted);
+	line-height: 1.6;
+	margin: 0;
+}
+
+/* ==========================================================================
+   14. ABOUT SNIPPET
+   ========================================================================== */
+
+.hp-about {
+	padding: 5rem 0;
+	background: var(--hp-surface);
+}
+
+.hp-about-layout {
+	display: grid;
+	grid-template-columns: 1fr 320px;
+	gap: 4rem;
+	align-items: start;
+}
+
+.hp-about-img-placeholder {
+	width: 320px;
+	height: 320px;
+	max-width: 100%;
+	background: var(--hp-surface-2);
+	border: 1px solid var(--hp-border);
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--hp-text-faint);
+	font-size: 0.875rem;
+}
+
+.hp-about-figure {
+	margin: 0;
+}
+
+.hp-about-figure figcaption {
+	font-size: 0.8125rem;
+	color: var(--hp-text-faint);
+	margin-top: 0.75rem;
+	text-align: center;
+}
+
+.hp-about h2 {
+	font-size: clamp(1.5rem, 3vw, 2rem);
+	font-weight: 700;
+	color: var(--hp-text);
+	margin-bottom: 1.5rem;
+	margin-top: 0;
+}
+
+.hp-about p {
+	font-size: 1.0625rem;
+	color: var(--hp-text-muted);
+	line-height: 1.75;
+	margin-bottom: 1.25rem;
+}
+
+.hp-about p:last-of-type {
+	margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   15. FINAL CTA
+   ========================================================================== */
+
+.hp-final-cta {
+	padding: 6rem 0;
+	background: var(--hp-bg);
+	text-align: center;
+}
+
+.hp-final-cta-heading {
+	font-size: clamp(1.5rem, 4vw, 2.5rem);
+	font-weight: 700;
+	color: var(--hp-text);
+	margin-bottom: 2rem;
+	margin-top: 0;
+}
+
+.hp-final-note {
+	font-size: 0.875rem;
+	color: var(--hp-text-faint);
+	margin-top: 1.25rem;
+	margin-bottom: 0;
+}
+
+/* ==========================================================================
+   16. FOCUS-VISIBLE — GENERAL RULE
+   ========================================================================== */
+
+.hp-hero a:focus-visible,
+.hp-logos a:focus-visible,
+.hp-problem a:focus-visible,
+.hp-build a:focus-visible,
+.hp-why a:focus-visible,
+.hp-process a:focus-visible,
+.hp-cta-band a:focus-visible,
+.hp-insights a:focus-visible,
+.hp-about a:focus-visible,
+.hp-final-cta a:focus-visible {
+	outline: 2px solid var(--hp-primary);
+	outline-offset: 3px;
+}
+
+/* ==========================================================================
+   17. RESPONSIVE — TABLET ≤ 900px
+   ========================================================================== */
+
+@media (max-width: 900px) {
+	.hp-about-layout {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	.hp-about-img-placeholder {
+		width: 100%;
+		height: 240px;
+	}
+
+	.hp-about-figure {
+		order: -1;
+	}
+}
+
+/* ==========================================================================
+   18. RESPONSIVE — TABLET ≤ 768px
+   ========================================================================== */
+
+@media (max-width: 768px) {
+	/* Hero */
+	.hp-hero-inner {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+
+	.hp-hero-graphic {
+		display: none;
+	}
+
+	/* Logo strip */
+	.hp-logos-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	/* Problem */
+	.hp-problem-grid {
+		grid-template-columns: 1fr;
+	}
+
+	/* Build */
+	.hp-build-grid {
+		grid-template-columns: 1fr;
+		border-radius: 10px;
+	}
+
+	.hp-build-col {
+		border-right: none;
+		border-bottom: 1px solid var(--hp-border);
+	}
+
+	.hp-build-col:last-child {
+		border-bottom: none;
+	}
+
+	/* Why */
+	.hp-why-layout {
+		grid-template-columns: 1fr;
+	}
+
+	/* Process */
+	.hp-process-steps {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+
+	.hp-process-steps::before {
+		display: none;
+	}
+
+	.hp-process-step {
+		padding: 1.5rem 0 1.5rem 3.5rem;
+		border-left: 2px solid var(--hp-border);
+	}
+
+	.hp-process-step:last-child {
+		border-left: 2px solid transparent;
+	}
+
+	/* Insights */
+	.hp-insights-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.hp-insights-header {
+		flex-direction: column;
+		gap: 1rem;
+	}
+}
+
+/* ==========================================================================
+   19. RESPONSIVE — MOBILE ≤ 480px
+   ========================================================================== */
+
+@media (max-width: 480px) {
+	/* Logo strip */
+	.hp-logos-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	/* Insights */
+	.hp-insights-grid {
+		grid-template-columns: 1fr;
+	}
+
+	/* Hero actions */
+	.hp-hero-actions {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	/* Spacing reductions */
+	.hp-hero {
+		padding: 3rem 0 2.5rem;
+	}
+
+	.hp-problem,
+	.hp-build,
+	.hp-why,
+	.hp-process,
+	.hp-insights,
+	.hp-about {
+		padding: 3.5rem 0;
+	}
+
+	.hp-final-cta {
+		padding: 4rem 0;
+	}
+}

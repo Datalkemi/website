@@ -38,6 +38,16 @@ function datalkemi_enqueue_assets() {
 		DATALKEMI_VERSION
 	);
 
+	// Homepage-only stylesheet
+	if ( is_front_page() ) {
+		wp_enqueue_style(
+			'datalkemi-home',
+			DATALKEMI_URI . '/assets/css/home.css',
+			[ 'datalkemi-main' ],
+			DATALKEMI_VERSION
+		);
+	}
+
 	// Main JS
 	wp_enqueue_script(
 		'datalkemi-main-js',

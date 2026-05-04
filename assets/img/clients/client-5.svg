@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 56" role="img" aria-label="Client logo placeholder">
+  <rect width="160" height="56" rx="6" fill="#111827" stroke="#1e2d42" stroke-width="1"/>
+  <rect x="12" y="18" width="20" height="20" rx="3" fill="#1e3a5f"/>
+  <rect x="40" y="22" width="60" height="6" rx="2" fill="#1e3a5f"/>
+  <rect x="40" y="32" width="40" height="4" rx="2" fill="#162a3f"/>
+  <text x="148" y="52" font-family="Inter,system-ui,sans-serif" font-size="8" fill="#2a4060" text-anchor="end">Client 5</text>
+</svg>
