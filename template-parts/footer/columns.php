@@ -6,14 +6,14 @@
  *
  * Tagline options  -  rendering Option A:
  *
- * A (active): We build the software and data systems finance businesses depend on.
- *             Perth-based, working with clients across Australia.
+ * A (active): We build the software and data systems businesses depend on.
+ *             Perth-based, working with clients across Australia and beyond.
  *
- * B: Custom software and data infrastructure for finance businesses that need
- *    systems built to last. Perth-based.
+ * B: Custom software and data infrastructure, built properly and integrated
+ *    end-to-end. Perth-based, working Australia-wide and beyond.
  *
- * C: Finance businesses run better when their systems are built properly.
- *    We build and maintain those systems from Perth.
+ * C: The systems that run your operations should be engineered, not cobbled
+ *    together. That is what we build. Perth-based.
  *
  * @package Datalkemi
  * @since   2.0.0
@@ -44,16 +44,16 @@
 					 * Tagline  -  rendering Option A.
 					 * Change the esc_html_e() call below to switch options.
 					 *
-					 * A (active): We build the software and data systems finance businesses
-					 *             depend on. Perth-based, working with clients across Australia.
+					 * A (active): We build the software and data systems businesses depend on.
+					 *             Perth-based, working with clients across Australia and beyond.
 					 *
-					 * B: Custom software and data infrastructure for finance businesses that
-					 *    need systems built to last. Perth-based.
+					 * B: Custom software and data infrastructure, built properly and integrated
+					 *    end-to-end. Perth-based, working Australia-wide and beyond.
 					 *
-					 * C: Finance businesses run better when their systems are built properly.
-					 *    We build and maintain those systems from Perth.
+					 * C: The systems that run your operations should be engineered, not cobbled
+					 *    together. That is what we build. Perth-based.
 					 */
-					esc_html_e( 'We build the software and data systems finance businesses depend on. Perth-based, working with clients across Australia.', 'datalkemi' );
+					esc_html_e( 'We build the software and data systems businesses depend on. Perth-based, working with clients across Australia and beyond.', 'datalkemi' );
 					?>
 				</p>
 

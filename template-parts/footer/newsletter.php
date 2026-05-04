@@ -7,11 +7,11 @@
  *
  * Heading options  -  rendering Option A:
  *
- * A (active): Practical insights for finance businesses building better systems.
+ * A (active): Practical insights for businesses building better systems.
  *
- * B: Ideas and examples from finance and data projects, sent occasionally.
+ * B: Engineering and operations writing, sent occasionally.
  *
- * C: How finance businesses use software and data to work better. Sent monthly.
+ * C: Notes on building software and data infrastructure that lasts.
  *
  * @package Datalkemi
  * @since   2.0.0
@@ -32,11 +32,11 @@ $show_notice = ( ! $hs_portal || ! $hs_form ) && current_user_can( 'manage_optio
 					/*
 					 * Heading  -  rendering Option A.
 					 *
-					 * A (active): Practical insights for finance businesses building better systems.
-					 * B: Ideas and examples from finance and data projects, sent occasionally.
-					 * C: How finance businesses use software and data to work better. Sent monthly.
+					 * A (active): Practical insights for businesses building better systems.
+					 * B: Engineering and operations writing, sent occasionally.
+					 * C: Notes on building software and data infrastructure that lasts.
 					 */
-					esc_html_e( 'Practical insights for finance businesses building better systems.', 'datalkemi' );
+					esc_html_e( 'Practical insights for businesses building better systems.', 'datalkemi' );
 					?>
 				</h3>
 			</div>
