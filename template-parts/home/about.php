@@ -1,6 +1,6 @@
 <?php
 /**
- * About section — homepage
+ * About section  -  homepage
  */
 $usps = [
 	[ 'title' => 'One team, full stack',     'desc' => 'Design through data in-house. No outsourcing, no broken handoffs.' ],
@@ -25,7 +25,7 @@ $usps = [
 					Most businesses have great products but lack the digital presence and data capability to show it. That gap is not a talent problem. It is a technology and strategy problem. Datalkemi was built to close it.
 				</p>
 				<p class="about-text">
-					We combine web development, strategic design, and data science so clients get the full digital stack they actually need — handled by one team, from brief to delivery.
+					We combine web development, strategic design, and data science so clients get the full digital stack they actually need, handled by one team, from brief to delivery.
 				</p>
 				<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="dk-btn dk-btn-outline" style="margin-top:1.5rem;">
 					<?php esc_html_e( 'More About Us', 'datalkemi' ); ?>

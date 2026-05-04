@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Part: Homepage — Insights Preview
+ * Template Part: Homepage  -  Insights Preview
  *
  * Fetches the 3 most recent published posts and renders them as
  * insight cards. Reading time is calculated from post content

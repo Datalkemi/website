@@ -2,7 +2,7 @@
 /**
  * Template Part: Homepage Logo Strip
  *
- * Section heading options — rendering Option A:
+ * Section heading options  -  rendering Option A:
  *
  * A: Trusted by businesses that take their systems seriously.
  *

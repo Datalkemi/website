@@ -1,6 +1,6 @@
 <?php
 /**
- * Newsletter AJAX handler — HubSpot Forms API integration.
+ * Newsletter AJAX handler  -  HubSpot Forms API integration.
  *
  * Required constants in wp-config.php:
  *
@@ -14,7 +14,7 @@
  *   Content-Type: application/json
  *
  * Rate limiting: max 3 submissions per IP per hour via WP transients.
- * Honeypot: field name "website_url" — silently rejected if non-empty.
+ * Honeypot: field name "website_url"  -  silently rejected if non-empty.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -26,7 +26,7 @@ function datalkemi_newsletter_submit(): void {
 
 	check_ajax_referer( 'dk_newsletter_submit', 'nonce' );
 
-	// Honeypot — silent success so bots think the submission worked.
+	// Honeypot  -  silent success so bots think the submission worked.
 	if ( ! empty( $_POST['website_url'] ) ) {
 		wp_send_json_success( 'subscribed' );
 	}
@@ -78,7 +78,7 @@ function datalkemi_newsletter_submit(): void {
 	] );
 
 	if ( is_wp_error( $response ) ) {
-		error_log( 'Datalkemi newsletter: wp_remote_post error — ' . $response->get_error_message() );
+		error_log( 'Datalkemi newsletter: wp_remote_post error  -  ' . $response->get_error_message() );
 		wp_send_json_error( 'request_failed' );
 	}
 
@@ -88,6 +88,6 @@ function datalkemi_newsletter_submit(): void {
 		wp_send_json_success( 'subscribed' );
 	}
 
-	error_log( 'Datalkemi newsletter: HubSpot returned HTTP ' . $status . ' — ' . wp_remote_retrieve_body( $response ) );
+	error_log( 'Datalkemi newsletter: HubSpot returned HTTP ' . $status . '  -  ' . wp_remote_retrieve_body( $response ) );
 	wp_send_json_error( 'hubspot_error' );
 }

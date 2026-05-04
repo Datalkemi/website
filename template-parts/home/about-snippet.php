@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Part: Homepage — About Snippet
+ * Template Part: Homepage  -  About Snippet
  *
  * Two-column layout: text content on the left, founder photo placeholder
  * on the right. The image placeholder uses role="img" and aria-label for
@@ -27,7 +27,7 @@
 					<?php esc_html_e( 'About Datalkemi', 'datalkemi' ); ?>
 				</h2>
 				<p>
-					<?php esc_html_e( 'Datalkemi is founded by Naufal, a Data and Analytics Consultant with a Master of Data Science from the University of Western Australia. Before founding Datalkemi, he worked across enterprise data consulting — delivering data migration projects, building reporting systems, and working with organisations on ERP implementations and analytics infrastructure.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Datalkemi is founded by Naufal, a Data and Analytics Consultant with a Master of Data Science from the University of Western Australia. Before founding Datalkemi, he worked across enterprise data consulting, delivering data migration projects, building reporting systems, and working with organisations on ERP implementations and analytics infrastructure.', 'datalkemi' ); ?>
 				</p>
 				<p>
 					<?php esc_html_e( 'Datalkemi exists because the gap between what finance businesses need and what most software agencies can build is wider than it should be. We work with a small number of clients at a time, which means the work gets the attention it deserves.', 'datalkemi' ); ?>
@@ -50,7 +50,7 @@
 					<?php esc_html_e( 'Founder photo', 'datalkemi' ); ?>
 				</div>
 				<figcaption>
-					<?php esc_html_e( 'Naufal — Founder, Datalkemi', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Naufal - Founder, Datalkemi', 'datalkemi' ); ?>
 				</figcaption>
 			</figure>
 

@@ -82,7 +82,7 @@ function datalkemi_homepage_seo(): void {
 	<meta property="og:type"        content="website">
 	<meta property="og:url"         content="<?php echo $site_url; ?>">
 	<meta property="og:site_name"   content="<?php echo esc_attr( $site_name ); ?>">
-	<meta property="og:title"       content="<?php echo esc_attr( $site_name ); ?> — Custom Software &amp; Data Systems">
+	<meta property="og:title"       content="<?php echo esc_attr( $site_name ); ?> - Custom Software &amp; Data Systems">
 	<meta property="og:description" content="Custom software and data systems for finance businesses that have outgrown spreadsheets. Perth-based, working with clients across Australia.">
 	<meta property="og:image"       content="<?php echo $og_image; ?>">
 	<meta property="og:image:width"  content="1200">
@@ -94,7 +94,7 @@ function datalkemi_homepage_seo(): void {
 	?>
 	<meta name="twitter:card"        content="summary_large_image">
 	<meta name="twitter:site"        content="<?php echo esc_attr( $twitter ); ?>">
-	<meta name="twitter:title"       content="<?php echo esc_attr( $site_name ); ?> — Custom Software &amp; Data Systems">
+	<meta name="twitter:title"       content="<?php echo esc_attr( $site_name ); ?> - Custom Software &amp; Data Systems">
 	<meta name="twitter:description" content="Custom software and data systems for finance businesses that have outgrown spreadsheets. Perth-based, working with clients across Australia.">
 	<meta name="twitter:image"       content="<?php echo $og_image; ?>">
 	<?php

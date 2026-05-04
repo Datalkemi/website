@@ -2,30 +2,34 @@
 /**
  * Template Part: Homepage Hero
  *
- * Headline options — rendering Option B:
+ * Headline options  -  rendering Option A:
  *
- * A: Custom software and data systems for finance businesses that have
- *    outgrown spreadsheets and workarounds.
+ * A (active): Custom software and data systems for businesses that have
+ *             outgrown their current tools.
+ *             Accent span on "data systems".
  *
- * B (active): The software and data infrastructure your finance business is missing.
+ * B: We build the systems your business depends on,
+ *    properly engineered, end-to-end.
+ *    Accent span on "properly engineered".
  *
- * C: Finance teams run better when their systems are built for how they
- *    actually work.
+ * C: Software and data infrastructure for businesses that need
+ *    purpose-built systems, not off-the-shelf compromises.
+ *    Accent span on "purpose-built systems".
  *
- * Sub-headline options — rendering Option A:
+ * Sub-headline options  -  rendering Option A:
  *
  * A (active): We build custom web applications, data platforms, document
- *             intelligence tools, and operational software for finance businesses
- *             that need purpose-built systems. Perth-based, working with clients
- *             across Australia.
+ *             intelligence tools, internal tools, and operational software
+ *             for businesses that need purpose-built systems. Perth-based,
+ *             working with clients across Australia and beyond.
  *
- * B: From document automation to data pipelines and client portals — we build
- *    the internal systems finance businesses rely on. Perth-based, working
- *    Australia-wide.
+ * B: From web applications to data pipelines, document intelligence, and
+ *    internal tools, we build the systems that run your operations.
+ *    Perth-based, working with clients across Australia and beyond.
  *
- * C: Your team has outgrown the tools they started with. We build the software
- *    and data infrastructure to replace them. Perth-based, working with clients
- *    across Australia.
+ * C: Custom software, data platforms, document intelligence, and operational
+ *    tools, built properly, integrated end-to-end. Perth-based, working
+ *    with clients across Australia and beyond.
  *
  * @package Datalkemi
  * @since   2.0.0
@@ -40,15 +44,17 @@
 		<div class="hp-hero-inner">
 
 			<span class="hp-eyebrow">
-				<?php esc_html_e( 'Perth-based. Working with clients across Australia.', 'datalkemi' ); ?>
+				<?php esc_html_e( 'Perth-based. Working with clients across Australia and beyond.', 'datalkemi' ); ?>
 			</span>
 
 			<h1 id="hero-headline" class="hp-hero-headline">
-				<?php esc_html_e( 'The software and data infrastructure your finance business is missing.', 'datalkemi' ); ?>
+				<?php esc_html_e( 'Custom software and', 'datalkemi' ); ?>
+				<span class="hp-accent-text"><?php esc_html_e( 'data systems', 'datalkemi' ); ?></span>
+				<?php esc_html_e( 'for businesses that have outgrown their current tools.', 'datalkemi' ); ?>
 			</h1>
 
 			<p class="hp-hero-sub">
-				<?php esc_html_e( 'We build custom web applications, data platforms, document intelligence tools, and operational software for finance businesses that need purpose-built systems. Perth-based, working with clients across Australia.', 'datalkemi' ); ?>
+				<?php esc_html_e( 'We build custom web applications, data platforms, document intelligence tools, internal tools, and operational software for businesses that need purpose-built systems. Perth-based, working with clients across Australia and beyond.', 'datalkemi' ); ?>
 			</p>
 
 			<div class="hp-hero-actions">

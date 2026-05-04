@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Part: Homepage — Why Datalkemi
+ * Template Part: Homepage  -  Why Datalkemi
  *
- * Section heading options — rendering Option A:
+ * Section heading options  -  rendering Option A:
  *
  * A (active): Software backed by data engineering, not the other way around.
  *
@@ -30,7 +30,7 @@
 					<?php esc_html_e( 'Software backed by data engineering, not the other way around.', 'datalkemi' ); ?>
 				</h2>
 				<p class="hp-why-intro">
-					<?php esc_html_e( 'Most software agencies are built around front-end developers who add analytics as an afterthought. Datalkemi starts from the data layer and works outward — which means the systems we build are measurable, connected, and built to last.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Most software agencies are built around front-end developers who add analytics as an afterthought. Datalkemi starts from the data layer and works outward, which means the systems we build are measurable, connected, and built to last.', 'datalkemi' ); ?>
 				</p>
 			</div><!-- /.hp-why-left -->
 
@@ -40,7 +40,7 @@
 				<div class="hp-why-point">
 					<span class="hp-why-point-num">01</span>
 					<div class="hp-why-point-body">
-						<h3><?php esc_html_e( 'Master of Data Science — UWA', 'datalkemi' ); ?></h3>
+						<h3><?php esc_html_e( 'Master of Data Science, UWA', 'datalkemi' ); ?></h3>
 						<p>
 							<?php esc_html_e( 'Datalkemi is founded by a Data and Analytics Consultant with a Master of Data Science from the University of Western Australia, with a background in enterprise data consulting.', 'datalkemi' ); ?>
 						</p>
@@ -52,7 +52,7 @@
 					<div class="hp-why-point-body">
 						<h3><?php esc_html_e( 'Enterprise-scale data experience', 'datalkemi' ); ?></h3>
 						<p>
-							<?php esc_html_e( 'Real experience with ERPs, large-scale data migration, Azure data platforms, and enterprise integrations — not toy projects or tutorial demos.', 'datalkemi' ); ?>
+							<?php esc_html_e( 'Real experience with ERPs, large-scale data migration, Azure data platforms, and enterprise integrations, not toy projects or tutorial demos.', 'datalkemi' ); ?>
 						</p>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Services section — homepage
+ * Services section  -  homepage
  */
 $services = [
 	[
@@ -34,7 +34,7 @@ $services = [
 	[
 		'slug'  => 'business-intelligence',
 		'title' => __( 'Business Intelligence', 'datalkemi' ),
-		'desc'  => __( 'Power BI and Tableau implementations built on a proper semantic data model and KPI framework — not just generic charts.', 'datalkemi' ),
+		'desc'  => __( 'Power BI and Tableau implementations built on a proper semantic data model and KPI framework, not just generic charts.', 'datalkemi' ),
 		'tags'  => [ 'Power BI', 'Tableau', 'DAX', 'SQL' ],
 		'svg'   => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
 	],
