@@ -4,12 +4,12 @@
  *
  * Section heading options — rendering Option A:
  *
- * A (active): Finance businesses are running on systems that hold them back.
+ * A (active): Most businesses are held back by the systems they rely on.
  *
- * B: Most finance operations are one spreadsheet failure away from a bad week.
+ * B: The tools that got you here will not take you to the next stage.
  *
- * C: The systems slowing your finance team down are not hard to fix. They just
- *    need to be built properly.
+ * C: When your systems are slowing the business down, software is usually
+ *    the answer.
  *
  * @package Datalkemi
  * @since   2.0.0
@@ -24,7 +24,7 @@
 				<?php esc_html_e( 'The problem', 'datalkemi' ); ?>
 			</span>
 			<h2 id="problem-heading" class="hp-section-title">
-				<?php esc_html_e( 'Finance businesses are running on systems that hold them back.', 'datalkemi' ); ?>
+				<?php esc_html_e( 'Most businesses are held back by the systems they rely on.', 'datalkemi' ); ?>
 			</h2>
 		</div>
 
@@ -86,7 +86,7 @@
 
 				<h3><?php esc_html_e( 'Systems that do not talk to each other', 'datalkemi' ); ?></h3>
 				<p>
-					<?php esc_html_e( 'Xero, MYOB, Excel, a CRM, and a handful of custom spreadsheets — each holds part of the picture. The missing piece is a layer that connects them and keeps the data consistent.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Your CRM, finance tools, project management software, and custom spreadsheets each hold part of the picture. The missing piece is a layer that connects them and keeps the data consistent.', 'datalkemi' ); ?>
 				</p>
 			</div><!-- /.hp-problem-card -->
 

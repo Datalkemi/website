@@ -13,6 +13,14 @@
  * Three columns separated by borders (no card shadows).
  * Column links point to anchor sections on the Services page.
  *
+ * Industries strip label options — rendering Option A:
+ *
+ * A (active): Industries we work with
+ *
+ * B: Who we work with
+ *
+ * C: Sectors we serve
+ *
  * @package Datalkemi
  * @since   2.0.0
  */
@@ -87,6 +95,28 @@
 			</div><!-- /.hp-build-col -->
 
 		</div><!-- /.hp-build-grid -->
+
+		<!-- ── Industries strip ── -->
+		<div class="hp-industries">
+			<p class="hp-industries-label">
+				<?php
+				/*
+				 * Label options — rendering Option A:
+				 *
+				 * A (active): Industries we work with
+				 * B: Who we work with
+				 * C: Sectors we serve
+				 */
+				esc_html_e( 'Industries we work with', 'datalkemi' );
+				?>
+			</p>
+			<ul class="hp-industries-list" role="list">
+				<li class="hp-industry-pill"><?php esc_html_e( 'Finance', 'datalkemi' ); ?></li>
+				<li class="hp-industry-pill"><?php esc_html_e( 'Professional services', 'datalkemi' ); ?></li>
+				<li class="hp-industry-pill"><?php esc_html_e( 'Healthcare', 'datalkemi' ); ?></li>
+				<li class="hp-industry-pill"><?php esc_html_e( 'And other operations-heavy sectors', 'datalkemi' ); ?></li>
+			</ul>
+		</div><!-- /.hp-industries -->
 
 	</div><!-- /.hp-container -->
 </section><!-- /.hp-build -->
