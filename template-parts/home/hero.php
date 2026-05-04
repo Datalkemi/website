@@ -2,7 +2,7 @@
 /**
  * Template Part: Homepage Hero
  *
- * Two-column layout on desktop: copy left, differentiator card right.
+ * Two-column layout on desktop: copy left, dashboard mockup right.
  * Geography is in the sub-headline, not the eyebrow.
  *
  * Headline options  -  rendering Option A:
@@ -86,59 +86,92 @@
 
 			</div><!-- /.hp-hero-left -->
 
-			<!-- ── Right: differentiator card (decorative, aria-hidden) ── -->
+			<!-- ── Right: CSS dashboard mockup (decorative) ── -->
 			<div class="hp-hero-right" aria-hidden="true">
-				<div class="hp-hero-card">
+				<div class="hp-dash">
 
-					<p class="hp-hero-card-title">
-						<?php esc_html_e( 'Why Datalkemi', 'datalkemi' ); ?>
-					</p>
+					<!-- Window chrome -->
+					<div class="hp-dash-chrome">
+						<span class="hp-dash-dot hp-dash-dot--red"></span>
+						<span class="hp-dash-dot hp-dash-dot--yellow"></span>
+						<span class="hp-dash-dot hp-dash-dot--green"></span>
+						<span class="hp-dash-chrome-title">Analytics Dashboard</span>
+					</div>
 
-					<ul class="hp-hero-card-list" role="list">
+					<!-- KPI row -->
+					<div class="hp-dash-kpis">
+						<div class="hp-dash-kpi">
+							<span class="hp-dash-kpi-label">Revenue</span>
+							<span class="hp-dash-kpi-value">$2.4M</span>
+							<span class="hp-dash-kpi-delta hp-dash-delta--up">↑ 18%</span>
+						</div>
+						<div class="hp-dash-kpi">
+							<span class="hp-dash-kpi-label">Pipeline</span>
+							<span class="hp-dash-kpi-value">641</span>
+							<span class="hp-dash-kpi-delta hp-dash-delta--up">↑ 7%</span>
+						</div>
+						<div class="hp-dash-kpi">
+							<span class="hp-dash-kpi-label">Margin</span>
+							<span class="hp-dash-kpi-value">34%</span>
+							<span class="hp-dash-kpi-delta hp-dash-delta--down">↓ 2%</span>
+						</div>
+					</div>
 
-						<li class="hp-hero-card-item">
-							<span class="hp-hero-card-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-							</span>
-							<div class="hp-hero-card-body">
-								<strong><?php esc_html_e( 'Data engineering first', 'datalkemi' ); ?></strong>
-								<span><?php esc_html_e( 'Software built on the right foundation, not bolted on afterwards.', 'datalkemi' ); ?></span>
+					<!-- Bar chart -->
+					<div class="hp-dash-chart">
+						<div class="hp-dash-chart-bars">
+							<div class="hp-dash-bar-col">
+								<div class="hp-dash-bar" style="height:55%"></div>
+								<span class="hp-dash-bar-label">Jan</span>
 							</div>
-						</li>
-
-						<li class="hp-hero-card-item">
-							<span class="hp-hero-card-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-							</span>
-							<div class="hp-hero-card-body">
-								<strong><?php esc_html_e( 'Enterprise-scale background', 'datalkemi' ); ?></strong>
-								<span><?php esc_html_e( 'Real experience across ERP implementations, Azure data platforms, and large-scale migrations.', 'datalkemi' ); ?></span>
+							<div class="hp-dash-bar-col">
+								<div class="hp-dash-bar" style="height:72%"></div>
+								<span class="hp-dash-bar-label">Feb</span>
 							</div>
-						</li>
-
-						<li class="hp-hero-card-item">
-							<span class="hp-hero-card-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-							</span>
-							<div class="hp-hero-card-body">
-								<strong><?php esc_html_e( 'Direct access to the builder', 'datalkemi' ); ?></strong>
-								<span><?php esc_html_e( 'No account managers or handoffs. You work with the person writing the code.', 'datalkemi' ); ?></span>
+							<div class="hp-dash-bar-col">
+								<div class="hp-dash-bar" style="height:48%"></div>
+								<span class="hp-dash-bar-label">Mar</span>
 							</div>
-						</li>
-
-						<li class="hp-hero-card-item">
-							<span class="hp-hero-card-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-							</span>
-							<div class="hp-hero-card-body">
-								<strong><?php esc_html_e( 'Master of Data Science, UWA', 'datalkemi' ); ?></strong>
-								<span><?php esc_html_e( 'Academic rigour applied to real-world systems and operational problems.', 'datalkemi' ); ?></span>
+							<div class="hp-dash-bar-col">
+								<div class="hp-dash-bar hp-dash-bar--accent" style="height:88%"></div>
+								<span class="hp-dash-bar-label">Apr</span>
 							</div>
-						</li>
+							<div class="hp-dash-bar-col">
+								<div class="hp-dash-bar" style="height:65%"></div>
+								<span class="hp-dash-bar-label">May</span>
+							</div>
+							<div class="hp-dash-bar-col">
+								<div class="hp-dash-bar hp-dash-bar--accent" style="height:94%"></div>
+								<span class="hp-dash-bar-label">Jun</span>
+							</div>
+						</div>
+					</div>
 
-					</ul>
+					<!-- Data table rows -->
+					<div class="hp-dash-table">
+						<div class="hp-dash-row hp-dash-row--head">
+							<span>Source</span>
+							<span>Records</span>
+							<span>Status</span>
+						</div>
+						<div class="hp-dash-row">
+							<span>CRM sync</span>
+							<span>12,840</span>
+							<span class="hp-dash-pill hp-dash-pill--ok">Live</span>
+						</div>
+						<div class="hp-dash-row">
+							<span>Finance API</span>
+							<span>3,201</span>
+							<span class="hp-dash-pill hp-dash-pill--ok">Live</span>
+						</div>
+						<div class="hp-dash-row">
+							<span>Doc pipeline</span>
+							<span>894</span>
+							<span class="hp-dash-pill hp-dash-pill--warn">Running</span>
+						</div>
+					</div>
 
-				</div><!-- /.hp-hero-card -->
+				</div><!-- /.hp-dash -->
 			</div><!-- /.hp-hero-right -->
 
 		</div><!-- /.hp-hero-inner -->

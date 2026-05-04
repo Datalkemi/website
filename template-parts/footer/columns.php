@@ -29,7 +29,7 @@
 
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="ft-logo-link" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 					<img
-						src="<?php echo esc_url( DATALKEMI_URI . '/assets/images/logos/Dark Background/Text_dark_BG.png' ); ?>"
+						src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/logo-footer.png' ); ?>"
 						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
 						class="ft-logo"
 						width="160"
