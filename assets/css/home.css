@@ -179,61 +179,71 @@
    6. HERO SECTION
    ========================================================================== */
 
+/*
+ * Hero background: place a photo at assets/img/hero-bg.jpg (1920×1080 recommended).
+ * The overlay darkens it so white text stays readable.
+ * Fallback: solid --hp-bg if the image is missing.
+ */
 .hp-hero {
+	position: relative;
 	min-height: calc(100vh - 72px);
 	display: grid;
 	place-items: center;
-	padding: 5rem 0 4rem;
-	background: var(--hp-bg);
+	padding: 6rem 0 5rem;
+	background-color: var(--hp-bg);
+	background-image: url('../../assets/img/hero-bg.jpg');
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;
+}
+
+.hp-hero-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		160deg,
+		rgba(3, 7, 18, 0.82) 0%,
+		rgba(3, 7, 18, 0.65) 60%,
+		rgba(3, 7, 18, 0.75) 100%
+	);
+	z-index: 0;
+}
+
+.hp-hero .hp-container {
+	position: relative;
+	z-index: 1;
 }
 
 .hp-hero-inner {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 4rem;
-	align-items: center;
-	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	text-align: center;
 }
 
 .hp-hero-headline {
-	font-size: clamp(2rem, 5vw, 3.5rem);
+	font-size: clamp(2.25rem, 5vw, 4rem);
 	font-weight: 800;
-	line-height: 1.15;
-	letter-spacing: -0.02em;
+	line-height: 1.12;
+	letter-spacing: -0.025em;
 	color: var(--hp-text);
 	margin-bottom: 1.5rem;
-	margin-top: 0;
-}
-
-.hp-accent-text {
-	color: var(--hp-primary-light);
+	margin-top: 1rem;
 }
 
 .hp-hero-sub {
 	font-size: 1.125rem;
 	color: var(--hp-text-muted);
-	max-width: 520px;
+	max-width: 580px;
+	margin: 0 auto 2.5rem;
 	line-height: 1.7;
-	margin-bottom: 2.5rem;
 }
 
 .hp-hero-actions {
 	display: flex;
 	gap: 1.5rem;
 	align-items: center;
-	flex-wrap: wrap;
-}
-
-.hp-hero-graphic {
-	position: relative;
-	display: flex;
-	align-items: center;
 	justify-content: center;
-}
-
-.hp-hero-graphic svg {
-	max-width: 100%;
-	opacity: 0.85;
+	flex-wrap: wrap;
 }
 
 /* ==========================================================================
@@ -790,12 +800,15 @@
 @media (max-width: 768px) {
 	/* Hero */
 	.hp-hero-inner {
-		grid-template-columns: 1fr;
-		gap: 0;
+		text-align: left;
 	}
 
-	.hp-hero-graphic {
-		display: none;
+	.hp-hero-sub {
+		margin-left: 0;
+	}
+
+	.hp-hero-actions {
+		justify-content: flex-start;
 	}
 
 	/* Logo strip */

@@ -4,11 +4,11 @@
  *
  * Section heading options — rendering Option A:
  *
- * A (active): Trusted by businesses that take their systems seriously.
+ * A: Trusted by businesses that take their systems seriously.
  *
  * B: Businesses that have replaced guesswork with engineered systems.
  *
- * C: Working with finance and operations teams across Australia.
+ * C (active): Working with finance and operations teams across Australia.
  *
  * Client logo images should be placed at:
  * /assets/img/clients/client-1.svg through client-6.svg
@@ -22,7 +22,7 @@
 	<div class="hp-container">
 
 		<p class="hp-logos-label">
-			<?php esc_html_e( 'Trusted by businesses that take their systems seriously.', 'datalkemi' ); ?>
+			<?php esc_html_e( 'Working with finance and operations teams across Australia.', 'datalkemi' ); ?>
 		</p>
 
 		<div class="hp-logos-grid">
