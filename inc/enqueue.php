@@ -48,6 +48,14 @@ function datalkemi_enqueue_assets() {
 		);
 	}
 
+	// Footer stylesheet — site-wide
+	wp_enqueue_style(
+		'datalkemi-footer',
+		DATALKEMI_URI . '/assets/css/footer.css',
+		[ 'datalkemi-main' ],
+		DATALKEMI_VERSION
+	);
+
 	// Main JS
 	wp_enqueue_script(
 		'datalkemi-main-js',
@@ -57,11 +65,11 @@ function datalkemi_enqueue_assets() {
 		true
 	);
 
-	// Localize AJAX data (contact form + reactions)
+	// Localize AJAX data (contact form + reactions + newsletter)
 	wp_localize_script( 'datalkemi-main-js', 'DK_AJAX', [
-		'url'            => admin_url( 'admin-ajax.php' ),
-		'contact_nonce'  => wp_create_nonce( 'dk_contact_submit' ),
-		'reaction_nonce' => wp_create_nonce( 'dk_post_reaction' ),
+		'url'              => admin_url( 'admin-ajax.php' ),
+		'contact_nonce'    => wp_create_nonce( 'dk_contact_submit' ),
+		'reaction_nonce'   => wp_create_nonce( 'dk_post_reaction' ),
 	] );
 }
 add_action( 'wp_enqueue_scripts', 'datalkemi_enqueue_assets' );

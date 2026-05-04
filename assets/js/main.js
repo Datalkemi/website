@@ -109,6 +109,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Newsletter form AJAX ───────────────────────────────────────────────
+  const newsletterForm = document.querySelector('.ft-newsletter-form');
+  if (newsletterForm && typeof DK_AJAX !== 'undefined') {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn      = newsletterForm.querySelector('.ft-newsletter-btn');
+      const feedback = newsletterForm.querySelector('.ft-newsletter-feedback');
+      const fieldRow = newsletterForm.querySelector('.ft-newsletter-field-row');
+      const privacy  = newsletterForm.querySelector('.ft-newsletter-privacy');
+      const origText = btn.textContent;
+
+      btn.disabled    = true;
+      btn.textContent = 'Subscribing…';
+      feedback.className   = 'ft-newsletter-feedback';
+      feedback.textContent = '';
+
+      const data = new FormData(newsletterForm);
+      data.set('page_uri',  window.location.href);
+      data.set('page_name', document.title);
+
+      try {
+        const res  = await fetch(DK_AJAX.url, { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          if (fieldRow) fieldRow.style.display = 'none';
+          if (privacy)  privacy.style.display  = 'none';
+          feedback.className   = 'ft-newsletter-feedback is-success';
+          feedback.textContent = "Thanks. You’re subscribed.";
+        } else {
+          const msgs = {
+            invalid_email: 'Please enter a valid email address.',
+            rate_limited:  'Too many attempts. Please try again later.',
+          };
+          feedback.className   = 'ft-newsletter-feedback is-error';
+          feedback.textContent = msgs[json.data] || 'Something went wrong. Please try again or email info@datalkemi.com.';
+          btn.disabled    = false;
+          btn.textContent = origText;
+        }
+      } catch {
+        feedback.className   = 'ft-newsletter-feedback is-error';
+        feedback.textContent = 'Something went wrong. Please try again or email info@datalkemi.com.';
+        btn.disabled    = false;
+        btn.textContent = origText;
+      }
+    });
+  }
+
   // ── Post reactions (likes / dislikes) ───────────────────────────────────
   if (typeof DK_AJAX !== 'undefined') {
     document.querySelectorAll('.reaction-btn[data-reaction]').forEach(btn => {

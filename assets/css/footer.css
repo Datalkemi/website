@@ -1,0 +1,446 @@
+/**
+ * footer.css — Datalkemi Footer Styles
+ *
+ * Loaded site-wide via enqueue.php. All selectors use the ft- prefix to
+ * isolate from legacy footer-* classes still present in main.css.
+ * Uses global --color-* variables defined in style.css.
+ *
+ * @package Datalkemi
+ * @since   2.0.0
+ */
+
+/* ==========================================================================
+   1. FOOTER SHELL — override Astra + legacy main.css defaults
+   ========================================================================== */
+
+#colophon.ft-footer,
+.ft-footer {
+	background: #0c1118 !important;
+	border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+	padding: 0 !important;
+	color: var(--color-text) !important;
+}
+
+/* ==========================================================================
+   2. SHARED CONTAINER
+   ========================================================================== */
+
+.ft-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   3. TOP BAND — five-column grid
+   ========================================================================== */
+
+.ft-columns {
+	padding: 4rem 0 3.5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.ft-grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+	gap: 3rem;
+	align-items: start;
+}
+
+/* Brand column */
+
+.ft-logo-link {
+	display: inline-block;
+	margin-bottom: 1.25rem;
+	text-decoration: none !important;
+}
+
+.ft-logo {
+	height: 2.5rem;
+	width: auto;
+	display: block;
+}
+
+.ft-tagline {
+	font-size: 0.875rem;
+	line-height: 1.7;
+	color: var(--color-text-muted) !important;
+	-webkit-text-fill-color: var(--color-text-muted) !important;
+	margin: 0 0 1.5rem;
+	max-width: 280px;
+}
+
+.ft-btn-primary {
+	display: inline-block;
+	background-color: var(--color-primary);
+	color: #ffffff !important;
+	-webkit-text-fill-color: #ffffff !important;
+	font-size: 0.875rem;
+	font-weight: 600;
+	padding: 0.75rem 1.5rem;
+	border-radius: 6px;
+	border: 2px solid var(--color-primary);
+	text-decoration: none !important;
+	transition: background-color 0.2s, border-color 0.2s;
+	margin-bottom: 1.5rem;
+}
+
+.ft-btn-primary:hover {
+	background-color: #0272ae !important;
+	border-color: #0272ae !important;
+	color: #ffffff !important;
+	-webkit-text-fill-color: #ffffff !important;
+}
+
+.ft-btn-primary:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 3px;
+}
+
+.ft-social {
+	display: flex;
+	gap: 0.75rem;
+	align-items: center;
+}
+
+.ft-social-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.125rem;
+	height: 2.125rem;
+	border-radius: 6px;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--color-text-muted) !important;
+	-webkit-text-fill-color: currentColor !important;
+	transition: background-color 0.2s, color 0.2s;
+	text-decoration: none !important;
+}
+
+.ft-social-link:hover {
+	background: rgba(2, 132, 199, 0.18);
+	color: var(--color-primary) !important;
+	-webkit-text-fill-color: currentColor !important;
+}
+
+.ft-social-link:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}
+
+/* Service and company columns */
+
+.ft-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.ft-col-heading {
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	color: var(--color-text) !important;
+	-webkit-text-fill-color: var(--color-text) !important;
+	margin: 0 0 1rem;
+}
+
+.ft-nav {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: flex;
+	flex-direction: column;
+	gap: 0.625rem;
+}
+
+.ft-nav a {
+	font-size: 0.875rem;
+	line-height: 1.4;
+	color: var(--color-text-muted) !important;
+	-webkit-text-fill-color: var(--color-text-muted) !important;
+	text-decoration: none !important;
+	transition: color 0.15s;
+}
+
+.ft-nav a:hover {
+	color: var(--color-primary) !important;
+	-webkit-text-fill-color: var(--color-primary) !important;
+}
+
+.ft-nav a:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* ==========================================================================
+   4. MIDDLE BAND — newsletter signup
+   ========================================================================== */
+
+.ft-newsletter {
+	padding: 3rem 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.ft-newsletter-inner {
+	display: grid;
+	grid-template-columns: 1.4fr 1fr;
+	gap: 3rem;
+	align-items: center;
+}
+
+.ft-newsletter-title {
+	font-size: 1.0625rem;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--color-text) !important;
+	-webkit-text-fill-color: var(--color-text) !important;
+	margin: 0;
+}
+
+.ft-newsletter-form-wrap {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.ft-newsletter-field-row {
+	display: flex;
+	gap: 0.5rem;
+	align-items: stretch;
+}
+
+.ft-newsletter-input {
+	flex: 1;
+	min-width: 0;
+	background: rgba(255, 255, 255, 0.05) !important;
+	border: 1px solid rgba(255, 255, 255, 0.12) !important;
+	border-radius: 6px !important;
+	color: var(--color-text) !important;
+	-webkit-text-fill-color: var(--color-text) !important;
+	font-family: 'Inter', sans-serif !important;
+	font-size: 0.875rem !important;
+	padding: 0.75rem 1rem !important;
+	transition: border-color 0.2s, box-shadow 0.2s !important;
+	outline: none !important;
+}
+
+.ft-newsletter-input::placeholder {
+	color: var(--color-text-muted) !important;
+	-webkit-text-fill-color: var(--color-text-muted) !important;
+	opacity: 1 !important;
+}
+
+.ft-newsletter-input:focus {
+	border-color: var(--color-primary) !important;
+	box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18) !important;
+}
+
+.ft-newsletter-btn {
+	background-color: var(--color-primary) !important;
+	color: #ffffff !important;
+	-webkit-text-fill-color: #ffffff !important;
+	font-family: 'Inter', sans-serif !important;
+	font-size: 0.875rem !important;
+	font-weight: 600 !important;
+	padding: 0.75rem 1.25rem !important;
+	border: none !important;
+	border-radius: 6px !important;
+	cursor: pointer !important;
+	white-space: nowrap;
+	transition: background-color 0.2s !important;
+	line-height: 1 !important;
+}
+
+.ft-newsletter-btn:hover {
+	background-color: #0272ae !important;
+}
+
+.ft-newsletter-btn:focus-visible {
+	outline: 2px solid var(--color-primary) !important;
+	outline-offset: 3px !important;
+}
+
+.ft-newsletter-btn:disabled {
+	opacity: 0.6 !important;
+	cursor: not-allowed !important;
+}
+
+.ft-newsletter-privacy {
+	font-size: 0.75rem;
+	color: var(--color-text-muted) !important;
+	-webkit-text-fill-color: var(--color-text-muted) !important;
+	margin: 0;
+	line-height: 1.55;
+}
+
+.ft-newsletter-feedback {
+	font-size: 0.875rem;
+	line-height: 1.5;
+	min-height: 1.25rem;
+}
+
+.ft-newsletter-feedback.is-success {
+	color: #4ade80 !important;
+	-webkit-text-fill-color: #4ade80 !important;
+}
+
+.ft-newsletter-feedback.is-error {
+	color: #f87171 !important;
+	-webkit-text-fill-color: #f87171 !important;
+}
+
+/* Honeypot: visually hidden, inaccessible to assistive technology */
+.ft-honeypot {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px !important;
+	height: 1px !important;
+	overflow: hidden !important;
+	opacity: 0 !important;
+	pointer-events: none !important;
+}
+
+/* Admin-only misconfiguration notice */
+.ft-admin-notice {
+	font-size: 0.75rem;
+	color: #f59e0b !important;
+	-webkit-text-fill-color: #f59e0b !important;
+	background: rgba(245, 158, 11, 0.08);
+	border: 1px solid rgba(245, 158, 11, 0.25);
+	border-radius: 4px;
+	padding: 0.5rem 0.75rem;
+	margin: 0 0 0.75rem;
+}
+
+/* ==========================================================================
+   5. BOTTOM BAND — legal row
+   ========================================================================== */
+
+.ft-legal {
+	padding: 1.375rem 0;
+}
+
+.ft-legal-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.ft-legal-left {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.ft-copy,
+.ft-abn,
+.ft-location {
+	font-size: 0.8125rem;
+	color: var(--color-text-muted) !important;
+	-webkit-text-fill-color: var(--color-text-muted) !important;
+}
+
+.ft-legal-sep {
+	font-size: 0.8125rem;
+	color: rgba(255, 255, 255, 0.2) !important;
+	-webkit-text-fill-color: rgba(255, 255, 255, 0.2) !important;
+	user-select: none;
+}
+
+.ft-legal-right {
+	display: flex;
+	align-items: center;
+	gap: 1.375rem;
+	flex-wrap: wrap;
+}
+
+.ft-legal-right a,
+.ft-portal-link {
+	font-size: 0.8125rem;
+	color: var(--color-text-muted) !important;
+	-webkit-text-fill-color: var(--color-text-muted) !important;
+	text-decoration: none !important;
+	transition: color 0.15s;
+}
+
+.ft-legal-right a:hover,
+.ft-portal-link:hover {
+	color: var(--color-primary) !important;
+	-webkit-text-fill-color: var(--color-primary) !important;
+}
+
+.ft-legal-right a:focus-visible,
+.ft-portal-link:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE
+   ========================================================================== */
+
+/* Large tablet: keep brand full row, wrap last two service cols */
+@media (max-width: 1100px) {
+	.ft-grid {
+		grid-template-columns: 2fr 1fr 1fr;
+		gap: 2.5rem 2rem;
+	}
+
+	/* Cols 4 (Digital) and 5 (Company) continue the 3-col flow naturally */
+}
+
+/* Tablet: brand spans full width, cols below in 2-col */
+@media (max-width: 768px) {
+	.ft-grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+
+	.ft-brand {
+		grid-column: 1 / -1;
+	}
+
+	.ft-tagline {
+		max-width: 100%;
+	}
+
+	.ft-newsletter-inner {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+	.ft-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.ft-columns {
+		padding: 3rem 0 2.5rem;
+	}
+
+	.ft-newsletter-field-row {
+		flex-direction: column;
+	}
+
+	.ft-newsletter-btn {
+		width: 100% !important;
+	}
+
+	.ft-legal-inner {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.875rem;
+	}
+
+	.ft-legal-right {
+		gap: 0.875rem;
+	}
+}
