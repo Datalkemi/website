@@ -71,10 +71,10 @@
 	transition: background-color 0.2s, color 0.2s, border-color 0.2s, gap 0.2s;
 }
 
-/* Primary button */
+/* Primary button — !important on color overrides Astra's global link colour */
 .hp-btn-primary {
 	background-color: var(--hp-primary);
-	color: #ffffff;
+	color: #ffffff !important;
 	padding: 0.875rem 2rem;
 	border-radius: 8px;
 	border: 2px solid var(--hp-primary);
@@ -83,7 +83,7 @@
 .hp-btn-primary:hover {
 	background-color: #0272ae;
 	border-color: #0272ae;
-	color: #ffffff;
+	color: #ffffff !important;
 }
 
 .hp-btn-primary:focus-visible {
@@ -200,18 +200,52 @@
 .hp-hero-overlay {
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(
-		160deg,
-		rgba(3, 7, 18, 0.82) 0%,
-		rgba(3, 7, 18, 0.65) 60%,
-		rgba(3, 7, 18, 0.75) 100%
-	);
-	z-index: 0;
+	background:
+		radial-gradient(ellipse 100% 80% at 50% 50%, rgba(3, 7, 18, 0.78) 0%, rgba(3, 7, 18, 0.97) 100%),
+		linear-gradient(180deg, rgba(3, 7, 18, 0.60) 0%, rgba(3, 7, 18, 0.95) 100%);
+	z-index: 1;
+}
+
+/* Dot grid texture */
+.hp-hero::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+	background-size: 30px 30px;
+	z-index: 2;
+	pointer-events: none;
+}
+
+/* Colour glow blobs */
+.hp-hero-orb {
+	position: absolute;
+	border-radius: 50%;
+	filter: blur(90px);
+	pointer-events: none;
+}
+
+.hp-hero-orb--1 {
+	width: 560px;
+	height: 560px;
+	top: -140px;
+	right: -80px;
+	background: radial-gradient(circle, rgba(2, 132, 199, 0.22) 0%, transparent 70%);
+	z-index: 3;
+}
+
+.hp-hero-orb--2 {
+	width: 420px;
+	height: 420px;
+	bottom: -60px;
+	left: 5%;
+	background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, transparent 70%);
+	z-index: 3;
 }
 
 .hp-hero .hp-container {
 	position: relative;
-	z-index: 1;
+	z-index: 4;
 }
 
 .hp-hero-inner {
