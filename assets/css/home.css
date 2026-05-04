@@ -354,6 +354,174 @@
 	line-height: 1.55;
 }
 
+/* Dashboard mockup — hero right column */
+
+.hp-dash {
+	background: rgba(10, 16, 30, 0.82);
+	border: 1px solid rgba(2, 132, 199, 0.25);
+	border-radius: 14px;
+	overflow: hidden;
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+}
+
+/* Window chrome */
+.hp-dash-chrome {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.875rem 1.25rem;
+	background: rgba(255, 255, 255, 0.04);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hp-dash-dot {
+	width: 0.625rem;
+	height: 0.625rem;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.hp-dash-dot--red    { background: #ff5f57; }
+.hp-dash-dot--yellow { background: #febc2e; }
+.hp-dash-dot--green  { background: #28c840; }
+
+.hp-dash-chrome-title {
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--hp-text-faint);
+	margin-left: 0.5rem;
+	letter-spacing: 0.02em;
+}
+
+/* KPI row */
+.hp-dash-kpis {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hp-dash-kpi {
+	padding: 1rem 1.25rem;
+	border-right: 1px solid rgba(255, 255, 255, 0.06);
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.hp-dash-kpi:last-child {
+	border-right: none;
+}
+
+.hp-dash-kpi-label {
+	font-size: 0.6875rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--hp-text-faint);
+}
+
+.hp-dash-kpi-value {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--hp-text);
+	line-height: 1;
+}
+
+.hp-dash-kpi-delta {
+	font-size: 0.6875rem;
+	font-weight: 600;
+}
+
+.hp-dash-delta--up   { color: #4ade80; }
+.hp-dash-delta--down { color: #f87171; }
+
+/* Bar chart */
+.hp-dash-chart {
+	padding: 1.25rem 1.25rem 0.75rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hp-dash-chart-bars {
+	display: flex;
+	align-items: flex-end;
+	gap: 0.5rem;
+	height: 90px;
+}
+
+.hp-dash-bar-col {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 0.375rem;
+	height: 100%;
+}
+
+.hp-dash-bar {
+	width: 100%;
+	background: rgba(2, 132, 199, 0.3);
+	border-radius: 3px 3px 0 0;
+	min-height: 6px;
+}
+
+.hp-dash-bar--accent {
+	background: var(--hp-primary);
+}
+
+.hp-dash-bar-label {
+	font-size: 0.625rem;
+	color: var(--hp-text-faint);
+	font-weight: 500;
+}
+
+/* Data table */
+.hp-dash-table {
+	padding: 0.75rem 1.25rem 1.25rem;
+}
+
+.hp-dash-row {
+	display: grid;
+	grid-template-columns: 1fr 0.7fr 0.55fr;
+	align-items: center;
+	padding: 0.45rem 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+	gap: 0.5rem;
+}
+
+.hp-dash-row:last-child {
+	border-bottom: none;
+}
+
+.hp-dash-row--head span {
+	font-size: 0.625rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	color: var(--hp-text-faint);
+}
+
+.hp-dash-row:not(.hp-dash-row--head) span {
+	font-size: 0.75rem;
+	color: var(--hp-text-muted);
+}
+
+.hp-dash-pill {
+	display: inline-block;
+	font-size: 0.625rem !important;
+	font-weight: 700 !important;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	border-radius: 100px;
+	padding: 0.2rem 0.5rem;
+}
+
+.hp-dash-pill--ok   { background: rgba(74, 222, 128, 0.12); color: #4ade80 !important; }
+.hp-dash-pill--warn { background: rgba(251, 191, 36, 0.12);  color: #fbbf24 !important; }
+
 /* ==========================================================================
    7. LOGO STRIP
    ========================================================================== */
@@ -386,12 +554,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	filter: grayscale(1) opacity(0.45);
+	filter: brightness(0) invert(1) opacity(0.5);
 	transition: filter 0.25s;
 }
 
 .hp-logo-item:hover {
-	filter: grayscale(0) opacity(1);
+	filter: brightness(0) invert(1) opacity(0.9);
 }
 
 .hp-logo-item img {
@@ -834,7 +1002,7 @@
 }
 
 /* ==========================================================================
-   14. ABOUT SNIPPET — single column
+   14. ABOUT SNIPPET — two-column: text left, credentials right
    ========================================================================== */
 
 .hp-about {
@@ -842,8 +1010,11 @@
 	background: var(--hp-surface);
 }
 
-.hp-about-text {
-	max-width: 720px;
+.hp-about-layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 5rem;
+	align-items: start;
 }
 
 .hp-about h2 {
@@ -863,6 +1034,65 @@
 
 .hp-about p:last-of-type {
 	margin-bottom: 2rem;
+}
+
+/* Credentials panel */
+.hp-about-creds {
+	padding-top: 0.5rem;
+}
+
+.hp-cred-list {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: flex;
+	flex-direction: column;
+}
+
+.hp-cred-item {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+	padding: 1.25rem 0;
+	border-bottom: 1px solid var(--hp-border);
+}
+
+.hp-cred-item:first-child {
+	padding-top: 0;
+}
+
+.hp-cred-item:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.hp-cred-icon {
+	flex-shrink: 0;
+	width: 2.25rem;
+	height: 2.25rem;
+	background: rgba(2, 132, 199, 0.1);
+	border: 1px solid rgba(2, 132, 199, 0.2);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--hp-primary);
+	margin-top: 0.1rem;
+}
+
+.hp-cred-item strong {
+	display: block;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--hp-text);
+	margin-bottom: 0.25rem;
+}
+
+.hp-cred-item span {
+	display: block;
+	font-size: 0.8125rem;
+	color: var(--hp-text-muted);
+	line-height: 1.5;
 }
 
 /* ==========================================================================
@@ -1013,6 +1243,12 @@
 	.hp-insights-header {
 		flex-direction: column;
 		gap: 1rem;
+	}
+
+	/* About */
+	.hp-about-layout {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
 	}
 }
 
