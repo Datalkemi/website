@@ -2,15 +2,6 @@
 /**
  * Template Part: Homepage Problem Section
  *
- * Section heading options  -  rendering Option A:
- *
- * A (active): Most businesses are held back by the systems they rely on.
- *
- * B: The tools that got you here will not take you to the next stage.
- *
- * C: When your systems are slowing the business down, software is usually
- *    the answer.
- *
  * @package Datalkemi
  * @since   2.0.0
  */
@@ -86,7 +77,7 @@
 
 				<h3><?php esc_html_e( 'Systems that do not talk to each other', 'datalkemi' ); ?></h3>
 				<p>
-					<?php esc_html_e( 'Your CRM, finance tools, project management software, and custom spreadsheets each hold part of the picture. The missing piece is a layer that connects them and keeps the data consistent.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Your CRM, finance tools, and custom spreadsheets each hold part of the picture. The missing piece is a layer that connects them and keeps the data consistent.', 'datalkemi' ); ?>
 				</p>
 			</div><!-- /.hp-problem-card -->
 
