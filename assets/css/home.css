@@ -255,7 +255,7 @@
 }
 
 .hp-hero-headline {
-	font-size: clamp(2.25rem, 5vw, 4rem);
+	font-size: clamp(1.875rem, 3.5vw, 2.75rem);
 	font-weight: 800;
 	line-height: 1.12;
 	letter-spacing: -0.025em;

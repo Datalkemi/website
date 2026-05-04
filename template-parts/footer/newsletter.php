@@ -5,13 +5,13 @@
  * Submits via AJAX to wp_ajax_datalkemi_newsletter (inc/newsletter.php).
  * Falls back to a standard POST when JavaScript is unavailable.
  *
- * Heading options  -  rendering Option A:
+ * Heading options  -  rendering Option B:
  *
- * A (active): Practical insights for finance businesses building better systems.
+ * A: Practical insights for businesses building better systems.
  *
- * B: Ideas and examples from finance and data projects, sent occasionally.
+ * B (active): Engineering and operations writing, sent occasionally.
  *
- * C: How finance businesses use software and data to work better. Sent monthly.
+ * C: Notes on building software and data infrastructure that lasts.
  *
  * @package Datalkemi
  * @since   2.0.0
@@ -30,13 +30,13 @@ $show_notice = ( ! $hs_portal || ! $hs_form ) && current_user_can( 'manage_optio
 				<h3 class="ft-newsletter-title">
 					<?php
 					/*
-					 * Heading  -  rendering Option A.
+					 * Heading  -  rendering Option B.
 					 *
-					 * A (active): Practical insights for finance businesses building better systems.
-					 * B: Ideas and examples from finance and data projects, sent occasionally.
-					 * C: How finance businesses use software and data to work better. Sent monthly.
+					 * A: Practical insights for businesses building better systems.
+					 * B (active): Engineering and operations writing, sent occasionally.
+					 * C: Notes on building software and data infrastructure that lasts.
 					 */
-					esc_html_e( 'Practical insights for finance businesses building better systems.', 'datalkemi' );
+					esc_html_e( 'Engineering and operations writing, sent occasionally.', 'datalkemi' );
 					?>
 				</h3>
 			</div>
