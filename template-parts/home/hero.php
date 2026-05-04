@@ -2,6 +2,34 @@
 /**
  * Template Part: Homepage Hero
  *
+ * Geography moved from the eyebrow to the sub-headline.
+ * Eyebrow now shows capability categories.
+ *
+ * Headline options  -  rendering Option A:
+ *
+ * A (active): Software backed by data engineering.
+ *             Accent span on "data engineering".
+ *
+ * B: Custom software, engineered like infrastructure.
+ *    Accent span on "engineered like infrastructure".
+ *
+ * C: We build software that's engineered, not assembled.
+ *    Accent span on "engineered".
+ *
+ * Sub-headline options  -  rendering Option C:
+ *
+ * A: We build custom web applications, data platforms, and operational
+ *    software for businesses that need purpose-built systems. Perth-based,
+ *    working with clients across Australia and beyond.
+ *
+ * B: Web applications, data platforms, document intelligence, and internal
+ *    tools, built properly, integrated end-to-end. Perth-based, working
+ *    with clients across Australia and beyond.
+ *
+ * C (active): Custom software and data systems, built end-to-end by people
+ *             who understand both. Perth-based, working with clients across
+ *             Australia and beyond.
+ *
  * @package Datalkemi
  * @since   2.0.0
  */
@@ -15,15 +43,27 @@
 		<div class="hp-hero-inner">
 
 			<span class="hp-eyebrow">
-				<?php esc_html_e( 'Perth-based. Working with clients across Australia and beyond.', 'datalkemi' ); ?>
+				<?php esc_html_e( 'Custom software · Data systems · Internal tools', 'datalkemi' ); ?>
 			</span>
 
+			<!--
+				Headline options:
+				A (active): Software backed by data engineering.
+				B: Custom software, engineered like infrastructure.
+				C: We build software that's engineered, not assembled.
+			-->
 			<h1 id="hero-headline" class="hp-hero-headline">
-				<?php esc_html_e( 'We build the systems your business depends on — ', 'datalkemi' ); ?><span class="hp-accent-text"><?php esc_html_e( 'properly engineered', 'datalkemi' ); ?></span><?php esc_html_e( ', end-to-end.', 'datalkemi' ); ?>
+				<?php esc_html_e( 'Software backed by ', 'datalkemi' ); ?><span class="hp-accent-text"><?php esc_html_e( 'data engineering', 'datalkemi' ); ?></span><?php esc_html_e( '.', 'datalkemi' ); ?>
 			</h1>
 
+			<!--
+				Sub-headline options:
+				A: We build custom web applications, data platforms, and operational software for businesses that need purpose-built systems. Perth-based, working with clients across Australia and beyond.
+				B: Web applications, data platforms, document intelligence, and internal tools, built properly, integrated end-to-end. Perth-based, working with clients across Australia and beyond.
+				C (active): Custom software and data systems, built end-to-end by people who understand both. Perth-based, working with clients across Australia and beyond.
+			-->
 			<p class="hp-hero-sub">
-				<?php esc_html_e( 'From web applications to data pipelines, document intelligence, and internal tools — we build the systems that run your operations. Perth-based, working with clients across Australia and beyond.', 'datalkemi' ); ?>
+				<?php esc_html_e( 'Custom software and data systems, built end-to-end by people who understand both. Perth-based, working with clients across Australia and beyond.', 'datalkemi' ); ?>
 			</p>
 
 			<div class="hp-hero-actions">
