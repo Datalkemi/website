@@ -71,7 +71,7 @@
 
 				<div class="hp-hero-actions">
 					<a
-						href="BOOKING_URL_PLACEHOLDER"
+						href="https://meetings-ap1.hubspot.com/naufal"
 						class="hp-btn-primary"
 					>
 						<?php esc_html_e( 'Book a discovery call', 'datalkemi' ); ?>

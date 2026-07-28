@@ -34,7 +34,7 @@
 					</p>
 				</div><!-- /.ft-brand-top -->
 
-				<a href="BOOKING_URL_PLACEHOLDER" class="ft-btn-primary">
+				<a href="https://meetings-ap1.hubspot.com/naufal" class="ft-btn-primary">
 					<?php esc_html_e( 'Book a discovery call', 'datalkemi' ); ?>
 				</a>
 

@@ -30,7 +30,5 @@ Marketing website for Datalkemi, a Perth-based (Cannington, WA) agency: custom s
 - Project planning and Build Log live in Notion (parent page "Website"). Update the Tasks database and Build Log after a change.
 
 ## Open items before go-live
-- Replace `BOOKING_URL_PLACEHOLDER` (hero, cta-band, final-cta, footer/columns) with the real HubSpot Meetings link.
-- Add `assets/img/og-home.jpg` (1200x630).
 - Set `DATALKEMI_ABN` in wp-config.php (footer legal ABN line hidden until set).
 - Real Projects and Testimonials content, real blog posts. Configure GA4, Search Console, Clarity. Then deploy to Hostinger.
