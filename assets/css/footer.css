@@ -55,16 +55,32 @@
 	align-items: flex-start;
 }
 
+.ft-brand-top {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	width: 100%;
+	margin-bottom: 1.5rem;
+}
+
 .ft-logo-link {
-	display: inline-block;
-	margin-bottom: 1rem;
+	flex: 0 0 30%;
+	display: block;
+	margin: 0;
 	text-decoration: none !important;
 }
 
 .ft-logo {
-	height: 2.75rem;
-	width: auto;
+	width: 100%;
+	height: auto;
+	max-width: 96px;
 	display: block;
+}
+
+.ft-brand-top .ft-tagline {
+	flex: 1 1 70%;
+	margin: 0;
+	max-width: none;
 }
 
 .ft-tagline {

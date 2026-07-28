@@ -2,18 +2,8 @@
 /**
  * Template Part: Footer  -  Columns (top band)
  *
- * Five-column grid: brand (2fr) + three service categories (1fr each) + company (1fr).
- *
- * Tagline options  -  rendering Option A:
- *
- * A (active): We build the software and data systems businesses depend on.
- *             Perth-based, working with clients across Australia and beyond.
- *
- * B: Custom software and data infrastructure, built properly and integrated
- *    end-to-end. Perth-based, working Australia-wide and beyond.
- *
- * C: The systems that run your operations should be engineered, not cobbled
- *    together. That is what we build. Perth-based.
+ * Five-column grid: brand (1.5fr) + three service categories (1fr each) + company (1fr).
+ * Brand column: D logo on the left (~30%), tagline on the right (~70%).
  *
  * @package Datalkemi
  * @since   2.0.0
@@ -24,38 +14,25 @@
 	<div class="ft-container">
 		<div class="ft-grid">
 
-			<!-- ── Column 1: Brand ── -->
+			<!-- Column 1: Brand -->
 			<div class="ft-brand">
 
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="ft-logo-link" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-					<img
-						src="<?php echo esc_url( DATALKEMI_URI . '/assets/images/logos/Logos/Logo_1.png' ); ?>"
-						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
-						class="ft-logo"
-						width="48"
-						height="48"
-						loading="lazy"
-					/>
-				</a>
+				<div class="ft-brand-top">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="ft-logo-link" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+						<img
+							src="<?php echo esc_url( DATALKEMI_URI . '/assets/images/logos/Logos/Logo_1.png' ); ?>"
+							alt=""
+							class="ft-logo"
+							width="96"
+							height="96"
+							loading="lazy"
+						/>
+					</a>
 
-				<p class="ft-tagline">
-					<?php
-					/*
-					 * Tagline  -  rendering Option A.
-					 * Change the esc_html_e() call below to switch options.
-					 *
-					 * A (active): We build the software and data systems businesses depend on.
-					 *             Perth-based, working with clients across Australia and beyond.
-					 *
-					 * B: Custom software and data infrastructure, built properly and integrated
-					 *    end-to-end. Perth-based, working Australia-wide and beyond.
-					 *
-					 * C: The systems that run your operations should be engineered, not cobbled
-					 *    together. That is what we build. Perth-based.
-					 */
-					esc_html_e( 'We build the software and data systems businesses depend on. Perth-based, working with clients across Australia and beyond.', 'datalkemi' );
-					?>
-				</p>
+					<p class="ft-tagline">
+						<?php esc_html_e( 'We build the software and data systems businesses depend on. Perth-based, working with clients across Australia and beyond.', 'datalkemi' ); ?>
+					</p>
+				</div><!-- /.ft-brand-top -->
 
 				<a href="BOOKING_URL_PLACEHOLDER" class="ft-btn-primary">
 					<?php esc_html_e( 'Book a discovery call', 'datalkemi' ); ?>
@@ -84,7 +61,7 @@
 
 			</div><!-- /.ft-brand -->
 
-			<!-- ── Column 2: Custom Software ── -->
+			<!-- Column 2: Custom Software -->
 			<div class="ft-col">
 				<p class="ft-col-heading"><?php esc_html_e( 'Custom software', 'datalkemi' ); ?></p>
 				<ul class="ft-nav">
@@ -95,7 +72,7 @@
 				</ul>
 			</div><!-- /.ft-col -->
 
-			<!-- ── Column 3: Data and Intelligence ── -->
+			<!-- Column 3: Data and Intelligence -->
 			<div class="ft-col">
 				<p class="ft-col-heading"><?php esc_html_e( 'Data and intelligence', 'datalkemi' ); ?></p>
 				<ul class="ft-nav">
@@ -106,7 +83,7 @@
 				</ul>
 			</div><!-- /.ft-col -->
 
-			<!-- ── Column 4: Digital Presence ── -->
+			<!-- Column 4: Digital Presence -->
 			<div class="ft-col">
 				<p class="ft-col-heading"><?php esc_html_e( 'Digital presence', 'datalkemi' ); ?></p>
 				<ul class="ft-nav">
@@ -117,7 +94,7 @@
 				</ul>
 			</div><!-- /.ft-col -->
 
-			<!-- ── Column 5: Company ── -->
+			<!-- Column 5: Company -->
 			<div class="ft-col">
 				<p class="ft-col-heading"><?php esc_html_e( 'Company', 'datalkemi' ); ?></p>
 				<ul class="ft-nav">
