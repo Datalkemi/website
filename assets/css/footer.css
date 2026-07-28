@@ -168,7 +168,7 @@
 	text-transform: uppercase;
 	color: var(--color-text) !important;
 	-webkit-text-fill-color: var(--color-text) !important;
-	margin: 0 0 1.5rem;
+	margin: 0 0 1rem !important;
 }
 
 .ft-nav {
