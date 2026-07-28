@@ -42,8 +42,8 @@
 
 .ft-grid {
 	display: grid;
-	grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-	gap: 2.5rem;
+	grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+	gap: 2rem;
 	align-items: start;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .ft-logo {
-	height: 2.5rem;
+	height: 2.75rem;
 	width: auto;
 	display: block;
 }
