@@ -42,7 +42,7 @@
 
 .ft-grid {
 	display: grid;
-	grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1.9fr 1fr 1fr 1fr 1fr;
 	gap: 2rem;
 	align-items: start;
 }
@@ -168,7 +168,7 @@
 	text-transform: uppercase;
 	color: var(--color-text) !important;
 	-webkit-text-fill-color: var(--color-text) !important;
-	margin: 0 0 1rem;
+	margin: 0 0 1.5rem;
 }
 
 .ft-nav {
