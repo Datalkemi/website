@@ -5,6 +5,18 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Version string for a theme asset, based on its file modification time.
+ * Guarantees browsers re-fetch the file whenever it changes.
+ *
+ * @param string $rel Path relative to the theme root, for example '/assets/css/footer.css'.
+ * @return string|int filemtime when the file exists, otherwise the theme version.
+ */
+function datalkemi_asset_ver( $rel ) {
+	$path = get_stylesheet_directory() . $rel;
+	return file_exists( $path ) ? filemtime( $path ) : DATALKEMI_VERSION;
+}
+
 function datalkemi_enqueue_assets() {
 	// Parent theme (Astra)
 	wp_enqueue_style(
@@ -19,7 +31,7 @@ function datalkemi_enqueue_assets() {
 		'datalkemi-style',
 		DATALKEMI_URI . '/style.css',
 		[ 'astra-parent-style' ],
-		DATALKEMI_VERSION
+		datalkemi_asset_ver( '/style.css' )
 	);
 
 	// Google Fonts Inter
@@ -35,7 +47,7 @@ function datalkemi_enqueue_assets() {
 		'datalkemi-main',
 		DATALKEMI_URI . '/assets/css/main.css',
 		[ 'datalkemi-style' ],
-		DATALKEMI_VERSION
+		datalkemi_asset_ver( '/assets/css/main.css' )
 	);
 
 	// Homepage-only stylesheet
@@ -44,7 +56,7 @@ function datalkemi_enqueue_assets() {
 			'datalkemi-home',
 			DATALKEMI_URI . '/assets/css/home.css',
 			[ 'datalkemi-main' ],
-			DATALKEMI_VERSION
+			datalkemi_asset_ver( '/assets/css/home.css' )
 		);
 	}
 
@@ -53,7 +65,7 @@ function datalkemi_enqueue_assets() {
 		'datalkemi-footer',
 		DATALKEMI_URI . '/assets/css/footer.css',
 		[ 'datalkemi-main' ],
-		DATALKEMI_VERSION
+		datalkemi_asset_ver( '/assets/css/footer.css' )
 	);
 
 	// Main JS
@@ -61,7 +73,7 @@ function datalkemi_enqueue_assets() {
 		'datalkemi-main-js',
 		DATALKEMI_URI . '/assets/js/main.js',
 		[],
-		DATALKEMI_VERSION,
+		datalkemi_asset_ver( '/assets/js/main.js' ),
 		true
 	);
 
