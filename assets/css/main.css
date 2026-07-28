@@ -2235,6 +2235,8 @@ a:hover { color: var(--color-accent) !important; }
   background-repeat: no-repeat !important;
   background-position: right 1rem center !important;
   padding-right: 2.5rem !important;
+  line-height: 1.5 !important;
+  height: auto !important;
 }
 
 .quote-form-field input:focus,

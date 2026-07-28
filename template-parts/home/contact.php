@@ -38,7 +38,8 @@ $services = [
 					</div>
 					<div>
 						<p class="contact-info-label"><?php esc_html_e( 'Location', 'datalkemi' ); ?></p>
-						<p style="color:#f9fafb; font-size:0.9375rem; margin:0;"><?php esc_html_e( 'Remote-first. Global reach.', 'datalkemi' ); ?></p>
+						<p style="color:#f9fafb; font-size:0.9375rem; margin:0;"><?php esc_html_e( 'Cannington, Perth WA, Australia', 'datalkemi' ); ?></p>
+						<p class="contact-meta"><?php esc_html_e( 'Perth-based software and data engineering company, working with clients worldwide', 'datalkemi' ); ?></p>
 					</div>
 				</div>
 
