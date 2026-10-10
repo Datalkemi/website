@@ -18,11 +18,11 @@ get_header(); ?>
 							<?php echo esc_html( get_the_date() ); ?>
 						</span>
 					</div>
-					<h1 class="entry-title gradient-text" style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 1.5rem;">
+					<h1 class="entry-title gradient-text" style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 500; margin-bottom: 1.5rem;">
 						<?php the_title(); ?>
 					</h1>
 					<?php if ( has_post_thumbnail() ) : ?>
-						<div class="entry-thumbnail" style="margin-bottom: 2rem; border-radius: 0.5rem; overflow: hidden;">
+						<div class="entry-thumbnail" style="margin-bottom: 2rem; border-radius: var(--radius); overflow: hidden;">
 							<?php the_post_thumbnail( 'large', [ 'style' => 'width:100%; height:auto;' ] ); ?>
 						</div>
 					<?php endif; ?>

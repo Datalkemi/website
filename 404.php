@@ -7,7 +7,7 @@ get_header(); ?>
 <main id="main" class="site-main">
 	<section style="min-height: 70vh; display:flex; align-items:center; justify-content:center; text-align:center; padding: 4rem 1.5rem;">
 		<div>
-			<h1 style="font-size: clamp(5rem, 15vw, 10rem); font-weight:800; line-height:1;" class="gradient-text">404</h1>
+			<h1 style="font-size: clamp(5rem, 15vw, 10rem); font-weight:500; line-height:1;" class="gradient-text">404</h1>
 			<h2 style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem;">
 				<?php esc_html_e( 'Page Not Found', 'datalkemi' ); ?>
 			</h2>

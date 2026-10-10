@@ -140,7 +140,7 @@ $industries = [
 </section>
 
 <!-- Group 2: Data and Intelligence -->
-<section class="dk-section" id="data-intelligence" style="background:rgba(17,24,39,0.95);">
+<section class="dk-section" id="data-intelligence" style="background:var(--bg);">
 	<div class="dk-container">
 		<div class="service-group-header">
 			<span class="service-group-label">Data and Intelligence</span>
@@ -188,10 +188,10 @@ $industries = [
 		<div class="config-promo">
 			<div class="config-promo-text">
 				<p class="section-eyebrow">No Fixed Packages</p>
-				<h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:800; color:#f9fafb; margin-bottom:0.75rem; line-height:1.2;">
+				<h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:500; color:var(--text); margin-bottom:0.75rem; line-height:1.2;">
 					Build exactly what you need.<br>Price it in real time.
 				</h2>
-				<p style="color:#9ca3af; font-size:1.0625rem; max-width:34rem; line-height:1.75;">
+				<p style="color:var(--text-muted); font-size:1.0625rem; max-width:34rem; line-height:1.75;">
 					Use our project configurator to select the features, integrations, and support level your project actually requires. Your estimate updates instantly and we send a full breakdown to your inbox.
 				</p>
 			</div>
@@ -199,14 +199,14 @@ $industries = [
 				<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="dk-btn dk-btn-primary" style="font-size:1.0625rem; padding:1rem 2.25rem;">
 					Open Configurator
 				</a>
-				<p style="color:#6b7280; font-size:0.875rem; margin-top:0.75rem; text-align:center;">Takes about 2 minutes</p>
+				<p style="color:var(--text-muted); font-size:0.875rem; margin-top:0.75rem; text-align:center;">Takes about 2 minutes</p>
 			</div>
 		</div>
 	</div>
 </section>
 
 <!-- Why us -->
-<section class="dk-section" style="background:rgba(17,24,39,0.95);">
+<section class="dk-section" style="background:var(--bg);">
 	<div class="dk-container">
 		<div class="dk-grid-2" style="gap:5rem; align-items:center;">
 			<div>
@@ -232,7 +232,7 @@ $industries = [
 				<div class="usp-item" style="margin-bottom:0.875rem;">
 					<span class="usp-check">&#10003;</span>
 					<div>
-						<strong style="color:#f9fafb; font-size:0.9375rem;"><?php echo esc_html( $p['title'] ); ?></strong>
+						<strong style="color:var(--text); font-size:0.9375rem;"><?php echo esc_html( $p['title'] ); ?></strong>
 						<p class="usp-text" style="margin-top:0.2rem; font-size:0.875rem;"><?php echo esc_html( $p['desc'] ); ?></p>
 					</div>
 				</div>

@@ -1,8 +1,27 @@
 /**
- * Datalkemi — main.js
+ * Datalkemi main.js
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ── Theme toggle (light / dark) ─────────────────────────────────────────
+  const root = document.documentElement;
+  const syncToggleLabels = () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+      btn.setAttribute('aria-pressed', String(isDark));
+      btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    });
+  };
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('dk-theme', next); } catch (e) { /* storage blocked */ }
+      syncToggleLabels();
+    });
+  });
+  syncToggleLabels();
 
   // ── Sticky header ───────────────────────────────────────────────────────
   const header = document.getElementById('masthead');

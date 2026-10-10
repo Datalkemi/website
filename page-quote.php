@@ -42,7 +42,7 @@ $services = [
 			<!-- Form -->
 			<div class="quote-form-col">
 				<div class="dk-glass" style="padding:2.5rem;">
-					<h2 style="font-size:1.5rem; font-weight:700; color:#f9fafb; margin-bottom:1.5rem;">
+					<h2 style="font-size:1.5rem; font-weight:500; color:var(--text); margin-bottom:1.5rem;">
 						<?php esc_html_e( "Tell Us About Your Project", 'datalkemi' ); ?>
 					</h2>
 
@@ -142,14 +142,14 @@ $services = [
 
 				<!-- What happens next -->
 				<div class="dk-glass" style="padding:2rem; margin-bottom:1.5rem;">
-					<h3 style="font-size:1.125rem; font-weight:700; color:#f9fafb; margin-bottom:1.5rem;">
+					<h3 style="font-size:1.125rem; font-weight:500; color:var(--text); margin-bottom:1.5rem;">
 						<?php esc_html_e( 'What Happens Next?', 'datalkemi' ); ?>
 					</h3>
 					<?php foreach ( $what_happens as $step ) : ?>
 						<div class="quote-step">
 							<div class="quote-step-number"><?php echo esc_html( $step['step'] ); ?></div>
 							<div>
-								<h4 style="font-size:0.9375rem; font-weight:600; color:#f9fafb; margin-bottom:0.25rem;">
+								<h4 style="font-size:0.9375rem; font-weight:600; color:var(--text); margin-bottom:0.25rem;">
 									<?php echo esc_html( $step['title'] ); ?>
 								</h4>
 								<p style="font-size:0.875rem; color:var(--color-text-muted); line-height:1.6;">
@@ -162,7 +162,7 @@ $services = [
 
 				<!-- Promises -->
 				<div class="dk-glass" style="padding:2rem; margin-bottom:1.5rem;">
-					<h3 style="font-size:1rem; font-weight:700; color:#f9fafb; margin-bottom:1rem;">
+					<h3 style="font-size:1rem; font-weight:500; color:var(--text); margin-bottom:1rem;">
 						<?php esc_html_e( 'Our Promises to You', 'datalkemi' ); ?>
 					</h3>
 					<?php $promises = [
@@ -180,7 +180,7 @@ $services = [
 
 				<!-- Direct contact -->
 				<div class="dk-glass" style="padding:2rem; text-align:center;">
-					<p style="font-size:0.9375rem; color:#f9fafb; font-weight:600; margin-bottom:0.5rem;">
+					<p style="font-size:0.9375rem; color:var(--text); font-weight:600; margin-bottom:0.5rem;">
 						<?php esc_html_e( 'Prefer to talk first?', 'datalkemi' ); ?>
 					</p>
 					<p style="font-size:0.875rem; color:var(--color-text-muted); margin-bottom:1.25rem;">

@@ -47,6 +47,18 @@ endif;
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<?php if ( ! has_site_icon() ) : // Brand: favicons carry the mark, never the wordmark ?>
+	<link rel="icon" type="image/svg+xml" href="<?php echo esc_url( DATALKEMI_URI . '/assets/brand/mark/Datalkemi_Logo_Colour.svg' ); ?>">
+	<link rel="alternate icon" type="image/png" href="<?php echo esc_url( DATALKEMI_URI . '/assets/brand/mark/Datalkemi_Logo_Colour.png' ); ?>">
+	<?php endif; ?>
+	<script>
+	/* Apply the saved theme before paint so there is no flash. Light is the brand default. */
+	(function () {
+		var t = 'light';
+		try { var s = localStorage.getItem('dk-theme'); if (s === 'light' || s === 'dark') { t = s; } } catch (e) {}
+		document.documentElement.setAttribute('data-theme', t);
+	})();
+	</script>
 	<?php wp_head(); ?>
 </head>
 
@@ -57,13 +69,14 @@ endif;
 	<nav class="site-nav">
 		<!-- Logo -->
 		<div class="nav-brand">
-			<?php if ( has_custom_logo() ) :
-				the_custom_logo();
-			else : ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-title-link">
-					<?php bloginfo( 'name' ); ?>
-				</a>
-			<?php endif; ?>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-logo-link" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+				<img class="nav-logo dk-logo-light"
+					src="<?php echo esc_url( DATALKEMI_URI . '/assets/brand/wordmark-tagline/Datalkemi_Text_Tagline_Colour.svg' ); ?>"
+					alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="200" height="39">
+				<img class="nav-logo dk-logo-dark"
+					src="<?php echo esc_url( DATALKEMI_URI . '/assets/brand/wordmark-tagline/Datalkemi_Text_Tagline_Reverse.svg' ); ?>"
+					alt="" aria-hidden="true" width="200" height="39">
+			</a>
 		</div>
 
 		<!-- Mobile toggle -->
@@ -91,6 +104,11 @@ endif;
 			] ); ?>
 
 			<div class="nav-actions">
+				<button type="button" class="dk-theme-toggle" data-theme-toggle
+					aria-label="<?php esc_attr_e( 'Switch to dark theme', 'datalkemi' ); ?>">
+					<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+					<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+				</button>
 				<?php if ( is_user_logged_in() ) :
 					$user       = wp_get_current_user();
 					$is_client  = in_array( 'client', (array) $user->roles, true );

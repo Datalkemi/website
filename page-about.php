@@ -130,7 +130,7 @@ $process = [
 </section>
 
 <!-- Values section -->
-<section class="dk-section values-section" id="our-values" style="background:rgba(17,24,39,0.95);">
+<section class="dk-section values-section" id="our-values" style="background:var(--bg);">
 	<div class="dk-container">
 		<div class="dk-section-header">
 			<p class="section-eyebrow">What Drives Us</p>
@@ -186,7 +186,7 @@ $process = [
 			<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="dk-btn dk-btn-primary">
 				Configure Your Project
 			</a>
-			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="dk-btn dk-btn-outline" style="border-color:#fff; color:#fff;">
+			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="dk-btn dk-btn-outline" style="border-color:var(--text); color:var(--text);">
 				Contact Us
 			</a>
 		</div>

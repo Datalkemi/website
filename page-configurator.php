@@ -116,7 +116,7 @@ $total_steps = 1 + count( $config ) + 1; // country + sections + summary
 								<span class="btn-loading" hidden>Sending&hellip;</span>
 							</button>
 							<div id="cfg-success" hidden class="cfg-success-msg">
-								<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+								<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent);" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
 								<h3>Quote sent!</h3>
 								<p>Check your inbox. We'll follow up within one business day with a full proposal.</p>
 							</div>

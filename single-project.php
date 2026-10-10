@@ -62,7 +62,7 @@ $related = new WP_Query( [
 			<aside class="project-single-sidebar">
 
 				<div class="dk-glass" style="padding:1.75rem; margin-bottom:1.5rem;">
-					<h3 style="font-size:1rem; font-weight:700; color:#f9fafb; margin-bottom:1.25rem;">
+					<h3 style="font-size:1rem; font-weight:500; color:var(--text); margin-bottom:1.25rem;">
 						<?php esc_html_e( 'Project Details', 'datalkemi' ); ?>
 					</h3>
 					<ul class="project-detail-list">
@@ -89,7 +89,7 @@ $related = new WP_Query( [
 
 				<?php if ( $tech_stack ) : ?>
 					<div class="dk-glass" style="padding:1.75rem; margin-bottom:1.5rem;">
-						<h3 style="font-size:1rem; font-weight:700; color:#f9fafb; margin-bottom:1rem;">
+						<h3 style="font-size:1rem; font-weight:500; color:var(--text); margin-bottom:1rem;">
 							<?php esc_html_e( 'Technology Used', 'datalkemi' ); ?>
 						</h3>
 						<div class="tech-tags">
@@ -101,7 +101,7 @@ $related = new WP_Query( [
 				<?php endif; ?>
 
 				<div class="dk-glass" style="padding:1.75rem; text-align:center;">
-					<p style="color:#f9fafb; font-weight:600; margin-bottom:0.75rem; font-size:0.9375rem;">
+					<p style="color:var(--text); font-weight:600; margin-bottom:0.75rem; font-size:0.9375rem;">
 						<?php esc_html_e( 'Need something similar?', 'datalkemi' ); ?>
 					</p>
 					<a href="<?php echo esc_url( home_url( '/get-a-quote/' ) ); ?>" class="dk-btn dk-btn-primary" style="width:100%; justify-content:center;">
@@ -116,7 +116,7 @@ $related = new WP_Query( [
 
 <!-- Related projects -->
 <?php if ( $related->have_posts() ) : ?>
-<section class="dk-section" style="background:rgba(17,24,39,0.95);">
+<section class="dk-section" style="background:var(--bg);">
 	<div class="dk-container">
 		<div class="dk-section-header">
 			<span class="dk-section-title"><?php esc_html_e( 'More Work', 'datalkemi' ); ?></span>

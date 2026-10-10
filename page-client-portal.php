@@ -9,16 +9,16 @@ get_header();
 <?php if ( ! is_user_logged_in() ) : ?>
 
 	<!-- Login gate -->
-	<section style="min-height:100vh; display:flex; align-items:center; background:linear-gradient(135deg,#070c18 0%,#0d1520 100%); position:relative; overflow:hidden;">
-		<div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(2,132,199,0.15) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;"></div>
-		<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(2,132,199,0.12) 0%,transparent 60%);pointer-events:none;"></div>
+	<section style="min-height:100vh; display:flex; align-items:center; background:var(--bg); position:relative; overflow:hidden;">
+		<div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--tint) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;"></div>
+		<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,var(--tint) 0%,transparent 60%);pointer-events:none;"></div>
 		<div class="dk-container" style="position:relative;z-index:2;display:flex;justify-content:center;padding:2rem 1.5rem;">
 			<div class="dk-glass portal-login-card">
 				<div style="text-align:center; margin-bottom:2rem;">
-					<div style="width:52px;height:52px;border-radius:14px;background:rgba(2,132,199,0.15);border:1px solid rgba(2,132,199,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(2,132,199,0.9)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+					<div style="width:52px;height:52px;border-radius:var(--radius);background:var(--tint);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--action);" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
 					</div>
-					<h1 style="font-size:1.625rem !important; font-weight:700 !important; color:#f9fafb !important; margin:0 0 0.5rem !important; -webkit-text-fill-color:#f9fafb !important;">
+					<h1 style="font-size:1.625rem !important; font-weight:500 !important; color:var(--text) !important; margin:0 0 0.5rem !important; -webkit-text-fill-color:var(--text) !important;">
 						<?php esc_html_e( 'Client Portal', 'datalkemi' ); ?>
 					</h1>
 					<p style="color:var(--color-text-muted); font-size:0.9375rem; margin:0;">
@@ -89,7 +89,7 @@ get_header();
 			<div class="portal-header">
 				<div>
 					<p class="section-eyebrow"><?php esc_html_e( 'Client Portal', 'datalkemi' ); ?></p>
-					<h1 style="font-size:1.75rem !important; font-weight:700 !important; color:#f9fafb; margin:0 !important;">
+					<h1 style="font-size:1.75rem !important; font-weight:500 !important; color:var(--text); margin:0 !important;">
 						<?php printf( esc_html__( 'Welcome back, %s', 'datalkemi' ), esc_html( $user->first_name ?: $user->display_name ) ); ?>
 					</h1>
 				</div>
@@ -205,7 +205,7 @@ get_header();
 			<div class="portal-panel" id="tab-support" hidden>
 				<div class="portal-support-layout">
 					<div>
-						<h3 style="font-size:1.25rem; font-weight:700; color:#f9fafb; margin-bottom:0.5rem;">
+						<h3 style="font-size:1.25rem; font-weight:500; color:var(--text); margin-bottom:0.5rem;">
 							<?php esc_html_e( 'Submit a Support Request', 'datalkemi' ); ?>
 						</h3>
 						<p style="color:var(--color-text-muted); margin-bottom:1.5rem; font-size:0.9375rem;">
@@ -224,7 +224,7 @@ get_header();
 					</div>
 					<div>
 						<div class="dk-glass" style="padding:1.5rem; margin-bottom:1.5rem;">
-							<h4 style="font-size:0.9375rem; font-weight:600; color:#f9fafb; margin-bottom:1rem;">
+							<h4 style="font-size:0.9375rem; font-weight:600; color:var(--text); margin-bottom:1rem;">
 								<?php esc_html_e( 'Quick Contact', 'datalkemi' ); ?>
 							</h4>
 							<p style="color:var(--color-text-muted); font-size:0.875rem; margin-bottom:0.75rem;">
@@ -235,7 +235,7 @@ get_header();
 							</a>
 						</div>
 						<div class="dk-glass" style="padding:1.5rem;">
-							<h4 style="font-size:0.9375rem; font-weight:600; color:#f9fafb; margin-bottom:0.75rem;">
+							<h4 style="font-size:0.9375rem; font-weight:600; color:var(--text); margin-bottom:0.75rem;">
 								<?php esc_html_e( 'Response Times', 'datalkemi' ); ?>
 							</h4>
 							<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0.5rem;">
@@ -252,7 +252,7 @@ get_header();
 			<div class="portal-panel" id="tab-account" hidden>
 				<div class="portal-account-grid">
 					<div class="dk-glass" style="padding:2rem;">
-						<h3 style="font-size:1.125rem; font-weight:700; color:#f9fafb; margin-bottom:1.5rem;">
+						<h3 style="font-size:1.125rem; font-weight:500; color:var(--text); margin-bottom:1.5rem;">
 							<?php esc_html_e( 'Account Details', 'datalkemi' ); ?>
 						</h3>
 						<ul class="project-detail-list">
@@ -276,7 +276,7 @@ get_header();
 						</div>
 					</div>
 					<div class="dk-glass" style="padding:2rem;">
-						<h3 style="font-size:1.125rem; font-weight:700; color:#f9fafb; margin-bottom:1rem;">
+						<h3 style="font-size:1.125rem; font-weight:500; color:var(--text); margin-bottom:1rem;">
 							<?php esc_html_e( 'Need Help?', 'datalkemi' ); ?>
 						</h3>
 						<p style="color:var(--color-text-muted); font-size:0.9375rem; margin-bottom:1.5rem;">

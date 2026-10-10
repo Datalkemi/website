@@ -1,24 +1,26 @@
 /**
- * footer.css — Datalkemi Footer Styles
+ * footer.css: Datalkemi Footer Styles
  *
  * Loaded site-wide via enqueue.php. All selectors use the ft- prefix to
  * isolate from legacy footer-* classes still present in main.css.
- * Uses global --color-* variables defined in style.css.
+ * The footer is an ink band in both themes. style.css re-scopes the
+ * semantic tokens (--text, --border, --accent, --surface...) inside
+ * .ft-footer so they resolve to light-on-ink here.
  *
  * @package Datalkemi
  * @since   2.0.0
  */
 
 /* ==========================================================================
-   1. FOOTER SHELL — override Astra + legacy main.css defaults
+   1. FOOTER SHELL: override Astra + legacy main.css defaults
    ========================================================================== */
 
 #colophon.ft-footer,
 .ft-footer {
-	background: #0c1118 !important;
-	border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+	background: var(--band-bg) !important;
+	border-top: 1px solid var(--border) !important;
 	padding: 0 !important;
-	color: var(--color-text) !important;
+	color: var(--band-text) !important;
 }
 
 /* ==========================================================================
@@ -32,12 +34,12 @@
 }
 
 /* ==========================================================================
-   3. TOP BAND — five-column grid
+   3. TOP BAND: five-column grid
    ========================================================================== */
 
 .ft-columns {
 	padding: 4rem 0 3.5rem;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+	border-bottom: 1px solid var(--border);
 }
 
 .ft-grid {
@@ -86,8 +88,8 @@
 .ft-tagline {
 	font-size: 0.875rem;
 	line-height: 1.7;
-	color: var(--color-text-muted) !important;
-	-webkit-text-fill-color: var(--color-text-muted) !important;
+	color: var(--text-muted) !important;
+	-webkit-text-fill-color: var(--text-muted) !important;
 	margin: 0 0 1.5rem;
 	max-width: 280px;
 }
@@ -97,28 +99,29 @@
 	align-self: flex-start !important;
 	width: auto !important;
 	max-width: max-content !important;
-	background-color: var(--color-primary);
-	color: #ffffff !important;
-	-webkit-text-fill-color: #ffffff !important;
+	background-color: var(--action);
+	color: var(--on-action) !important;
+	-webkit-text-fill-color: var(--on-action) !important;
+	font-family: var(--font-body);
 	font-size: 0.875rem;
 	font-weight: 600;
 	padding: 0.75rem 1.5rem;
-	border-radius: 6px;
-	border: 2px solid var(--color-primary);
+	border-radius: var(--radius);
+	border: 2px solid var(--action);
 	text-decoration: none !important;
 	transition: background-color 0.2s, border-color 0.2s;
 	margin-bottom: 1.5rem;
 }
 
 .ft-btn-primary:hover {
-	background-color: #0272ae !important;
-	border-color: #0272ae !important;
-	color: #ffffff !important;
-	-webkit-text-fill-color: #ffffff !important;
+	background-color: var(--action-hover) !important;
+	border-color: var(--action-hover) !important;
+	color: var(--brand-ink) !important;
+	-webkit-text-fill-color: var(--brand-ink) !important;
 }
 
 .ft-btn-primary:focus-visible {
-	outline: 2px solid var(--color-primary);
+	outline: 2px solid var(--accent);
 	outline-offset: 3px;
 }
 
@@ -134,22 +137,22 @@
 	justify-content: center;
 	width: 2.125rem;
 	height: 2.125rem;
-	border-radius: 6px;
-	background: rgba(255, 255, 255, 0.06);
-	color: var(--color-text-muted) !important;
+	border-radius: var(--radius);
+	background: var(--tint);
+	color: var(--text-muted) !important;
 	-webkit-text-fill-color: currentColor !important;
 	transition: background-color 0.2s, color 0.2s;
 	text-decoration: none !important;
 }
 
 .ft-social-link:hover {
-	background: rgba(2, 132, 199, 0.18);
-	color: var(--color-primary) !important;
+	background: rgba(6, 136, 192, 0.18);
+	color: var(--accent) !important;
 	-webkit-text-fill-color: currentColor !important;
 }
 
 .ft-social-link:focus-visible {
-	outline: 2px solid var(--color-primary);
+	outline: 2px solid var(--accent);
 	outline-offset: 2px;
 }
 
@@ -162,12 +165,13 @@
 }
 
 .ft-col-heading {
+	font-family: var(--font-mono);
 	font-size: 0.6875rem;
-	font-weight: 600;
-	letter-spacing: 0.07em;
+	font-weight: 500;
+	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	color: var(--color-text) !important;
-	-webkit-text-fill-color: var(--color-text) !important;
+	color: var(--accent) !important;
+	-webkit-text-fill-color: var(--accent) !important;
 	margin: 0 0 1rem !important;
 }
 
@@ -181,32 +185,33 @@
 }
 
 .ft-nav a {
+	font-family: var(--font-body);
 	font-size: 0.875rem;
 	line-height: 1.4;
-	color: var(--color-text-muted) !important;
-	-webkit-text-fill-color: var(--color-text-muted) !important;
+	color: var(--text-muted) !important;
+	-webkit-text-fill-color: var(--text-muted) !important;
 	text-decoration: none !important;
 	transition: color 0.15s;
 }
 
 .ft-nav a:hover {
-	color: var(--color-primary) !important;
-	-webkit-text-fill-color: var(--color-primary) !important;
+	color: var(--accent) !important;
+	-webkit-text-fill-color: var(--accent) !important;
 }
 
 .ft-nav a:focus-visible {
-	outline: 2px solid var(--color-primary);
+	outline: 2px solid var(--accent);
 	outline-offset: 2px;
 	border-radius: 2px;
 }
 
 /* ==========================================================================
-   4. MIDDLE BAND — newsletter signup
+   4. MIDDLE BAND: newsletter signup
    ========================================================================== */
 
 .ft-newsletter {
 	padding: 3rem 0;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+	border-bottom: 1px solid var(--border);
 }
 
 .ft-newsletter-inner {
@@ -217,11 +222,12 @@
 }
 
 .ft-newsletter-title {
+	font-family: var(--font-display);
 	font-size: 1.0625rem;
 	font-weight: 600;
 	line-height: 1.5;
-	color: var(--color-text) !important;
-	-webkit-text-fill-color: var(--color-text) !important;
+	color: var(--text) !important;
+	-webkit-text-fill-color: var(--text) !important;
 	margin: 0;
 }
 
@@ -240,12 +246,12 @@
 .ft-newsletter-input {
 	flex: 1;
 	min-width: 0;
-	background: rgba(255, 255, 255, 0.05) !important;
-	border: 1px solid rgba(255, 255, 255, 0.12) !important;
-	border-radius: 6px !important;
-	color: var(--color-text) !important;
-	-webkit-text-fill-color: var(--color-text) !important;
-	font-family: 'Inter', sans-serif !important;
+	background: var(--surface) !important;
+	border: 1px solid var(--border-strong) !important;
+	border-radius: var(--radius) !important;
+	color: var(--text) !important;
+	-webkit-text-fill-color: var(--text) !important;
+	font-family: var(--font-body) !important;
 	font-size: 0.875rem !important;
 	padding: 0.75rem 1rem !important;
 	transition: border-color 0.2s, box-shadow 0.2s !important;
@@ -253,26 +259,27 @@
 }
 
 .ft-newsletter-input::placeholder {
-	color: var(--color-text-muted) !important;
-	-webkit-text-fill-color: var(--color-text-muted) !important;
+	color: var(--text-faint) !important;
+	-webkit-text-fill-color: var(--text-faint) !important;
 	opacity: 1 !important;
 }
 
+/* Focus ring kept (input has outline: none), recoloured to brand azure */
 .ft-newsletter-input:focus {
-	border-color: var(--color-primary) !important;
-	box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18) !important;
+	border-color: var(--accent) !important;
+	box-shadow: 0 0 0 3px rgba(6, 136, 192, 0.18) !important;
 }
 
 .ft-newsletter-btn {
-	background-color: var(--color-primary) !important;
-	color: #ffffff !important;
-	-webkit-text-fill-color: #ffffff !important;
-	font-family: 'Inter', sans-serif !important;
+	background-color: var(--action) !important;
+	color: var(--on-action) !important;
+	-webkit-text-fill-color: var(--on-action) !important;
+	font-family: var(--font-body) !important;
 	font-size: 0.875rem !important;
 	font-weight: 600 !important;
 	padding: 0.75rem 1.25rem !important;
 	border: none !important;
-	border-radius: 6px !important;
+	border-radius: var(--radius) !important;
 	cursor: pointer !important;
 	white-space: nowrap;
 	transition: background-color 0.2s !important;
@@ -280,11 +287,13 @@
 }
 
 .ft-newsletter-btn:hover {
-	background-color: #0272ae !important;
+	background-color: var(--action-hover) !important;
+	color: var(--brand-ink) !important;
+	-webkit-text-fill-color: var(--brand-ink) !important;
 }
 
 .ft-newsletter-btn:focus-visible {
-	outline: 2px solid var(--color-primary) !important;
+	outline: 2px solid var(--accent) !important;
 	outline-offset: 3px !important;
 }
 
@@ -295,8 +304,8 @@
 
 .ft-newsletter-privacy {
 	font-size: 0.75rem;
-	color: var(--color-text-muted) !important;
-	-webkit-text-fill-color: var(--color-text-muted) !important;
+	color: var(--text-muted) !important;
+	-webkit-text-fill-color: var(--text-muted) !important;
 	margin: 0;
 	line-height: 1.55;
 }
@@ -308,13 +317,13 @@
 }
 
 .ft-newsletter-feedback.is-success {
-	color: #4ade80 !important;
-	-webkit-text-fill-color: #4ade80 !important;
+	color: var(--accent) !important;
+	-webkit-text-fill-color: var(--accent) !important;
 }
 
 .ft-newsletter-feedback.is-error {
-	color: #f87171 !important;
-	-webkit-text-fill-color: #f87171 !important;
+	color: var(--brand-catalyst) !important;
+	-webkit-text-fill-color: var(--brand-catalyst) !important;
 }
 
 /* Honeypot: visually hidden, inaccessible to assistive technology */
@@ -331,17 +340,17 @@
 /* Admin-only misconfiguration notice */
 .ft-admin-notice {
 	font-size: 0.75rem;
-	color: #f59e0b !important;
-	-webkit-text-fill-color: #f59e0b !important;
-	background: rgba(245, 158, 11, 0.08);
-	border: 1px solid rgba(245, 158, 11, 0.25);
-	border-radius: 4px;
+	color: var(--text) !important;
+	-webkit-text-fill-color: var(--text) !important;
+	background: rgba(232, 163, 61, 0.12);
+	border: 1px solid var(--brand-catalyst);
+	border-radius: var(--radius);
 	padding: 0.5rem 0.75rem;
 	margin: 0 0 0.75rem;
 }
 
 /* ==========================================================================
-   5. BOTTOM BAND — legal row
+   5. BOTTOM BAND: legal row
    ========================================================================== */
 
 .ft-legal {
@@ -367,14 +376,14 @@
 .ft-abn,
 .ft-location {
 	font-size: 0.8125rem;
-	color: var(--color-text-muted) !important;
-	-webkit-text-fill-color: var(--color-text-muted) !important;
+	color: var(--text-muted) !important;
+	-webkit-text-fill-color: var(--text-muted) !important;
 }
 
 .ft-legal-sep {
 	font-size: 0.8125rem;
-	color: rgba(255, 255, 255, 0.2) !important;
-	-webkit-text-fill-color: rgba(255, 255, 255, 0.2) !important;
+	color: var(--text-faint) !important;
+	-webkit-text-fill-color: var(--text-faint) !important;
 	user-select: none;
 }
 
@@ -387,22 +396,23 @@
 
 .ft-legal-right a,
 .ft-portal-link {
+	font-family: var(--font-body);
 	font-size: 0.8125rem;
-	color: var(--color-text-muted) !important;
-	-webkit-text-fill-color: var(--color-text-muted) !important;
+	color: var(--text-muted) !important;
+	-webkit-text-fill-color: var(--text-muted) !important;
 	text-decoration: none !important;
 	transition: color 0.15s;
 }
 
 .ft-legal-right a:hover,
 .ft-portal-link:hover {
-	color: var(--color-primary) !important;
-	-webkit-text-fill-color: var(--color-primary) !important;
+	color: var(--accent) !important;
+	-webkit-text-fill-color: var(--accent) !important;
 }
 
 .ft-legal-right a:focus-visible,
 .ft-portal-link:focus-visible {
-	outline: 2px solid var(--color-primary);
+	outline: 2px solid var(--accent);
 	outline-offset: 2px;
 	border-radius: 2px;
 }

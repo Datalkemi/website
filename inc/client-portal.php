@@ -58,13 +58,14 @@ function datalkemi_get_client_projects( int $user_id ): array {
 // ── Get project status label and colour ────────────────────────────────────
 function datalkemi_project_status( string $status ): array {
 	$statuses = [
-		'discovery'   => [ 'label' => 'Discovery',    'color' => '#a855f7' ],
-		'in-progress' => [ 'label' => 'In Progress',  'color' => '#0284c7' ],
-		'review'      => [ 'label' => 'In Review',    'color' => '#f59e0b' ],
-		'complete'    => [ 'label' => 'Complete',      'color' => '#22c55e' ],
-		'on-hold'     => [ 'label' => 'On Hold',       'color' => '#6b7280' ],
+		// Brand palette only: slate, azure, catalyst (attention), teal.
+		'discovery'   => [ 'label' => 'Discovery',    'color' => '#5E7F91' ],
+		'in-progress' => [ 'label' => 'In Progress',  'color' => '#0688C0' ],
+		'review'      => [ 'label' => 'In Review',    'color' => '#E8A33D' ],
+		'complete'    => [ 'label' => 'Complete',      'color' => '#02587C' ],
+		'on-hold'     => [ 'label' => 'On Hold',       'color' => '#5E7F91' ],
 	];
-	return $statuses[ $status ] ?? [ 'label' => ucfirst( $status ), 'color' => '#6b7280' ];
+	return $statuses[ $status ] ?? [ 'label' => ucfirst( $status ), 'color' => '#5E7F91' ];
 }
 
 // ── Admin: Project meta box for client assignment ──────────────────────────

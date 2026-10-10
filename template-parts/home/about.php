@@ -41,7 +41,7 @@ $usps = [
 				<div class="usp-item" style="margin-bottom:1rem;">
 					<span class="usp-check">&#10003;</span>
 					<div>
-						<strong style="color:#f9fafb; font-size:0.9375rem; display:block; margin-bottom:0.2rem;">
+						<strong style="color:var(--text); font-size:0.9375rem; display:block; margin-bottom:0.2rem;">
 							<?php echo esc_html( $usp['title'] ); ?>
 						</strong>
 						<span class="usp-text"><?php echo esc_html( $usp['desc'] ); ?></span>

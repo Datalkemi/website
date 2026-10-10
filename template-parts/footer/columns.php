@@ -20,7 +20,7 @@
 				<div class="ft-brand-top">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="ft-logo-link" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 						<img
-							src="<?php echo esc_url( DATALKEMI_URI . '/assets/images/logos/Logos/Logo_1.png' ); ?>"
+							src="<?php echo esc_url( DATALKEMI_URI . '/assets/brand/mark/Datalkemi_Logo_White.svg' ); ?>"
 							alt=""
 							class="ft-logo"
 							width="96"

@@ -72,7 +72,7 @@ $types      = get_terms( [ 'taxonomy' => 'project_type',     'hide_empty' => tru
 								<p class="project-category"><?php echo esc_html( $category ); ?></p>
 							<?php endif; ?>
 							<h2 class="project-title" style="font-size:1.125rem !important;">
-								<a href="<?php the_permalink(); ?>" style="color:#f9fafb !important; -webkit-text-fill-color:#f9fafb !important;">
+								<a href="<?php the_permalink(); ?>" style="color:var(--text) !important; -webkit-text-fill-color:var(--text) !important;">
 									<?php the_title(); ?>
 								</a>
 							</h2>

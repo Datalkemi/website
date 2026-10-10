@@ -30,7 +30,7 @@ get_header(); ?>
 					<?php while ( have_posts() ) : the_post(); ?>
 						<article id="post-<?php the_ID(); ?>" <?php post_class( 'card' ); ?> style="display:flex; flex-direction:column;">
 							<?php if ( has_post_thumbnail() ) : ?>
-								<a href="<?php the_permalink(); ?>" style="display:block; margin-bottom:1rem; border-radius:0.375rem; overflow:hidden;">
+								<a href="<?php the_permalink(); ?>" style="display:block; margin-bottom:1rem; border-radius:var(--radius); overflow:hidden;">
 									<?php the_post_thumbnail( 'medium_large', [ 'style' => 'width:100%;height:200px;object-fit:cover;' ] ); ?>
 								</a>
 							<?php endif; ?>

@@ -1,138 +1,397 @@
 /*
 Theme Name:  Datalkemi
 Theme URI:   https://datalkemi.com
-Description: Custom child theme for Datalkemi — built on Astra. Web development, SEO, and data analytics agency.
+Description: Custom child theme for Datalkemi, built on Astra. Custom software and data engineering. Brand guidelines v2.0.
 Author:      Datalkemi
 Author URI:  https://datalkemi.com
 Template:    astra
-Version:     1.0.0
-Tags:        custom-theme, dark, business
+Version:     2.0.0
+Tags:        custom-theme, light, dark, business
 Text Domain: datalkemi
 */
 
-/* ─── CSS Custom Properties ─── */
+/* ==========================================================================
+   1. BRAND TOKENS (fixed, from Brand Guidelines v2.0)
+   ========================================================================== */
 :root {
-  --color-primary:    #0284c7;
-  --color-accent:     #06b6d4;
-  --color-bg:         #111827;
-  --color-bg-alt:     #1f2937;
-  --color-text:       #f9fafb;
-  --color-text-muted: #9ca3af;
-  --color-border:     rgba(255, 255, 255, 0.1);
-  --radius:           0.5rem;
-  --transition:       all 0.3s ease;
+  --brand-paper:    #F5FAFD;
+  --brand-ink:      #022D3F;
+  --brand-azure:    #0688C0;
+  --brand-sky:      #51CBFF;
+  --brand-teal:     #02587C;
+  --brand-mist:     #DCEBF3;
+  --brand-slate:    #5E7F91;
+  --brand-white:    #FEFFFF;
+  --brand-catalyst: #E8A33D;
+
+  /* Typography families */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Type scale (Display to Label) */
+  --fs-display: clamp(2.5rem, 6vw, 4rem);      /* 64 */
+  --fs-h1:      clamp(2rem, 4.5vw, 2.75rem);   /* 44 */
+  --fs-h2:      clamp(1.5rem, 3vw, 1.75rem);   /* 28 */
+  --fs-h3:      1.1875rem;                     /* 19 */
+  --fs-lead:    1.0625rem;                     /* 15 scaled for web */
+  --fs-body:    1rem;                          /* 14 scaled for web */
+  --fs-small:   0.8125rem;                     /* 11.5 scaled for web */
+  --fs-label:   0.6875rem;                     /* 10 scaled for web */
+
+  /* Interface kit */
+  --radius:     4px;
+  --radius-badge: 22.5%;
+  --transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 }
 
-/* ─── Base ─── */
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: 'Inter', sans-serif;
+/* ==========================================================================
+   2. SEMANTIC TOKENS: LIGHT (default, paper first)
+   ========================================================================== */
+:root,
+:root[data-theme="light"] {
+  --bg:            var(--brand-paper);
+  --surface:       var(--brand-white);
+  --surface-alt:   var(--brand-mist);
+  --text:          var(--brand-ink);
+  --text-muted:    var(--brand-slate);
+  --text-faint:    rgba(2, 45, 63, 0.45);
+  --border:        rgba(2, 45, 63, 0.12);
+  --border-strong: rgba(2, 45, 63, 0.24);
+  --action:        var(--brand-azure);
+  --action-hover:  var(--brand-teal);
+  --on-action:     var(--brand-white);
+  --accent:        var(--brand-teal);
+  --highlight:     var(--brand-azure);
+  --link:          var(--brand-azure);
+  --tint:          rgba(6, 136, 192, 0.08);
+
+  /* Ink bands: dark accent sections, present in both themes */
+  --band-bg:       var(--brand-ink);
+  --band-text:     var(--brand-white);
+  --band-muted:    rgba(254, 255, 255, 0.72);
+  --band-border:   rgba(254, 255, 255, 0.14);
+  --band-accent:   var(--brand-sky);
+
+  --grad-from:     var(--brand-teal);
+  --grad-to:       var(--brand-azure);
+
+  color-scheme: light;
 }
+
+/* ==========================================================================
+   3. SEMANTIC TOKENS: DARK (ink first)
+   ========================================================================== */
+:root[data-theme="dark"] {
+  --bg:            var(--brand-ink);
+  --surface:       #063A50;
+  --surface-alt:   #0A4560;
+  --text:          var(--brand-paper);
+  --text-muted:    #9DB8C6;
+  --text-faint:    rgba(245, 250, 253, 0.45);
+  --border:        rgba(245, 250, 253, 0.12);
+  --border-strong: rgba(245, 250, 253, 0.24);
+  --action:        var(--brand-azure);
+  --action-hover:  var(--brand-sky);
+  --on-action:     var(--brand-white);
+  --accent:        var(--brand-sky);
+  --highlight:     var(--brand-sky);
+  --link:          var(--brand-sky);
+  --tint:          rgba(81, 203, 255, 0.08);
+
+  --band-bg:       #01202E;
+  --band-text:     var(--brand-white);
+  --band-muted:    rgba(254, 255, 255, 0.72);
+  --band-border:   rgba(254, 255, 255, 0.12);
+  --band-accent:   var(--brand-sky);
+
+  --grad-from:     var(--brand-sky);
+  --grad-to:       var(--brand-azure);
+
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   4. LEGACY ALIASES (existing CSS keeps working and follows the theme)
+   ========================================================================== */
+:root {
+  --color-primary:    var(--action);
+  --color-accent:     var(--accent);
+  --color-bg:         var(--bg);
+  --color-bg-alt:     var(--surface);
+  --color-text:       var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-border:     var(--border);
+}
+
+/* ==========================================================================
+   5. BASE
+   ========================================================================== */
+html { background-color: var(--bg); }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 350;
+  line-height: 1.66;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--fs-h1); line-height: 1.04; }
+h2 { font-size: var(--fs-h2); line-height: 1.24; }
+h3 { font-size: var(--fs-h3); line-height: 1.32; }
+
+strong, b { font-weight: 600; }
+em { font-style: normal; font-weight: 600; } /* brand: never italics for emphasis */
 
 a {
-  color: var(--color-primary);
+  color: var(--link);
   transition: var(--transition);
 }
+a:hover { color: var(--action-hover); }
 
-a:hover {
-  color: var(--color-accent);
+::selection { background: var(--brand-sky); color: var(--brand-ink); }
+
+/* ==========================================================================
+   6. TYPE UTILITIES
+   ========================================================================== */
+.t-display { font-family: var(--font-display); font-size: var(--fs-display); font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; }
+.t-lead    { font-size: var(--fs-lead); line-height: 1.62; color: var(--text-muted); }
+.t-small   { font-size: var(--fs-small); line-height: 1.55; color: var(--text-muted); }
+.t-label,
+.dk-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
+.t-mono   { font-family: var(--font-mono); }
+.t-figure { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; }
 
-/* ─── Utility: Gradient Text ─── */
+/* Gradient text: two stops only, blues only (brand rule) */
 .gradient-text {
-  background: linear-gradient(to right, var(--color-primary), var(--color-accent), #4ade80);
+  background: linear-gradient(90deg, var(--grad-from), var(--grad-to));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ─── Utility: Glassmorphism ─── */
-.glassmorphism {
-  background: rgba(30, 41, 59, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-/* ─── Custom Scrollbar ─── */
-::-webkit-scrollbar       { width: 8px; }
-::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: rgba(2, 132, 199, 0.7); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
-
-/* ─── Buttons ─── */
-.btn-primary {
-  display: inline-block;
-  padding: 0.75rem 1.75rem;
-  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
-  color: #fff;
+/* ==========================================================================
+   7. SURFACES (interface kit: 1px border, 4px radius, no shadow, no blur)
+   ========================================================================== */
+.glassmorphism,
+.dk-glass,
+.dk-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
-.btn-primary:hover {
-  background: linear-gradient(to right, var(--color-accent), var(--color-primary));
-  color: #fff;
-  transform: scale(1.05);
-}
-
-.btn-outline {
-  display: inline-block;
-  padding: 0.75rem 1.75rem;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  border-radius: var(--radius);
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.btn-outline:hover {
-  background: var(--color-primary);
-  color: #fff;
-  transform: scale(1.05);
-}
-
-/* ─── Section Headings ─── */
-.section-title {
-  font-size: clamp(1.875rem, 5vw, 3rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.section-subtitle {
-  font-size: 1.125rem;
-  color: var(--color-text-muted);
-  max-width: 40rem;
-  margin: 0 auto;
-}
-
-/* ─── Cards ─── */
 .card {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 2rem;
   transition: var(--transition);
 }
+.card:hover { border-color: var(--action); }
 
-.card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(2, 132, 199, 0.15);
+/* Ink band: a dark section that stays dark in both themes.
+   Inside a band, the semantic tokens re-resolve to light-on-ink,
+   so component CSS can keep using var(--text), var(--border) and so on. */
+.dk-band,
+.hp-hero,
+.hp-cta-band,
+.hp-final-cta,
+.page-hero,
+.service-hero,
+.config-hero,
+.ft-footer {
+  --surface:       rgba(254, 255, 255, 0.04);
+  --surface-alt:   rgba(254, 255, 255, 0.07);
+  --text-faint:    rgba(254, 255, 255, 0.45);
+  --border-strong: rgba(254, 255, 255, 0.28);
+  --action-hover:  var(--brand-sky);
+  --highlight:     var(--brand-sky);
+  --tint:          rgba(81, 203, 255, 0.08);
+  --grad-from:     var(--brand-sky);
+  --grad-to:       var(--brand-azure);
+  color-scheme: dark;
+}
+.dk-band,
+.hp-hero,
+.hp-cta-band,
+.hp-final-cta,
+.page-hero,
+.service-hero,
+.config-hero,
+.ft-footer {
+  background: var(--band-bg);
+  color: var(--band-text);
+  --text: var(--band-text);
+  --text-muted: var(--band-muted);
+  --border: var(--band-border);
+  --accent: var(--band-accent);
+  --link: var(--band-accent);
 }
 
-/* ─── Layout ─── */
+/* ==========================================================================
+   8. BUTTONS (interface kit)
+   ========================================================================== */
+.btn-primary,
+.dk-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--action);
+  color: var(--on-action);
+  border: 1px solid var(--action);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-primary:hover,
+.dk-btn-primary:hover {
+  background: var(--action-hover);
+  border-color: var(--action-hover);
+  color: var(--on-action);
+}
+
+.btn-outline,
+.dk-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-outline:hover,
+.dk-btn-secondary:hover {
+  border-color: var(--action);
+  color: var(--action);
+}
+
+/* ==========================================================================
+   9. SECTION HEADINGS
+   ========================================================================== */
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  line-height: 1.04;
+  margin-bottom: 1rem;
+}
+.section-subtitle {
+  font-size: var(--fs-lead);
+  color: var(--text-muted);
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   10. LADDER MOTIF (four strokes: 100 / 72 / 44 / 24 percent)
+   ========================================================================== */
+.dk-ladder {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 1rem;
+}
+.dk-ladder i {
+  display: block;
+  width: 3px;
+  background: currentColor;
+}
+.dk-ladder i:nth-child(1) { height: 100%; }
+.dk-ladder i:nth-child(2) { height: 72%; opacity: 0.8; }
+.dk-ladder i:nth-child(3) { height: 44%; opacity: 0.6; }
+.dk-ladder i:nth-child(4) { height: 24%; opacity: 0.45; }
+
+/* ==========================================================================
+   11. THEME TOGGLE
+   ========================================================================== */
+.dk-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.dk-theme-toggle:hover { border-color: var(--action); color: var(--action); }
+.dk-theme-toggle:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+.dk-theme-toggle svg { width: 1.125rem; height: 1.125rem; }
+.dk-theme-toggle .icon-sun  { display: none; }
+.dk-theme-toggle .icon-moon { display: block; }
+:root[data-theme="dark"] .dk-theme-toggle .icon-sun  { display: block; }
+:root[data-theme="dark"] .dk-theme-toggle .icon-moon { display: none; }
+
+/* Header wordmark (with tagline). Brand: tagline needs at least 180px of width. */
+.nav-logo-link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  text-decoration: none;
+}
+.nav-logo {
+  height: 38px;
+  width: auto;
+  max-width: none;
+}
+@media (max-width: 480px) {
+  .nav-logo { height: 35px; } /* about 181px wide, still above the 180px floor */
+}
+
+/* Theme-aware logo swaps: add both <img> variants, only one shows */
+.dk-logo-dark  { display: none; }
+:root[data-theme="dark"] .dk-logo-light { display: none; }
+:root[data-theme="dark"] .dk-logo-dark  { display: inline-block; }
+
+/* ==========================================================================
+   12. SCROLLBAR + LAYOUT
+   ========================================================================== */
+::-webkit-scrollbar       { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: var(--radius); }
+::-webkit-scrollbar-thumb:hover { background: var(--action); }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-section {
-  padding: 5rem 0;
+section { padding: 5rem 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }

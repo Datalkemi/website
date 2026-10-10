@@ -55,7 +55,7 @@ $related_projects = new WP_Query( [
 			</div>
 			<?php if ( ! empty( $data['features'] ) ) : ?>
 			<div class="dk-glass" style="padding:2rem;">
-				<h3 style="font-size:0.875rem; font-weight:700; color:#f9fafb; margin-bottom:1.25rem; text-transform:uppercase; letter-spacing:0.08em;">What is included</h3>
+				<h3 style="font-size:0.875rem; font-weight:500; color:var(--text); margin-bottom:1.25rem; text-transform:uppercase; letter-spacing:0.08em;">What is included</h3>
 				<ul class="feature-list">
 					<?php foreach ( $data['features'] as $feature ) : ?>
 						<li class="feature-item">
@@ -72,19 +72,19 @@ $related_projects = new WP_Query( [
 
 <!-- Problem + Approach -->
 <?php if ( ! empty( $data['problem'] ) || ! empty( $data['approach'] ) ) : ?>
-<section class="dk-section" style="background:rgba(17,24,39,0.95);">
+<section class="dk-section" style="background:var(--bg);">
 	<div class="dk-container">
 		<div class="dk-grid-2" style="gap:4rem; align-items:start;">
 			<?php if ( ! empty( $data['problem'] ) ) : ?>
 			<div>
 				<p class="section-eyebrow" style="margin-bottom:0.75rem;">The Problem</p>
-				<h2 style="font-size:1.625rem; font-weight:800; color:#f9fafb; margin-bottom:1.5rem; line-height:1.25;">
+				<h2 style="font-size:1.625rem; font-weight:500; color:var(--text); margin-bottom:1.5rem; line-height:1.25;">
 					<?php echo esc_html( $data['problem']['headline'] ); ?>
 				</h2>
 				<?php foreach ( $data['problem']['points'] as $pt ) : ?>
 				<div style="display:flex; gap:1rem; margin-bottom:1.125rem; align-items:flex-start;">
-					<span style="color:#ef4444; font-size:1rem; flex-shrink:0; margin-top:0.15rem;">&#215;</span>
-					<p style="color:#9ca3af; font-size:0.9375rem; line-height:1.75; margin:0;"><?php echo esc_html( $pt ); ?></p>
+					<span style="color:var(--brand-catalyst); font-size:1rem; flex-shrink:0; margin-top:0.15rem;">&#215;</span>
+					<p style="color:var(--text-muted); font-size:0.9375rem; line-height:1.75; margin:0;"><?php echo esc_html( $pt ); ?></p>
 				</div>
 				<?php endforeach; ?>
 			</div>
@@ -92,13 +92,13 @@ $related_projects = new WP_Query( [
 			<?php if ( ! empty( $data['approach'] ) ) : ?>
 			<div>
 				<p class="section-eyebrow" style="margin-bottom:0.75rem;">Our Approach</p>
-				<h2 style="font-size:1.625rem; font-weight:800; color:#f9fafb; margin-bottom:1.5rem; line-height:1.25;">
+				<h2 style="font-size:1.625rem; font-weight:500; color:var(--text); margin-bottom:1.5rem; line-height:1.25;">
 					<?php echo esc_html( $data['approach']['headline'] ); ?>
 				</h2>
 				<?php foreach ( $data['approach']['points'] as $pt ) : ?>
 				<div style="display:flex; gap:1rem; margin-bottom:1.125rem; align-items:flex-start;">
-					<span style="color:#4ade80; font-size:1rem; flex-shrink:0; margin-top:0.15rem;">&#10003;</span>
-					<p style="color:#9ca3af; font-size:0.9375rem; line-height:1.75; margin:0;"><?php echo esc_html( $pt ); ?></p>
+					<span style="color:var(--accent); font-size:1rem; flex-shrink:0; margin-top:0.15rem;">&#10003;</span>
+					<p style="color:var(--text-muted); font-size:0.9375rem; line-height:1.75; margin:0;"><?php echo esc_html( $pt ); ?></p>
 				</div>
 				<?php endforeach; ?>
 			</div>
@@ -152,7 +152,7 @@ $related_projects = new WP_Query( [
 
 <!-- Related projects -->
 <?php if ( $related_projects->have_posts() ) : ?>
-<section class="dk-section" style="background:rgba(17,24,39,0.95);">
+<section class="dk-section" style="background:var(--bg);">
 	<div class="dk-container">
 		<div class="dk-section-header">
 			<span class="dk-section-title">Work We Have Done</span>
@@ -186,10 +186,10 @@ $related_projects = new WP_Query( [
 		<div class="config-promo">
 			<div class="config-promo-text">
 				<p class="section-eyebrow">Pricing</p>
-				<h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem); font-weight:800; color:#f9fafb; margin-bottom:0.75rem; line-height:1.25;">
+				<h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem); font-weight:500; color:var(--text); margin-bottom:0.75rem; line-height:1.25;">
 					Configure your project, price it instantly
 				</h2>
-				<p style="color:#9ca3af; font-size:1rem; max-width:32rem; line-height:1.75;">
+				<p style="color:var(--text-muted); font-size:1rem; max-width:32rem; line-height:1.75;">
 					Select only the components your project needs. Your estimate updates in real time, and we follow up with a full written proposal.
 				</p>
 			</div>
@@ -235,7 +235,7 @@ $related_projects = new WP_Query( [
 		</div>
 		<div class="cta-banner-actions">
 			<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="dk-btn dk-btn-primary">Configure Your Project</a>
-			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="dk-btn dk-btn-outline" style="border-color:#fff; color:#fff;">Book a Free Call</a>
+			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="dk-btn dk-btn-outline" style="border-color:var(--text); color:var(--text);">Book a Free Call</a>
 		</div>
 	</div>
 </section>

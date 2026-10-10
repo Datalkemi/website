@@ -47,7 +47,7 @@ $services = [
 	],
 ];
 ?>
-<section id="services" class="dk-section" style="background:rgba(17,24,39,0.95);">
+<section id="services" class="dk-section" style="background:var(--bg);">
 	<div class="dk-container">
 
 		<div class="dk-section-header">

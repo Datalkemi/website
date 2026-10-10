@@ -26,7 +26,7 @@ $cats        = get_categories( [ 'hide_empty' => true, 'orderby' => 'count', 'or
 
 <!-- Category filter -->
 <?php if ( ! empty( $cats ) ) : ?>
-<div class="insights-filter-bar" style="background:rgba(17,24,39,0.98); border-bottom:1px solid rgba(255,255,255,0.06); padding:1rem 0; position:sticky; top:70px; z-index:50;">
+<div class="insights-filter-bar" style="background:var(--bg); border-bottom:1px solid var(--border); padding:1rem 0; position:sticky; top:70px; z-index:50;">
 	<div class="dk-container">
 		<div class="filter-bar" style="flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px;">
 			<a href="<?php echo esc_url( get_post_type_archive_link( 'post' ) ?: home_url( '/insights/' ) ); ?>"

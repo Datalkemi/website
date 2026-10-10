@@ -22,6 +22,14 @@ Marketing website for Datalkemi, a Perth-based (Cannington, WA) agency: custom s
 - `page-contact.php` renders `template-parts/home/contact.php` on the Contact page.
 - Beyond the homepage: a Client Portal (login gate, admin invite flow) and an 8-step Configurator plus quote flow.
 
+## Design system (Brand Guidelines v2.0, source: OneDrive/Datalkemi Package/Brand)
+- Two themes switched by `data-theme` on `<html>`: `light` (default, paper first) and `dark` (ink first). The toggle is in the header, choice saved in `localStorage` as `dk-theme`.
+- Never hardcode a theme colour. Use the semantic tokens from `style.css`: `--bg`, `--surface`, `--surface-alt`, `--tint`, `--text`, `--text-muted`, `--text-faint`, `--border`, `--border-strong`, `--action`, `--action-hover`, `--on-action`, `--link`, `--accent`, `--highlight`, `--grad-from`, `--grad-to`. Fixed brand values are `--brand-ink`, `--brand-teal`, `--brand-azure`, `--brand-sky`, `--brand-paper`, `--brand-mist`, `--brand-slate`, `--brand-white`, `--brand-catalyst`. The old `--color-*` names alias to these.
+- Ink bands stay dark in both themes: `.hp-hero`, `.hp-cta-band`, `.hp-final-cta`, `.ft-footer`, or any element with `.dk-band`. Inside a band the semantic tokens already resolve to light-on-ink.
+- Type: `--font-display` Space Grotesk for headings and big figures (weight 500, display 300), `--font-body` Inter for copy (weight 350), `--font-mono` JetBrains Mono for eyebrows, labels, metadata (`.dk-label`: 0.2em tracking, uppercase). No italics for emphasis.
+- Interface kit: 4px radius (`--radius`), 1px borders, no box shadows, no blur, no glow, no hover lifts. Gradients only two blue stops (`--grad-from` to `--grad-to`). Catalyst is for attention only, one per page. Icons are line only, 1.35px stroke.
+- Logo: official files live in `assets/brand/` (mark, wordmark, wordmark-tagline, each in colour/ink/white/azure/sky). The mark and the wordmark are never shown together on one surface. Header carries the wordmark with tagline (never below 180px wide), footer and favicon carry the mark. Old logo folders under `assets/images/logos/` are legacy, do not use.
+
 ## Project rules
 - **No em dashes or en dashes anywhere** (code, comments, UI strings, commit messages, docs). Use a comma, colon, hyphen, or period.
 - Commit messages: one line only. No `Co-Authored-By` or any Claude/Anthropic attribution.

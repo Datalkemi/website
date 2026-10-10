@@ -328,7 +328,7 @@
       html += '</div>';
     });
 
-    breakdownEl.innerHTML = html || '<p style="color:rgba(255,255,255,0.4);font-size:.875rem;">No selections recorded.</p>';
+    breakdownEl.innerHTML = html || '<p style="color:var(--text-faint);font-size:.875rem;">No selections recorded.</p>';
   }
 
   function buildSummaryText() {
