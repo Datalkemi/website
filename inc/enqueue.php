@@ -81,6 +81,7 @@ function datalkemi_enqueue_assets() {
 	wp_localize_script( 'datalkemi-main-js', 'DK_AJAX', [
 		'url'              => admin_url( 'admin-ajax.php' ),
 		'contact_nonce'    => wp_create_nonce( 'dk_contact_submit' ),
+		'quote_nonce'      => wp_create_nonce( 'dk_quote_submit' ),
 		'reaction_nonce'   => wp_create_nonce( 'dk_post_reaction' ),
 	] );
 }

@@ -511,7 +511,7 @@
     var totalGBP = getTotalGBP();
     var params   = new URLSearchParams({
       action:  'dk_submit_configurator',
-      nonce:   (typeof DK_AJAX !== 'undefined' ? DK_AJAX.nonce : ''),
+      nonce:   (typeof DK_CFG !== 'undefined' ? DK_CFG.nonce : ''),
       name:    name,
       email:   email,
       company: companyEl ? companyEl.value.trim() : '',
@@ -520,7 +520,7 @@
       total:   totalGBP,
     });
 
-    fetch((typeof DK_AJAX !== 'undefined' ? DK_AJAX.url : ''), {
+    fetch((typeof DK_CFG !== 'undefined' ? DK_CFG.url : ''), {
       method:  'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body:    params.toString(),

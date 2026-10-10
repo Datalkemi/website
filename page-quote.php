@@ -50,7 +50,11 @@ $services = [
 						echo do_shortcode( '[wpforms id="' . esc_attr( $wpforms_quote_id ) . '"]' );
 					else : ?>
 						<!-- Manual fallback form -->
-						<form class="quote-form" method="post" action="mailto:info@datalkemi.com" enctype="text/plain">
+						<form id="dk-quote-form" class="quote-form" method="post" novalidate>
+							<?php /* honeypot */ ?>
+							<div style="position:absolute; left:-9999px; opacity:0;" aria-hidden="true">
+								<input type="text" name="website" tabindex="-1" autocomplete="off">
+							</div>
 							<div class="quote-form-row">
 								<div class="quote-form-field">
 									<label><?php esc_html_e( 'Your Name *', 'datalkemi' ); ?></label>
@@ -126,13 +130,18 @@ $services = [
 									<option value="other"><?php esc_html_e( 'Other', 'datalkemi' ); ?></option>
 								</select>
 							</div>
-							<button type="submit" class="dk-btn dk-btn-primary" style="width:100%; justify-content:center; font-size:1rem; padding:1rem;">
+							<button type="submit" id="dk-quote-submit" class="dk-btn dk-btn-primary" style="width:100%; justify-content:center; font-size:1rem; padding:1rem;">
 								<?php esc_html_e( 'Submit Project Brief &#8594;', 'datalkemi' ); ?>
 							</button>
 							<p style="font-size:0.8125rem; color:var(--color-text-muted); text-align:center; margin-top:1rem;">
 								<?php esc_html_e( 'We respond to all enquiries within 24 hours. No spam, ever.', 'datalkemi' ); ?>
 							</p>
+							<div id="dk-quote-error" class="contact-form-error" style="display:none;"></div>
 						</form>
+						<div id="dk-quote-success" class="contact-form-success" style="display:none;" role="status">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+							<?php esc_html_e( 'Brief received. We will reply within one business day with next steps.', 'datalkemi' ); ?>
+						</div>
 					<?php endif; ?>
 				</div>
 			</div>

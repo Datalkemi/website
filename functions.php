@@ -167,6 +167,71 @@ function datalkemi_contact_submit() {
 add_action( 'wp_ajax_dk_contact_submit',        'datalkemi_contact_submit' );
 add_action( 'wp_ajax_nopriv_dk_contact_submit', 'datalkemi_contact_submit' );
 
+// ── Get a Quote page form AJAX (replaces the old mailto fallback) ───────────
+function datalkemi_quote_submit() {
+	check_ajax_referer( 'dk_quote_submit', 'nonce' );
+
+	// Honeypot
+	if ( ! empty( $_POST['website'] ) ) {
+		wp_send_json_error( 'Invalid submission.' );
+	}
+
+	$name        = sanitize_text_field( $_POST['name']        ?? '' );
+	$company     = sanitize_text_field( $_POST['company']     ?? '' );
+	$email       = sanitize_email(      $_POST['email']       ?? '' );
+	$phone       = sanitize_text_field( $_POST['phone']       ?? '' );
+	$service     = sanitize_text_field( $_POST['service']     ?? '' );
+	$budget      = sanitize_text_field( $_POST['budget']      ?? '' );
+	$timeline    = sanitize_text_field( $_POST['timeline']    ?? '' );
+	$source      = sanitize_text_field( $_POST['source']      ?? '' );
+	$description = sanitize_textarea_field( $_POST['description'] ?? '' );
+
+	if ( ! $name || ! is_email( $email ) || ! $service || ! $description ) {
+		wp_send_json_error( 'Please fill in all required fields.' );
+	}
+
+	$admin_email = get_option( 'admin_email' );
+	$subject     = 'New Project Brief: ' . $name . ' (' . $service . ')';
+
+	$body  = "New project brief from datalkemi.com/get-a-quote\n\n";
+	$body .= "Name:     {$name}\n";
+	$body .= "Email:    {$email}\n";
+	if ( $company )  $body .= "Company:  {$company}\n";
+	if ( $phone )    $body .= "Phone:    {$phone}\n";
+	$body .= "Service:  {$service}\n";
+	if ( $budget )   $body .= "Budget:   {$budget}\n";
+	if ( $timeline ) $body .= "Timeline: {$timeline}\n";
+	if ( $source )   $body .= "Source:   {$source}\n";
+	$body .= "\nProject:\n{$description}\n";
+	$body .= "\n---\nReply to this email to contact {$name} directly.\n";
+
+	$headers = [
+		'Content-Type: text/plain; charset=UTF-8',
+		'Reply-To: ' . $name . ' <' . $email . '>',
+	];
+
+	$sent = wp_mail( $admin_email, $subject, $body, $headers );
+
+	if ( ! $sent ) {
+		error_log( '[Datalkemi quote form] admin notification failed for ' . $email );
+		wp_send_json_error( 'Could not send. Please email info@datalkemi.com directly.' );
+	}
+
+	// Confirmation to the client (best effort, does not affect the result)
+	$client_body  = "Hi {$name},\n\n";
+	$client_body .= "Thanks for sending your project brief to Datalkemi. A senior team member will review it and reply within one business day.\n\n";
+	$client_body .= "What you told us:\n";
+	$client_body .= "Service:  {$service}\n";
+	if ( $budget )   $client_body .= "Budget:   {$budget}\n";
+	if ( $timeline ) $client_body .= "Timeline: {$timeline}\n";
+	$client_body .= "\nQuestions in the meantime? Just reply to this email.\n\nThe Datalkemi Team\nhttps://datalkemi.com\n";
+	wp_mail( $email, 'We received your project brief', $client_body, [ 'Content-Type: text/plain; charset=UTF-8' ] );
+
+	wp_send_json_success( 'Brief sent.' );
+}
+add_action( 'wp_ajax_dk_quote_submit',        'datalkemi_quote_submit' );
+add_action( 'wp_ajax_nopriv_dk_quote_submit', 'datalkemi_quote_submit' );
+
 // ── Post reactions (likes / dislikes) ──────────────────────────────────────
 function datalkemi_post_reaction() {
 	check_ajax_referer( 'dk_post_reaction', 'nonce' );

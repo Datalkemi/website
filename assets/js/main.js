@@ -128,6 +128,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Get a Quote page form AJAX ─────────────────────────────────────────
+  const quoteForm = document.getElementById('dk-quote-form');
+  if (quoteForm && typeof DK_AJAX !== 'undefined') {
+    quoteForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn     = document.getElementById('dk-quote-submit');
+      const success = document.getElementById('dk-quote-success');
+      const error   = document.getElementById('dk-quote-error');
+      const origHtml = btn.innerHTML;
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      error.style.display = 'none';
+
+      const data = new FormData(quoteForm);
+      data.append('action', 'dk_quote_submit');
+      data.append('nonce',  DK_AJAX.quote_nonce);
+
+      const fail = (msg) => {
+        error.textContent   = msg;
+        error.style.display = 'block';
+        btn.disabled  = false;
+        btn.innerHTML = origHtml;
+      };
+
+      try {
+        const res  = await fetch(DK_AJAX.url, { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          quoteForm.style.display = 'none';
+          success.style.display   = 'flex';
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          fail(json.data || 'Something went wrong. Please try again.');
+        }
+      } catch {
+        fail('Network error. Please try again or email info@datalkemi.com directly.');
+      }
+    });
+  }
+
   // ── Newsletter form AJAX ───────────────────────────────────────────────
   const newsletterForm = document.querySelector('.ft-newsletter-form');
   if (newsletterForm && typeof DK_AJAX !== 'undefined') {

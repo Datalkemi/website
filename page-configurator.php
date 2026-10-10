@@ -149,7 +149,7 @@ $total_steps = 1 + count( $config ) + 1; // country + sections + summary
 <?php
 echo '<script>window.DK_CONFIG = ' . $config_json . '; window.DK_TOTAL_STEPS = ' . (int) $total_steps . ';</script>';
 wp_enqueue_script( 'datalkemi-configurator', get_stylesheet_directory_uri() . '/assets/js/configurator.js', [], '2.0.0', true );
-wp_localize_script( 'datalkemi-configurator', 'DK_AJAX', [
+wp_localize_script( 'datalkemi-configurator', 'DK_CFG', [
 	'url'   => admin_url( 'admin-ajax.php' ),
 	'nonce' => wp_create_nonce( 'dk_configurator_submit' ),
 ] );

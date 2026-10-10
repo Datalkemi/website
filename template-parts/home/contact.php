@@ -103,13 +103,15 @@ $services = [
 						<span class="btn-loading" style="display:none;"><?php esc_html_e( 'Sending...', 'datalkemi' ); ?></span>
 					</button>
 
-					<div id="dk-contact-success" class="contact-form-success" style="display:none;">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-						<?php esc_html_e( 'Message sent. We will be in touch within one business day.', 'datalkemi' ); ?>
-					</div>
 					<div id="dk-contact-error" class="contact-form-error" style="display:none;"></div>
 
 				</form>
+
+				<?php /* Success lives outside the form: the form is hidden on success, this stays visible */ ?>
+				<div id="dk-contact-success" class="contact-form-success" style="display:none;" role="status">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+					<?php esc_html_e( 'Message sent. We will be in touch within one business day.', 'datalkemi' ); ?>
+				</div>
 			</div>
 
 		</div>
