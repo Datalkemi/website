@@ -8,6 +8,8 @@
 
 <button class="scroll-to-top" aria-label="<?php esc_attr_e( 'Scroll to top', 'datalkemi' ); ?>">&#8679;</button>
 
+<?php if ( function_exists( 'datalkemi_consent_banner' ) ) { datalkemi_consent_banner(); } ?>
+
 <?php wp_footer(); ?>
 </body>
 </html>

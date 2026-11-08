@@ -76,6 +76,15 @@ function datalkemi_enqueue_assets() {
 		datalkemi_asset_ver( '/assets/css/mobile.css' )
 	);
 
+	// Cookie consent: holds back HubSpot tracking until the visitor accepts
+	wp_enqueue_script(
+		'datalkemi-consent',
+		DATALKEMI_URI . '/assets/js/consent.js',
+		[],
+		datalkemi_asset_ver( '/assets/js/consent.js' ),
+		true
+	);
+
 	// Main JS
 	wp_enqueue_script(
 		'datalkemi-main-js',

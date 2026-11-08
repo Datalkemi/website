@@ -625,6 +625,23 @@ picture img { display: block; width: 100%; height: auto; }
 	.dk-reviews-credit { text-align: center; }
 }
 
+/* Cookie banner as a bottom sheet on phones */
+@media (max-width: 640px) {
+	.dk-consent {
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: auto;
+		border-left: none;
+		border-right: none;
+		border-bottom: none;
+		border-radius: 0;
+	}
+	.dk-consent-inner { padding: 1.125rem max(1.25rem, env(safe-area-inset-right)) calc(1rem + env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left)); }
+	.dk-consent-actions .dk-btn { min-height: 48px; }
+	body.has-consent-banner .scroll-to-top { display: none; }
+}
+
 /* ==========================================================================
    5. CONFIGURATOR ON PHONES
    ========================================================================== */

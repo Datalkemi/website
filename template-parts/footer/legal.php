@@ -45,6 +45,9 @@
 				<a href="<?php echo esc_url( home_url( '/cookie-policy/' ) ); ?>">
 					<?php esc_html_e( 'Cookie policy', 'datalkemi' ); ?>
 				</a>
+				<a href="<?php echo esc_url( home_url( '/cookie-policy/#cookie-settings' ) ); ?>" data-dk-consent-open>
+					<?php esc_html_e( 'Cookie settings', 'datalkemi' ); ?>
+				</a>
 				<a href="<?php echo esc_url( home_url( '/client-portal/' ) ); ?>" class="ft-portal-link">
 					<?php esc_html_e( 'Client portal', 'datalkemi' ); ?>
 				</a>
