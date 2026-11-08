@@ -96,7 +96,7 @@ $stack = [
 		<figure class="product-screen">
 			<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-hero.jpg' ); ?>"
 				alt="<?php esc_attr_e( 'The Exnami dashboard showing spendable balance, income against spend, and category breakdown', 'datalkemi' ); ?>"
-				width="1200" height="750" loading="lazy">
+				width="1200" height="517" loading="lazy">
 		</figure>
 		<div class="product-stats">
 			<?php foreach ( $stats as $s ) : ?>
