@@ -34,6 +34,7 @@
 					</p>
 				</div><!-- /.ft-brand-top -->
 
+				<div class="ft-brand-actions">
 				<a href="https://meetings-ap1.hubspot.com/naufal" class="ft-btn-primary">
 					<?php esc_html_e( 'Book a discovery call', 'datalkemi' ); ?>
 				</a>
@@ -56,6 +57,19 @@
 						class="ft-social-link"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+					</a>
+				</div>
+				</div><!-- /.ft-brand-actions -->
+
+				<!-- Phone only: one-tap contact and estimate -->
+				<div class="ft-quick">
+					<a href="mailto:info@datalkemi.com" class="ft-quick-link">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+						<span><?php esc_html_e( 'Email us', 'datalkemi' ); ?></span>
+					</a>
+					<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="ft-quick-link">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2M16 11v4"/></svg>
+						<span><?php esc_html_e( 'Estimate a project', 'datalkemi' ); ?></span>
 					</a>
 				</div>
 

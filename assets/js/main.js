@@ -13,14 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
     });
   };
+  const themeMeta = document.getElementById('dk-theme-color');
+  const applyTheme = (t) => {
+    root.setAttribute('data-theme', t);
+    if (themeMeta) themeMeta.setAttribute('content', t === 'dark' ? '#022D3F' : '#F5FAFD');
+    syncToggleLabels();
+  };
+  const savedTheme = () => {
+    try { const s = localStorage.getItem('dk-theme'); return (s === 'light' || s === 'dark') ? s : null; } catch (e) { return null; }
+  };
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
       try { localStorage.setItem('dk-theme', next); } catch (e) { /* storage blocked */ }
-      syncToggleLabels();
+      applyTheme(next);
     });
   });
+  // Until the visitor picks a theme, follow the device as it changes (for example at sunset)
+  if (window.matchMedia) {
+    const schemeMq = window.matchMedia('(prefers-color-scheme: dark)');
+    schemeMq.addEventListener('change', (e) => { if (!savedTheme()) applyTheme(e.matches ? 'dark' : 'light'); });
+  }
   syncToggleLabels();
 
   // ── Sticky header ───────────────────────────────────────────────────────

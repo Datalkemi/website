@@ -46,8 +46,7 @@ endif;
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-	<meta name="theme-color" content="#F5FAFD" media="(prefers-color-scheme: light)">
-	<meta name="theme-color" content="#022D3F" media="(prefers-color-scheme: dark)">
+	<meta name="theme-color" id="dk-theme-color" content="#F5FAFD">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-title" content="Datalkemi">
@@ -59,11 +58,15 @@ endif;
 	<link rel="alternate icon" type="image/png" href="<?php echo esc_url( DATALKEMI_URI . '/assets/brand/mark/Datalkemi_Logo_Colour.png' ); ?>">
 	<?php endif; ?>
 	<script>
-	/* Apply the saved theme before paint so there is no flash. Light is the brand default. */
+	/* Apply the theme before paint so there is no flash. A choice saved with the
+	   toggle wins; otherwise the theme follows the device's light or dark setting. */
 	(function () {
-		var t = 'light';
+		var t = null;
 		try { var s = localStorage.getItem('dk-theme'); if (s === 'light' || s === 'dark') { t = s; } } catch (e) {}
+		if (!t) { t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'; }
 		document.documentElement.setAttribute('data-theme', t);
+		var m = document.getElementById('dk-theme-color');
+		if (m) { m.setAttribute('content', t === 'dark' ? '#022D3F' : '#F5FAFD'); }
 	})();
 	</script>
 	<?php wp_head(); ?>
