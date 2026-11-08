@@ -561,31 +561,26 @@
 	flex-wrap: wrap;
 }
 
-/* Logos as monochrome silhouettes: dark on light theme, light on dark theme */
+/* Logos in their own colours on a fixed white tile, so they read the same
+   on paper and on ink. No silhouette filter: the supplied marks are not
+   single colour shapes and turned into blocks when flattened. */
 .hp-logo-item {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	filter: brightness(0) opacity(0.5);
-	transition: filter 0.25s;
-}
-
-.hp-logo-item:hover {
-	filter: brightness(0) opacity(0.85);
-}
-
-:root[data-theme="dark"] .hp-logo-item {
-	filter: brightness(0) invert(1) opacity(0.5);
-}
-
-:root[data-theme="dark"] .hp-logo-item:hover {
-	filter: brightness(0) invert(1) opacity(0.9);
+	min-width: 10rem;
+	padding: 0.75rem 1.25rem;
+	background: var(--brand-white);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
 }
 
 .hp-logo-item img {
-	max-height: 40px;
+	display: block;
+	height: 3rem;
 	width: auto;
-	max-width: 160px;
+	max-width: 8.5rem;
+	object-fit: contain;
 }
 
 /* ==========================================================================

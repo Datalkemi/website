@@ -2,7 +2,8 @@
 /**
  * Template Part: Homepage Logo Strip
  *
- * Real client logo files (PNG) are in /assets/img/clients/.
+ * Client logo files (trimmed PNG, 240px tall) are in /assets/img/clients/.
+ * Each logo sits on a white tile so colour marks read in both themes.
  * Add or remove entries from the $logos array as clients change.
  *
  * @package Datalkemi
@@ -11,16 +12,16 @@
 
 $logos = [
 	[
-		'file' => 'KRZ-ColourLogo-FinalPNG.png',
-		'alt'  => 'KRZ',
+		'file' => 'krz-engineering.png',
+		'alt'  => 'KRZ Engineering',
 	],
 	[
-		'file' => 'OzViz_Migration_Logo_Transparent.png',
+		'file' => 'ozviz-migration.png',
 		'alt'  => 'OzViz Migration',
 	],
 	[
-		'file' => 'Logo.png',
-		'alt'  => 'Client',
+		'file' => 'motive-motors.png',
+		'alt'  => 'Motive Motors',
 	],
 ];
 ?>
@@ -40,7 +41,7 @@ $logos = [
 						src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/clients/' . $logo['file'] ); ?>"
 						loading="lazy"
 						alt="<?php echo esc_attr( $logo['alt'] ); ?>"
-						height="40"
+						height="48"
 					/>
 				</div>
 			<?php endforeach; ?>
