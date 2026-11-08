@@ -26,6 +26,27 @@ body.nav-open {
 	touch-action: none;
 }
 
+/* Outline buttons on ink bands use light text and a light border at every size */
+.page-hero .dk-btn-outline,
+.service-hero .dk-btn-outline,
+.dk-band .dk-btn-outline {
+	color: var(--text) !important;
+	-webkit-text-fill-color: var(--text) !important;
+	border-color: var(--border-strong) !important;
+}
+
+.page-hero .dk-btn-outline:hover,
+.service-hero .dk-btn-outline:hover,
+.dk-band .dk-btn-outline:hover {
+	background: transparent !important;
+	color: var(--accent) !important;
+	-webkit-text-fill-color: var(--accent) !important;
+	border-color: var(--accent) !important;
+}
+
+/* Configurator steps scroll to just below the sticky header */
+#cfg-wizard { scroll-margin-top: calc(var(--dk-header-h, 64px) + 0.5rem); }
+
 /* Screenshots served through <picture> keep their block layout */
 picture { display: block; }
 picture img { display: block; width: 100%; height: auto; }
@@ -145,7 +166,34 @@ picture img { display: block; width: 100%; height: auto; }
 		cursor: pointer;
 	}
 
-	.nav-drawer-close:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+	/* Parent theme button states would paint these solid blue; keep them line style */
+	.nav-drawer-close,
+	.nav-drawer-close:hover,
+	.nav-drawer-close:focus,
+	.nav-drawer-close:active,
+	.nav-sub-toggle,
+	.nav-sub-toggle:hover,
+	.nav-sub-toggle:focus,
+	.nav-sub-toggle:active {
+		background: transparent !important;
+		color: var(--text) !important;
+		box-shadow: none !important;
+	}
+
+	.nav-drawer-close svg,
+	.nav-sub-toggle svg {
+		display: block;
+		flex: 0 0 auto;
+		width: 22px !important;
+		height: 22px !important;
+		min-width: 22px;
+	}
+
+	.nav-drawer-close:focus:not(:focus-visible),
+	.nav-sub-toggle:focus:not(:focus-visible) { outline: none; }
+
+	.nav-drawer-close:focus-visible,
+	.nav-sub-toggle:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
 
 	.nav-menu {
 		flex-direction: column;
@@ -189,7 +237,6 @@ picture img { display: block; width: 100%; height: auto; }
 		width: 44px;
 		height: 44px;
 		background: transparent;
-		color: var(--text-muted);
 		border: 1px solid var(--border);
 		border-radius: var(--radius);
 		cursor: pointer;
@@ -447,7 +494,8 @@ picture img { display: block; width: 100%; height: auto; }
 	.ft-col:last-of-type { border-bottom: 1px solid var(--border); }
 
 	.ft-col-heading {
-		display: flex;
+		display: flex !important;
+		width: 100%;
 		align-items: center;
 		justify-content: space-between;
 		min-height: 52px;
@@ -556,4 +604,25 @@ picture img { display: block; width: 100%; height: auto; }
 	textarea {
 		font-size: 16px !important; /* stops iOS zooming into fields */
 	}
+}
+
+/* ==========================================================================
+   7. SMALL TABLETS (600px to 768px): actions keep a natural width
+   ========================================================================== */
+@media (min-width: 600px) and (max-width: 768px) {
+	.hp-hero-actions { align-items: flex-start; }
+
+	.hp-hero-actions .hp-btn-primary,
+	.hp-hero-actions .hp-btn-ghost {
+		width: auto;
+		min-width: 18rem;
+	}
+
+	.hp-hero-actions .hp-btn-text { align-self: flex-start; }
+
+	.hero-buttons,
+	.product-hero-buttons { flex-direction: row; align-items: center; }
+
+	.hero-buttons .dk-btn,
+	.product-hero-buttons .dk-btn { width: auto; }
 }
