@@ -75,13 +75,13 @@ add_action( 'template_redirect', 'datalkemi_redirect_blog_page' );
 add_filter( 'astra_get_option_scroll-to-top-enable', '__return_false' );
 
 /**
- * Product pages guard, version 2.
+ * Product pages guard, version 3.
  * Makes sure the Exnami page and the Our Products landing page exist with
  * their templates, and that the primary menu has an "Our Products" item
- * with Exnami beneath it, placed after Projects. Runs once per version.
+ * with Exnami beneath it, placed before Services. Runs once per version.
  */
 function datalkemi_ensure_product_pages() {
-	if ( (int) get_option( 'datalkemi_product_pages_version' ) >= 2 ) {
+	if ( (int) get_option( 'datalkemi_product_pages_version' ) >= 3 ) {
 		return;
 	}
 
@@ -143,6 +143,32 @@ function datalkemi_ensure_product_pages() {
 				'menu-item-position'  => $after + 1,
 			] );
 		}
+		// Place Our Products directly before Services among the top level items
+		if ( $parent_id && ! is_wp_error( $parent_id ) ) {
+			$top = array_values( array_filter( wp_get_nav_menu_items( $menu_id ) ?: [], function ( $i ) {
+				return (int) $i->menu_item_parent === 0;
+			} ) );
+			usort( $top, function ( $a, $b ) { return (int) $a->menu_order <=> (int) $b->menu_order; } );
+			$ordered = [];
+			$product = null;
+			foreach ( $top as $i ) {
+				if ( (int) $i->ID === (int) $parent_id ) { $product = $i; continue; }
+				$ordered[] = $i;
+			}
+			if ( $product ) {
+				$pos = count( $ordered );
+				foreach ( $ordered as $k => $i ) {
+					if ( $i->title === 'Services' ) { $pos = $k; break; }
+				}
+				array_splice( $ordered, $pos, 0, [ $product ] );
+				foreach ( $ordered as $k => $i ) {
+					if ( (int) $i->menu_order !== $k + 1 ) {
+						wp_update_post( [ 'ID' => $i->ID, 'menu_order' => $k + 1 ] );
+					}
+				}
+			}
+		}
+
 		if ( $parent_id && ! is_wp_error( $parent_id ) ) {
 			$has_child = false;
 			foreach ( $items as $item ) {
@@ -164,7 +190,7 @@ function datalkemi_ensure_product_pages() {
 		}
 	}
 
-	update_option( 'datalkemi_product_pages_version', 2 );
+	update_option( 'datalkemi_product_pages_version', 3 );
 }
 add_action( 'init', 'datalkemi_ensure_product_pages', 25 );
 

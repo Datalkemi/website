@@ -294,9 +294,9 @@ if ( empty( $menu_items ) ) {
     $items = [
         [ 'title' => 'Home',         'url' => home_url( '/' ),                    'object_id' => $home_id,     'order' => 1 ],
         [ 'title' => 'About',        'url' => home_url( '/about/' ),              'object_id' => $about_id,    'order' => 2 ],
-        [ 'title' => 'Services',     'url' => home_url( '/services/' ),           'object_id' => $services_id, 'order' => 3 ],
-        [ 'title' => 'Projects',     'url' => home_url( '/projects/' ),           'object_id' => $projects_id, 'order' => 4 ],
-        [ 'title' => 'Our Products', 'url' => home_url( '/products/' ),           'object_id' => $products_id, 'order' => 5 ],
+        [ 'title' => 'Our Products', 'url' => home_url( '/products/' ),           'object_id' => $products_id, 'order' => 3 ],
+        [ 'title' => 'Services',     'url' => home_url( '/services/' ),           'object_id' => $services_id, 'order' => 4 ],
+        [ 'title' => 'Projects',     'url' => home_url( '/projects/' ),           'object_id' => $projects_id, 'order' => 5 ],
         [ 'title' => 'Insights',     'url' => home_url( '/insights/' ),           'object_id' => $insights_id, 'order' => 6 ],
         [ 'title' => 'Contact',      'url' => home_url( '/contact/' ),            'object_id' => $contact_id,  'order' => 7 ],
         [ 'title' => 'My Portal',    'url' => home_url( '/client-portal/' ),      'object_id' => $portal_id,   'order' => 8 ],
