@@ -104,7 +104,7 @@ $related = new WP_Query( [
 					<p style="color:var(--text); font-weight:600; margin-bottom:0.75rem; font-size:0.9375rem;">
 						<?php esc_html_e( 'Need something similar?', 'datalkemi' ); ?>
 					</p>
-					<a href="<?php echo esc_url( home_url( '/get-a-quote/' ) ); ?>" class="dk-btn dk-btn-primary" style="width:100%; justify-content:center;">
+					<a href="<?php echo esc_url( home_url( '/get-a-quote/' ) ); ?>" class="dk-btn dk-btn-primary" style="width:100%;">
 						<?php esc_html_e( 'Start Your Project', 'datalkemi' ); ?>
 					</a>
 				</div>

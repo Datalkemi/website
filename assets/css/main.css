@@ -92,14 +92,18 @@ body {
   color: var(--color-text) !important;
 }
 
+/* Margins are reset without !important so component rules and inline
+   spacing can set them. The colour uses the live token so ink bands
+   (where --text re-resolves to white) keep headings readable. */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display) !important;
-  color: var(--color-text) !important;
+  color: var(--text) !important;
   line-height: 1.2 !important;
-  margin-bottom: 0 !important;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-p { margin-bottom: 0 !important; }
+p { margin-bottom: 0; }
 
 a {
   color: var(--color-primary) !important;
@@ -148,40 +152,47 @@ a:hover { color: var(--color-accent) !important; }
   line-height: 1.7 !important;
 }
 
-/* ── Buttons ───────────────────────────────────────────────────────────── */
+/* ── Buttons (same metrics as style.css section 8) ─────────────────────── */
 .dk-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 2rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none !important;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
+  min-height: 2.5rem;
+  padding: 0.5rem 1.25rem;
   font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none !important;
+  border: 1px solid transparent;
 }
 
 .dk-btn-primary {
   background: var(--action);
+  border-color: var(--action);
   color: var(--on-action) !important;
 }
 
 .dk-btn-primary:hover {
   background: var(--action-hover);
+  border-color: var(--action-hover);
   color: var(--on-action) !important;
 }
 
 .dk-btn-outline {
   background: transparent;
-  color: var(--color-primary) !important;
-  border: 2px solid var(--color-primary);
+  color: var(--action) !important;
+  border: 1px solid var(--action);
 }
 
 .dk-btn-outline:hover {
-  background: var(--color-primary);
+  background: var(--action);
+  border-color: var(--action);
   color: var(--on-action) !important;
 }
 
@@ -425,6 +436,11 @@ a:hover { color: var(--color-accent) !important; }
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* Service page hero copy is left aligned, so its buttons follow */
+.service-hero .hero-buttons {
+  justify-content: flex-start;
 }
 
 .hero-fade {
@@ -1019,9 +1035,9 @@ a:hover { color: var(--color-accent) !important; }
   color: var(--on-action);
   border: none;
   border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  font-size: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
@@ -1091,8 +1107,6 @@ a:hover { color: var(--color-accent) !important; }
 }
 
 .nav-portal-btn {
-  padding: 0.5rem 1.25rem !important;
-  font-size: 0.875rem !important;
   white-space: nowrap;
 }
 
@@ -4055,15 +4069,19 @@ a:hover { color: var(--color-accent) !important; }
 .cfg-nav-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.8125rem 1.625rem;
-  border-radius: var(--radius);
-  font-size: 0.9375rem;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
   font-weight: 600;
+  line-height: 1.25;
+  border-radius: var(--radius);
+  text-decoration: none;
   cursor: pointer;
-  border: none;
-  transition: background 0.2s, color 0.2s, opacity 0.2s;
-  line-height: 1;
+  transition: var(--transition);
+  border: 1px solid transparent;
 }
 
 .cfg-nav-prev {
@@ -4230,8 +4248,6 @@ a:hover { color: var(--color-accent) !important; }
 .cfg-submit-btn {
   width: 100%;
   justify-content: center;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
 }
 
 /* The hidden attribute must win over the flex display below, otherwise the

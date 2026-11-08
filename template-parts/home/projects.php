@@ -44,7 +44,7 @@ $projects = new WP_Query( [
 						<?php endif; ?>
 						<div class="project-actions">
 							<?php if ( $live_url ) : ?>
-								<a href="<?php echo esc_url( $live_url ); ?>" target="_blank" rel="noopener noreferrer" class="dk-btn dk-btn-outline" style="font-size:0.8125rem; padding:0.5rem 1rem;">
+								<a href="<?php echo esc_url( $live_url ); ?>" target="_blank" rel="noopener noreferrer" class="dk-btn dk-btn-outline">
 									<?php esc_html_e( 'View Live', 'datalkemi' ); ?>
 								</a>
 							<?php endif; ?>

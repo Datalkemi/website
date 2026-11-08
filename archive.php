@@ -46,7 +46,7 @@ get_header(); ?>
 								<p style="color:var(--color-text-muted); font-size:0.9rem; flex:1;">
 									<?php the_excerpt(); ?>
 								</p>
-								<a href="<?php the_permalink(); ?>" class="btn-outline" style="align-self:flex-start; margin-top:1.25rem; padding:0.5rem 1.25rem; font-size:0.875rem;">
+								<a href="<?php the_permalink(); ?>" class="btn-outline" style="align-self:flex-start; margin-top:1.25rem;">
 									<?php esc_html_e( 'Read More', 'datalkemi' ); ?> &rarr;
 								</a>
 							</div>

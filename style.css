@@ -247,51 +247,72 @@ a:hover { color: var(--action-hover); }
   --border: var(--band-border);
   --accent: var(--band-accent);
   --link: var(--band-accent);
+  /* Legacy aliases resolve once at :root, so they must be re-pointed inside a band */
+  --color-primary:    var(--action);
+  --color-accent:     var(--accent);
+  --color-bg:         var(--band-bg);
+  --color-bg-alt:     var(--surface);
+  --color-text:       var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-border:     var(--border);
 }
 
 /* ==========================================================================
    8. BUTTONS (interface kit)
+   One size everywhere, matched to the header button: 2.5rem tall,
+   0.875rem text, 1px border. Width variants only (full width in forms).
    ========================================================================== */
 .btn-primary,
 .dk-btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--action);
-  color: var(--on-action);
-  border: 1px solid var(--action);
-  border-radius: var(--radius);
+  min-height: 2.5rem;
+  padding: 0.5rem 1.25rem;
   font-family: var(--font-body);
-  font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  border-radius: var(--radius);
   text-decoration: none;
+  cursor: pointer;
   transition: var(--transition);
+  background: var(--action);
+  color: var(--on-action) !important;
+  border: 1px solid var(--action);
 }
 .btn-primary:hover,
 .dk-btn-primary:hover {
   background: var(--action-hover);
   border-color: var(--action-hover);
-  color: var(--on-action);
+  color: var(--on-action) !important;
 }
 
 .btn-outline,
 .dk-btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border-strong);
+  min-height: 2.5rem;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
   border-radius: var(--radius);
-  font-weight: 500;
   text-decoration: none;
+  cursor: pointer;
   transition: var(--transition);
+  background: transparent;
+  color: var(--text) !important;
+  border: 1px solid var(--border-strong);
 }
 .btn-outline:hover,
 .dk-btn-secondary:hover {
   border-color: var(--action);
-  color: var(--action);
+  color: var(--action) !important;
 }
 
 /* ==========================================================================
@@ -337,8 +358,8 @@ a:hover { color: var(--action-hover); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
   background: transparent;
   color: var(--text);

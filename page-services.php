@@ -196,7 +196,7 @@ $industries = [
 				</p>
 			</div>
 			<div class="config-promo-action">
-				<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="dk-btn dk-btn-primary" style="font-size:1.0625rem; padding:1rem 2.25rem;">
+				<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="dk-btn dk-btn-primary">
 					Open Configurator
 				</a>
 				<p style="color:var(--text-muted); font-size:0.875rem; margin-top:0.75rem; text-align:center;">Takes about 2 minutes</p>

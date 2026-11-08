@@ -194,7 +194,7 @@ $related_projects = new WP_Query( [
 				</p>
 			</div>
 			<div class="config-promo-action">
-				<a href="<?php echo esc_url( home_url( '/build-your-project/?service=' . $service_slug ) ); ?>" class="dk-btn dk-btn-primary" style="font-size:1rem; padding:0.9rem 2rem;">
+				<a href="<?php echo esc_url( home_url( '/build-your-project/?service=' . $service_slug ) ); ?>" class="dk-btn dk-btn-primary">
 					Open Configurator
 				</a>
 			</div>

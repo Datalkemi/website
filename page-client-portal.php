@@ -93,7 +93,7 @@ get_header();
 						<?php printf( esc_html__( 'Welcome back, %s', 'datalkemi' ), esc_html( $user->first_name ?: $user->display_name ) ); ?>
 					</h1>
 				</div>
-				<a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>" class="dk-btn dk-btn-outline" style="font-size:0.875rem;">
+				<a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>" class="dk-btn dk-btn-outline">
 					<?php esc_html_e( 'Sign Out', 'datalkemi' ); ?>
 				</a>
 			</div>
@@ -170,7 +170,7 @@ get_header();
 								</div>
 
 								<?php if ( $live_url ) : ?>
-									<a href="<?php echo esc_url( $live_url ); ?>" target="_blank" rel="noopener noreferrer" class="dk-btn dk-btn-outline" style="font-size:0.8125rem; padding:0.5rem 1.25rem; margin-top:1rem;">
+									<a href="<?php echo esc_url( $live_url ); ?>" target="_blank" rel="noopener noreferrer" class="dk-btn dk-btn-outline" style="margin-top:1rem;">
 										<?php esc_html_e( 'View Live Site &#8599;', 'datalkemi' ); ?>
 									</a>
 								<?php endif; ?>
@@ -230,7 +230,7 @@ get_header();
 							<p style="color:var(--color-text-muted); font-size:0.875rem; margin-bottom:0.75rem;">
 								<?php esc_html_e( 'For urgent matters:', 'datalkemi' ); ?>
 							</p>
-							<a href="mailto:support@datalkemi.com" class="dk-btn dk-btn-primary" style="width:100%; justify-content:center; font-size:0.875rem; text-align:center;">
+							<a href="mailto:support@datalkemi.com" class="dk-btn dk-btn-primary" style="width:100%;">
 								support@datalkemi.com
 							</a>
 						</div>
@@ -270,7 +270,7 @@ get_header();
 							</li>
 						</ul>
 						<div style="margin-top:1.5rem;">
-							<a href="<?php echo esc_url( get_edit_profile_url() ); ?>" class="dk-btn dk-btn-outline" style="font-size:0.875rem;">
+							<a href="<?php echo esc_url( get_edit_profile_url() ); ?>" class="dk-btn dk-btn-outline">
 								<?php esc_html_e( 'Edit Profile', 'datalkemi' ); ?>
 							</a>
 						</div>
@@ -282,7 +282,7 @@ get_header();
 						<p style="color:var(--color-text-muted); font-size:0.9375rem; margin-bottom:1.5rem;">
 							<?php esc_html_e( 'Our team is available Mon–Fri, 9am–6pm. Reach out any time for project updates, changes, or general questions.', 'datalkemi' ); ?>
 						</p>
-						<a href="mailto:info@datalkemi.com" class="dk-btn dk-btn-primary" style="font-size:0.875rem;">
+						<a href="mailto:info@datalkemi.com" class="dk-btn dk-btn-primary">
 							&#9993; info@datalkemi.com
 						</a>
 					</div>

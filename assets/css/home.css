@@ -43,8 +43,25 @@
    3. BUTTON COMPONENTS
    ========================================================================== */
 
+/* Same metrics as the header button (style.css section 8) */
 .hp-btn-primary,
-.hp-btn-outline,
+.hp-btn-outline {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	min-height: 2.5rem;
+	padding: 0.5rem 1.25rem;
+	font-family: var(--font-body);
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.25;
+	border-radius: var(--radius);
+	text-decoration: none;
+	cursor: pointer;
+	transition: var(--transition);
+}
+
 .hp-btn-text {
 	font-family: var(--font-body);
 	font-size: 0.875rem;
@@ -62,9 +79,7 @@
 	background-color: var(--action);
 	color: var(--on-action) !important;
 	-webkit-text-fill-color: var(--on-action) !important;
-	padding: 0.875rem 2rem;
-	border-radius: var(--radius);
-	border: 2px solid var(--action);
+	border: 1px solid var(--action);
 }
 
 .hp-btn-primary:hover {
@@ -82,9 +97,7 @@
 .hp-btn-outline {
 	background-color: transparent;
 	color: var(--action);
-	padding: 0.875rem 2rem;
-	border-radius: var(--radius);
-	border: 2px solid var(--action);
+	border: 1px solid var(--action);
 }
 
 .hp-btn-outline:hover {
@@ -653,6 +666,8 @@
 }
 
 .hp-build-col {
+	display: flex;
+	flex-direction: column;
 	padding: 2.25rem;
 	border-right: 1px solid var(--border);
 }
@@ -688,7 +703,10 @@
 	margin-bottom: 1.5rem;
 }
 
+/* Pinned to the column foot so the three links sit on one line */
 .hp-build-link {
+	margin-top: auto;
+	align-self: flex-start;
 	font-size: 0.875rem;
 	color: var(--link);
 	font-weight: 500;
@@ -1099,7 +1117,7 @@
 	margin-top: 0.1rem;
 }
 
-.hp-cred-item strong {
+.hp-cred-item > div > strong {
 	display: block;
 	font-size: 0.9375rem;
 	font-weight: 600;
@@ -1107,7 +1125,8 @@
 	margin-bottom: 0.25rem;
 }
 
-.hp-cred-item span {
+/* Scoped to the text column so the icon span keeps its flex centring */
+.hp-cred-item > div > span {
 	display: block;
 	font-size: 0.8125rem;
 	color: var(--text-muted);

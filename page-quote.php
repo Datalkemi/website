@@ -130,7 +130,7 @@ $services = [
 									<option value="other"><?php esc_html_e( 'Other', 'datalkemi' ); ?></option>
 								</select>
 							</div>
-							<button type="submit" id="dk-quote-submit" class="dk-btn dk-btn-primary" style="width:100%; justify-content:center; font-size:1rem; padding:1rem;">
+							<button type="submit" id="dk-quote-submit" class="dk-btn dk-btn-primary" style="width:100%;">
 								<?php esc_html_e( 'Submit Project Brief &#8594;', 'datalkemi' ); ?>
 							</button>
 							<p style="font-size:0.8125rem; color:var(--color-text-muted); text-align:center; margin-top:1rem;">
@@ -195,7 +195,7 @@ $services = [
 					<p style="font-size:0.875rem; color:var(--color-text-muted); margin-bottom:1.25rem;">
 						<?php esc_html_e( 'Email us directly and we\'ll get back to you within the hour during business hours.', 'datalkemi' ); ?>
 					</p>
-					<a href="mailto:info@datalkemi.com" class="dk-btn dk-btn-primary" style="font-size:0.875rem;">
+					<a href="mailto:info@datalkemi.com" class="dk-btn dk-btn-primary">
 						info@datalkemi.com
 					</a>
 				</div>

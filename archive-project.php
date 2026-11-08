@@ -85,12 +85,12 @@ $types      = get_terms( [ 'taxonomy' => 'project_type',     'hide_empty' => tru
 								</div>
 							<?php endif; ?>
 							<div class="project-actions">
-								<a href="<?php the_permalink(); ?>" class="dk-btn dk-btn-primary" style="font-size:0.8125rem; padding:0.5rem 1.25rem;">
+								<a href="<?php the_permalink(); ?>" class="dk-btn dk-btn-primary">
 									<?php esc_html_e( 'View Case Study', 'datalkemi' ); ?>
 								</a>
 								<?php if ( $live_url ) : ?>
 									<a href="<?php echo esc_url( $live_url ); ?>" target="_blank" rel="noopener noreferrer"
-										class="dk-btn dk-btn-outline" style="font-size:0.8125rem; padding:0.5rem 1rem;">
+										class="dk-btn dk-btn-outline">
 										<?php esc_html_e( 'Live Site &#8599;', 'datalkemi' ); ?>
 									</a>
 								<?php endif; ?>
@@ -114,7 +114,6 @@ $types      = get_terms( [ 'taxonomy' => 'project_type',     'hide_empty' => tru
 
 		<?php else : ?>
 			<div style="text-align:center; padding:4rem 0;">
-				<p style="font-size:4rem; margin-bottom:1rem;">&#127775;</p>
 				<h2 class="dk-section-title"><?php esc_html_e( 'Projects Coming Soon', 'datalkemi' ); ?></h2>
 				<p class="dk-section-subtitle" style="margin-bottom:2rem;">
 					<?php esc_html_e( 'We\'re preparing our case studies showcase. Check back shortly there\'s a lot in the pipeline.', 'datalkemi' ); ?>
