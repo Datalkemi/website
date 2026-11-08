@@ -212,7 +212,11 @@ function datalkemi_render_google_reviews( $data = null, $args = [] ) {
 		$data = datalkemi_get_google_reviews();
 	}
 
-	if ( empty( $data['reviews'] ) ) {
+	$reviews = array_values( array_filter( (array) ( $data['reviews'] ?? [] ), function ( $r ) { return '' !== trim( $r['text'] ); } ) );
+	$has_rating = ! empty( $data['rating'] ) && ! empty( $data['count'] );
+
+	// With no review text yet, a rating summary still shows when Google has one.
+	if ( ! $reviews && ! $has_rating ) {
 		if ( current_user_can( 'manage_options' ) ) {
 			return '<section class="dk-reviews dk-reviews--setup"><div class="dk-container"><p class="dk-reviews-setup">'
 				. esc_html__( 'Google reviews are not connected yet. This note is only visible to administrators.', 'datalkemi' )
@@ -221,13 +225,12 @@ function datalkemi_render_google_reviews( $data = null, $args = [] ) {
 		return '';
 	}
 
-	$reviews   = array_values( array_filter( $data['reviews'], function ( $r ) { return '' !== trim( $r['text'] ); } ) );
 	$scroll    = count( $reviews ) >= 3;
 	$write_url = 'https://search.google.com/local/writereview?placeid=' . rawurlencode( $data['id'] );
 
 	ob_start();
 	?>
-	<section class="dk-reviews" aria-labelledby="dk-reviews-title">
+	<section class="dk-reviews<?php echo $reviews ? '' : ' dk-reviews--compact'; ?>" aria-labelledby="dk-reviews-title">
 		<div class="dk-container">
 			<div class="dk-reviews-head">
 				<div>
@@ -249,22 +252,24 @@ function datalkemi_render_google_reviews( $data = null, $args = [] ) {
 			</div>
 		</div>
 
+		<?php if ( $reviews ) : ?>
 		<div class="dk-reviews-marquee<?php echo $scroll ? ' is-scrolling' : ''; ?>">
 			<div class="dk-reviews-track">
 				<?php foreach ( $reviews as $r ) { echo datalkemi_render_review_card( $r ); } // phpcs:ignore WordPress.Security.EscapeOutput ?>
 				<?php if ( $scroll ) { foreach ( $reviews as $r ) { echo datalkemi_render_review_card( $r, true ); } } // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			</div>
 		</div>
+		<?php endif; ?>
 
 		<div class="dk-container">
 			<div class="dk-reviews-foot">
 				<div class="dk-reviews-actions">
 					<?php if ( $data['maps_uri'] ) : ?>
-						<a class="dk-btn dk-btn-outline" href="<?php echo esc_url( $data['maps_uri'] ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Read all reviews', 'datalkemi' ); ?></a>
+						<a class="dk-btn dk-btn-outline" href="<?php echo esc_url( $data['maps_uri'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo $reviews ? esc_html__( 'Read all reviews', 'datalkemi' ) : esc_html__( 'Read our reviews on Google', 'datalkemi' ); ?></a>
 					<?php endif; ?>
 					<a class="dk-btn dk-btn-primary" href="<?php echo esc_url( $write_url ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Leave a review', 'datalkemi' ); ?></a>
 				</div>
-				<p class="dk-reviews-credit"><?php esc_html_e( 'Reviews from Google Maps', 'datalkemi' ); ?></p>
+				<p class="dk-reviews-credit"><?php echo $reviews ? esc_html__( 'Reviews from Google Maps', 'datalkemi' ) : esc_html__( 'Rating from Google Maps', 'datalkemi' ); ?></p>
 			</div>
 		</div>
 	</section>

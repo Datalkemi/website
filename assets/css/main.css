@@ -4521,3 +4521,8 @@ a:hover { color: var(--color-accent) !important; }
   .india-grid { grid-template-columns: 1fr; gap: 1rem; }
   .india-case-figure { display: none; }
 }
+
+/* Rating only: shown until Google sends review text */
+.dk-reviews--compact { padding: 3.5rem 0; }
+.dk-reviews--compact .dk-reviews-head { margin-bottom: 0; }
+.dk-reviews--compact .dk-reviews-foot { margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid var(--border); }
