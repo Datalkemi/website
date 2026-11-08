@@ -234,14 +234,16 @@ function datalkemi_configurator_submit() {
 	$company = sanitize_text_field( $_POST['company'] ?? '' );
 	$notes   = sanitize_textarea_field( $_POST['notes'] ?? '' );
 	$summary = sanitize_textarea_field( $_POST['summary'] ?? '' );
-	$total   = absint( $_POST['total'] ?? 0 );
+	$total   = absint( $_POST['total'] ?? 0 ); // AUD
+	$display = sanitize_text_field( $_POST['display'] ?? ( 'A$' . number_format( $total ) ) );
+	$purpose = sanitize_text_field( $_POST['purpose'] ?? '' );
 
 	if ( ! $name || ! is_email( $email ) ) {
 		wp_send_json_error( 'Invalid submission.' );
 	}
 
 	$admin_email = get_option( 'admin_email' );
-	$subject     = 'New Project Quote £' . number_format( $total ) . ' ' . $name;
+	$subject     = 'New project estimate ' . $display . ( $purpose ? ' for a ' . lcfirst( $purpose ) : '' ) . ' from ' . $name;
 
 	$body  = "New project quote request received via the Datalkemi configurator.\n\n";
 	$body .= "Name:    {$name}\n";
@@ -263,12 +265,12 @@ function datalkemi_configurator_submit() {
 	// Confirmation to client
 	$client_body  = "Hi {$name},\n\n";
 	$client_body .= "Thank you for configuring your project with Datalkemi.\n\n";
-	$client_body .= "We have received your estimated quote of £" . number_format( $total ) . " and will review it personally.\n";
+	$client_body .= "We have received your estimate of " . $display . " and will review it personally.\n";
 	$client_body .= "A member of our team will be in touch within one business day.\n\n";
 	$client_body .= $summary . "\n\n";
 	$client_body .= "Questions? Just reply to this email.\n\nThe Datalkemi Team\nhttps://datalkemi.com\n";
 
-	wp_mail( $email, 'Your Datalkemi Project Quote', $client_body, [ 'Content-Type: text/plain; charset=UTF-8' ] );
+	wp_mail( $email, 'Your Datalkemi project estimate', $client_body, [ 'Content-Type: text/plain; charset=UTF-8' ] );
 
 	if ( $sent ) {
 		wp_send_json_success( 'Quote sent.' );

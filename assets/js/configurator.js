@@ -1,280 +1,190 @@
 /**
- * Datalkemi — Project Configurator Wizard v2
- * Step-by-step pricing tool with currency conversion.
+ * Datalkemi Project Configurator Wizard v3
+ *
+ * Flow: purpose, currency, then the sections that purpose uses, then the
+ * estimate. Prices arrive in AUD from inc/configurator-data.php and are
+ * shown in AUD or USD.
  */
 (function () {
   'use strict';
 
-  /* ─────────────────────────────────────────────────────────────────
-     Currency data (rates vs GBP as base)
-  ───────────────────────────────────────────────────────────────── */
-  var CURRENCIES = {
-    GBP: { symbol: '£',    name: 'British Pound',        rate: 1.00   },
-    USD: { symbol: '$',    name: 'US Dollar',             rate: 1.27   },
-    EUR: { symbol: '€',    name: 'Euro',                  rate: 1.17   },
-    AUD: { symbol: 'A$',   name: 'Australian Dollar',     rate: 1.96   },
-    CAD: { symbol: 'C$',   name: 'Canadian Dollar',       rate: 1.73   },
-    INR: { symbol: '₹',    name: 'Indian Rupee',          rate: 107.0  },
-    SGD: { symbol: 'S$',   name: 'Singapore Dollar',      rate: 1.71   },
-    AED: { symbol: 'AED',  name: 'UAE Dirham',            rate: 4.67   },
-    CHF: { symbol: 'Fr',   name: 'Swiss Franc',           rate: 1.12   },
-    JPY: { symbol: '¥',    name: 'Japanese Yen',          rate: 191.0  },
-    MYR: { symbol: 'RM',   name: 'Malaysian Ringgit',     rate: 5.98   },
-    ZAR: { symbol: 'R',    name: 'South African Rand',    rate: 23.4   },
-    PKR: { symbol: 'Rs',   name: 'Pakistani Rupee',       rate: 353.0  },
-    BDT: { symbol: 'Tk',   name: 'Bangladeshi Taka',      rate: 139.0  },
-    NGN: { symbol: '₦',    name: 'Nigerian Naira',        rate: 2080.0 },
-    KES: { symbol: 'KSh',  name: 'Kenyan Shilling',       rate: 164.0  },
-    NZD: { symbol: 'NZ$',  name: 'New Zealand Dollar',    rate: 2.12   },
-    SEK: { symbol: 'kr',   name: 'Swedish Krona',         rate: 13.2   },
-    NOK: { symbol: 'kr',   name: 'Norwegian Krone',       rate: 13.6   },
-    DKK: { symbol: 'kr',   name: 'Danish Krone',          rate: 8.73   },
-    SAR: { symbol: 'SR',   name: 'Saudi Riyal',           rate: 4.76   },
-    QAR: { symbol: 'QR',   name: 'Qatari Riyal',          rate: 4.62   },
-  };
+  var data       = window.DK_CONFIG || {};
+  var CURRENCIES = data.currencies || { AUD: { symbol: 'A$', name: 'Australian dollars', rate: 1 } };
+  var PURPOSES   = (data.purposes && data.purposes.options) || [];
+  var SECTIONS   = data.sections || {};
 
-  /* ─────────────────────────────────────────────────────────────────
-     Country → currency map
-  ───────────────────────────────────────────────────────────────── */
-  var COUNTRIES = [
-    { name: 'United Kingdom',   flag: '🇬🇧', currency: 'GBP' },
-    { name: 'United States',    flag: '🇺🇸', currency: 'USD' },
-    { name: 'Australia',        flag: '🇦🇺', currency: 'AUD' },
-    { name: 'Canada',           flag: '🇨🇦', currency: 'CAD' },
-    { name: 'Germany',          flag: '🇩🇪', currency: 'EUR' },
-    { name: 'France',           flag: '🇫🇷', currency: 'EUR' },
-    { name: 'Netherlands',      flag: '🇳🇱', currency: 'EUR' },
-    { name: 'Spain',            flag: '🇪🇸', currency: 'EUR' },
-    { name: 'Italy',            flag: '🇮🇹', currency: 'EUR' },
-    { name: 'Ireland',          flag: '🇮🇪', currency: 'EUR' },
-    { name: 'Portugal',         flag: '🇵🇹', currency: 'EUR' },
-    { name: 'Belgium',          flag: '🇧🇪', currency: 'EUR' },
-    { name: 'Austria',          flag: '🇦🇹', currency: 'EUR' },
-    { name: 'Finland',          flag: '🇫🇮', currency: 'EUR' },
-    { name: 'Switzerland',      flag: '🇨🇭', currency: 'CHF' },
-    { name: 'India',            flag: '🇮🇳', currency: 'INR' },
-    { name: 'Singapore',        flag: '🇸🇬', currency: 'SGD' },
-    { name: 'UAE',              flag: '🇦🇪', currency: 'AED' },
-    { name: 'Saudi Arabia',     flag: '🇸🇦', currency: 'SAR' },
-    { name: 'Qatar',            flag: '🇶🇦', currency: 'QAR' },
-    { name: 'Japan',            flag: '🇯🇵', currency: 'JPY' },
-    { name: 'Malaysia',         flag: '🇲🇾', currency: 'MYR' },
-    { name: 'New Zealand',      flag: '🇳🇿', currency: 'NZD' },
-    { name: 'Sweden',           flag: '🇸🇪', currency: 'SEK' },
-    { name: 'Norway',           flag: '🇳🇴', currency: 'NOK' },
-    { name: 'Denmark',          flag: '🇩🇰', currency: 'DKK' },
-    { name: 'South Africa',     flag: '🇿🇦', currency: 'ZAR' },
-    { name: 'Nigeria',          flag: '🇳🇬', currency: 'NGN' },
-    { name: 'Kenya',            flag: '🇰🇪', currency: 'KES' },
-    { name: 'Pakistan',         flag: '🇵🇰', currency: 'PKR' },
-    { name: 'Bangladesh',       flag: '🇧🇩', currency: 'BDT' },
-  ];
+  var currentStep  = 0;
+  var purpose      = null;      // selected purpose object
+  var currency     = 'AUD';
+  var stepKeys     = [];        // section keys for the selected purpose
+  var selections   = {};        // sectionKey => [{ id, label, price }]
+  var animating    = false;
 
-  /* ─────────────────────────────────────────────────────────────────
-     State
-  ───────────────────────────────────────────────────────────────── */
-  var config        = window.DK_CONFIG  || {};
-  var configKeys    = Object.keys(config);
-  var TOTAL_STEPS   = window.DK_TOTAL_STEPS || (1 + configKeys.length + 1);
-
-  var currentStep      = 0;
-  var selectedCountry  = null;
-  var selectedCurrency = 'GBP';
-  var selections       = {};   // sectionKey → [{ id, label, price }]
-  var animating        = false;
-
-  /* ─────────────────────────────────────────────────────────────────
-     DOM refs (set on DOMContentLoaded)
-  ───────────────────────────────────────────────────────────────── */
   var stepsWrap, prevBtn, nextBtn, progressFill, stepLabel, stepName;
 
-  /* ─────────────────────────────────────────────────────────────────
-     Helpers
-  ───────────────────────────────────────────────────────────────── */
   function esc(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function cur() { return CURRENCIES[currency] || CURRENCIES.AUD; }
+  function toLocal(aud) {
+    var v = aud * cur().rate;
+    return currency === 'AUD' ? Math.round(v) : Math.round(v / 10) * 10;
+  }
+  function money(aud) { return cur().symbol + toLocal(aud).toLocaleString('en-AU'); }
+
+  function totalSteps() { return 2 + stepKeys.length + 1; }
+  function finalIndex() { return totalSteps() - 1; }
+
+  /* Options visible for the chosen purpose, with per-purpose prices applied */
+  function optionsFor(sectionKey) {
+    var section = SECTIONS[sectionKey];
+    if (!section || !purpose) return [];
+    return section.options.filter(function (o) {
+      return !o['for'] || o['for'].indexOf(purpose.id) !== -1;
+    }).map(function (o) {
+      var price = (o.prices && typeof o.prices[purpose.id] === 'number') ? o.prices[purpose.id] : (o.price || 0);
+      return { id: o.id, label: o.label, desc: o.desc, price: price };
+    });
   }
 
-  function cur() {
-    return CURRENCIES[selectedCurrency] || CURRENCIES.GBP;
-  }
-
-  function toLocal(gbpPrice) {
-    return Math.round(gbpPrice * cur().rate);
-  }
-
-  function formatLocal(gbpPrice) {
-    return cur().symbol + toLocal(gbpPrice).toLocaleString();
-  }
-
-  function getTotalGBP() {
-    var total = 0;
-    configKeys.forEach(function (key) {
-      var section = config[key];
-      var items   = selections[key] || [];
-      if (section.type === 'radio' && items.length === 0) {
-        // Radio default = first option
-        var opt = section.options[0];
-        if (opt) total += (opt.price || 0);
-      } else {
-        items.forEach(function (item) { total += (item.price || 0); });
-      }
+  function getTotalAUD() {
+    var total = purpose ? (purpose.price || 0) : 0;
+    stepKeys.forEach(function (key) {
+      var items = selections[key] || [];
+      items.forEach(function (i) { total += i.price || 0; });
     });
     return total;
   }
 
-  /* ─────────────────────────────────────────────────────────────────
-     Animated number counter
-  ───────────────────────────────────────────────────────────────── */
   function animateNumber(el, from, to) {
     if (!el) return;
-    var duration = 700;
-    var start    = performance.now();
+    var start = performance.now();
     function step(now) {
-      var p = Math.min((now - start) / duration, 1);
-      var e = 1 - Math.pow(1 - p, 3); // ease-out cubic
-      el.textContent = Math.round(from + (to - from) * e).toLocaleString();
+      var p = Math.min((now - start) / 700, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(from + (to - from) * e).toLocaleString('en-AU');
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
 
-  /* ─────────────────────────────────────────────────────────────────
-     Step 0: Country grid
-  ───────────────────────────────────────────────────────────────── */
-  function renderCountryGrid(filter) {
-    var grid = document.getElementById('cfg-country-grid');
+  /* Step 0: purpose */
+  function renderPurposes() {
+    var grid = document.getElementById('cfg-purpose-grid');
     if (!grid) return;
-    var term     = (filter || '').toLowerCase().trim();
-    var filtered = COUNTRIES.filter(function (c) {
-      return !term || c.name.toLowerCase().indexOf(term) !== -1;
-    });
-
-    grid.innerHTML = filtered.map(function (country) {
-      var currency   = CURRENCIES[country.currency] || {};
-      var isSelected = selectedCountry === country.name;
-      return '<button type="button" class="cfg-country-card' + (isSelected ? ' is-selected' : '') + '"' +
-        ' data-country="' + esc(country.name) + '"' +
-        ' data-currency="' + esc(country.currency) + '">' +
-        '<span class="cfg-country-flag" aria-hidden="true">' + country.flag + '</span>' +
-        '<span class="cfg-country-name">' + esc(country.name) + '</span>' +
-        '<span class="cfg-country-currency">' + esc(country.currency) + '</span>' +
-        (isSelected
-          ? '<span class="cfg-country-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>'
-          : '') +
+    grid.innerHTML = PURPOSES.map(function (p) {
+      var selected = purpose && purpose.id === p.id;
+      return '<button type="button" class="cfg-choice-card' + (selected ? ' is-selected' : '') + '" data-id="' + esc(p.id) + '">' +
+        '<span class="cfg-choice-label">' + esc(p.label) + '</span>' +
+        '<span class="cfg-choice-desc">' + esc(p.desc) + '</span>' +
+        '<span class="cfg-choice-meta">from ' + money(p.price) + '</span>' +
         '</button>';
     }).join('');
-
-    if (!filtered.length) {
-      grid.innerHTML = '<p class="cfg-country-empty">No countries found. Try a different search.</p>';
-    }
-
-    grid.querySelectorAll('.cfg-country-card').forEach(function (card) {
+    grid.querySelectorAll('.cfg-choice-card').forEach(function (card) {
       card.addEventListener('click', function () {
-        selectedCountry  = card.dataset.country;
-        selectedCurrency = card.dataset.currency;
-        renderCountryGrid(filter);
-        if (nextBtn) {
-          nextBtn.disabled = false;
-          nextBtn.classList.add('is-ready');
+        var next = PURPOSES.filter(function (p) { return p.id === card.dataset.id; })[0];
+        if (!next) return;
+        if (!purpose || purpose.id !== next.id) {
+          purpose = next;
+          buildSectionSteps();
         }
+        renderPurposes();
+        updateProgress();
+        updateNav();
       });
     });
   }
 
-  /* ─────────────────────────────────────────────────────────────────
-     Steps 1–n: Config section steps (generated from DK_CONFIG)
-  ───────────────────────────────────────────────────────────────── */
-  function generateConfigSteps() {
-    var finalStep = document.getElementById('cfg-step-final');
-    if (!finalStep) return;
+  /* Step 1: currency */
+  function renderCurrencies() {
+    var grid = document.getElementById('cfg-currency-grid');
+    if (!grid) return;
+    grid.innerHTML = Object.keys(CURRENCIES).map(function (code) {
+      var c = CURRENCIES[code];
+      return '<button type="button" class="cfg-choice-card cfg-choice-card--currency' + (currency === code ? ' is-selected' : '') + '" data-code="' + esc(code) + '">' +
+        '<span class="cfg-choice-label">' + esc(c.symbol) + ' ' + esc(code) + '</span>' +
+        '<span class="cfg-choice-desc">' + esc(c.name) + '</span>' +
+        '</button>';
+    }).join('');
+    grid.querySelectorAll('.cfg-choice-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        currency = card.dataset.code;
+        renderCurrencies();
+        renderPurposes();
+        refreshPrices();
+      });
+    });
+  }
 
-    configKeys.forEach(function (sectionKey, i) {
-      var section   = config[sectionKey];
-      var stepIndex = i + 1; // step 0 = country
+  /* Steps 2..n: sections for the purpose */
+  function buildSectionSteps() {
+    var finalStep = document.getElementById('cfg-step-final');
+    if (!finalStep || !stepsWrap) return;
+
+    stepsWrap.querySelectorAll('.cfg-step[data-generated]').forEach(function (el) { el.remove(); });
+    selections = {};
+    stepKeys   = (purpose && purpose.steps ? purpose.steps : []).filter(function (k) {
+      return SECTIONS[k] && optionsFor(k).length > 0;
+    });
+
+    stepKeys.forEach(function (key, i) {
+      var section    = SECTIONS[key];
       var isCheckbox = section.type === 'checkbox';
       var inputType  = isCheckbox ? 'checkbox' : 'radio';
+      var options    = optionsFor(key);
+      var stepIndex  = i + 2;
 
-      var optionsHtml = section.options.map(function (opt, j) {
+      var optionsHtml = options.map(function (opt, j) {
         var isDefault = !isCheckbox && j === 0;
-        var priceHtml = opt.price > 0
-          ? '<span class="cfg-opt-price">+ ' + formatLocal(opt.price) + '</span>'
-          : '<span class="cfg-opt-price cfg-opt-incl">Included</span>';
-        var checkSvg = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
-
-        return '<label class="cfg-opt-card' + (isDefault ? ' is-selected' : '') + '" for="' + esc(sectionKey) + '-' + esc(opt.id) + '">' +
-          '<input type="' + inputType + '"' +
-            ' id="' + esc(sectionKey) + '-' + esc(opt.id) + '"' +
-            ' name="' + esc(sectionKey) + '"' +
-            ' value="' + esc(opt.id) + '"' +
-            ' data-price="' + (opt.price | 0) + '"' +
-            ' data-label="' + esc(opt.label) + '"' +
-            ' data-section="' + esc(sectionKey) + '"' +
-            (isDefault ? ' checked' : '') + '>' +
+        return '<label class="cfg-opt-card' + (isDefault ? ' is-selected' : '') + '" for="' + esc(key) + '-' + esc(opt.id) + '">' +
+          '<input type="' + inputType + '" id="' + esc(key) + '-' + esc(opt.id) + '" name="' + esc(key) + '" value="' + esc(opt.id) + '"' +
+            ' data-price="' + (opt.price | 0) + '" data-label="' + esc(opt.label) + '"' + (isDefault ? ' checked' : '') + '>' +
           '<span class="cfg-opt-inner">' +
-            '<span class="cfg-opt-icon" aria-hidden="true">' + checkSvg + '</span>' +
-            '<span class="cfg-opt-body">' +
-              '<span class="cfg-opt-label">' + esc(opt.label) + '</span>' +
-              '<span class="cfg-opt-desc">' + esc(opt.desc) + '</span>' +
-            '</span>' +
-            priceHtml +
+            '<span class="cfg-opt-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>' +
+            '<span class="cfg-opt-body"><span class="cfg-opt-label">' + esc(opt.label) + '</span><span class="cfg-opt-desc">' + esc(opt.desc) + '</span></span>' +
+            '<span class="cfg-opt-price" data-aud="' + (opt.price | 0) + '">' + (opt.price > 0 ? '+ ' + money(opt.price) : 'Included') + '</span>' +
           '</span>' +
         '</label>';
       }).join('');
 
       var div = document.createElement('div');
-      div.className    = 'cfg-step';
+      div.className = 'cfg-step';
       div.dataset.step = stepIndex;
+      div.dataset.generated = '1';
       div.innerHTML =
-        '<div class="cfg-step-header">' +
-          '<h2>' + esc(section.label) + '</h2>' +
-          (section.note
-            ? '<p class="cfg-step-note">' + esc(section.note) + '</p>'
-            : '') +
-          (isCheckbox
-            ? '<p class="cfg-step-note cfg-step-note--dim">Select all that apply — skip if not needed.</p>'
-            : '') +
+        '<div class="cfg-step-header"><h2>' + esc(section.label) + '</h2>' +
+          (section.note ? '<p class="cfg-step-note">' + esc(section.note) + '</p>' : '') +
+          (isCheckbox ? '<p class="cfg-step-note cfg-step-note--dim">Select all that apply, or skip if none are needed.</p>' : '') +
         '</div>' +
-        '<div class="cfg-options-list cfg-options--' + inputType + '">' +
-          optionsHtml +
-        '</div>';
+        '<div class="cfg-options-list cfg-options--' + inputType + '">' + optionsHtml + '</div>';
 
       stepsWrap.insertBefore(div, finalStep);
 
-      // Bind changes
       div.querySelectorAll('input').forEach(function (input) {
-        input.addEventListener('change', function () {
-          syncSelections(sectionKey, div);
-          highlightOptions(div);
-        });
+        input.addEventListener('change', function () { syncSelections(key, div); highlightOptions(div); });
       });
+      if (!isCheckbox) syncSelections(key, div);
+    });
 
-      // Initialise default radio selection
-      if (!isCheckbox) {
-        syncSelections(sectionKey, div);
-      }
+    renderStepDots();
+    updateProgress();
+  }
+
+  function refreshPrices() {
+    if (!stepsWrap) return;
+    stepsWrap.querySelectorAll('.cfg-opt-price[data-aud]').forEach(function (el) {
+      var aud = parseInt(el.dataset.aud, 10) || 0;
+      el.textContent = aud > 0 ? '+ ' + money(aud) : 'Included';
+      el.classList.toggle('cfg-opt-incl', aud === 0);
     });
   }
 
-  function syncSelections(sectionKey, stepDiv) {
-    var section    = config[sectionKey];
-    var isCheckbox = section.type === 'checkbox';
-    var checked    = Array.from(stepDiv.querySelectorAll('input:checked'));
-
-    selections[sectionKey] = checked.map(function (inp) {
+  function syncSelections(key, stepDiv) {
+    var checked = Array.prototype.slice.call(stepDiv.querySelectorAll('input:checked'));
+    selections[key] = checked.map(function (inp) {
       return { id: inp.value, label: inp.dataset.label, price: parseInt(inp.dataset.price, 10) || 0 };
     });
-
-    // For radio: ensure we only keep one
-    if (!isCheckbox && selections[sectionKey].length > 1) {
-      selections[sectionKey] = [selections[sectionKey][selections[sectionKey].length - 1]];
-    }
   }
-
   function highlightOptions(stepDiv) {
     stepDiv.querySelectorAll('.cfg-opt-card').forEach(function (card) {
       var inp = card.querySelector('input');
@@ -282,161 +192,117 @@
     });
   }
 
-  /* ─────────────────────────────────────────────────────────────────
-     Final step: Summary
-  ───────────────────────────────────────────────────────────────── */
-  function buildSummary() {
-    var totalGBP   = getTotalGBP();
-    var totalLocal = toLocal(totalGBP);
-    var currency   = cur();
+  /* Final step */
+  function summaryRows() {
+    var rows = [];
+    if (purpose) rows.push({ title: data.purposes.label, items: [ { label: purpose.label, price: purpose.price, base: true } ] });
+    stepKeys.forEach(function (key) {
+      var items = selections[key] || [];
+      if (items.length) rows.push({ title: SECTIONS[key].label, items: items });
+    });
+    return rows;
+  }
 
-    // Update total display
+  function buildSummary() {
+    var totalAUD = getTotalAUD();
     var symbolEl = document.getElementById('cfg-currency-symbol');
     var totalEl  = document.getElementById('cfg-total-num');
-    if (symbolEl) symbolEl.textContent = currency.symbol;
-    animateNumber(totalEl, 0, totalLocal);
+    if (symbolEl) symbolEl.textContent = cur().symbol;
+    animateNumber(totalEl, 0, toLocal(totalAUD));
 
-    // Build breakdown
-    var breakdownEl = document.getElementById('cfg-summary-breakdown');
-    if (!breakdownEl) return;
+    var noteEl = document.getElementById('cfg-total-note');
+    if (noteEl) {
+      noteEl.textContent = currency === 'AUD'
+        ? 'Starting estimate in Australian dollars, excluding GST. Confirmed after a 30-minute scoping call.'
+        : 'Indicative figure converted from Australian dollars. Confirmed in writing after a 30-minute scoping call.';
+    }
 
-    var html = '';
-    configKeys.forEach(function (key) {
-      var section = config[key];
-      var items   = (selections[key] || []).slice();
-
-      // Radio with no explicit selection → use default
-      if (section.type === 'radio' && items.length === 0) {
-        var opt = section.options[0];
-        if (opt) items = [{ id: opt.id, label: opt.label, price: opt.price || 0 }];
-      }
-
-      if (!items.length) return;
-
-      html += '<div class="cfg-summary-section">' +
-        '<p class="cfg-summary-section-title">' + esc(section.label) + '</p>';
-
-      items.forEach(function (item) {
-        var priceStr = item.price > 0
-          ? '<span class="cfg-summary-item-price">+&thinsp;' + currency.symbol + toLocal(item.price).toLocaleString() + '</span>'
-          : '<span class="cfg-summary-item-price cfg-incl-tag">Included</span>';
-        html += '<div class="cfg-summary-item">' +
-          '<span class="cfg-summary-item-name">' + esc(item.label) + '</span>' +
-          priceStr +
-        '</div>';
-      });
-      html += '</div>';
-    });
-
-    breakdownEl.innerHTML = html || '<p style="color:var(--text-faint);font-size:.875rem;">No selections recorded.</p>';
+    var el = document.getElementById('cfg-summary-breakdown');
+    if (!el) return;
+    el.innerHTML = summaryRows().map(function (row) {
+      return '<div class="cfg-summary-section"><p class="cfg-summary-section-title">' + esc(row.title) + '</p>' +
+        row.items.map(function (item) {
+          var price = item.price > 0
+            ? '<span class="cfg-summary-item-price">' + (item.base ? '' : '+ ') + money(item.price) + '</span>'
+            : '<span class="cfg-summary-item-price cfg-incl-tag">Included</span>';
+          return '<div class="cfg-summary-item"><span class="cfg-summary-item-name">' + esc(item.label) + '</span>' + price + '</div>';
+        }).join('') + '</div>';
+    }).join('');
   }
 
   function buildSummaryText() {
-    var currency  = cur();
-    var totalGBP  = getTotalGBP();
-    var lines     = [
-      'Project Configuration Summary',
-      'Currency: ' + currency.name + ' (' + selectedCurrency + ')',
-      'Country: ' + (selectedCountry || 'Not specified'),
-      '',
-    ];
-
-    configKeys.forEach(function (key) {
-      var section = config[key];
-      var items   = (selections[key] || []).slice();
-      if (section.type === 'radio' && items.length === 0) {
-        var opt = section.options[0];
-        if (opt) items = [{ label: opt.label, price: opt.price || 0 }];
-      }
-      if (!items.length) return;
-
-      lines.push(section.label.toUpperCase());
-      items.forEach(function (item) {
-        var p = item.price > 0 ? ' (+' + currency.symbol + toLocal(item.price).toLocaleString() + ')' : ' (included)';
-        lines.push('  - ' + item.label + p);
+    var lines = [ 'Project configuration summary', 'Currency: ' + cur().name + ' (' + currency + ')', '' ];
+    summaryRows().forEach(function (row) {
+      lines.push(row.title.toUpperCase());
+      row.items.forEach(function (item) {
+        lines.push('  - ' + item.label + (item.price > 0 ? ' (' + (item.base ? '' : '+') + money(item.price) + ')' : ' (included)'));
       });
       lines.push('');
     });
-
-    lines.push('ESTIMATED TOTAL: ' + currency.symbol + toLocal(totalGBP).toLocaleString() + ' (' + selectedCurrency + ')');
+    lines.push('ESTIMATED TOTAL: ' + money(getTotalAUD()) + ' (' + currency + ')');
+    if (currency !== 'AUD') lines.push('In Australian dollars: A$' + getTotalAUD().toLocaleString('en-AU'));
     return lines.join('\n');
   }
 
-  /* ─────────────────────────────────────────────────────────────────
-     Navigation
-  ───────────────────────────────────────────────────────────────── */
+  /* Navigation */
   function getStepEl(index) {
-    if (index === TOTAL_STEPS - 1) return document.getElementById('cfg-step-final');
-    return stepsWrap ? stepsWrap.querySelector('[data-step="' + index + '"]') : null;
+    if (index === finalIndex()) return document.getElementById('cfg-step-final');
+    return stepsWrap ? stepsWrap.querySelector('.cfg-step[data-step="' + index + '"]') : null;
   }
 
   function navigateTo(newStep, direction) {
     if (animating) return;
-
     var oldEl = getStepEl(currentStep);
     var newEl = getStepEl(newStep);
     if (!newEl) return;
-
     animating = true;
-
-    // Update state immediately
     currentStep = newStep;
     updateProgress();
     updateNav();
+    if (newStep === finalIndex()) setTimeout(buildSummary, 350);
 
-    if (newStep === TOTAL_STEPS - 1) {
-      setTimeout(buildSummary, 350);
-    }
-
-    // Scroll wizard into view
     var wizard = document.getElementById('cfg-wizard');
     if (wizard) wizard.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     if (oldEl && oldEl !== newEl) {
-      // Animate out
       oldEl.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-      oldEl.style.opacity    = '0';
-      oldEl.style.transform  = direction > 0 ? 'translateX(-24px)' : 'translateX(24px)';
-
+      oldEl.style.opacity = '0';
+      oldEl.style.transform = direction > 0 ? 'translateX(-24px)' : 'translateX(24px)';
       setTimeout(function () {
         oldEl.classList.remove('is-active');
         oldEl.style.cssText = '';
-
-        // Animate in
-        newEl.style.opacity   = '0';
+        newEl.style.opacity = '0';
         newEl.style.transform = direction > 0 ? 'translateX(24px)' : 'translateX(-24px)';
         newEl.classList.add('is-active');
-
-        // Force reflow so transition fires
         void newEl.offsetWidth;
         newEl.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-        newEl.style.opacity    = '1';
-        newEl.style.transform  = 'translateX(0)';
-
-        setTimeout(function () {
-          newEl.style.cssText = '';
-          animating = false;
-        }, 270);
+        newEl.style.opacity = '1';
+        newEl.style.transform = 'translateX(0)';
+        setTimeout(function () { newEl.style.cssText = ''; animating = false; }, 270);
       }, 210);
     } else {
-      if (newEl) newEl.classList.add('is-active');
+      newEl.classList.add('is-active');
       animating = false;
     }
   }
 
-  /* ─────────────────────────────────────────────────────────────────
-     Progress bar + step dots
-  ───────────────────────────────────────────────────────────────── */
-  function renderStepDots() {
-    var dotsWrap = document.getElementById('cfg-step-dots');
-    if (!dotsWrap) return;
-    var html = '';
-    for (var i = 0; i < TOTAL_STEPS; i++) {
-      html += '<span class="cfg-step-dot' + (i === 0 ? ' is-active' : '') + '" data-dot="' + i + '" role="button" tabindex="0" aria-label="Step ' + (i + 1) + '"></span>';
-    }
-    dotsWrap.innerHTML = html;
+  function stepNames() {
+    var names = [ 'Purpose', 'Currency' ];
+    stepKeys.forEach(function (k) { names.push(SECTIONS[k].label); });
+    names.push('Your estimate');
+    return names;
+  }
 
-    dotsWrap.querySelectorAll('.cfg-step-dot').forEach(function (dot) {
+  function renderStepDots() {
+    var wrap = document.getElementById('cfg-step-dots');
+    if (!wrap) return;
+    var html = '';
+    if (!purpose) { wrap.innerHTML = ''; return; }
+    for (var i = 0; i < totalSteps(); i++) {
+      html += '<span class="cfg-step-dot" data-dot="' + i + '" role="button" tabindex="0" aria-label="Step ' + (i + 1) + '"></span>';
+    }
+    wrap.innerHTML = html;
+    wrap.querySelectorAll('.cfg-step-dot').forEach(function (dot) {
       dot.addEventListener('click', function () {
         var i = parseInt(dot.dataset.dot, 10);
         if (i < currentStep) navigateTo(i, -1);
@@ -444,19 +310,12 @@
     });
   }
 
-  var STEP_NAMES = (function () {
-    var names = ['Your location'];
-    configKeys.forEach(function (k) { names.push(config[k].label); });
-    names.push('Your estimate');
-    return names;
-  }());
-
   function updateProgress() {
-    var pct = (currentStep / (TOTAL_STEPS - 1)) * 100;
-    if (progressFill) progressFill.style.width = pct + '%';
-    if (stepLabel) stepLabel.textContent = 'Step ' + (currentStep + 1) + ' of ' + TOTAL_STEPS;
-    if (stepName)  stepName.textContent  = STEP_NAMES[currentStep] || '';
-
+    var names = stepNames();
+    var pct = (currentStep / (totalSteps() - 1)) * 100;
+    if (progressFill) progressFill.style.width = (purpose ? pct : 0) + '%';
+    if (stepLabel) stepLabel.textContent = purpose ? 'Step ' + (currentStep + 1) + ' of ' + totalSteps() : 'Step 1';
+    if (stepName)  stepName.textContent  = names[currentStep] || '';
     document.querySelectorAll('.cfg-step-dot').forEach(function (dot, i) {
       dot.classList.toggle('is-done',   i < currentStep);
       dot.classList.toggle('is-active', i === currentStep);
@@ -464,96 +323,69 @@
   }
 
   function updateNav() {
-    var isFinal = currentStep === TOTAL_STEPS - 1;
-    var isFirst = currentStep === 0;
-    var isLast  = currentStep === TOTAL_STEPS - 2; // step before final
-
-    if (prevBtn) prevBtn.hidden = isFirst;
+    var isFinal = currentStep === finalIndex();
+    if (prevBtn) prevBtn.hidden = currentStep === 0;
     if (!nextBtn) return;
-
-    if (isFinal) {
-      nextBtn.hidden = true;
-    } else {
-      nextBtn.hidden   = false;
-      nextBtn.disabled = isFirst && !selectedCountry;
-
-      var label = isLast ? 'See My Estimate' : 'Continue';
-      var chevron = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>';
-      nextBtn.innerHTML = label + ' ' + chevron;
-    }
+    nextBtn.hidden   = isFinal;
+    nextBtn.disabled = currentStep === 0 && !purpose;
+    nextBtn.classList.toggle('is-ready', !nextBtn.disabled);
+    var label = currentStep === finalIndex() - 1 ? 'See my estimate' : 'Continue';
+    nextBtn.innerHTML = label + ' <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>';
   }
 
-  /* ─────────────────────────────────────────────────────────────────
-     Submit
-  ───────────────────────────────────────────────────────────────── */
+  /* Submit */
   function handleSubmit() {
-    var nameEl    = document.getElementById('cfg-name');
-    var emailEl   = document.getElementById('cfg-email');
-    var companyEl = document.getElementById('cfg-company');
-    var notesEl   = document.getElementById('cfg-notes');
-    var submitBtn = document.getElementById('cfg-submit');
-    var successEl = document.getElementById('cfg-success');
-    var errorEl   = document.getElementById('cfg-error');
-
-    var name  = nameEl  ? nameEl.value.trim()  : '';
-    var email = emailEl ? emailEl.value.trim()  : '';
-
-    if (!name)  { if (nameEl)  nameEl.reportValidity();  return; }
+    var nameEl = document.getElementById('cfg-name'), emailEl = document.getElementById('cfg-email');
+    var companyEl = document.getElementById('cfg-company'), notesEl = document.getElementById('cfg-notes');
+    var submitBtn = document.getElementById('cfg-submit'), successEl = document.getElementById('cfg-success'), errorEl = document.getElementById('cfg-error');
+    var name = nameEl ? nameEl.value.trim() : '', email = emailEl ? emailEl.value.trim() : '';
+    if (!name) { if (nameEl) nameEl.reportValidity(); return; }
     if (!email || email.indexOf('@') === -1) { if (emailEl) emailEl.reportValidity(); return; }
 
-    var labelEl   = submitBtn ? submitBtn.querySelector('.btn-label')   : null;
-    var loadingEl = submitBtn ? submitBtn.querySelector('.btn-loading')  : null;
-    if (submitBtn)  submitBtn.disabled = true;
-    if (labelEl)    labelEl.hidden     = true;
-    if (loadingEl)  loadingEl.hidden   = false;
-    if (errorEl)    errorEl.hidden     = true;
+    var labelEl = submitBtn ? submitBtn.querySelector('.btn-label') : null;
+    var loadingEl = submitBtn ? submitBtn.querySelector('.btn-loading') : null;
+    if (submitBtn) submitBtn.disabled = true;
+    if (labelEl) labelEl.hidden = true;
+    if (loadingEl) loadingEl.hidden = false;
+    if (errorEl) errorEl.hidden = true;
 
-    var totalGBP = getTotalGBP();
-    var params   = new URLSearchParams({
-      action:  'dk_submit_configurator',
-      nonce:   (typeof DK_CFG !== 'undefined' ? DK_CFG.nonce : ''),
-      name:    name,
-      email:   email,
-      company: companyEl ? companyEl.value.trim() : '',
-      notes:   notesEl   ? notesEl.value.trim()   : '',
-      summary: buildSummaryText(),
-      total:   totalGBP,
+    var params = new URLSearchParams({
+      action:   'dk_submit_configurator',
+      nonce:    (typeof DK_CFG !== 'undefined' ? DK_CFG.nonce : ''),
+      name:     name,
+      email:    email,
+      company:  companyEl ? companyEl.value.trim() : '',
+      notes:    notesEl ? notesEl.value.trim() : '',
+      summary:  buildSummaryText(),
+      total:    getTotalAUD(),
+      currency: currency,
+      display:  money(getTotalAUD()),
+      purpose:  purpose ? purpose.label : '',
     });
 
+    function reset() {
+      if (submitBtn) submitBtn.disabled = false;
+      if (labelEl) labelEl.hidden = false;
+      if (loadingEl) loadingEl.hidden = true;
+    }
+
     fetch((typeof DK_CFG !== 'undefined' ? DK_CFG.url : ''), {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body:    params.toString(),
-    })
-    .then(function (r) { return r.json(); })
-    .then(function (data) {
-      if (data.success) {
-        if (submitBtn)  submitBtn.style.display = 'none';
-        if (successEl)  successEl.hidden        = false;
+      method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString(),
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (res.success) {
+        if (submitBtn) submitBtn.style.display = 'none';
+        if (successEl) successEl.hidden = false;
       } else {
-        if (errorEl) {
-          errorEl.textContent = data.data || 'Something went wrong. Please try again.';
-          errorEl.hidden = false;
-        }
-        if (submitBtn)  submitBtn.disabled = false;
-        if (labelEl)    labelEl.hidden     = false;
-        if (loadingEl)  loadingEl.hidden   = true;
+        if (errorEl) { errorEl.textContent = res.data || 'Something went wrong. Please try again.'; errorEl.hidden = false; }
+        reset();
       }
-    })
-    .catch(function () {
-      if (errorEl) {
-        errorEl.innerHTML = 'Network error. Please email us at <a href="mailto:info@datalkemi.com">info@datalkemi.com</a>.';
-        errorEl.hidden = false;
-      }
-      if (submitBtn)  submitBtn.disabled = false;
-      if (labelEl)    labelEl.hidden     = false;
-      if (loadingEl)  loadingEl.hidden   = true;
+    }).catch(function () {
+      if (errorEl) { errorEl.innerHTML = 'Network error. Please email us at <a href="mailto:info@datalkemi.com">info@datalkemi.com</a>.'; errorEl.hidden = false; }
+      reset();
     });
   }
 
-  /* ─────────────────────────────────────────────────────────────────
-     Init
-  ───────────────────────────────────────────────────────────────── */
+  /* Init */
   document.addEventListener('DOMContentLoaded', function () {
     stepsWrap    = document.getElementById('cfg-steps-wrap');
     prevBtn      = document.getElementById('cfg-prev');
@@ -561,48 +393,31 @@
     progressFill = document.getElementById('cfg-progress-fill');
     stepLabel    = document.getElementById('cfg-step-label');
     stepName     = document.getElementById('cfg-step-name');
-
     if (!stepsWrap) return;
 
-    // Build config section steps
-    generateConfigSteps();
+    // Preselect a purpose from ?purpose= or a legacy ?service= link
+    var qs = new URLSearchParams(window.location.search);
+    var pre = qs.get('purpose') || '';
+    var svc = qs.get('service') || '';
+    if (!pre && svc) {
+      if (/design|development/.test(svc)) pre = 'business';
+      else if (/dashboard|intelligence|analytics/.test(svc)) pre = 'dashboard';
+    }
+    if (pre) purpose = PURPOSES.filter(function (p) { return p.id === pre; })[0] || null;
 
-    // Step dots
-    renderStepDots();
+    renderPurposes();
+    renderCurrencies();
+    buildSectionSteps();
 
-    // Show step 0
     var first = getStepEl(0);
     if (first) first.classList.add('is-active');
 
-    // Country search
-    var searchInput = document.getElementById('cfg-country-search');
-    if (searchInput) {
-      searchInput.addEventListener('input', function () {
-        renderCountryGrid(this.value);
-      });
-    }
-    renderCountryGrid('');
-
-    // Prev button
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function () {
-        if (currentStep > 0) navigateTo(currentStep - 1, -1);
-      });
-    }
-
-    // Next button
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function () {
-        if (currentStep < TOTAL_STEPS - 1) navigateTo(currentStep + 1, 1);
-      });
-    }
-
-    // Submit button
+    if (prevBtn) prevBtn.addEventListener('click', function () { if (currentStep > 0) navigateTo(currentStep - 1, -1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { if (currentStep < finalIndex()) navigateTo(currentStep + 1, 1); });
     var submitBtn = document.getElementById('cfg-submit');
     if (submitBtn) submitBtn.addEventListener('click', handleSubmit);
 
     updateProgress();
     updateNav();
   });
-
 }());

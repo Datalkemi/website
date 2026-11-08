@@ -8,8 +8,6 @@ get_header();
 require_once get_stylesheet_directory() . '/inc/configurator-data.php';
 $config      = datalkemi_get_configurator_data();
 $config_json = wp_json_encode( $config );
-
-$total_steps = 1 + count( $config ) + 1; // country + sections + summary
 ?>
 
 <section class="page-hero page-hero--compact">
@@ -37,35 +35,37 @@ $total_steps = 1 + count( $config ) + 1; // country + sections + summary
 					<div class="cfg-progress-fill" id="cfg-progress-fill"></div>
 				</div>
 				<div class="cfg-progress-meta">
-					<span class="cfg-progress-label" id="cfg-step-label">Step 1 of <?php echo (int) $total_steps; ?></span>
-					<span class="cfg-progress-name"  id="cfg-step-name">Your location</span>
+					<span class="cfg-progress-label" id="cfg-step-label">Step 1</span>
+					<span class="cfg-progress-name"  id="cfg-step-name">Purpose</span>
 				</div>
 			</div>
 
 			<!-- ── Step panels ──────────────────────────────────── -->
 			<div class="cfg-steps-wrap" id="cfg-steps-wrap">
 
-				<!-- STEP 0: Country / Currency -->
+				<!-- STEP 0: Purpose -->
 				<div class="cfg-step" data-step="0" id="cfg-step-0">
 					<div class="cfg-step-header">
-						<h2>Where are you based?</h2>
-						<p class="cfg-step-note">We'll display your estimate in your local currency throughout.</p>
+						<h2><?php echo esc_html( $config['purposes']['label'] ); ?></h2>
+						<p class="cfg-step-note"><?php echo esc_html( $config['purposes']['note'] ); ?></p>
 					</div>
-					<div class="cfg-country-search-wrap">
-						<input
-							type="text"
-							id="cfg-country-search"
-							class="cfg-country-search"
-							placeholder="Search country&#8230;"
-							autocomplete="off"
-							aria-label="Search countries">
-					</div>
-					<div class="cfg-country-grid" id="cfg-country-grid">
+					<div class="cfg-choice-grid" id="cfg-purpose-grid">
 						<!-- populated by JS -->
 					</div>
 				</div>
 
-				<!-- STEPS 1–n: Config sections (injected by JS) -->
+				<!-- STEP 1: Currency -->
+				<div class="cfg-step" data-step="1" id="cfg-step-1">
+					<div class="cfg-step-header">
+						<h2>Which currency should we show?</h2>
+						<p class="cfg-step-note">Our prices are set in Australian dollars. US dollars are shown at an indicative rate.</p>
+					</div>
+					<div class="cfg-choice-grid cfg-choice-grid--two" id="cfg-currency-grid">
+						<!-- populated by JS -->
+					</div>
+				</div>
+
+				<!-- STEPS 2 onward: sections for the chosen purpose (injected by JS) -->
 
 				<!-- STEP FINAL: Summary + Contact -->
 				<div class="cfg-step" data-step="final" id="cfg-step-final">
@@ -80,9 +80,9 @@ $total_steps = 1 + count( $config ) + 1; // country + sections + summary
 							<div class="cfg-total-card">
 								<p class="cfg-total-eyebrow">Estimated project cost</p>
 								<div class="cfg-total-amount">
-									<span id="cfg-currency-symbol">£</span><span id="cfg-total-num">0</span>
+									<span id="cfg-currency-symbol">A$</span><span id="cfg-total-num">0</span>
 								</div>
-								<p class="cfg-total-note">Starting estimate. Final price confirmed after a 30-minute scoping call.</p>
+								<p class="cfg-total-note" id="cfg-total-note">Starting estimate in Australian dollars, excluding GST. Confirmed after a 30-minute scoping call.</p>
 							</div>
 							<div class="cfg-summary-breakdown" id="cfg-summary-breakdown">
 								<!-- populated by JS -->
@@ -147,8 +147,8 @@ $total_steps = 1 + count( $config ) + 1; // country + sections + summary
 </section>
 
 <?php
-echo '<script>window.DK_CONFIG = ' . $config_json . '; window.DK_TOTAL_STEPS = ' . (int) $total_steps . ';</script>';
-wp_enqueue_script( 'datalkemi-configurator', get_stylesheet_directory_uri() . '/assets/js/configurator.js', [], '2.0.0', true );
+echo '<script>window.DK_CONFIG = ' . $config_json . ';</script>';
+wp_enqueue_script( 'datalkemi-configurator', get_stylesheet_directory_uri() . '/assets/js/configurator.js', [], filemtime( get_stylesheet_directory() . '/assets/js/configurator.js' ), true );
 wp_localize_script( 'datalkemi-configurator', 'DK_CFG', [
 	'url'   => admin_url( 'admin-ajax.php' ),
 	'nonce' => wp_create_nonce( 'dk_configurator_submit' ),
