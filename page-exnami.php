@@ -97,12 +97,7 @@ $moments = [
 <section class="dk-section product-intro">
 	<div class="dk-container">
 		<figure class="product-screen">
-			<picture>
-				<source media="(max-width: 640px)" srcset="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-dashboard-m.jpg' ); ?>" width="758" height="776">
-				<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-dashboard.jpg' ); ?>"
-					alt="<?php esc_attr_e( 'The Exnami dashboard: spendable now, net for the month, and upcoming payments', 'datalkemi' ); ?>"
-					width="2000" height="1118">
-			</picture>
+			<?php datalkemi_product_shot( 'exnami-dashboard', __( 'The Exnami dashboard: spendable now, net for the month, and upcoming payments', 'datalkemi' ) ); ?>
 		</figure>
 		<div class="product-stats">
 			<?php foreach ( $stats as $s ) : ?>
@@ -140,21 +135,11 @@ $moments = [
 	<div class="dk-container">
 		<div class="product-shots-grid">
 			<figure class="product-shot">
-				<picture>
-					<source media="(max-width: 640px)" srcset="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-spend-m.jpg' ); ?>" width="846" height="480">
-					<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-spend.jpg' ); ?>"
-						alt="<?php esc_attr_e( 'Spend per week chart with category filters in Exnami', 'datalkemi' ); ?>"
-						width="2000" height="1118" loading="lazy">
-				</picture>
+				<?php datalkemi_product_shot( 'exnami-spend', __( 'Spend per week chart with category filters in Exnami', 'datalkemi' ) ); ?>
 				<figcaption><?php esc_html_e( 'Spend by week, by category, or by purpose. The dashed line is your average.', 'datalkemi' ); ?></figcaption>
 			</figure>
 			<figure class="product-shot">
-				<picture>
-					<source media="(max-width: 640px)" srcset="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-add-m.jpg' ); ?>" width="656" height="1000">
-					<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-add.jpg' ); ?>"
-						alt="<?php esc_attr_e( 'The add panel in Exnami: expense, income, budget, debt, bill, or receivable', 'datalkemi' ); ?>"
-						width="2000" height="1118" loading="lazy">
-				</picture>
+				<?php datalkemi_product_shot( 'exnami-add', __( 'The add panel in Exnami: expense, income, budget, debt, bill, or receivable', 'datalkemi' ) ); ?>
 				<figcaption><?php esc_html_e( 'Add an expense, income, budget, debt, bill, or money owed to you in a few taps.', 'datalkemi' ); ?></figcaption>
 			</figure>
 		</div>
@@ -208,12 +193,7 @@ $moments = [
 		</div>
 		<div class="product-week-layout">
 			<figure class="product-week-figure">
-				<picture>
-					<source media="(max-width: 640px)" srcset="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-calendar-m.jpg' ); ?>" width="820" height="640">
-					<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-calendar.jpg' ); ?>"
-						alt="<?php esc_attr_e( 'The Exnami calendar with bills, repayments, and card payments on their due dates', 'datalkemi' ); ?>"
-						width="2000" height="1118" loading="lazy">
-				</picture>
+				<?php datalkemi_product_shot( 'exnami-calendar', __( 'The Exnami calendar with bills, repayments, and card payments on their due dates', 'datalkemi' ) ); ?>
 			</figure>
 			<ol class="product-week-list">
 				<?php foreach ( $moments as $m ) : ?>

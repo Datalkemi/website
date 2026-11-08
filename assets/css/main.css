@@ -4526,3 +4526,10 @@ a:hover { color: var(--color-accent) !important; }
 .dk-reviews--compact { padding: 3.5rem 0; }
 .dk-reviews--compact .dk-reviews-head { margin-bottom: 0; }
 .dk-reviews--compact .dk-reviews-foot { margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid var(--border); }
+
+/* ── Product screenshots: show the version that matches the site theme ── */
+html[data-theme="dark"] .dk-shot--light,
+html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
+@media (max-width: 640px) {
+  .dk-shot img { max-height: 34rem; object-fit: cover; object-position: top; }
+}
