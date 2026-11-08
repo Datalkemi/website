@@ -25,7 +25,7 @@ $india = datalkemi_india_page_data();
 			<span class="gradient-text"><?php esc_html_e( 'for businesses in India', 'datalkemi' ); ?></span>
 		</h1>
 		<p class="page-hero-subtitle"><?php esc_html_e( 'Custom websites, online stores, and web applications that load fast on any phone and are ready for Google from day one. Built by Datalkemi, with working hours that overlap with IST.', 'datalkemi' ); ?></p>
-		<div class="hero-buttons">
+		<div class="hero-buttons product-hero-buttons">
 			<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="dk-btn dk-btn-primary"><?php esc_html_e( 'Estimate your website', 'datalkemi' ); ?></a>
 			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="dk-btn dk-btn-outline"><?php esc_html_e( 'Talk to us', 'datalkemi' ); ?></a>
 		</div>
