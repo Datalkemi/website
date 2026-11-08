@@ -58,9 +58,9 @@ $config_json = wp_json_encode( $config );
 				<div class="cfg-step" data-step="1" id="cfg-step-1">
 					<div class="cfg-step-header">
 						<h2>Which currency should we show?</h2>
-						<p class="cfg-step-note">Our prices are set in Australian dollars. US dollars are shown at an indicative rate.</p>
+						<p class="cfg-step-note">Our prices are set in Australian dollars. US dollars are shown at an indicative rate, and clients in India get our Indian rupee pricing.</p>
 					</div>
-					<div class="cfg-choice-grid cfg-choice-grid--two" id="cfg-currency-grid">
+					<div class="cfg-choice-grid cfg-choice-grid--three" id="cfg-currency-grid">
 						<!-- populated by JS -->
 					</div>
 				</div>

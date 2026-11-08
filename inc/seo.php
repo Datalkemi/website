@@ -62,7 +62,7 @@ function datalkemi_seo_pages(): array {
 		],
 		'build-your-project' => [
 			'title' => 'Website Cost Calculator | Estimate Your Project | Datalkemi',
-			'desc'  => 'Work out what your website or web app will cost in AUD or USD. Choose the purpose and features, and see your estimate instantly. Websites from A$500.',
+			'desc'  => 'Work out what your website or web app will cost in AUD, USD or INR. Choose the purpose and features, and see your estimate instantly. Websites from A$500.',
 		],
 		'get-a-quote' => [
 			'title' => 'Get a Website Development Quote | Datalkemi',
@@ -70,7 +70,7 @@ function datalkemi_seo_pages(): array {
 		],
 		'website-development-india' => [
 			'title' => 'Website Development Services for Businesses in India | Datalkemi',
-			'desc'  => 'Custom websites, online stores and web applications for businesses in India, built by Datalkemi. Working hours that overlap with IST and clear fixed quotes.',
+			'desc'  => 'Custom websites, online stores and web applications for businesses in India, built by Datalkemi. Websites from Rs 20,000, with working hours that overlap with IST.',
 		],
 		'privacy-policy' => [
 			'title' => 'Privacy Policy | Datalkemi',

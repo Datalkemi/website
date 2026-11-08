@@ -50,7 +50,7 @@ function datalkemi_india_page_data(): array {
 			],
 			[
 				'title' => 'A fixed quote before we start',
-				'desc'  => 'Use the project estimator to see a price in AUD or USD, then receive a written quote with scope and timeline. No hourly billing surprises.',
+				'desc'  => 'Use the project estimator to see a price in Indian rupees, then receive a written quote with scope and timeline. No hourly billing surprises.',
 				'svg'   => $icon( '<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 7h8M8 11h8M8 15h5"/>' ),
 			],
 			[
@@ -73,7 +73,7 @@ function datalkemi_india_page_data(): array {
 		'faqs'     => [
 			[ 'q' => 'Can an Australian company build a website for my business in India?', 'a' => 'Yes. Datalkemi is based in Perth and works with clients in India entirely online. Discovery, design reviews, and handover happen over video calls, email, and shared preview links, and our working hours overlap with most of the Indian business day.' ],
 			[ 'q' => 'What hours are you available in IST?', 'a' => 'Perth is two and a half hours ahead of India Standard Time. Our weekday working hours fall roughly between 6:30 am and 3:00 pm IST, so calls are usually booked in your morning or early afternoon.' ],
-			[ 'q' => 'How much does a website cost?', 'a' => 'Small to medium business websites start from A$500, about US$325. Online stores, web applications, and portfolios start from A$1,000, about US$650. The project estimator shows your price in AUD or USD as you choose features, and we confirm it in a fixed written quote.' ],
+			[ 'q' => 'How much does a website cost in India?', 'a' => 'Small to medium business websites start from Rs 20,000. Online stores, web applications, and portfolios start from Rs 40,000. The project estimator shows your price in Indian rupees as you choose features, and we confirm it in a fixed written quote before work starts.' ],
 			[ 'q' => 'How long does it take to build a website?', 'a' => 'A business website usually takes two to three weeks from the discovery call to launch. Online stores and web applications take longer and are delivered in stages with a working preview at each step. Your quote includes the timeline.' ],
 			[ 'q' => 'Will my website rank on Google in India?', 'a' => 'Every site we build includes technical SEO: fast mobile pages, page titles and descriptions, structured data, a sitemap, and Google Search Console set up at launch. Rankings also depend on competition and content, so we do not promise positions, but we give you a site that search engines can read and trust.' ],
 			[ 'q' => 'Who owns the website once it is finished?', 'a' => 'You do. The code, designs, and content we produce are yours once the final invoice is paid, and the domain and hosting are registered in your name.' ],

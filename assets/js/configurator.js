@@ -3,7 +3,8 @@
  *
  * Flow: purpose, currency, then the sections that purpose uses, then the
  * estimate. Prices arrive in AUD from inc/configurator-data.php and are
- * shown in AUD or USD.
+ * shown in AUD, USD, or INR, each with its own rate, rounding, and digit
+ * grouping.
  */
 (function () {
   'use strict';
@@ -27,10 +28,11 @@
   }
   function cur() { return CURRENCIES[currency] || CURRENCIES.AUD; }
   function toLocal(aud) {
-    var v = aud * cur().rate;
-    return currency === 'AUD' ? Math.round(v) : Math.round(v / 10) * 10;
+    var step = Math.max(1, Number(cur().round) || 1);
+    return Math.round((aud * cur().rate) / step) * step;
   }
-  function money(aud) { return cur().symbol + toLocal(aud).toLocaleString('en-AU'); }
+  function fmt(n) { return Number(n).toLocaleString(cur().locale || 'en-AU'); }
+  function money(aud) { return cur().symbol + fmt(toLocal(aud)); }
 
   function isQuote() { return !!(purpose && purpose.quote); }
   function totalSteps() { return isQuote() ? 2 : 2 + stepKeys.length + 1; }
@@ -63,7 +65,7 @@
     function step(now) {
       var p = Math.min((now - start) / 700, 1);
       var e = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(from + (to - from) * e).toLocaleString('en-AU');
+      el.textContent = fmt(Math.round(from + (to - from) * e));
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -231,7 +233,9 @@
     if (noteEl) {
       noteEl.textContent = currency === 'AUD'
         ? 'Starting estimate in Australian dollars, excluding GST. Confirmed after a 30-minute scoping call.'
-        : 'Indicative figure converted from Australian dollars. Confirmed in writing after a 30-minute scoping call.';
+        : currency === 'INR'
+          ? 'Starting estimate in Indian rupees at our pricing for clients in India. Confirmed in writing after a 30-minute scoping call.'
+          : 'Indicative figure converted from Australian dollars. Confirmed in writing after a 30-minute scoping call.';
     }
 
     var el = document.getElementById('cfg-summary-breakdown');

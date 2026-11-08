@@ -57,7 +57,8 @@ function datalkemi_get_service_data( string $slug ): array {
 			'pricing' => [
 				[
 					'name'     => 'Starter',
-					'price'    => '£999',
+					'price'    => 'From A$400',
+					'aud'      => 400,
 					'period'   => 'one-time',
 					'desc'     => 'Perfect for startups and small businesses establishing their online presence.',
 					'features' => [
@@ -73,7 +74,8 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 				[
 					'name'     => 'Professional',
-					'price'    => '£2,499',
+					'price'    => 'From A$1,000',
+					'aud'      => 1000,
 					'period'   => 'one-time',
 					'desc'     => 'For growing businesses that need a powerful, comprehensive web presence.',
 					'features' => [
@@ -178,6 +180,7 @@ function datalkemi_get_service_data( string $slug ): array {
 				[
 					'name'     => 'Business website',
 					'price'    => 'From A$500',
+					'aud'      => 500,
 					'period'   => 'one-time',
 					'desc'     => 'Ideal for businesses needing a solid, professional web presence.',
 					'features' => [
@@ -195,6 +198,7 @@ function datalkemi_get_service_data( string $slug ): array {
 				[
 					'name'     => 'Custom website or web app',
 					'price'    => 'From A$1,000',
+					'aud'      => 1000,
 					'period'   => 'one-time',
 					'desc'     => 'For businesses needing custom functionality and complex integrations.',
 					'features' => [
@@ -230,7 +234,7 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 			],
 			'faqs' => [
-				[ 'q' => 'How much does a website cost in Australia?', 'a' => 'Small to medium business websites start from A$500. Personal portfolios, online stores, web applications, dashboards, and automation projects start from A$1,000. Enterprise platforms are scoped and quoted by our team. The project estimator shows your price in AUD or USD as you choose features, and we confirm it in a fixed written quote before work starts.' ],
+				[ 'q' => 'How much does a website cost in Australia?', 'a' => 'Small to medium business websites start from A$500. Personal portfolios, online stores, web applications, dashboards, and automation projects start from A$1,000. Enterprise platforms are scoped and quoted by our team. The project estimator shows your price in AUD, USD, or INR as you choose features, and we confirm it in a fixed written quote before work starts.' ],
 				[ 'q' => 'How long does it take to build a website?', 'a' => 'A business website usually takes two to three weeks from the discovery call to launch. Online stores and web applications are delivered in one or two week sprints, with a working demo at the end of each one. You get a timeline in writing with your quote.' ],
 				[ 'q' => 'Do you only work with businesses in Perth?', 'a' => 'No. We are based in Perth and work with businesses across Australia, including Sydney, Melbourne, Brisbane, Adelaide, and Canberra, as well as clients in India. Every stage of the project runs over video calls, email, and shared previews.' ],
 				[ 'q' => 'What technology do you build websites with?', 'a' => 'We build with WordPress, React and Next.js, Node.js, and Python, with PostgreSQL, MySQL, or Supabase for data. We choose the stack that suits your requirements and who will maintain the site, not the one we are most comfortable with.' ],
@@ -290,7 +294,8 @@ function datalkemi_get_service_data( string $slug ): array {
 			'pricing' => [
 				[
 					'name'     => 'Foundation',
-					'price'    => '£299',
+					'price'    => 'From A$150',
+					'aud'      => 150,
 					'period'   => '/month',
 					'desc'     => 'For businesses building their SEO foundation and organic presence.',
 					'features' => [
@@ -306,7 +311,8 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 				[
 					'name'     => 'Growth',
-					'price'    => '£599',
+					'price'    => 'From A$300',
+					'aud'      => 300,
 					'period'   => '/month',
 					'desc'     => 'For businesses ready to accelerate their search presence and outpace competitors.',
 					'features' => [
@@ -324,7 +330,8 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 				[
 					'name'     => 'Authority',
-					'price'    => '£999',
+					'price'    => 'From A$600',
+					'aud'      => 600,
 					'period'   => '/month',
 					'desc'     => 'Full-service SEO management for businesses serious about market domination.',
 					'features' => [
@@ -398,7 +405,8 @@ function datalkemi_get_service_data( string $slug ): array {
 			'pricing' => [
 				[
 					'name'     => 'Audit',
-					'price'    => '£799',
+					'price'    => 'From A$300',
+					'aud'      => 300,
 					'period'   => 'one-time',
 					'desc'     => 'Understand your current data landscape and get a clear action plan.',
 					'features' => [
@@ -414,7 +422,8 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 				[
 					'name'     => 'Foundation',
-					'price'    => '£1,999',
+					'price'    => 'From A$900',
+					'aud'      => 900,
 					'period'   => 'one-time',
 					'desc'     => 'Build your analytics foundation with clean data pipelines and actionable dashboards.',
 					'features' => [
@@ -506,7 +515,8 @@ function datalkemi_get_service_data( string $slug ): array {
 			'pricing' => [
 				[
 					'name'     => 'Starter',
-					'price'    => '£1,499',
+					'price'    => 'From A$600',
+					'aud'      => 600,
 					'period'   => 'one-time',
 					'desc'     => 'Get started with Power BI or Tableau and your first departmental reports.',
 					'features' => [
@@ -523,7 +533,8 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 				[
 					'name'     => 'Professional',
-					'price'    => '£3,499',
+					'price'    => 'From A$1,500',
+					'aud'      => 1500,
 					'period'   => 'one-time',
 					'desc'     => 'A comprehensive BI solution covering multiple business functions.',
 					'features' => [
@@ -616,7 +627,8 @@ function datalkemi_get_service_data( string $slug ): array {
 			'pricing' => [
 				[
 					'name'     => 'Essential',
-					'price'    => '£999',
+					'price'    => 'From A$400',
+					'aud'      => 400,
 					'period'   => 'one-time',
 					'desc'     => 'A focused, impactful dashboard for tracking your core business metrics.',
 					'features' => [
@@ -633,7 +645,8 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 				[
 					'name'     => 'Advanced',
-					'price'    => '£2,499',
+					'price'    => 'From A$1,000',
+					'aud'      => 1000,
 					'period'   => 'one-time',
 					'desc'     => 'Multi-dashboard suite covering every aspect of your business.',
 					'features' => [
@@ -678,7 +691,15 @@ function datalkemi_get_service_data( string $slug ): array {
 
 	];
 
-	return $services[ $slug ] ?? [];
+	$service = $services[ $slug ] ?? [];
+	if ( ! empty( $service['pricing'] ) && function_exists( 'datalkemi_price_set' ) ) {
+		foreach ( $service['pricing'] as $i => $package ) {
+			if ( ! empty( $package['aud'] ) ) {
+				$service['pricing'][ $i ]['prices'] = datalkemi_price_set( (int) $package['aud'] );
+			}
+		}
+	}
+	return $service;
 }
 
 /**

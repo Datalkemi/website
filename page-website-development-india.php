@@ -137,7 +137,7 @@ $india = datalkemi_india_page_data();
 		<div>
 			<h2 class="cta-banner-title"><?php esc_html_e( 'Ready to plan your website?', 'datalkemi' ); ?></h2>
 			<p class="cta-banner-subtitle">
-				<?php esc_html_e( 'Get an instant estimate in AUD or USD, or book a call in your morning.', 'datalkemi' ); ?>
+				<?php esc_html_e( 'Get an instant estimate in Indian rupees, or book a call in your morning.', 'datalkemi' ); ?>
 				<a href="<?php echo esc_url( home_url( '/services/web-development/' ) ); ?>"><?php esc_html_e( 'Based in Australia? See website development in Australia.', 'datalkemi' ); ?></a>
 			</p>
 		</div>

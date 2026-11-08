@@ -2,14 +2,16 @@
 /**
  * Datalkemi Project Configurator pricing data.
  *
- * All prices are in Australian dollars. The configurator shows them in AUD
- * or USD (indicative rate). Prices are positioned at the accessible end of
+ * All prices are in Australian dollars. The configurator shows them in AUD,
+ * USD (indicative exchange rate), or INR (a reduced rate for clients in
+ * India, below a straight conversion). Prices are positioned at the accessible end of
  * published Australian market ranges for 2026: brochure sites A$2k to 8k,
  * stores A$2k to 10k, MVP web apps A$10k to 50k, dashboards A$15k to 40k
  * for a consultancy set, enterprise platforms A$50k and up.
  *
  * Structure
- *   currencies  code => symbol, name, rate from AUD
+ *   currencies  code => symbol, name, rate from AUD, number locale, and the
+ *               step prices are rounded to
  *   purposes    the first question; each sets a base price and the order
  *               of the sections that follow
  *   sections    radio or checkbox groups; an option with a 'for' list only
@@ -23,8 +25,9 @@ function datalkemi_get_configurator_data(): array {
 	return [
 
 		'currencies' => [
-			'AUD' => [ 'symbol' => 'A$',  'name' => 'Australian dollars', 'rate' => 1.00 ],
-			'USD' => [ 'symbol' => 'US$', 'name' => 'US dollars',         'rate' => 0.65 ],
+			'AUD' => [ 'symbol' => 'A$',      'name' => 'Australian dollars', 'rate' => 1.00, 'locale' => 'en-AU', 'round' => 1 ],
+			'USD' => [ 'symbol' => 'US$',     'name' => 'US dollars',         'rate' => 0.65, 'locale' => 'en-US', 'round' => 10 ],
+			'INR' => [ 'symbol' => "\u{20B9}", 'name' => 'Indian rupees',      'rate' => 40.0, 'locale' => 'en-IN', 'round' => 100 ],
 		],
 
 		'purposes' => [
@@ -190,4 +193,34 @@ function datalkemi_get_configurator_data(): array {
 
 		],
 	];
+}
+
+/**
+ * One AUD price shown in every currency the site quotes in, using the same
+ * rates and rounding as the configurator.
+ *
+ * @param int $aud Price in Australian dollars.
+ * @return array<string, string> Currency code to formatted price.
+ */
+function datalkemi_price_set( int $aud ): array {
+	$out = [];
+	foreach ( datalkemi_get_configurator_data()['currencies'] as $code => $c ) {
+		$step  = max( 1, (int) $c['round'] );
+		$value = (int) ( round( $aud * $c['rate'] / $step ) * $step );
+		$out[ $code ] = $c['symbol'] . ( 'en-IN' === $c['locale'] ? datalkemi_format_inr( $value ) : number_format( $value ) );
+	}
+	return $out;
+}
+
+/**
+ * Indian digit grouping: 1,00,000 rather than 100,000.
+ */
+function datalkemi_format_inr( int $value ): string {
+	$digits = (string) $value;
+	if ( strlen( $digits ) <= 3 ) {
+		return $digits;
+	}
+	$last3 = substr( $digits, -3 );
+	$rest  = substr( $digits, 0, -3 );
+	return preg_replace( '/\B(?=(\d{2})+(?!\d))/', ',', $rest ) . ',' . $last3;
 }
