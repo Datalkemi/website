@@ -105,7 +105,9 @@ function datalkemi_search_google_places( $key, $query ) {
 			'X-Goog-FieldMask' => 'places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount',
 			'Referer'          => home_url( '/' ),
 		],
-		'body'    => wp_json_encode( [ 'textQuery' => $query, 'languageCode' => 'en', 'regionCode' => 'AU' ] ),
+		// Service-area businesses hide their address, and Google leaves them
+		// out of text search unless they are asked for explicitly.
+		'body'    => wp_json_encode( [ 'textQuery' => $query, 'languageCode' => 'en', 'regionCode' => 'AU', 'includePureServiceAreaBusinesses' => true ] ),
 	] );
 	if ( is_wp_error( $res ) ) {
 		return $res;
@@ -353,7 +355,7 @@ function datalkemi_reviews_admin_page() {
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 			<?php wp_nonce_field( 'dk_reviews_search' ); ?>
 			<input type="hidden" name="action" value="dk_reviews_search">
-			<input type="text" name="dk_query" class="regular-text" value="Datalkemi Cannington WA">
+			<input type="text" name="dk_query" class="regular-text" value="Datalkemi">
 			<?php submit_button( __( 'Search Google', 'datalkemi' ), 'secondary', 'submit', false ); ?>
 		</form>
 		<?php if ( is_array( $found ) ) : ?>
