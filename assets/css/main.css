@@ -4533,3 +4533,12 @@ html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
 @media (max-width: 640px) {
   .dk-shot img { max-height: 34rem; object-fit: cover; object-position: top; }
 }
+
+/* ── FAQ page ───────────────────────────────────────────────────────── */
+.faq-page .dk-container { max-width: 52rem; }
+.faq-page-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 3rem; }
+.faq-page-nav a { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text) !important; text-decoration: none !important; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); padding: 0.5rem 0.75rem; }
+.faq-page-nav a:hover { border-color: var(--action); color: var(--action) !important; }
+.faq-page-group { margin: 0 0 3rem; scroll-margin-top: calc(var(--dk-header-h, 72px) + 1.5rem); }
+.faq-page-group:last-child { margin-bottom: 0; }
+.faq-page-title { font-size: clamp(1.375rem, 3vw, 1.75rem) !important; font-weight: 500 !important; color: var(--text) !important; margin: 0 0 1.25rem !important; }

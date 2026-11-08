@@ -19,6 +19,8 @@ require_once DATALKEMI_DIR . '/inc/admin-clients.php';
 require_once DATALKEMI_DIR . '/inc/configurator-data.php';
 require_once DATALKEMI_DIR . '/inc/smtp.php';
 require_once DATALKEMI_DIR . '/inc/india-data.php';
+require_once DATALKEMI_DIR . '/inc/faq-data.php';
+require_once DATALKEMI_DIR . '/inc/insights-seed.php';
 require_once DATALKEMI_DIR . '/inc/seo.php';
 require_once DATALKEMI_DIR . '/inc/newsletter.php';
 require_once DATALKEMI_DIR . '/inc/project-seed.php';

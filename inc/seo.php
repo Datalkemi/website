@@ -72,6 +72,10 @@ function datalkemi_seo_pages(): array {
 			'title' => 'Website Development Services for Businesses in India | Datalkemi',
 			'desc'  => 'Custom websites, online stores and web applications for businesses in India, built by Datalkemi. Websites from Rs 20,000, with working hours that overlap with IST.',
 		],
+		'faq' => [
+			'title' => 'Website Development FAQs: Cost and Timelines | Datalkemi',
+			'desc'  => 'Answers on website cost, build timelines, ownership, SEO and working with Datalkemi from Australia or India. Websites from A$500 or Rs 20,000.',
+		],
 		'privacy-policy' => [
 			'title' => 'Privacy Policy | Datalkemi',
 			'desc'  => 'How Datalkemi collects, uses, stores and protects personal information, and how to access or correct yours.',
@@ -216,6 +220,9 @@ function datalkemi_seo_context(): array {
 			$ctx['desc']   = $pages[ $slug ]['desc'] ?? datalkemi_seo_trim( $post->post_excerpt ?: $post->post_content );
 			$ctx['crumbs'] = [ $home_crumb, [ 'name' => $title, 'url' => $ctx['url'] ] ];
 
+			if ( 'faq' === $slug && function_exists( 'datalkemi_faq_items' ) ) {
+				$ctx['faqs'] = datalkemi_faq_items();
+			}
 			if ( 'website-development-india' === $slug && function_exists( 'datalkemi_india_page_data' ) ) {
 				$india          = datalkemi_india_page_data();
 				$ctx['locale']  = 'en_IN';
@@ -514,6 +521,25 @@ function datalkemi_seo_schema( array $ctx ): array {
 			];
 		}
 		$graph[] = $service;
+	}
+
+	if ( is_singular( 'post' ) ) {
+		$post    = get_queried_object();
+		$graph[] = [
+			'@type'            => 'BlogPosting',
+			'@id'              => $url . '#article',
+			'headline'         => get_the_title( $post ),
+			'description'      => $ctx['desc'],
+			'url'              => $url,
+			'mainEntityOfPage' => [ '@id' => $page_id ],
+			'datePublished'    => get_the_date( DATE_W3C, $post ),
+			'dateModified'     => get_the_modified_date( DATE_W3C, $post ),
+			'author'           => [ '@id' => $org_id ],
+			'publisher'        => [ '@id' => $org_id ],
+			'image'            => $ctx['image'],
+			'inLanguage'       => $lang,
+			'articleSection'   => wp_strip_all_tags( implode( ', ', wp_list_pluck( get_the_category( $post->ID ), 'name' ) ) ),
+		];
 	}
 
 	if ( $ctx['faqs'] ) {
