@@ -4542,3 +4542,22 @@ html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
 .faq-page-group { margin: 0 0 3rem; scroll-margin-top: calc(var(--dk-header-h, 72px) + 1.5rem); }
 .faq-page-group:last-child { margin-bottom: 0; }
 .faq-page-title { font-size: clamp(1.375rem, 3vw, 1.75rem) !important; font-weight: 500 !important; color: var(--text) !important; margin: 0 0 1.25rem !important; }
+
+/* FAQ buttons: keep Astra's button colours off in every state */
+.faq-question,
+.faq-question:hover,
+.faq-question:focus,
+.faq-question:active,
+.faq-question[aria-expanded="true"] {
+  background: transparent !important;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.faq-question:hover .faq-icon,
+.faq-question[aria-expanded="true"] .faq-icon { color: var(--action); }
+.faq-question:focus-visible { outline: 2px solid var(--action) !important; outline-offset: -2px; }
+
+/* Tables inside articles sit flush in their frame */
+.dk-table-wrap .dk-table { margin: 0 !important; border: none !important; }
