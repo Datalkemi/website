@@ -8,7 +8,8 @@
  *
  * This file is the source of truth. Raise DATALKEMI_PROJECTS_VERSION after
  * editing it and the seeder re-applies every entry on the next page load,
- * overwriting edits made in WP Admin.
+ * overwriting edits made in WP Admin. An entry with 'remove' => true deletes
+ * that project. Raise an entry's 'image_version' to replace its thumbnail.
  *
  * @package Datalkemi
  * @since   2.1.0
@@ -16,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'DATALKEMI_PROJECTS_VERSION', 3 );
+define( 'DATALKEMI_PROJECTS_VERSION', 4 );
 
 return [
 
@@ -124,29 +125,10 @@ return [
 ',
 	],
 
+	/* The EULA generator was retired from the showcase. */
 	[
-		'slug'     => 'eula-generator',
-		'title'    => 'EULA generator',
-		'excerpt'  => 'A browser tool that drafts End User License Agreements from editable templates and exports a finished PDF.',
-		'category' => 'Web tool',
-		'industry' => 'Legal and compliance',
-		'type'     => 'Web application',
-		'tech'     => 'React, TypeScript, Vite, shadcn/ui, Tailwind CSS',
-		'live_url' => '',
-		'hosting'  => 'Not publicly hosted, runs entirely in the browser',
-		'end'      => '2025-08-01',
-		'content'  => '
-<h2>The brief</h2>
-<p>Small software vendors need a licence agreement before they can ship, and most either copy one from a competitor or pay for a template they then cannot edit cleanly. The goal was a tool that produces a sensible first draft in minutes and keeps the text editable.</p>
-<h2>What we built</h2>
-<ul>
-<li>A guided form that captures the product, the licensor, territory, term, and the permissions and restrictions that apply.</li>
-<li>Clause templates assembled into a full agreement, with every section editable in place before export.</li>
-<li>One-click PDF export of the finished document, generated in the browser with nothing sent to a server.</li>
-</ul>
-<h2>Outcome</h2>
-<p>A single-page application with no backend, no accounts, and no stored data, which keeps it simple to host and easy to trust with draft legal text.</p>
-',
+		'slug'   => 'eula-generator',
+		'remove' => true,
 	],
 
 	/* Exnami is a Datalkemi product with its own page (page-exnami.php); the
@@ -191,6 +173,7 @@ return [
 		'tech'     => 'Python, pandas, XGBoost, Jupyter',
 		'live_url' => '',
 		'hosting'  => 'Not hosted, notebooks and a dashboard prototype',
+		'image_version' => 2,
 		'end'      => '2022-10-01',
 		'content'  => '
 <h2>The problem</h2>

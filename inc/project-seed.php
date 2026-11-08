@@ -73,7 +73,12 @@ function datalkemi_seed_projects() {
 		wp_set_object_terms( $post_id, $p['industry'], 'project_industry' );
 		wp_set_object_terms( $post_id, $p['type'],     'project_type' );
 
-		$image = DATALKEMI_DIR . '/assets/img/projects/' . $p['slug'] . '.jpg';
+		$image         = DATALKEMI_DIR . '/assets/img/projects/' . $p['slug'] . '.jpg';
+		$image_version = isset( $p['image_version'] ) ? (int) $p['image_version'] : 1;
+		if ( has_post_thumbnail( $post_id ) && (int) get_post_meta( $post_id, '_project_image_version', true ) !== $image_version ) {
+			wp_delete_attachment( get_post_thumbnail_id( $post_id ), true );
+			delete_post_thumbnail( $post_id );
+		}
 		if ( file_exists( $image ) && ! has_post_thumbnail( $post_id ) ) {
 			$bits = wp_upload_bits( basename( $image ), null, file_get_contents( $image ) );
 			if ( empty( $bits['error'] ) ) {
@@ -85,6 +90,7 @@ function datalkemi_seed_projects() {
 				if ( ! is_wp_error( $attachment_id ) && $attachment_id ) {
 					wp_update_attachment_metadata( $attachment_id, wp_generate_attachment_metadata( $attachment_id, $bits['file'] ) );
 					set_post_thumbnail( $post_id, $attachment_id );
+					update_post_meta( $post_id, '_project_image_version', $image_version );
 				}
 			}
 		}
