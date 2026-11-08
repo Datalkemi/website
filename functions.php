@@ -74,6 +74,30 @@ add_action( 'template_redirect', 'datalkemi_redirect_blog_page' );
  */
 add_filter( 'astra_get_option_scroll-to-top-enable', '__return_false' );
 
+/**
+ * Product pages guard: make sure the Exnami page exists with its template.
+ * Runs once; the content installer also creates it on a fresh install.
+ */
+function datalkemi_ensure_product_pages() {
+	if ( get_option( 'datalkemi_product_pages_v1' ) ) {
+		return;
+	}
+	if ( ! get_page_by_path( 'exnami' ) ) {
+		$page_id = wp_insert_post( [
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_name'    => 'exnami',
+			'post_title'   => 'Exnami',
+			'post_content' => '',
+		], true );
+		if ( ! is_wp_error( $page_id ) && $page_id ) {
+			update_post_meta( $page_id, '_wp_page_template', 'page-exnami.php' );
+		}
+	}
+	update_option( 'datalkemi_product_pages_v1', 1 );
+}
+add_action( 'init', 'datalkemi_ensure_product_pages', 25 );
+
 // ── Excerpt length ─────────────────────────────────────────────────────────
 function datalkemi_excerpt_length( $length ) {
 	return 25;

@@ -100,6 +100,7 @@
 				<ul class="ft-nav">
 					<li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'About', 'datalkemi' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/insights/' ) ); ?>"><?php esc_html_e( 'Insights', 'datalkemi' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/exnami/' ) ); ?>"><?php esc_html_e( 'Exnami, our finance app', 'datalkemi' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact', 'datalkemi' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/configure-your-project/' ) ); ?>"><?php esc_html_e( 'Project estimator', 'datalkemi' ); ?></a></li>
 				</ul>

@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'DATALKEMI_PROJECTS_VERSION', 2 );
+define( 'DATALKEMI_PROJECTS_VERSION', 3 );
 
 return [
 
@@ -149,31 +149,11 @@ return [
 ',
 	],
 
+	/* Exnami is a Datalkemi product with its own page (page-exnami.php); the
+	   earlier case study entry is removed on upgrade. */
 	[
-		'slug'     => 'household-finance-app',
-		'title'    => 'Exnami, household finance app',
-		'excerpt'  => 'An installable web app for tracking income, expenses, budgets, debts, and shared costs, with receipt scanning, reminders, and multi-currency support.',
-		'category' => 'Product',
-		'industry' => 'Finance',
-		'type'     => 'Web application',
-		'tech'     => 'Next.js, React, Supabase, PostgreSQL, Web Push, Vercel',
-		'live_url' => 'https://www.exnami.com/',
-		'hosting'  => 'Vercel, Sydney region, Supabase database',
-		'end'      => '2026-08-01',
-		'content'  => '
-<h2>The brief</h2>
-<p>Exnami is our own product. Most budgeting apps either lock data behind a subscription or stop at a list of transactions, so Exnami set out to cover the whole household picture: accounts, bills, debts, money owed between friends, and a forward plan, in an app that installs on a phone and works offline-first.</p>
-<h2>What we built</h2>
-<ul>
-<li>Accounts, income, expenses, and transfers with categories, merchants, and budgets with per-category limits.</li>
-<li>Debts and repayments, receivables, and shared expenses between friends with settlement tracking.</li>
-<li>A payment calendar with Google Calendar sync and push notifications before due dates.</li>
-<li>Receipt scanning that files line items against the right expense, and monthly plans that project income, bills, debt payoff, and savings.</li>
-<li>Multi-currency support with live exchange rates, Google sign-in, and a progressive web app shell deployed to Sydney for low latency.</li>
-</ul>
-<h2>Outcome</h2>
-<p>A production application on a relational schema of more than forty tables, with row-level security on every one of them, serving as the reference build for the data-backed products we deliver for clients.</p>
-',
+		'slug'   => 'household-finance-app',
+		'remove' => true,
 	],
 
 	[

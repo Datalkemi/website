@@ -119,6 +119,7 @@ $config_id      = dk_create_page( 'Build Your Project',    'build-your-project',
 $quote_id       = dk_create_page( 'Get a Quote',           'get-a-quote',         'page-quote.php' );
 $contact_id     = dk_create_page( 'Contact',               'contact',             '' );
 $insights_id    = dk_create_page( 'Insights',              'insights',            '' );
+$exnami_id      = dk_create_page( 'Exnami',                'exnami',              'page-exnami.php' );
 
 // Legal pages
 $privacy_id  = dk_create_page( 'Privacy Policy',   'privacy-policy',   '', '', 0 );

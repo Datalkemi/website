@@ -32,6 +32,17 @@ function datalkemi_seed_projects() {
 	foreach ( $projects as $p ) {
 		$existing = get_page_by_path( $p['slug'], OBJECT, 'project' );
 
+		if ( ! empty( $p['remove'] ) ) {
+			if ( $existing ) {
+				$thumb_id = get_post_thumbnail_id( $existing->ID );
+				if ( $thumb_id ) {
+					wp_delete_attachment( $thumb_id, true );
+				}
+				wp_delete_post( $existing->ID, true );
+			}
+			continue;
+		}
+
 		$postarr = [
 			'post_type'    => 'project',
 			'post_status'  => 'publish',
