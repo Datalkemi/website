@@ -63,7 +63,7 @@ $types      = get_terms( [ 'taxonomy' => 'project_type',     'hide_empty' => tru
 								</div>
 							<?php else : ?>
 								<div class="project-thumb-placeholder">
-									<span>&#128196;</span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 15l5-5 4 4 3-3 6 6"/><circle cx="16" cy="9" r="1.5"/></svg>
 								</div>
 							<?php endif; ?>
 						</a>

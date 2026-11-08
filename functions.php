@@ -20,6 +20,7 @@ require_once DATALKEMI_DIR . '/inc/configurator-data.php';
 require_once DATALKEMI_DIR . '/inc/smtp.php';
 require_once DATALKEMI_DIR . '/inc/seo-home.php';
 require_once DATALKEMI_DIR . '/inc/newsletter.php';
+require_once DATALKEMI_DIR . '/inc/project-seed.php';
 
 // ── Theme setup ────────────────────────────────────────────────────────────
 function datalkemi_setup() {
