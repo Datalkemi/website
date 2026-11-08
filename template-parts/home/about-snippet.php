@@ -65,7 +65,7 @@
 						</span>
 						<div>
 							<strong><?php esc_html_e( 'Small client roster', 'datalkemi' ); ?></strong>
-							<span><?php esc_html_e( 'You work directly with the person building your system', 'datalkemi' ); ?></span>
+							<span><?php esc_html_e( 'You work directly with the people building your system', 'datalkemi' ); ?></span>
 						</div>
 					</li>
 

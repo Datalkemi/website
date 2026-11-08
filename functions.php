@@ -55,6 +55,18 @@ function datalkemi_ensure_posts_page() {
 }
 add_action( 'init', 'datalkemi_ensure_posts_page', 20 );
 
+/**
+ * The posts page is Insights. The legacy /blog/ page created by an earlier
+ * content install redirects there permanently.
+ */
+function datalkemi_redirect_blog_page() {
+	if ( is_page( 'blog' ) ) {
+		wp_safe_redirect( home_url( '/insights/' ), 301 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'datalkemi_redirect_blog_page' );
+
 // ── Excerpt length ─────────────────────────────────────────────────────────
 function datalkemi_excerpt_length( $length ) {
 	return 25;

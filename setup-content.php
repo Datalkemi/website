@@ -110,10 +110,6 @@ update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $home_id );
 $log[] = "  Set static front page → ID {$home_id}";
 
-// Blog / Posts page (needed for Reading Settings even if unused)
-$blog_id = dk_create_page( 'Blog', 'blog' );
-update_option( 'page_for_posts', $blog_id );
-
 // Primary inner pages
 $about_id       = dk_create_page( 'About Us',              'about',               'page-about.php' );
 $services_id    = dk_create_page( 'Services',              'services',            'page-services.php' );

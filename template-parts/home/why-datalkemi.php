@@ -40,9 +40,9 @@
 				<div class="hp-why-point">
 					<span class="hp-why-point-num">01</span>
 					<div class="hp-why-point-body">
-						<h3><?php esc_html_e( 'Master of Data Science, UWA', 'datalkemi' ); ?></h3>
+						<h3><?php esc_html_e( 'Engineering discipline on every build', 'datalkemi' ); ?></h3>
 						<p>
-							<?php esc_html_e( 'Datalkemi is founded by a Data and Analytics Consultant with a Master of Data Science from the University of Western Australia, with a background in enterprise data consulting.', 'datalkemi' ); ?>
+							<?php esc_html_e( 'Version control, automated tests, documented handover, and reproducible infrastructure, whether the project is a single dashboard or a full platform.', 'datalkemi' ); ?>
 						</p>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 				<div class="hp-why-point">
 					<span class="hp-why-point-num">04</span>
 					<div class="hp-why-point-body">
-						<h3><?php esc_html_e( 'You work directly with the person building your system', 'datalkemi' ); ?></h3>
+						<h3><?php esc_html_e( 'You work directly with the people building your system', 'datalkemi' ); ?></h3>
 						<p>
 							<?php esc_html_e( 'No account managers, no handoffs.', 'datalkemi' ); ?>
 						</p>
