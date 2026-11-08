@@ -595,7 +595,8 @@ picture img { display: block; width: 100%; height: auto; }
 	.ft-newsletter-privacy { font-size: 0.75rem; margin-top: 0.5rem; }
 
 	/* Legal: two short lines, small type, clear of the home indicator */
-	.ft-legal { padding: 1.25rem 0 calc(1.25rem + env(safe-area-inset-bottom)); }
+	/* Bottom padding clears the floating scroll-to-top button */
+	.ft-legal { padding: 1.25rem 0 calc(4.75rem + env(safe-area-inset-bottom)); }
 	.ft-legal-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 	.ft-legal-left { flex-wrap: wrap; gap: 0.25rem 0.5rem; font-size: 0.75rem; }
 	.ft-legal-left .ft-copy,
