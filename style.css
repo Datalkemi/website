@@ -351,6 +351,10 @@ a:hover { color: var(--action-hover); }
 .dk-ladder i:nth-child(3) { height: 44%; opacity: 0.6; }
 .dk-ladder i:nth-child(4) { height: 24%; opacity: 0.45; }
 
+/* Parent theme scroll-to-top is disabled in functions.php; this covers a
+   cached page that still carries its markup. */
+#ast-scroll-top { display: none !important; }
+
 /* ==========================================================================
    11. THEME TOGGLE
    ========================================================================== */

@@ -67,6 +67,12 @@ function datalkemi_redirect_blog_page() {
 }
 add_action( 'template_redirect', 'datalkemi_redirect_blog_page' );
 
+/**
+ * Astra ships its own scroll-to-top button. The theme renders one in
+ * footer.php, so the parent's is switched off to avoid two buttons.
+ */
+add_filter( 'astra_get_option_scroll-to-top-enable', '__return_false' );
+
 // ── Excerpt length ─────────────────────────────────────────────────────────
 function datalkemi_excerpt_length( $length ) {
 	return 25;
