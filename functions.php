@@ -36,6 +36,25 @@ function datalkemi_setup() {
 }
 add_action( 'after_setup_theme', 'datalkemi_setup' );
 
+/**
+ * Reading settings guard.
+ * The Insights page must be the Posts page so /insights/ renders the blog
+ * archive (home.php). The content installer once left this pointing at the
+ * Blog page, so correct it a single time on an existing install.
+ */
+function datalkemi_ensure_posts_page() {
+	if ( get_option( 'datalkemi_posts_page_v1' ) ) {
+		return;
+	}
+	$insights = get_page_by_path( 'insights' );
+	if ( $insights && (int) get_option( 'page_for_posts' ) !== (int) $insights->ID ) {
+		update_option( 'show_on_front', 'page' );
+		update_option( 'page_for_posts', $insights->ID );
+	}
+	update_option( 'datalkemi_posts_page_v1', 1 );
+}
+add_action( 'init', 'datalkemi_ensure_posts_page', 20 );
+
 // ── Excerpt length ─────────────────────────────────────────────────────────
 function datalkemi_excerpt_length( $length ) {
 	return 25;

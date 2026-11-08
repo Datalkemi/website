@@ -348,7 +348,7 @@ if ( empty( $menu_items ) ) {
 
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front',  $home_id );
-update_option( 'page_for_posts', $blog_id );
+update_option( 'page_for_posts', $insights_id );
 update_option( 'posts_per_page', 12 );
 flush_rewrite_rules( true );
 $log[] = '<br><b>── Reading settings updated; rewrite rules flushed ──</b>';
