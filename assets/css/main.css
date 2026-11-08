@@ -1219,9 +1219,15 @@ a:hover { color: var(--color-accent) !important; }
 }
 
 /* ── Page Hero (inner pages) ────────────────────────────────────── */
+/* Heroes carry their own content padding; cancel the generic section padding */
+.page-hero,
+.service-hero,
+.config-hero {
+  padding: 0;
+}
+
 .page-hero {
   position: relative;
-  min-height: 34vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -1239,7 +1245,6 @@ a:hover { color: var(--color-accent) !important; }
   z-index: 1;
 }
 
-.page-hero--compact { min-height: 30vh; }
 
 .page-hero-overlay {
   position: absolute;
@@ -1252,8 +1257,23 @@ a:hover { color: var(--color-accent) !important; }
 .page-hero-content {
   position: relative;
   z-index: 2;
-  padding: 3rem 1.5rem 2.5rem;
+  padding: 4rem 1.5rem 3.5rem;
   max-width: 800px;
+}
+
+/* Full width variant used by the configurator hero */
+.page-hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 1.5rem 3.5rem;
+}
+
+/* Heroes are sized by their content, so the last element carries no bottom margin */
+.page-hero-content > :last-child,
+.page-hero-inner > :last-child,
+.service-hero-content > :last-child,
+.config-hero-content > :last-child {
+  margin-bottom: 0 !important;
 }
 
 .page-hero-eyebrow {
@@ -1680,7 +1700,6 @@ a:hover { color: var(--color-accent) !important; }
 /* ── Single Service page ─────────────────────────────────────────── */
 .service-hero {
   position: relative;
-  min-height: 70vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -1697,7 +1716,7 @@ a:hover { color: var(--color-accent) !important; }
 .service-hero-content {
   position: relative;
   z-index: 2;
-  padding: 6rem 1.5rem 4rem;
+  padding: 4rem 1.5rem 3.5rem;
 }
 
 .service-hero-breadcrumb {
@@ -2620,8 +2639,7 @@ a:hover { color: var(--color-accent) !important; }
 }
 
 @media (max-width: 768px) {
-  .page-hero { min-height: 50vh; }
-  .page-hero-content { padding: 5rem 1.5rem 3rem; }
+  .page-hero-content { padding: 3.5rem 1.5rem 3rem; }
   .page-hero-title { font-size: 2.25rem !important; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .team-grid { grid-template-columns: 1fr; }
@@ -2641,8 +2659,7 @@ a:hover { color: var(--color-accent) !important; }
   .footer-grid-4 { grid-template-columns: 1fr; }
   .process-timeline::before { display: none; }
   .nav-actions { display: none; }
-  .page-hero { min-height: 38vh; }
-  .page-hero-content { padding: 4rem 1.5rem 2.5rem; }
+  .page-hero-content { padding: 3rem 1.5rem 2.5rem; }
   .page-hero-title { font-size: 2rem !important; }
   .service-list-item { flex-direction: column; gap: 1.25rem; }
   .service-list-action { width: 100%; }
@@ -2739,12 +2756,8 @@ a:hover { color: var(--color-accent) !important; }
 
 .config-promo-action { flex-shrink: 0; }
 
-/* ── Service hero (reduced height) ─────────────────────────────── */
-.service-hero {
-  min-height: 52vh;
-}
-
-.service-hero-content { padding: 5rem 1.5rem 3.5rem; }
+/* ── Service hero: sized by content ──────────────────────────────── */
+.service-hero-content { padding: 4rem 1.5rem 3.5rem; }
 
 /* ── Outcomes grid ──────────────────────────────────────────────── */
 .outcomes-grid {
@@ -2778,7 +2791,6 @@ a:hover { color: var(--color-accent) !important; }
 /* ── Config hero ────────────────────────────────────────────────── */
 .config-hero {
   position: relative;
-  min-height: 40vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -3158,15 +3170,13 @@ a:hover { color: var(--color-accent) !important; }
     align-items: start;
   }
   .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
-  .service-hero { min-height: 45vh; }
 }
 
 @media (max-width: 768px) {
   .config-contact-fields { grid-template-columns: 1fr; }
   .config-price-card { grid-template-columns: 1fr; }
   .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
-  .service-hero { min-height: 40vh; }
-  .service-hero-content { padding: 4rem 1.5rem 2.5rem; }
+  .service-hero-content { padding: 3rem 1.5rem 2.5rem; }
   .service-card-grid { grid-template-columns: 1fr; }
   .service-group-header { margin-bottom: 2rem; }
 }
@@ -4293,6 +4303,7 @@ a:hover { color: var(--color-accent) !important; }
 }
 
 /* ── Product page (Exnami) ─────────────────────────────────────────── */
+.page-hero--product .page-hero-content { padding-bottom: 6rem; }
 .product-hero-buttons { justify-content: flex-start; margin-bottom: 1rem; }
 .product-hero-note { font-size: 0.875rem; color: var(--text-faint); }
 

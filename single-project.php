@@ -21,11 +21,11 @@ $related = new WP_Query( [
 ?>
 
 <!-- Project Hero -->
-<section class="service-hero" style="min-height:60vh;">
+<section class="service-hero">
 	<div class="service-hero-overlay"></div>
 	<?php if ( has_post_thumbnail() ) : ?>
 		<div style="position:absolute; inset:0; z-index:0;">
-			<?php the_post_thumbnail( 'full', [ 'style' => 'width:100%; height:100%; object-fit:cover; opacity:0.25;' ] ); ?>
+			<?php the_post_thumbnail( 'full', [ 'style' => 'width:100%; height:100%; object-fit:cover; opacity:0.12;' ] ); ?>
 		</div>
 	<?php endif; ?>
 	<div class="dk-container service-hero-content" style="position:relative; z-index:2;">

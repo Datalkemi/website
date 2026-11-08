@@ -67,7 +67,7 @@ $stack = [
 ?>
 
 <!-- Hero -->
-<section class="page-hero">
+<section class="page-hero page-hero--product">
 	<div class="page-hero-overlay"></div>
 	<div class="dk-container page-hero-content">
 		<p class="page-hero-eyebrow"><?php esc_html_e( 'A product by Datalkemi', 'datalkemi' ); ?></p>
