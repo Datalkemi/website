@@ -2073,7 +2073,7 @@ a:hover { color: var(--color-accent) !important; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  color: var(--text-faint);
   margin-bottom: 1.25rem;
 }
 
