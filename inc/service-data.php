@@ -119,9 +119,20 @@ function datalkemi_get_service_data( string $slug ): array {
 
 		// ── Full-Stack Web Development ──────────────────────────────────────
 		'web-development' => [
-			'icon'     => '&#128187;',
-			'tagline'  => 'Robust, scalable web applications built to perform',
-			'overview' => 'From marketing websites to complex web applications, our full-stack development team builds with precision, performance, and scalability in mind. We write clean, maintainable code using industry-best practices delivering products that not only work flawlessly today but grow seamlessly with your business tomorrow.',
+			'icon'      => '&#128187;',
+			'h1'        => 'Website Development in Perth and Across Australia',
+			'crumb'     => 'Website Development',
+			'seo_title' => 'Website Development Services in Perth, Australia | Datalkemi',
+			'seo_desc'  => 'Website development for businesses in Perth and across Australia. WordPress and custom builds that are fast and search-ready. Websites from A$500.',
+			'from_aud'  => 500,
+			'tagline'   => 'Fast, search-ready websites and web applications for Australian businesses',
+			'overview'  => 'Datalkemi is a website development company in Perth, Western Australia. We build business websites, online stores, and web applications for companies across Australia, from a five-page WordPress site to a full client portal. Every build is written in clean, maintainable code, loads quickly on phones, and is set up for search from the first deploy, so it works well today and keeps growing with your business.',
+			'areas'     => [
+				'headline' => 'Website development across Australia',
+				'text'     => 'We are based in Perth and work with businesses right around the country. Discovery, design reviews, and handover all run over video calls in your time zone, so where you are makes no difference to how the project runs.',
+				'places'   => [ 'Perth', 'Sydney', 'Melbourne', 'Brisbane', 'Adelaide', 'Canberra', 'Hobart', 'Darwin', 'Gold Coast', 'Regional WA' ],
+				'link'     => [ 'label' => 'Website development for businesses in India', 'url' => '/website-development-india/' ],
+			],
 			'features' => [
 				'Custom WordPress development with advanced theme and plugin architecture',
 				'React, Next.js, and modern JavaScript framework expertise',
@@ -159,14 +170,14 @@ function datalkemi_get_service_data( string $slug ): array {
 			'process' => [
 				[ 'step' => '01', 'title' => 'Technical Discovery', 'desc' => 'We conduct a deep-dive technical scoping session to define architecture, technology stack, data models, integrations, and performance requirements.' ],
 				[ 'step' => '02', 'title' => 'Architecture & Planning', 'desc' => 'A full technical specification document is produced, covering database schema, API endpoints, component structure, and security model. No surprises during build.' ],
-				[ 'step' => '03', 'title' => 'Development Sprints', 'desc' => 'Development is delivered in 1–2 week sprints with regular demos. You always know what\'s been built and what\'s coming next.' ],
+				[ 'step' => '03', 'title' => 'Development Sprints', 'desc' => 'Development is delivered in one or two week sprints with regular demos. You always know what\'s been built and what\'s coming next.' ],
 				[ 'step' => '04', 'title' => 'QA & Testing', 'desc' => 'Comprehensive testing across all browsers, devices, and screen sizes. Automated test suites, performance audits, and security vulnerability scans before launch.' ],
 				[ 'step' => '05', 'title' => 'Launch & Handover', 'desc' => 'Seamless deployment with zero-downtime strategies. Full code handover, documentation, and training for your team. Ongoing support available post-launch.' ],
 			],
 			'pricing' => [
 				[
-					'name'     => 'Standard',
-					'price'    => '£1,499',
+					'name'     => 'Business website',
+					'price'    => 'From A$500',
 					'period'   => 'one-time',
 					'desc'     => 'Ideal for businesses needing a solid, professional web presence.',
 					'features' => [
@@ -182,8 +193,8 @@ function datalkemi_get_service_data( string $slug ): array {
 					'cta'      => 'Get Started',
 				],
 				[
-					'name'     => 'Advanced',
-					'price'    => '£3,999',
+					'name'     => 'Custom website or web app',
+					'price'    => 'From A$1,000',
 					'period'   => 'one-time',
 					'desc'     => 'For businesses needing custom functionality and complex integrations.',
 					'features' => [
@@ -219,11 +230,14 @@ function datalkemi_get_service_data( string $slug ): array {
 				],
 			],
 			'faqs' => [
-				[ 'q' => 'What technology stack do you use?', 'a' => 'We primarily build with WordPress (PHP), React/Next.js, Node.js, and Python. Our database expertise covers PostgreSQL, MySQL, MongoDB, Supabase, and Firebase. We choose the right stack for your specific requirements, not the one we\'re most comfortable with.' ],
-				[ 'q' => 'Will I be able to update the website myself?', 'a' => 'Yes. All WordPress builds include a full CMS backend that lets you update content, add pages, manage images, and publish blog posts without touching code. We also provide training and documentation as part of every project.' ],
-				[ 'q' => 'Do you offer hosting services?', 'a' => 'We don\'t manage hosting directly, but we configure and deploy to your chosen hosting provider (Hostinger, WP Engine, Kinsta, Vercel, AWS, etc.) and ensure it\'s optimally configured for performance and security.' ],
-				[ 'q' => 'How do you handle project changes mid-development?', 'a' => 'We use a structured change request process. Minor adjustments are accommodated within sprints. Larger scope changes are quoted separately and added to the project backlog. You\'re always in control.' ],
-				[ 'q' => 'Do you sign NDAs and IP assignment agreements?', 'a' => 'Absolutely. We sign comprehensive NDAs and IP assignment agreements before any work begins. All code we produce for you is 100% yours upon final payment.' ],
+				[ 'q' => 'How much does a website cost in Australia?', 'a' => 'Small to medium business websites start from A$500. Personal portfolios, online stores, web applications, dashboards, and automation projects start from A$1,000. Enterprise platforms are scoped and quoted by our team. The project estimator shows your price in AUD or USD as you choose features, and we confirm it in a fixed written quote before work starts.' ],
+				[ 'q' => 'How long does it take to build a website?', 'a' => 'A business website usually takes two to three weeks from the discovery call to launch. Online stores and web applications are delivered in one or two week sprints, with a working demo at the end of each one. You get a timeline in writing with your quote.' ],
+				[ 'q' => 'Do you only work with businesses in Perth?', 'a' => 'No. We are based in Perth and work with businesses across Australia, including Sydney, Melbourne, Brisbane, Adelaide, and Canberra, as well as clients in India. Every stage of the project runs over video calls, email, and shared previews.' ],
+				[ 'q' => 'What technology do you build websites with?', 'a' => 'We build with WordPress, React and Next.js, Node.js, and Python, with PostgreSQL, MySQL, or Supabase for data. We choose the stack that suits your requirements and who will maintain the site, not the one we are most comfortable with.' ],
+				[ 'q' => 'Will I be able to update the website myself?', 'a' => 'Yes. WordPress builds include an editor for pages, images, and blog posts, so you can make changes without touching code. We also provide training and written documentation with every project.' ],
+				[ 'q' => 'Is SEO included in website development?', 'a' => 'Technical SEO is part of every build: fast mobile pages, clean headings, page titles and descriptions, structured data, a sitemap, and Google Search Console set up at launch. Ongoing content and ranking work is available through our SEO service.' ],
+				[ 'q' => 'Do you offer hosting?', 'a' => 'We configure and deploy to the hosting provider you choose, such as Hostinger, Vercel, Netlify, or AWS, and make sure it is set up for speed and security. We can recommend a host if you do not have one.' ],
+				[ 'q' => 'Who owns the website and the code?', 'a' => 'You do. We sign NDAs and IP assignment agreements on request, and all code, designs, and content we produce for you are yours once the final invoice is paid.' ],
 			],
 		],
 

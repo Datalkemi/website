@@ -16,7 +16,7 @@ Marketing website for Datalkemi, a Perth-based (Cannington, WA) agency: custom s
 
 ## Structure
 - `style.css` theme header and CSS design tokens (`--color-*`). `functions.php`, `front-page.php`, `header.php`, `footer.php`, `page-*.php`, `single-*.php`, `archive-project.php`, `404.php`.
-- `inc/`: enqueue.php, menus.php, post-types.php (CPTs: project, service, team_member, testimonial), seo-home.php, newsletter.php (HubSpot Forms API), smtp.php (Brevo), client-portal.php, admin-clients.php, configurator-data.php, service-data.php.
+- `inc/`: enqueue.php, menus.php, post-types.php (CPTs: project, service, team_member, testimonial), seo.php (titles, meta, schema, sitemap), india-data.php, newsletter.php (HubSpot Forms API), smtp.php (Brevo), client-portal.php, admin-clients.php, configurator-data.php, service-data.php.
 - `template-parts/home/`: sections wired into front-page.php are hero, logo-strip, problem, what-we-build, why-datalkemi, how-we-work, cta-band, insights-preview, about-snippet, final-cta. Also present but not wired: services, tech-stack, projects, testimonials, blog-preview, contact, about.
 - `template-parts/footer/`: columns, newsletter, legal.
 - `page-contact.php` renders `template-parts/home/contact.php` on the Contact page.

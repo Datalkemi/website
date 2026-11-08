@@ -12,7 +12,7 @@ $services = [
 
 		<div class="dk-section-header">
 			<p class="section-eyebrow"><?php esc_html_e( 'Work With Us', 'datalkemi' ); ?></p>
-			<span class="dk-section-title"><?php esc_html_e( 'Start a Conversation', 'datalkemi' ); ?></span>
+			<h1 class="dk-section-title"><?php esc_html_e( 'Start a Conversation', 'datalkemi' ); ?></h1>
 			<p class="dk-section-subtitle"><?php esc_html_e( 'Tell us about your project. A senior team member will respond within one business day.', 'datalkemi' ); ?></p>
 		</div>
 

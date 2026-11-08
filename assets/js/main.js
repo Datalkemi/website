@@ -135,6 +135,17 @@ document.addEventListener('DOMContentLoaded', () => {
     head.setAttribute('aria-expanded', 'false');
   });
 
+  // ── FAQ accordions ──────────────────────────────────────────────────────
+  document.querySelectorAll('.faq-question').forEach((btn) => {
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!panel) return;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+    });
+  });
+
   // ── Smooth scroll for anchor links ──────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {

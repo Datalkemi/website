@@ -30,7 +30,7 @@
 					</a>
 
 					<p class="ft-tagline">
-						<?php esc_html_e( 'We build the software and data systems businesses depend on. Perth-based, working with clients across Australia and beyond.', 'datalkemi' ); ?>
+						<?php esc_html_e( 'We build the software and data systems businesses depend on. Perth-based, working with clients across Australia and India.', 'datalkemi' ); ?>
 					</p>
 				</div><!-- /.ft-brand-top -->
 
@@ -101,7 +101,8 @@
 			<div class="ft-col">
 				<p class="ft-col-heading"><?php esc_html_e( 'Digital presence', 'datalkemi' ); ?></p>
 				<ul class="ft-nav">
-					<li><a href="<?php echo esc_url( home_url( '/services/#digital-custom-websites' ) ); ?>"><?php esc_html_e( 'Custom websites', 'datalkemi' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/services/web-development/' ) ); ?>"><?php esc_html_e( 'Website development', 'datalkemi' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/website-development-india/' ) ); ?>"><?php esc_html_e( 'Websites for India', 'datalkemi' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/services/#digital-ecommerce' ) ); ?>"><?php esc_html_e( 'E-commerce', 'datalkemi' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/services/#digital-seo-performance' ) ); ?>"><?php esc_html_e( 'SEO and performance', 'datalkemi' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/services/#digital-analytics-tracking' ) ); ?>"><?php esc_html_e( 'Analytics', 'datalkemi' ); ?></a></li>

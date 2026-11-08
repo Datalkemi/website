@@ -18,7 +18,8 @@ require_once DATALKEMI_DIR . '/inc/client-portal.php';
 require_once DATALKEMI_DIR . '/inc/admin-clients.php';
 require_once DATALKEMI_DIR . '/inc/configurator-data.php';
 require_once DATALKEMI_DIR . '/inc/smtp.php';
-require_once DATALKEMI_DIR . '/inc/seo-home.php';
+require_once DATALKEMI_DIR . '/inc/india-data.php';
+require_once DATALKEMI_DIR . '/inc/seo.php';
 require_once DATALKEMI_DIR . '/inc/newsletter.php';
 require_once DATALKEMI_DIR . '/inc/project-seed.php';
 require_once DATALKEMI_DIR . '/inc/google-reviews.php';
@@ -195,6 +196,45 @@ function datalkemi_ensure_product_pages() {
 	update_option( 'datalkemi_product_pages_version', 3 );
 }
 add_action( 'init', 'datalkemi_ensure_product_pages', 25 );
+
+/**
+ * SEO pages guard, version 1.
+ * Makes sure the Privacy Policy page and the India website development
+ * page exist and are published. Both render from slug templates
+ * (page-privacy-policy.php, page-website-development-india.php). The
+ * privacy page is also registered as the site's privacy policy page.
+ */
+function datalkemi_ensure_seo_pages() {
+	if ( (int) get_option( 'datalkemi_seo_pages_version' ) >= 1 ) {
+		return;
+	}
+	$pages = [
+		'privacy-policy'            => 'Privacy Policy',
+		'website-development-india' => 'Website Development in India',
+	];
+	foreach ( $pages as $slug => $title ) {
+		$page = get_page_by_path( $slug );
+		if ( $page ) {
+			$page_id = $page->ID;
+			if ( 'publish' !== $page->post_status ) {
+				wp_update_post( [ 'ID' => $page_id, 'post_status' => 'publish' ] );
+			}
+		} else {
+			$page_id = wp_insert_post( [
+				'post_type'    => 'page',
+				'post_status'  => 'publish',
+				'post_name'    => $slug,
+				'post_title'   => $title,
+				'post_content' => '',
+			], true );
+		}
+		if ( 'privacy-policy' === $slug && $page_id && ! is_wp_error( $page_id ) ) {
+			update_option( 'wp_page_for_privacy_policy', (int) $page_id );
+		}
+	}
+	update_option( 'datalkemi_seo_pages_version', 1 );
+}
+add_action( 'init', 'datalkemi_ensure_seo_pages', 26 );
 
 // ── Excerpt length ─────────────────────────────────────────────────────────
 function datalkemi_excerpt_length( $length ) {

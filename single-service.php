@@ -6,6 +6,7 @@ get_header();
 
 $service_slug = get_post_field( 'post_name', get_the_ID() );
 $data         = datalkemi_get_service_data( $service_slug );
+$crumb        = $data['crumb'] ?? get_the_title();
 
 $related_projects = new WP_Query( [
 	'post_type'      => 'project',
@@ -23,9 +24,9 @@ $related_projects = new WP_Query( [
 			<span>/</span>
 			<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a>
 			<span>/</span>
-			<span><?php the_title(); ?></span>
+			<span><?php echo esc_html( $crumb ); ?></span>
 		</nav>
-		<h1 class="service-hero-title"><?php the_title(); ?></h1>
+		<h1 class="service-hero-title"><?php echo esc_html( $data['h1'] ?? get_the_title() ); ?></h1>
 		<?php if ( ! empty( $data['tagline'] ) ) : ?>
 			<p class="service-hero-tagline"><?php echo esc_html( $data['tagline'] ); ?></p>
 		<?php endif; ?>
@@ -69,6 +70,31 @@ $related_projects = new WP_Query( [
 		</div>
 	</div>
 </section>
+
+<!-- Areas served -->
+<?php if ( ! empty( $data['areas'] ) ) : ?>
+<section class="dk-section svc-areas">
+	<div class="dk-container">
+		<div class="svc-areas-inner">
+			<div>
+				<h2 class="svc-areas-title"><?php echo esc_html( $data['areas']['headline'] ); ?></h2>
+				<p class="svc-areas-text"><?php echo esc_html( $data['areas']['text'] ); ?></p>
+				<?php if ( ! empty( $data['areas']['link'] ) ) : ?>
+					<a class="svc-areas-link" href="<?php echo esc_url( home_url( $data['areas']['link']['url'] ) ); ?>">
+						<?php echo esc_html( $data['areas']['link']['label'] ); ?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+					</a>
+				<?php endif; ?>
+			</div>
+			<ul class="svc-areas-list" aria-label="<?php esc_attr_e( 'Places we work with', 'datalkemi' ); ?>">
+				<?php foreach ( $data['areas']['places'] as $place ) : ?>
+					<li><?php echo esc_html( $place ); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
 
 <!-- Problem + Approach -->
 <?php if ( ! empty( $data['problem'] ) || ! empty( $data['approach'] ) ) : ?>
@@ -230,7 +256,7 @@ $related_projects = new WP_Query( [
 <section class="cta-banner">
 	<div class="dk-container cta-banner-inner">
 		<div>
-			<h2 class="cta-banner-title">Ready to start your <?php the_title(); ?> project?</h2>
+			<h2 class="cta-banner-title">Ready to start your <?php echo esc_html( $crumb ); ?> project?</h2>
 			<p class="cta-banner-subtitle">Configure online and get an instant estimate, or book a free 30-minute call to talk through your requirements.</p>
 		</div>
 		<div class="cta-banner-actions">

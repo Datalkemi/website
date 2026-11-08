@@ -46,7 +46,7 @@
 			<div class="hp-hero-left">
 
 				<span class="hp-eyebrow">
-					<?php esc_html_e( 'Custom software · Data systems · Internal tools', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Website development · Custom software · Data systems', 'datalkemi' ); ?>
 				</span>
 
 				<!--
@@ -63,10 +63,11 @@
 					Sub-headline options:
 					A: We build custom web applications, data platforms, and operational software for businesses that need purpose-built systems. Perth-based, working with clients across Australia and beyond.
 					B: Web applications, data platforms, document intelligence, and internal tools, built properly, integrated end-to-end. Perth-based, working with clients across Australia and beyond.
-					C (active): Custom software and data systems, built end-to-end by people who understand both. Perth-based, working with clients across Australia and beyond.
+					C: Custom software and data systems, built end-to-end by people who understand both. Perth-based, working with clients across Australia and beyond.
+					D (active): Websites, custom software, and data systems, built end-to-end by people who understand all three. Perth-based, working with clients across Australia and India.
 				-->
 				<p class="hp-hero-sub">
-					<?php esc_html_e( 'Custom software and data systems, built end-to-end by people who understand both. Perth-based, working with clients across Australia and beyond.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Websites, custom software, and data systems, built end-to-end by people who understand all three. Perth-based, working with clients across Australia and India.', 'datalkemi' ); ?>
 				</p>
 
 				<div class="hp-hero-actions">
