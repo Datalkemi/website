@@ -740,3 +740,33 @@ picture img { display: block; width: 100%; height: auto; }
 	.hero-buttons .dk-btn,
 	.product-hero-buttons .dk-btn { width: auto; }
 }
+
+/* ── How we work: vertical timeline on tablets and phones ─────────────
+   The line runs through the centre of each numbered badge and stops at
+   the last step. Badge: 2.5rem wide, top of the step plus 1.5rem. */
+@media (max-width: 768px) {
+	.hp-process-step,
+	.hp-process-step:last-child {
+		position: relative;
+		padding: 1.5rem 0 1.5rem 3.75rem;
+		border-left: none;
+	}
+	.hp-process-step .hp-step-number {
+		position: absolute;
+		left: 0;
+		top: 1.5rem;
+		margin: 0;
+	}
+	.hp-process-step::before {
+		content: '';
+		position: absolute;
+		left: calc(1.25rem - 1px);
+		top: 2.75rem;
+		height: 100%;
+		width: 2px;
+		background: var(--border-strong);
+		z-index: 1;
+	}
+	.hp-process-step:last-child::before { display: none; }
+	.hp-process-step .hp-step-title { margin-top: 0.5rem; }
+}
