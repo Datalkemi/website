@@ -4561,3 +4561,7 @@ html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
 
 /* Tables inside articles sit flush in their frame */
 .dk-table-wrap .dk-table { margin: 0 !important; border: none !important; }
+
+/* Open questions show a minus sign instead of a rotated plus */
+.faq-question[aria-expanded="true"] .faq-icon { transform: none !important; font-size: 0; }
+.faq-question[aria-expanded="true"] .faq-icon::before { content: "\2212"; font-size: 1.25rem; }
