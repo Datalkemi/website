@@ -9,6 +9,7 @@ $live_url   = get_post_meta( get_the_ID(), '_project_live_url', true );
 $tech_stack = get_post_meta( get_the_ID(), '_project_tech_stack', true );
 $start_date = get_post_meta( get_the_ID(), '_project_start_date', true );
 $end_date   = get_post_meta( get_the_ID(), '_project_end_date', true );
+$hosting    = get_post_meta( get_the_ID(), '_project_hosting', true );
 
 // Related projects (excluding current)
 $related = new WP_Query( [
@@ -82,6 +83,12 @@ $related = new WP_Query( [
 							<li class="project-detail-item">
 								<span class="project-detail-label"><?php esc_html_e( 'Delivered', 'datalkemi' ); ?></span>
 								<span class="project-detail-value"><?php echo esc_html( date_i18n( 'F Y', strtotime( $end_date ) ) ); ?></span>
+							</li>
+						<?php endif; ?>
+						<?php if ( $hosting ) : ?>
+							<li class="project-detail-item">
+								<span class="project-detail-label"><?php esc_html_e( 'Hosting', 'datalkemi' ); ?></span>
+								<span class="project-detail-value"><?php echo esc_html( $hosting ); ?></span>
 							</li>
 						<?php endif; ?>
 					</ul>

@@ -553,12 +553,41 @@
 	margin-bottom: 2rem;
 }
 
+/* Continuous marquee: two identical rows, the track slides by one row width */
+.hp-logos-marquee {
+	overflow: hidden;
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+	mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.hp-logos-track {
+	display: flex;
+	width: max-content;
+	animation: hp-logos-scroll 28s linear infinite;
+}
+
+.hp-logos-track:hover {
+	animation-play-state: paused;
+}
+
 .hp-logos-grid {
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	gap: 4rem;
-	flex-wrap: wrap;
+	gap: 3rem;
+	padding-right: 3rem;
+	flex-shrink: 0;
+}
+
+@keyframes hp-logos-scroll {
+	from { transform: translateX(0); }
+	to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hp-logos-track { animation: none; justify-content: center; width: auto; }
+	.hp-logos-grid[aria-hidden="true"] { display: none; }
+	.hp-logos-grid { padding-right: 0; justify-content: center; flex-wrap: wrap; }
+	.hp-logos-marquee { -webkit-mask-image: none; mask-image: none; }
 }
 
 /* Logos in their own colours on a fixed white tile, so they read the same

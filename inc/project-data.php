@@ -6,11 +6,17 @@
  * double as the post date, so the archive lists newest work first. Thumbnails
  * are read from assets/img/projects/{slug}.jpg when that file exists.
  *
+ * This file is the source of truth. Raise DATALKEMI_PROJECTS_VERSION after
+ * editing it and the seeder re-applies every entry on the next page load,
+ * overwriting edits made in WP Admin.
+ *
  * @package Datalkemi
  * @since   2.1.0
  */
 
 defined( 'ABSPATH' ) || exit;
+
+define( 'DATALKEMI_PROJECTS_VERSION', 2 );
 
 return [
 
@@ -23,6 +29,7 @@ return [
 		'type'     => 'Web application',
 		'tech'     => 'React, Vite, Tailwind CSS, Netlify Functions, Netlify Blobs',
 		'live_url' => 'https://www.ozvizmigration.com/',
+		'hosting'  => 'Netlify, custom domain, serverless functions and blob storage',
 		'end'      => '2026-08-01',
 		'content'  => '
 <h2>The brief</h2>
@@ -48,6 +55,7 @@ return [
 		'type'     => 'Website',
 		'tech'     => 'React, Vite, Tailwind CSS, Framer Motion, Netlify Forms',
 		'live_url' => 'https://cp-study-centre.netlify.app/',
+		'hosting'  => 'Netlify, static site with hosted forms',
 		'end'      => '2025-08-01',
 		'content'  => '
 <h2>The brief</h2>
@@ -73,6 +81,7 @@ return [
 		'type'     => 'Website',
 		'tech'     => 'React, Vite, Tailwind CSS, Framer Motion, Formspree',
 		'live_url' => 'https://krzengineering.com.au/',
+		'hosting'  => 'Netlify, custom domain',
 		'end'      => '2025-06-01',
 		'content'  => '
 <h2>The brief</h2>
@@ -97,7 +106,8 @@ return [
 		'industry' => 'Automotive',
 		'type'     => 'Web application',
 		'tech'     => 'React, Vite, Tailwind CSS, Supabase',
-		'live_url' => '',
+		'live_url' => 'https://used-cars-website.netlify.app/',
+		'hosting'  => 'Netlify front end, Supabase database and authentication',
 		'end'      => '2025-06-01',
 		'content'  => '
 <h2>The brief</h2>
@@ -123,6 +133,7 @@ return [
 		'type'     => 'Web application',
 		'tech'     => 'React, TypeScript, Vite, shadcn/ui, Tailwind CSS',
 		'live_url' => '',
+		'hosting'  => 'Not publicly hosted, runs entirely in the browser',
 		'end'      => '2025-08-01',
 		'content'  => '
 <h2>The brief</h2>
@@ -140,17 +151,18 @@ return [
 
 	[
 		'slug'     => 'household-finance-app',
-		'title'    => 'Household finance app',
+		'title'    => 'Exnami, household finance app',
 		'excerpt'  => 'An installable web app for tracking income, expenses, budgets, debts, and shared costs, with receipt scanning, reminders, and multi-currency support.',
 		'category' => 'Product',
 		'industry' => 'Finance',
 		'type'     => 'Web application',
 		'tech'     => 'Next.js, React, Supabase, PostgreSQL, Web Push, Vercel',
-		'live_url' => '',
+		'live_url' => 'https://www.exnami.com/',
+		'hosting'  => 'Vercel, Sydney region, Supabase database',
 		'end'      => '2026-08-01',
 		'content'  => '
 <h2>The brief</h2>
-<p>Most budgeting apps either lock data behind a subscription or stop at a list of transactions. This product set out to cover the whole household picture: accounts, bills, debts, money owed between friends, and a forward plan, in an app that installs on a phone and works offline-first.</p>
+<p>Exnami is our own product. Most budgeting apps either lock data behind a subscription or stop at a list of transactions, so Exnami set out to cover the whole household picture: accounts, bills, debts, money owed between friends, and a forward plan, in an app that installs on a phone and works offline-first.</p>
 <h2>What we built</h2>
 <ul>
 <li>Accounts, income, expenses, and transfers with categories, merchants, and budgets with per-category limits.</li>
@@ -173,6 +185,7 @@ return [
 		'type'     => 'Data science',
 		'tech'     => 'Python, PyTorch, Jupyter',
 		'live_url' => '',
+		'hosting'  => 'Not hosted, notebooks and trained models',
 		'end'      => '2023-12-01',
 		'content'  => '
 <h2>The problem</h2>
@@ -197,6 +210,7 @@ return [
 		'type'     => 'Data science',
 		'tech'     => 'Python, pandas, XGBoost, Jupyter',
 		'live_url' => '',
+		'hosting'  => 'Not hosted, notebooks and a dashboard prototype',
 		'end'      => '2022-10-01',
 		'content'  => '
 <h2>The problem</h2>

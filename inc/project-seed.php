@@ -2,9 +2,9 @@
 /**
  * One-time project seeding.
  *
- * Reads inc/project-data.php and creates a published Project for each entry
- * that does not exist yet, with meta, taxonomy terms, and a featured image
- * from assets/img/projects/{slug}.jpg. Guarded by an option so it runs once.
+ * Reads inc/project-data.php and creates or updates a published Project for
+ * each entry, with meta, taxonomy terms, and a featured image from
+ * assets/img/projects/{slug}.jpg. Runs once per DATALKEMI_PROJECTS_VERSION.
  *
  * @package Datalkemi
  * @since   2.1.0
@@ -13,12 +13,15 @@
 defined( 'ABSPATH' ) || exit;
 
 function datalkemi_seed_projects() {
-	if ( get_option( 'datalkemi_projects_seed_v1' ) || ! post_type_exists( 'project' ) ) {
+	if ( ! post_type_exists( 'project' ) ) {
 		return;
 	}
 
 	$projects = require DATALKEMI_DIR . '/inc/project-data.php';
-	if ( ! is_array( $projects ) ) {
+	if ( ! is_array( $projects ) || ! defined( 'DATALKEMI_PROJECTS_VERSION' ) ) {
+		return;
+	}
+	if ( (int) get_option( 'datalkemi_projects_seed_version' ) >= DATALKEMI_PROJECTS_VERSION ) {
 		return;
 	}
 
@@ -27,11 +30,9 @@ function datalkemi_seed_projects() {
 	require_once ABSPATH . 'wp-admin/includes/media.php';
 
 	foreach ( $projects as $p ) {
-		if ( get_page_by_path( $p['slug'], OBJECT, 'project' ) ) {
-			continue;
-		}
+		$existing = get_page_by_path( $p['slug'], OBJECT, 'project' );
 
-		$post_id = wp_insert_post( [
+		$postarr = [
 			'post_type'    => 'project',
 			'post_status'  => 'publish',
 			'post_name'    => $p['slug'],
@@ -39,7 +40,13 @@ function datalkemi_seed_projects() {
 			'post_excerpt' => $p['excerpt'],
 			'post_content' => trim( $p['content'] ),
 			'post_date'    => $p['end'] . ' 09:00:00',
-		], true );
+		];
+		if ( $existing ) {
+			$postarr['ID'] = $existing->ID;
+			$post_id       = wp_update_post( $postarr, true );
+		} else {
+			$post_id = wp_insert_post( $postarr, true );
+		}
 
 		if ( is_wp_error( $post_id ) || ! $post_id ) {
 			continue;
@@ -50,12 +57,13 @@ function datalkemi_seed_projects() {
 		update_post_meta( $post_id, '_project_live_url',   $p['live_url'] );
 		update_post_meta( $post_id, '_project_status',     'completed' );
 		update_post_meta( $post_id, '_project_end_date',   $p['end'] );
+		update_post_meta( $post_id, '_project_hosting',    isset( $p['hosting'] ) ? $p['hosting'] : '' );
 
 		wp_set_object_terms( $post_id, $p['industry'], 'project_industry' );
 		wp_set_object_terms( $post_id, $p['type'],     'project_type' );
 
 		$image = DATALKEMI_DIR . '/assets/img/projects/' . $p['slug'] . '.jpg';
-		if ( file_exists( $image ) ) {
+		if ( file_exists( $image ) && ! has_post_thumbnail( $post_id ) ) {
 			$bits = wp_upload_bits( basename( $image ), null, file_get_contents( $image ) );
 			if ( empty( $bits['error'] ) ) {
 				$attachment_id = wp_insert_attachment( [
@@ -71,6 +79,6 @@ function datalkemi_seed_projects() {
 		}
 	}
 
-	update_option( 'datalkemi_projects_seed_v1', 1 );
+	update_option( 'datalkemi_projects_seed_version', DATALKEMI_PROJECTS_VERSION );
 }
 add_action( 'init', 'datalkemi_seed_projects', 30 );
