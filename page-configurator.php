@@ -75,8 +75,23 @@ $config_json = wp_json_encode( $config );
 					</div>
 					<div class="cfg-final-layout">
 
+						<!-- Enterprise: quote on request -->
+						<div class="cfg-summary-panel cfg-quote-panel" id="cfg-quote-panel" hidden>
+							<div class="cfg-total-card">
+								<p class="cfg-total-eyebrow">Enterprise platform</p>
+								<p class="cfg-quote-title">Quote on request</p>
+								<p class="cfg-total-note">Enterprise platforms are scoped with our sales team. Tell us a little about the project and we will book a scoping call within one business day.</p>
+							</div>
+							<ul class="cfg-quote-list">
+								<li>Multi-tenant architecture, single sign-on, and tenant data isolation</li>
+								<li>ERP, CRM, and payment integrations with mapping and retries</li>
+								<li>Audit logging, compliance reporting, and data residency</li>
+								<li>Infrastructure as code, staging and production, support with an SLA</li>
+							</ul>
+						</div>
+
 						<!-- Summary -->
-						<div class="cfg-summary-panel">
+						<div class="cfg-summary-panel" id="cfg-summary-panel">
 							<div class="cfg-total-card">
 								<p class="cfg-total-eyebrow">Estimated project cost</p>
 								<div class="cfg-total-amount">
@@ -91,8 +106,8 @@ $config_json = wp_json_encode( $config );
 
 						<!-- Contact form -->
 						<div class="cfg-contact-panel">
-							<h3>Send me this quote</h3>
-							<p class="cfg-contact-note">We review every submission personally and reply within one business day.</p>
+							<h3 id="cfg-contact-title">Send me this quote</h3>
+							<p class="cfg-contact-note" id="cfg-contact-note">We review every submission personally and reply within one business day.</p>
 							<div class="cfg-contact-fields">
 								<div class="cfg-field">
 									<label for="cfg-name">Your name <span class="cfg-req">*</span></label>

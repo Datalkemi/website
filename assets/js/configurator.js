@@ -32,7 +32,8 @@
   }
   function money(aud) { return cur().symbol + toLocal(aud).toLocaleString('en-AU'); }
 
-  function totalSteps() { return 2 + stepKeys.length + 1; }
+  function isQuote() { return !!(purpose && purpose.quote); }
+  function totalSteps() { return isQuote() ? 2 : 2 + stepKeys.length + 1; }
   function finalIndex() { return totalSteps() - 1; }
 
   /* Options visible for the chosen purpose, with per-purpose prices applied */
@@ -77,7 +78,7 @@
       return '<button type="button" class="cfg-choice-card' + (selected ? ' is-selected' : '') + '" data-id="' + esc(p.id) + '">' +
         '<span class="cfg-choice-label">' + esc(p.label) + '</span>' +
         '<span class="cfg-choice-desc">' + esc(p.desc) + '</span>' +
-        '<span class="cfg-choice-meta">from ' + money(p.price) + '</span>' +
+        '<span class="cfg-choice-meta">' + (p.quote ? 'Quote on request' : 'from ' + money(p.price)) + '</span>' +
         '</button>';
     }).join('');
     grid.querySelectorAll('.cfg-choice-card').forEach(function (card) {
@@ -204,6 +205,22 @@
   }
 
   function buildSummary() {
+    var quotePanel = document.getElementById('cfg-quote-panel');
+    var sumPanel   = document.getElementById('cfg-summary-panel');
+    var titleEl    = document.getElementById('cfg-contact-title');
+    var cnoteEl    = document.getElementById('cfg-contact-note');
+    var btnLabel   = document.querySelector('#cfg-submit .btn-label');
+    var heading    = document.querySelector('#cfg-step-final .cfg-step-header h2');
+    var hnote      = document.querySelector('#cfg-step-final .cfg-step-header .cfg-step-note');
+    if (quotePanel) quotePanel.hidden = !isQuote();
+    if (sumPanel)   sumPanel.hidden   = isQuote();
+    if (titleEl)    titleEl.textContent = isQuote() ? 'Request a scoping call' : 'Send me this quote';
+    if (cnoteEl)    cnoteEl.textContent = isQuote() ? 'Share what you can. A senior engineer will reply within one business day to arrange a call.' : 'We review every submission personally and reply within one business day.';
+    if (btnLabel)   btnLabel.textContent = isQuote() ? 'Request a call' : 'Send My Quote';
+    if (heading)    heading.textContent = isQuote() ? 'Talk to our sales team' : 'Your project estimate';
+    if (hnote)      hnote.textContent   = isQuote() ? 'Enterprise work is priced after a scoping conversation, not from a list.' : 'Review your build below, then send it to us for a full proposal.';
+    if (isQuote()) return;
+
     var totalAUD = getTotalAUD();
     var symbolEl = document.getElementById('cfg-currency-symbol');
     var totalEl  = document.getElementById('cfg-total-num');
@@ -231,6 +248,9 @@
   }
 
   function buildSummaryText() {
+    if (isQuote()) {
+      return 'Enterprise platform: request for a sales scoping call.\nNo configurator estimate applies.';
+    }
     var lines = [ 'Project configuration summary', 'Currency: ' + cur().name + ' (' + currency + ')', '' ];
     summaryRows().forEach(function (row) {
       lines.push(row.title.toUpperCase());
@@ -357,9 +377,9 @@
       company:  companyEl ? companyEl.value.trim() : '',
       notes:    notesEl ? notesEl.value.trim() : '',
       summary:  buildSummaryText(),
-      total:    getTotalAUD(),
+      total:    isQuote() ? 0 : getTotalAUD(),
       currency: currency,
-      display:  money(getTotalAUD()),
+      display:  isQuote() ? 'Quote on request' : money(getTotalAUD()),
       purpose:  purpose ? purpose.label : '',
     });
 

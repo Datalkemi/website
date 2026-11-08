@@ -3939,6 +3939,12 @@ a:hover { color: var(--color-accent) !important; }
 }
 .cfg-choice-card--currency .cfg-choice-label { font-family: var(--font-display); font-size: 1.375rem; font-weight: 500; }
 
+/* Enterprise: quote on request panel */
+.cfg-quote-title { font-family: var(--font-display); font-size: 2rem; font-weight: 500; color: var(--text); margin: 0.25rem 0 0.75rem; }
+.cfg-quote-list { list-style: none !important; margin: 1.25rem 0 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 0.5rem; }
+.cfg-quote-list li { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.55; padding-left: 1.25rem; position: relative; }
+.cfg-quote-list li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 0.5rem; height: 1px; background: var(--accent); }
+
 /* ── Config option cards ──────────────────────────────────────── */
 .cfg-options-list {
   display: flex;
