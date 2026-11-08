@@ -74,7 +74,7 @@ function datalkemi_seo_pages(): array {
 		],
 		'faq' => [
 			'title' => 'Website Development FAQs: Cost and Timelines | Datalkemi',
-			'desc'  => 'Answers on website cost, build timelines, ownership, SEO and working with Datalkemi from Australia or India. Websites from A$500 or Rs 20,000.',
+			'desc'  => 'Answers on website cost, timelines, ownership and SEO for clients in Australia, India and worldwide. Websites from A$500, US$330 or Rs 20,000.',
 		],
 		'privacy-policy' => [
 			'title' => 'Privacy Policy | Datalkemi',

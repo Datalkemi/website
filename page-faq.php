@@ -19,7 +19,7 @@ $groups = datalkemi_faq_groups();
 	<div class="dk-container page-hero-content">
 		<p class="page-hero-eyebrow"><?php esc_html_e( 'Help', 'datalkemi' ); ?></p>
 		<h1 class="page-hero-title"><?php esc_html_e( 'Frequently asked questions', 'datalkemi' ); ?></h1>
-		<p class="page-hero-subtitle"><?php esc_html_e( 'Pricing, timelines, ownership, and how we work with businesses in Australia and India.', 'datalkemi' ); ?></p>
+		<p class="page-hero-subtitle"><?php esc_html_e( 'Pricing, timelines, ownership, and how we work with businesses in Australia, India, and around the world.', 'datalkemi' ); ?></p>
 	</div>
 </section>
 

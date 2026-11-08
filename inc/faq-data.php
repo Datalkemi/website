@@ -58,6 +58,17 @@ function datalkemi_faq_groups(): array {
 				[ 'q' => 'Do you quote in Indian rupees?', 'a' => 'Clients in India are quoted in Indian rupees, with business websites starting from Rs 20,000. The project estimator shows rupee pricing when you choose INR.' ],
 			],
 		],
+		[
+			'title' => 'International clients',
+			'items' => [
+				[ 'q' => 'Do you work with clients outside Australia and India?', 'a' => 'Yes. We work with businesses anywhere in the world. Every stage of a project runs online, from the discovery call to launch, so where you are based makes no difference to how the project runs.' ],
+				[ 'q' => 'How do you handle time zones?', 'a' => 'Perth is on UTC+8 with no daylight saving. That is the same time as Singapore, Malaysia, Hong Kong, and the Philippines, and close to Japan and New Zealand. Our afternoon is the morning in the UK and Europe. For clients in North America we agree a regular call time that suits both sides, and progress updates are written so nothing waits on a meeting.' ],
+				[ 'q' => 'Which currency will I be quoted in?', 'a' => 'International clients are quoted in US dollars. The project estimator shows US dollar prices when you choose USD, and the final figure is confirmed in a fixed written quote before work starts.' ],
+				[ 'q' => 'How do we communicate during the project?', 'a' => 'By video call on Google Meet, Zoom, or Microsoft Teams, by email, and through live preview links where you can see the website as it is built. You get a progress update at the end of every stage.' ],
+				[ 'q' => 'Can my website be hosted close to my customers?', 'a' => 'Yes. We deploy to a hosting region near your audience, such as North America, Europe, or Asia, so pages load quickly for the people you want to reach.' ],
+				[ 'q' => 'Can you build for GDPR and other privacy laws?', 'a' => 'Yes. We build cookie consent, privacy pages, and data handling that support GDPR and similar privacy laws, and we only load tracking once visitors agree. Legal compliance remains your responsibility, so we recommend having your policies reviewed by a lawyer in your country.' ],
+			],
+		],
 	];
 }
 
