@@ -17,6 +17,7 @@ get_header();
 	<?php get_template_part( 'template-parts/home/cta-band' ); ?>
 	<?php get_template_part( 'template-parts/home/insights-preview' ); ?>
 	<?php get_template_part( 'template-parts/home/about-snippet' ); ?>
+	<?php get_template_part( 'template-parts/home/reviews' ); ?>
 	<?php get_template_part( 'template-parts/home/final-cta' ); ?>
 
 </main>

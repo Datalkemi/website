@@ -612,6 +612,19 @@ picture img { display: block; width: 100%; height: auto; }
 	}
 }
 
+/* Google reviews on phones */
+@media (max-width: 640px) {
+	.dk-reviews { padding: 3rem 0; }
+	.dk-reviews-head { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 1.75rem; }
+	.dk-reviews-score { font-size: 2.5rem; }
+	.dk-review { width: min(80vw, 20rem); padding: 1.25rem; }
+	.dk-reviews-marquee.is-scrolling .dk-reviews-track { animation-duration: 45s; }
+	.dk-reviews-foot { flex-direction: column; align-items: stretch; margin-top: 1.75rem; }
+	.dk-reviews-actions { flex-direction: column; }
+	.dk-reviews-actions .dk-btn { width: 100%; min-height: 48px; }
+	.dk-reviews-credit { text-align: center; }
+}
+
 /* ==========================================================================
    5. CONFIGURATOR ON PHONES
    ========================================================================== */
