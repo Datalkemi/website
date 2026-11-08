@@ -22,7 +22,7 @@
 					<?php esc_html_e( 'About Datalkemi', 'datalkemi' ); ?>
 				</h2>
 				<p>
-					<?php esc_html_e( 'Datalkemi is founded by Naufal, a Data and Analytics Consultant with a Master of Data Science from the University of Western Australia. Before founding Datalkemi, he worked across enterprise data consulting, delivering data migration projects, building reporting systems, and working with organisations on ERP implementations and analytics infrastructure.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Datalkemi is a Perth-based software and data engineering practice. We build custom software, data platforms, and reporting systems for businesses whose operations have outgrown spreadsheets and disconnected tools. Our background is enterprise data consulting: data migration, ERP integration, and analytics infrastructure for organisations that depend on their numbers being right.', 'datalkemi' ); ?>
 				</p>
 				<p>
 					<?php esc_html_e( 'Datalkemi exists because the gap between what businesses need and what most software agencies can build is wider than it should be. We work with a small number of clients at a time, which means the work gets the attention it deserves.', 'datalkemi' ); ?>
@@ -41,11 +41,11 @@
 
 					<li class="hp-cred-item">
 						<span class="hp-cred-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
 						</span>
 						<div>
-							<strong><?php esc_html_e( 'Master of Data Science', 'datalkemi' ); ?></strong>
-							<span><?php esc_html_e( 'University of Western Australia', 'datalkemi' ); ?></span>
+							<strong><?php esc_html_e( 'Software and data, one team', 'datalkemi' ); ?></strong>
+							<span><?php esc_html_e( 'Built end-to-end, with no handoffs between vendors', 'datalkemi' ); ?></span>
 						</div>
 					</li>
 
