@@ -45,7 +45,14 @@ endif;
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<meta name="theme-color" content="#F5FAFD" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#022D3F" media="(prefers-color-scheme: dark)">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="Datalkemi">
+	<link rel="manifest" href="<?php echo esc_url( DATALKEMI_URI . '/manifest.webmanifest' ); ?>">
+	<link rel="apple-touch-icon" href="<?php echo esc_url( DATALKEMI_URI . '/assets/brand/app/icon-180.png' ); ?>">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php if ( ! has_site_icon() ) : // Brand: favicons carry the mark, never the wordmark ?>
 	<link rel="icon" type="image/svg+xml" href="<?php echo esc_url( DATALKEMI_URI . '/assets/brand/mark/Datalkemi_Logo_Colour.svg' ); ?>">
@@ -80,13 +87,22 @@ endif;
 		</div>
 
 		<!-- Mobile toggle -->
-		<button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false"
-			aria-label="<?php esc_attr_e( 'Toggle menu', 'datalkemi' ); ?>">
+		<button class="nav-toggle" aria-controls="primary-menu-wrap" aria-expanded="false"
+			aria-label="<?php esc_attr_e( 'Open menu', 'datalkemi' ); ?>">
 			<span></span><span></span><span></span>
 		</button>
 
-		<!-- Primary menu + CTA -->
-		<div class="nav-menu-wrap" id="primary-menu-wrap">
+		<!-- Backdrop behind the mobile drawer -->
+		<div class="nav-backdrop" data-nav-close hidden></div>
+
+		<!-- Primary menu + CTA (inline on desktop, slide-over drawer on mobile) -->
+		<div class="nav-menu-wrap" id="primary-menu-wrap" aria-label="<?php esc_attr_e( 'Main menu', 'datalkemi' ); ?>">
+			<div class="nav-drawer-head">
+				<span class="nav-drawer-title"><?php esc_html_e( 'Menu', 'datalkemi' ); ?></span>
+				<button type="button" class="nav-drawer-close" data-nav-close aria-label="<?php esc_attr_e( 'Close menu', 'datalkemi' ); ?>">
+					<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+				</button>
+			</div>
 			<?php
 			// Strip client-portal item from the public nav  -  it is not a marketing page
 			add_filter( 'wp_nav_menu_objects', function( $items ) {
@@ -123,11 +139,15 @@ endif;
 					</a>
 					<?php endif; ?>
 				<?php else : ?>
+					<a href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>" class="dk-btn dk-btn-outline nav-drawer-only">
+						<?php esc_html_e( 'Configure your project', 'datalkemi' ); ?>
+					</a>
 					<a href="<?php echo esc_url( home_url( '/get-a-quote/' ) ); ?>" class="dk-btn dk-btn-primary nav-portal-btn">
 						<?php esc_html_e( 'Get a Quote', 'datalkemi' ); ?>
 					</a>
 				<?php endif; ?>
 			</div>
+			<a href="mailto:info@datalkemi.com" class="nav-drawer-contact">info@datalkemi.com</a>
 		</div>
 	</nav>
 </header>

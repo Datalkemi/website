@@ -68,6 +68,14 @@ function datalkemi_enqueue_assets() {
 		datalkemi_asset_ver( '/assets/css/footer.css' )
 	);
 
+	// Mobile and touch layer: loads last so it can correct earlier rules
+	wp_enqueue_style(
+		'datalkemi-mobile',
+		DATALKEMI_URI . '/assets/css/mobile.css',
+		is_front_page() ? [ 'datalkemi-footer', 'datalkemi-home' ] : [ 'datalkemi-footer' ],
+		datalkemi_asset_ver( '/assets/css/mobile.css' )
+	);
+
 	// Main JS
 	wp_enqueue_script(
 		'datalkemi-main-js',

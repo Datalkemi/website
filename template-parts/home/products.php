@@ -40,9 +40,12 @@ $points = [
 			</div>
 
 			<figure class="hp-products-figure">
-				<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-dashboard.jpg' ); ?>"
-					alt="<?php esc_attr_e( 'The Exnami dashboard: spendable now, net for the month, and upcoming payments', 'datalkemi' ); ?>"
-					width="2000" height="1118" loading="lazy">
+				<picture>
+					<source media="(max-width: 640px)" srcset="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-dashboard-m.jpg' ); ?>" width="758" height="776">
+					<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-dashboard.jpg' ); ?>"
+						alt="<?php esc_attr_e( 'The Exnami dashboard: spendable now, net for the month, and upcoming payments', 'datalkemi' ); ?>"
+						width="2000" height="1118" loading="lazy">
+				</picture>
 			</figure>
 
 		</div>

@@ -77,6 +77,12 @@
 						<?php esc_html_e( 'Book a discovery call', 'datalkemi' ); ?>
 					</a>
 					<a
+						href="<?php echo esc_url( home_url( '/build-your-project/' ) ); ?>"
+						class="hp-btn-ghost"
+					>
+						<?php esc_html_e( 'Configure your project', 'datalkemi' ); ?>
+					</a>
+					<a
 						href="<?php echo esc_url( home_url( '/services/' ) ); ?>"
 						class="hp-btn-text"
 					>

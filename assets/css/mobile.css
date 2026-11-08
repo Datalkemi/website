@@ -1,0 +1,559 @@
+/**
+ * mobile.css: touch and small screen layer.
+ *
+ * Loads after every other theme stylesheet so it can correct earlier rules.
+ * Breakpoints: drawer menu below 1024px, tablet below 769px, phone below 641px.
+ * All colours come from the theme tokens in style.css.
+ *
+ * @package Datalkemi
+ * @since   2.2.0
+ */
+
+/* ==========================================================================
+   1. BASE TOUCH BEHAVIOUR
+   ========================================================================== */
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+body {
+	-webkit-tap-highlight-color: transparent;
+}
+
+body.nav-open {
+	overflow: hidden;
+	touch-action: none;
+}
+
+/* Screenshots served through <picture> keep their block layout */
+picture { display: block; }
+picture img { display: block; width: 100%; height: auto; }
+
+/* Drawer-only pieces stay out of the desktop header */
+.nav-backdrop,
+.nav-drawer-head,
+.nav-drawer-only,
+.nav-drawer-contact,
+.nav-sub-toggle {
+	display: none;
+}
+
+/* Wide desktop: fix a source order bug that kept three service columns on small screens */
+@media (max-width: 1024px) {
+	.service-card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ==========================================================================
+   2. DRAWER MENU (below 1024px)
+   ========================================================================== */
+@media (max-width: 1023px) {
+	.site-header,
+	#masthead {
+		background: var(--bg) !important;
+		border-bottom: 1px solid var(--border) !important;
+	}
+
+	.site-nav {
+		padding: 0.625rem max(1rem, env(safe-area-inset-right)) 0.625rem max(1rem, env(safe-area-inset-left));
+	}
+
+	.nav-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		padding: 0;
+		gap: 5px;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+	}
+
+	.nav-toggle span {
+		width: 20px;
+		height: 1.5px;
+		background: var(--text);
+	}
+
+	.nav-backdrop {
+		display: block;
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		background: rgba(2, 45, 63, 0.5);
+		opacity: 0;
+		transition: opacity 0.25s ease;
+	}
+
+	.nav-backdrop[hidden] { display: none; }
+	.nav-backdrop.is-visible { opacity: 1; }
+
+	.nav-menu-wrap {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1001;
+		width: min(86vw, 380px);
+		display: flex;
+		flex-direction: column;
+		background: var(--surface);
+		border-left: 1px solid var(--border);
+		padding-top: env(safe-area-inset-top);
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		transform: translateX(100%);
+		visibility: hidden;
+		transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.3s;
+	}
+
+	.nav-menu-wrap.is-open {
+		transform: none;
+		visibility: visible;
+		transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
+	}
+
+	.nav-drawer-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.75rem 0.75rem 0.75rem 1.25rem;
+		border-bottom: 1px solid var(--border);
+		flex-shrink: 0;
+	}
+
+	.nav-drawer-title {
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	.nav-drawer-close {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		background: transparent;
+		color: var(--text);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		cursor: pointer;
+	}
+
+	.nav-drawer-close:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+
+	.nav-menu {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+		padding: 0.5rem 0.75rem !important;
+		text-align: left;
+	}
+
+	.nav-menu > li {
+		position: relative;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.nav-menu > li:last-child { border-bottom: none; }
+
+	.nav-menu a,
+	.nav-menu a:visited {
+		display: flex !important;
+		align-items: center;
+		min-height: 52px;
+		padding: 0.75rem 3.25rem 0.75rem 0.5rem !important;
+		font-size: 1.0625rem !important;
+		background: none !important;
+	}
+
+	.nav-menu .current-menu-item > a {
+		background: none !important;
+		color: var(--action) !important;
+	}
+
+	.nav-arrow { display: none; }
+
+	.nav-sub-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: 4px;
+		right: 0;
+		width: 44px;
+		height: 44px;
+		background: transparent;
+		color: var(--text-muted);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		cursor: pointer;
+	}
+
+	.nav-sub-toggle svg { transition: transform 0.2s ease; }
+	.nav-has-dropdown.is-expanded > .nav-sub-toggle svg { transform: rotate(180deg); }
+
+	.nav-dropdown,
+	.nav-has-dropdown:hover .nav-dropdown,
+	.nav-has-dropdown:focus-within .nav-dropdown {
+		position: static;
+		display: none;
+		min-width: 0;
+		margin: 0;
+		padding: 0 0 0.5rem 0.75rem;
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		transform: none;
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.nav-has-dropdown.is-expanded .nav-dropdown { display: block; }
+
+	.nav-dropdown a,
+	.nav-dropdown a:visited {
+		min-height: 44px;
+		padding: 0.5rem 0.75rem !important;
+		font-size: 0.9375rem !important;
+		color: var(--text-muted) !important;
+		border-left: 1px solid var(--border) !important;
+		border-radius: 0 !important;
+	}
+
+	.nav-actions {
+		display: grid;
+		grid-template-columns: 44px 1fr;
+		gap: 0.625rem;
+		margin: auto 0 0;
+		padding: 1rem 1.25rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.nav-actions .dk-theme-toggle { width: 44px; height: 44px; }
+
+	.nav-actions .dk-btn {
+		min-height: 48px;
+		font-size: 0.9375rem;
+		white-space: nowrap;
+	}
+
+	.nav-actions .nav-drawer-only { display: inline-flex; }
+	.nav-actions .nav-portal-btn { grid-column: 1 / -1; }
+	.nav-actions .nav-text-link { grid-column: 1 / -1; text-align: center; }
+
+	.nav-drawer-contact {
+		display: block;
+		padding: 0 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		letter-spacing: 0.06em;
+		color: var(--text-muted) !important;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.nav-menu-wrap,
+	.nav-menu-wrap.is-open,
+	.nav-backdrop { transition: none; }
+}
+
+/* ==========================================================================
+   3. TABLET AND PHONE LAYOUT (below 769px)
+   ========================================================================== */
+@media (max-width: 768px) {
+	.dk-container,
+	.hp-container {
+		padding-left: max(1.25rem, env(safe-area-inset-left));
+		padding-right: max(1.25rem, env(safe-area-inset-right));
+	}
+
+	.service-card-grid { grid-template-columns: 1fr; }
+
+	/* Homepage hero: no photo on small screens, content sized, left aligned */
+	.hp-hero {
+		min-height: 0;
+		padding: 2.75rem 0 3rem;
+		background-image: none;
+		place-items: start;
+	}
+
+	.hp-hero-overlay { display: none; }
+
+	.hp-hero-left { text-align: left; }
+
+	.hp-hero-headline {
+		font-size: clamp(1.875rem, 8vw, 2.375rem);
+		margin-top: 0.75rem;
+		margin-bottom: 1rem;
+	}
+
+	.hp-hero-sub {
+		margin: 0 0 2rem;
+		font-size: 1rem;
+	}
+
+	.hp-hero-actions {
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: flex-start;
+		gap: 0.75rem;
+	}
+
+	.hp-hero-actions .hp-btn-primary,
+	.hp-hero-actions .hp-btn-ghost {
+		width: 100%;
+		min-height: 48px;
+		font-size: 0.9375rem;
+	}
+
+	.hp-hero-actions .hp-btn-text {
+		align-self: center;
+		padding: 0.75rem 0;
+	}
+
+	/* Section rhythm */
+	.dk-section { padding: 3rem 0; }
+
+	.hp-problem,
+	.hp-build,
+	.hp-why,
+	.hp-process,
+	.hp-insights,
+	.hp-about,
+	.hp-products {
+		padding: 3rem 0;
+	}
+
+	.hp-cta-band,
+	.hp-final-cta {
+		padding: 3.5rem 0;
+	}
+
+	.hp-cta-band .hp-btn-primary,
+	.hp-final-cta .hp-btn-primary,
+	.cta-banner-actions .dk-btn {
+		width: 100%;
+		min-height: 48px;
+	}
+
+	.cta-banner-actions { width: 100%; }
+
+	/* Swipeable card rows */
+	.hp-problem-grid,
+	.product-features .dk-grid-3 {
+		display: grid;
+		grid-template-columns: none !important;
+		grid-auto-flow: column;
+		grid-auto-columns: 84%;
+		gap: 0.875rem;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-padding-left: max(1.25rem, env(safe-area-inset-left));
+		margin-left: calc(-1 * max(1.25rem, env(safe-area-inset-left)));
+		margin-right: calc(-1 * max(1.25rem, env(safe-area-inset-right)));
+		padding: 0 max(1.25rem, env(safe-area-inset-right)) 0.75rem max(1.25rem, env(safe-area-inset-left));
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.hp-problem-grid::-webkit-scrollbar,
+	.product-features .dk-grid-3::-webkit-scrollbar { display: none; }
+
+	.hp-problem-grid > *,
+	.product-features .dk-grid-3 > * { scroll-snap-align: start; }
+
+	.hp-problem-card { padding: 1.5rem; }
+
+	/* Filter pills scroll sideways in one row */
+	.filter-bar {
+		flex-wrap: nowrap !important;
+		overflow-x: auto;
+		scrollbar-width: none;
+		margin-left: calc(-1 * max(1.25rem, env(safe-area-inset-left)));
+		margin-right: calc(-1 * max(1.25rem, env(safe-area-inset-right)));
+		padding: 0.125rem max(1.25rem, env(safe-area-inset-right)) 0.125rem max(1.25rem, env(safe-area-inset-left));
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.filter-bar::-webkit-scrollbar { display: none; }
+	.filter-pill { flex-shrink: 0; white-space: nowrap; }
+
+	/* Project cards: actions share the row */
+	.project-actions { display: flex; gap: 0.625rem; flex-wrap: wrap; }
+	.project-actions .dk-btn { flex: 1 1 8rem; min-height: 44px; }
+
+	/* Product pages */
+	.product-screen { margin: -1.5rem 0 2rem; }
+
+	.product-stats {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.25rem 1rem;
+		padding: 1.5rem 0;
+	}
+
+	.product-stat-figure { font-size: 1.375rem; }
+	.product-stat-label { font-size: 0.8125rem; }
+
+	.product-hero-buttons {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.product-hero-buttons .dk-btn { width: 100%; min-height: 48px; }
+
+	.product-week-layout { gap: 2rem; }
+}
+
+/* ==========================================================================
+   4. PHONES (below 641px)
+   ========================================================================== */
+@media (max-width: 640px) {
+	.page-hero-content,
+	.page-hero-inner,
+	.service-hero-content {
+		padding-top: 2.25rem;
+		padding-bottom: 2rem;
+	}
+
+	.page-hero-title,
+	.service-hero-title {
+		font-size: clamp(1.75rem, 7.5vw, 2.125rem) !important;
+	}
+
+	.page-hero-subtitle,
+	.service-hero-tagline {
+		font-size: 0.9375rem !important;
+	}
+
+	.hero-buttons { flex-direction: column; align-items: stretch; }
+	.hero-buttons .dk-btn { width: 100%; min-height: 48px; }
+
+	.hp-section-title { font-size: clamp(1.5rem, 6.5vw, 1.875rem); }
+
+	.products-grid { grid-template-columns: 1fr; }
+	.product-card .project-actions .dk-btn { flex-basis: 100%; }
+
+	/* Footer columns collapse into tap-to-open groups */
+	.ft-grid { gap: 0 !important; }
+	.ft-brand { margin-bottom: 1.5rem; }
+
+	.ft-col { border-top: 1px solid var(--border); }
+	.ft-col:last-of-type { border-bottom: 1px solid var(--border); }
+
+	.ft-col-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 52px;
+		margin: 0 !important;
+		cursor: pointer;
+		user-select: none;
+	}
+
+	.ft-col-heading::after {
+		content: '';
+		width: 7px;
+		height: 7px;
+		border-right: 1.35px solid currentColor;
+		border-bottom: 1.35px solid currentColor;
+		transform: rotate(45deg) translateY(-2px);
+		transition: transform 0.2s ease;
+	}
+
+	.ft-col.is-open .ft-col-heading::after { transform: rotate(-135deg) translateY(-2px); }
+
+	.ft-col .ft-nav { display: none; padding-bottom: 1rem; }
+	.ft-col.is-open .ft-nav { display: block; }
+
+	.ft-col .ft-nav a { display: block; padding: 0.375rem 0; }
+
+	/* Scroll to top clears the home indicator */
+	.scroll-to-top {
+		right: 1rem;
+		bottom: calc(1rem + env(safe-area-inset-bottom));
+	}
+}
+
+/* ==========================================================================
+   5. CONFIGURATOR ON PHONES
+   ========================================================================== */
+@media (max-width: 640px) {
+	.cfg-wizard-section { padding: 1.25rem 0 0; }
+
+	.cfg-progress-wrap {
+		position: sticky;
+		top: var(--dk-header-h, 61px);
+		z-index: 5;
+		margin: 0 calc(-1 * max(1.25rem, env(safe-area-inset-left))) 1.5rem;
+		padding: 0.75rem max(1.25rem, env(safe-area-inset-right)) 0.625rem max(1.25rem, env(safe-area-inset-left));
+		background: var(--bg);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.cfg-step-dots { margin-bottom: 0.5rem; }
+
+	.cfg-step-header h2 { font-size: 1.375rem !important; }
+	.cfg-step-note { font-size: 0.875rem; }
+
+	.cfg-choice-grid,
+	.cfg-choice-grid--two { grid-template-columns: 1fr; max-width: none; gap: 0.625rem; }
+
+	.cfg-choice-card { padding: 0.875rem 1rem; gap: 0.25rem; }
+	.cfg-choice-label { font-size: 0.9375rem; }
+	.cfg-choice-desc { font-size: 0.8125rem; }
+
+	.cfg-choice-grid--two { grid-template-columns: repeat(2, 1fr); }
+
+	.cfg-opt-card .cfg-opt-inner { padding: 0.875rem 1rem; gap: 0.75rem; }
+	.cfg-opt-desc { font-size: 0.8125rem; }
+	.cfg-opt-price { font-size: 0.8125rem; white-space: nowrap; }
+
+	/* Back and Continue stay within thumb reach */
+	.cfg-nav-wrap {
+		position: sticky;
+		bottom: 0;
+		z-index: 6;
+		gap: 0.625rem;
+		margin: 1.5rem calc(-1 * max(1.25rem, env(safe-area-inset-left))) 0;
+		padding: 0.75rem max(1.25rem, env(safe-area-inset-right)) calc(0.75rem + env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+		background: var(--bg);
+		border-top: 1px solid var(--border);
+	}
+
+	.cfg-nav-btn { flex: 1 1 0; justify-content: center; min-height: 48px; font-size: 0.9375rem; }
+	.cfg-nav-prev { flex: 0 0 auto; padding-left: 1rem; padding-right: 1rem; }
+
+	.cfg-final-layout { gap: 1.5rem; }
+	.cfg-summary-breakdown { max-height: none; }
+	.cfg-total-amount { font-size: 2.5rem; }
+	.cfg-quote-title { font-size: 1.625rem; }
+
+	[class*="page-template-page-configurator"] .scroll-to-top { display: none; }
+}
+
+/* ==========================================================================
+   6. COARSE POINTERS: comfortable tap targets everywhere
+   ========================================================================== */
+@media (pointer: coarse) {
+	.dk-btn,
+	.hp-btn-primary,
+	.hp-btn-outline,
+	.hp-btn-ghost,
+	.ft-btn-primary,
+	.ft-newsletter-btn,
+	.cfg-nav-btn {
+		min-height: 44px;
+	}
+
+	input,
+	select,
+	textarea {
+		font-size: 16px !important; /* stops iOS zooming into fields */
+	}
+}

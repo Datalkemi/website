@@ -16,6 +16,7 @@ $products = [
 		'tag'   => 'Household finance app',
 		'desc'  => 'See every dollar and spend with confidence. Accounts, budgets, bills, debts, and shared costs in one clear view, free to use and private by design.',
 		'image' => DATALKEMI_URI . '/assets/img/products/exnami-dashboard.jpg',
+		'image_m' => DATALKEMI_URI . '/assets/img/products/exnami-dashboard-m.jpg',
 		'page'  => home_url( '/exnami/' ),
 		'app'   => 'https://www.exnami.com/',
 	],
@@ -42,7 +43,12 @@ $products = [
 			<?php foreach ( $products as $p ) : ?>
 				<article class="dk-card product-card">
 					<div class="product-card-media">
-						<img src="<?php echo esc_url( $p['image'] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" loading="lazy">
+						<picture>
+							<?php if ( ! empty( $p['image_m'] ) ) : ?>
+								<source media="(max-width: 640px)" srcset="<?php echo esc_url( $p['image_m'] ); ?>">
+							<?php endif; ?>
+							<img src="<?php echo esc_url( $p['image'] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" loading="lazy">
+						</picture>
 					</div>
 					<p class="project-category"><?php echo esc_html( $p['tag'] ); ?></p>
 					<h2><?php echo esc_html( $p['name'] ); ?></h2>
