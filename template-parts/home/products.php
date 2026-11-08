@@ -41,8 +41,8 @@ $points = [
 
 			<figure class="hp-products-figure">
 				<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-dashboard.jpg' ); ?>"
-					alt="<?php esc_attr_e( 'Exnami dashboard showing spendable balance, income against spend, and balances by account', 'datalkemi' ); ?>"
-					width="1128" height="898" loading="lazy">
+					alt="<?php esc_attr_e( 'The Exnami dashboard: spendable now, net for the month, and upcoming payments', 'datalkemi' ); ?>"
+					width="2000" height="1118" loading="lazy">
 			</figure>
 
 		</div>

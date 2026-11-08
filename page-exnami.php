@@ -97,9 +97,9 @@ $moments = [
 <section class="dk-section product-intro">
 	<div class="dk-container">
 		<figure class="product-screen">
-			<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-hero.jpg' ); ?>"
-				alt="<?php esc_attr_e( 'The Exnami dashboard showing spendable balance, income against spend, and category breakdown', 'datalkemi' ); ?>"
-				width="2000" height="861" loading="lazy">
+			<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-dashboard.jpg' ); ?>"
+				alt="<?php esc_attr_e( 'The Exnami dashboard: spendable now, net for the month, and upcoming payments', 'datalkemi' ); ?>"
+				width="2000" height="1118">
 		</figure>
 		<div class="product-stats">
 			<?php foreach ( $stats as $s ) : ?>
@@ -128,6 +128,26 @@ $moments = [
 					<p class="product-feature-desc"><?php echo esc_html( $f['desc'] ); ?></p>
 				</div>
 			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+
+<!-- In use -->
+<section class="dk-section product-shots">
+	<div class="dk-container">
+		<div class="product-shots-grid">
+			<figure class="product-shot">
+				<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-spend.jpg' ); ?>"
+					alt="<?php esc_attr_e( 'Spend per week chart with category filters in Exnami', 'datalkemi' ); ?>"
+					width="2000" height="1118" loading="lazy">
+				<figcaption><?php esc_html_e( 'Spend by week, by category, or by purpose. The dashed line is your average.', 'datalkemi' ); ?></figcaption>
+			</figure>
+			<figure class="product-shot">
+				<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-add.jpg' ); ?>"
+					alt="<?php esc_attr_e( 'The add panel in Exnami: expense, income, budget, debt, bill, or receivable', 'datalkemi' ); ?>"
+					width="2000" height="1118" loading="lazy">
+				<figcaption><?php esc_html_e( 'Add an expense, income, budget, debt, bill, or money owed to you in a few taps.', 'datalkemi' ); ?></figcaption>
+			</figure>
 		</div>
 	</div>
 </section>
@@ -179,9 +199,9 @@ $moments = [
 		</div>
 		<div class="product-week-layout">
 			<figure class="product-week-figure">
-				<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-dashboard.jpg' ); ?>"
-					alt="<?php esc_attr_e( 'Exnami dashboard: spendable now, income against spend, and balances by account', 'datalkemi' ); ?>"
-					width="1128" height="898" loading="lazy">
+				<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-calendar.jpg' ); ?>"
+					alt="<?php esc_attr_e( 'The Exnami calendar with bills, repayments, and card payments on their due dates', 'datalkemi' ); ?>"
+					width="2000" height="1118" loading="lazy">
 			</figure>
 			<ol class="product-week-list">
 				<?php foreach ( $moments as $m ) : ?>

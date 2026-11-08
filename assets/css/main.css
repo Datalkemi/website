@@ -4373,6 +4373,12 @@ a:hover { color: var(--color-accent) !important; }
 .product-reasons h3 { font-size: 1rem !important; font-weight: 500 !important; margin-bottom: 0.375rem !important; }
 .product-reasons p { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.65; }
 
+.product-shots { padding-top: 0; }
+.product-shots-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.product-shot { margin: 0; }
+.product-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.product-shot figcaption { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; margin-top: 0.75rem; }
+
 .product-week { background: var(--surface-alt); }
 .product-week-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 4rem; align-items: center; }
 .product-week-figure { margin: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
@@ -4412,6 +4418,7 @@ a:hover { color: var(--color-accent) !important; }
 @media (max-width: 900px) {
   .product-two-col { grid-template-columns: 1fr; gap: 3rem; }
   .product-week-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .product-shots-grid { grid-template-columns: 1fr; }
   .product-stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 520px) {
