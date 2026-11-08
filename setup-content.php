@@ -120,6 +120,7 @@ $quote_id       = dk_create_page( 'Get a Quote',           'get-a-quote',       
 $contact_id     = dk_create_page( 'Contact',               'contact',             '' );
 $insights_id    = dk_create_page( 'Insights',              'insights',            '' );
 $exnami_id      = dk_create_page( 'Exnami',                'exnami',              'page-exnami.php' );
+$products_id    = dk_create_page( 'Our Products',          'products',            'page-products.php' );
 
 // Legal pages
 $privacy_id  = dk_create_page( 'Privacy Policy',   'privacy-policy',   '', '', 0 );
@@ -295,9 +296,10 @@ if ( empty( $menu_items ) ) {
         [ 'title' => 'About',        'url' => home_url( '/about/' ),              'object_id' => $about_id,    'order' => 2 ],
         [ 'title' => 'Services',     'url' => home_url( '/services/' ),           'object_id' => $services_id, 'order' => 3 ],
         [ 'title' => 'Projects',     'url' => home_url( '/projects/' ),           'object_id' => $projects_id, 'order' => 4 ],
-        [ 'title' => 'Insights',     'url' => home_url( '/insights/' ),           'object_id' => $insights_id, 'order' => 5 ],
-        [ 'title' => 'Contact',      'url' => home_url( '/contact/' ),            'object_id' => $contact_id,  'order' => 6 ],
-        [ 'title' => 'My Portal',    'url' => home_url( '/client-portal/' ),      'object_id' => $portal_id,   'order' => 7 ],
+        [ 'title' => 'Our Products', 'url' => home_url( '/products/' ),           'object_id' => $products_id, 'order' => 5 ],
+        [ 'title' => 'Insights',     'url' => home_url( '/insights/' ),           'object_id' => $insights_id, 'order' => 6 ],
+        [ 'title' => 'Contact',      'url' => home_url( '/contact/' ),            'object_id' => $contact_id,  'order' => 7 ],
+        [ 'title' => 'My Portal',    'url' => home_url( '/client-portal/' ),      'object_id' => $portal_id,   'order' => 8 ],
     ];
 
     foreach ( $items as $item ) {
@@ -317,6 +319,22 @@ if ( empty( $menu_items ) ) {
     foreach ( wp_get_nav_menu_items( $menu_id ) as $nav_item ) {
         if ( (int) $nav_item->object_id === $services_id ) {
             $services_nav_item_id = $nav_item->ID;
+            break;
+        }
+    }
+
+    // Product sub-items under Our Products
+    foreach ( wp_get_nav_menu_items( $menu_id ) as $nav_item ) {
+        if ( (int) $nav_item->object_id === $products_id ) {
+            wp_update_nav_menu_item( $menu_id, 0, [
+                'menu-item-title'     => 'Exnami',
+                'menu-item-url'       => home_url( '/exnami/' ),
+                'menu-item-status'    => 'publish',
+                'menu-item-type'      => 'post_type',
+                'menu-item-object'    => 'page',
+                'menu-item-object-id' => $exnami_id,
+                'menu-item-parent-id' => $nav_item->ID,
+            ] );
             break;
         }
     }

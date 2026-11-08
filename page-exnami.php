@@ -59,10 +59,13 @@ $privacy = [
 	'Export or permanently delete your data at any time',
 ];
 
-$stack = [
-	[ 'Next.js and React', 'An installable progressive web app that works on a phone, tablet, or desktop.' ],
-	[ 'Supabase and PostgreSQL', 'A relational schema of more than forty tables, isolated per user with row-level security.' ],
-	[ 'Vercel, Sydney region', 'Deployed close to Australian users, with push notifications for upcoming bills.' ],
+$moments = [
+	[ 'Payday',               'Income lands and Exnami shows what is truly spendable once the bills already on your calendar are set aside.' ],
+	[ 'The weekly shop',      'Scan the receipt and each line files itself under the right category. Your grocery budget bar moves straight away.' ],
+	[ 'Dinner with friends',  'Split the bill in the app, see who owes what, and tick it off when they pay you back.' ],
+	[ 'Card statement day',   'Pay the card from your bank in one move and watch the debt line fall, with the next due date already booked.' ],
+	[ 'Away on holiday',      'Spend in another currency and see it in yours at live rates, so the trip never surprises you later.' ],
+	[ 'End of the month',     'A plan for next month built from your real income, bills, and savings targets, not a template.' ],
 ];
 ?>
 
@@ -96,7 +99,7 @@ $stack = [
 		<figure class="product-screen">
 			<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-hero.jpg' ); ?>"
 				alt="<?php esc_attr_e( 'The Exnami dashboard showing spendable balance, income against spend, and category breakdown', 'datalkemi' ); ?>"
-				width="1200" height="517" loading="lazy">
+				width="2000" height="861" loading="lazy">
 		</figure>
 		<div class="product-stats">
 			<?php foreach ( $stats as $s ) : ?>
@@ -166,27 +169,29 @@ $stack = [
 	</div>
 </section>
 
-<!-- How it is built -->
-<section class="dk-section product-stack">
+<!-- A week with Exnami -->
+<section class="dk-section product-week">
 	<div class="dk-container">
 		<div class="dk-section-header">
-			<p class="section-eyebrow"><?php esc_html_e( 'How it is built', 'datalkemi' ); ?></p>
-			<h2 class="product-heading"><?php esc_html_e( 'The same engineering we bring to client work', 'datalkemi' ); ?></h2>
-			<p class="dk-section-subtitle"><?php esc_html_e( 'Exnami is our own product, built and run by Datalkemi. It is the reference build for the data-backed applications we deliver for clients.', 'datalkemi' ); ?></p>
+			<p class="section-eyebrow"><?php esc_html_e( 'Day to day', 'datalkemi' ); ?></p>
+			<h2 class="product-heading"><?php esc_html_e( 'A week with Exnami', 'datalkemi' ); ?></h2>
+			<p class="dk-section-subtitle"><?php esc_html_e( 'Small moments where knowing your real position changes the decision.', 'datalkemi' ); ?></p>
 		</div>
-		<div class="dk-grid-3">
-			<?php foreach ( $stack as $s ) : ?>
-				<div class="dk-card">
-					<h3 class="product-feature-title"><?php echo esc_html( $s[0] ); ?></h3>
-					<p class="product-feature-desc"><?php echo esc_html( $s[1] ); ?></p>
-				</div>
-			<?php endforeach; ?>
+		<div class="product-week-layout">
+			<figure class="product-week-figure">
+				<img src="<?php echo esc_url( DATALKEMI_URI . '/assets/img/products/exnami-dashboard.jpg' ); ?>"
+					alt="<?php esc_attr_e( 'Exnami dashboard: spendable now, income against spend, and balances by account', 'datalkemi' ); ?>"
+					width="1128" height="898" loading="lazy">
+			</figure>
+			<ol class="product-week-list">
+				<?php foreach ( $moments as $m ) : ?>
+					<li>
+						<h3><?php echo esc_html( $m[0] ); ?></h3>
+						<p><?php echo esc_html( $m[1] ); ?></p>
+					</li>
+				<?php endforeach; ?>
+			</ol>
 		</div>
-		<p class="product-stack-cta">
-			<a href="<?php echo esc_url( home_url( '/get-a-quote/' ) ); ?>" class="dk-btn dk-btn-outline">
-				<?php esc_html_e( 'Build something like this', 'datalkemi' ); ?>
-			</a>
-		</p>
 	</div>
 </section>
 

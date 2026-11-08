@@ -1350,3 +1350,83 @@
 		padding: 4rem 0;
 	}
 }
+
+/* ==========================================================================
+   20. PRODUCTS (Exnami overview)
+   ========================================================================== */
+
+.hp-products {
+	padding: 5rem 0;
+	background: var(--bg);
+	border-top: 1px solid var(--border);
+}
+
+.hp-products-layout {
+	display: grid;
+	grid-template-columns: 1fr 1.05fr;
+	gap: 4rem;
+	align-items: center;
+}
+
+.hp-products-points {
+	list-style: none !important;
+	margin: 2rem 0 !important;
+	padding: 0 !important;
+	display: flex;
+	flex-direction: column;
+}
+
+.hp-products-points li {
+	padding: 1rem 0;
+	border-top: 1px solid var(--border);
+}
+
+.hp-products-points li:last-child {
+	border-bottom: 1px solid var(--border);
+}
+
+.hp-products-points strong {
+	display: block;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--text);
+	margin-bottom: 0.25rem;
+}
+
+.hp-products-points span {
+	display: block;
+	font-size: 0.875rem;
+	color: var(--text-muted);
+	line-height: 1.55;
+}
+
+.hp-products-actions {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.hp-products-figure {
+	margin: 0;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	overflow: hidden;
+	background: var(--surface-alt);
+}
+
+.hp-products-figure img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+@media (max-width: 900px) {
+	.hp-products-layout {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+	}
+	.hp-products-figure {
+		order: -1;
+	}
+}

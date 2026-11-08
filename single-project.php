@@ -11,6 +11,21 @@ $start_date = get_post_meta( get_the_ID(), '_project_start_date', true );
 $end_date   = get_post_meta( get_the_ID(), '_project_end_date', true );
 $hosting    = get_post_meta( get_the_ID(), '_project_hosting', true );
 
+// Hero icon by project type (line icons, no background image in the hero)
+$type_terms = get_the_terms( get_the_ID(), 'project_type' );
+$type_slug  = ( $type_terms && ! is_wp_error( $type_terms ) ) ? $type_terms[0]->slug : '';
+$icon_attr  = 'xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+switch ( $type_slug ) {
+	case 'data-science':
+		$hero_icon = '<svg ' . $icon_attr . '><path d="M3 3v18h18"/><path d="M7 14l4-4 4 3 5-6"/></svg>';
+		break;
+	case 'web-application':
+		$hero_icon = '<svg ' . $icon_attr . '><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18"/><path d="M7 14h5M7 17h8"/></svg>';
+		break;
+	default:
+		$hero_icon = '<svg ' . $icon_attr . '><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>';
+}
+
 // Related projects (excluding current)
 $related = new WP_Query( [
 	'post_type'      => 'project',
@@ -23,12 +38,8 @@ $related = new WP_Query( [
 <!-- Project Hero -->
 <section class="service-hero">
 	<div class="service-hero-overlay"></div>
-	<?php if ( has_post_thumbnail() ) : ?>
-		<div style="position:absolute; inset:0; z-index:0;">
-			<?php the_post_thumbnail( 'full', [ 'style' => 'width:100%; height:100%; object-fit:cover; opacity:0.12;' ] ); ?>
-		</div>
-	<?php endif; ?>
 	<div class="dk-container service-hero-content" style="position:relative; z-index:2;">
+		<span class="project-hero-icon"><?php echo $hero_icon; // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 		<div class="service-hero-breadcrumb">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'datalkemi' ); ?></a>
 			<span>&#8250;</span>
@@ -56,6 +67,11 @@ $related = new WP_Query( [
 
 			<!-- Main content -->
 			<div class="project-single-content">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<figure class="project-figure">
+						<?php the_post_thumbnail( 'large' ); ?>
+					</figure>
+				<?php endif; ?>
 				<?php the_content(); ?>
 			</div>
 

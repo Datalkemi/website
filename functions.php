@@ -75,26 +75,96 @@ add_action( 'template_redirect', 'datalkemi_redirect_blog_page' );
 add_filter( 'astra_get_option_scroll-to-top-enable', '__return_false' );
 
 /**
- * Product pages guard: make sure the Exnami page exists with its template.
- * Runs once; the content installer also creates it on a fresh install.
+ * Product pages guard, version 2.
+ * Makes sure the Exnami page and the Our Products landing page exist with
+ * their templates, and that the primary menu has an "Our Products" item
+ * with Exnami beneath it, placed after Projects. Runs once per version.
  */
 function datalkemi_ensure_product_pages() {
-	if ( get_option( 'datalkemi_product_pages_v1' ) ) {
+	if ( (int) get_option( 'datalkemi_product_pages_version' ) >= 2 ) {
 		return;
 	}
-	if ( ! get_page_by_path( 'exnami' ) ) {
+
+	$pages = [
+		'exnami'   => [ 'Exnami',       'page-exnami.php' ],
+		'products' => [ 'Our Products', 'page-products.php' ],
+	];
+	$ids = [];
+	foreach ( $pages as $slug => $def ) {
+		$page = get_page_by_path( $slug );
+		if ( $page ) {
+			$ids[ $slug ] = $page->ID;
+			if ( get_post_meta( $page->ID, '_wp_page_template', true ) !== $def[1] ) {
+				update_post_meta( $page->ID, '_wp_page_template', $def[1] );
+			}
+			continue;
+		}
 		$page_id = wp_insert_post( [
 			'post_type'    => 'page',
 			'post_status'  => 'publish',
-			'post_name'    => 'exnami',
-			'post_title'   => 'Exnami',
+			'post_name'    => $slug,
+			'post_title'   => $def[0],
 			'post_content' => '',
 		], true );
 		if ( ! is_wp_error( $page_id ) && $page_id ) {
-			update_post_meta( $page_id, '_wp_page_template', 'page-exnami.php' );
+			update_post_meta( $page_id, '_wp_page_template', $def[1] );
+			$ids[ $slug ] = $page_id;
 		}
 	}
-	update_option( 'datalkemi_product_pages_v1', 1 );
+
+	$locations = get_nav_menu_locations();
+	$menu_id   = isset( $locations['primary'] ) ? (int) $locations['primary'] : 0;
+	if ( $menu_id && ! empty( $ids['products'] ) && ! empty( $ids['exnami'] ) ) {
+		$items      = wp_get_nav_menu_items( $menu_id ) ?: [];
+		$parent_id  = 0;
+		$after      = 0;
+		foreach ( $items as $item ) {
+			if ( (int) $item->menu_item_parent === 0 && (int) $item->object_id === (int) $ids['products'] ) {
+				$parent_id = $item->ID;
+			}
+			if ( (int) $item->menu_item_parent === 0 && $item->title === 'Projects' ) {
+				$after = (int) $item->menu_order;
+			}
+		}
+		if ( ! $parent_id ) {
+			// Shift every top level item after Projects down by one
+			foreach ( $items as $item ) {
+				if ( (int) $item->menu_item_parent === 0 && (int) $item->menu_order > $after ) {
+					wp_update_post( [ 'ID' => $item->ID, 'menu_order' => (int) $item->menu_order + 1 ] );
+				}
+			}
+			$parent_id = wp_update_nav_menu_item( $menu_id, 0, [
+				'menu-item-title'     => 'Our Products',
+				'menu-item-url'       => home_url( '/products/' ),
+				'menu-item-status'    => 'publish',
+				'menu-item-type'      => 'post_type',
+				'menu-item-object'    => 'page',
+				'menu-item-object-id' => $ids['products'],
+				'menu-item-position'  => $after + 1,
+			] );
+		}
+		if ( $parent_id && ! is_wp_error( $parent_id ) ) {
+			$has_child = false;
+			foreach ( $items as $item ) {
+				if ( (int) $item->menu_item_parent === (int) $parent_id && (int) $item->object_id === (int) $ids['exnami'] ) {
+					$has_child = true;
+				}
+			}
+			if ( ! $has_child ) {
+				wp_update_nav_menu_item( $menu_id, 0, [
+					'menu-item-title'     => 'Exnami',
+					'menu-item-url'       => home_url( '/exnami/' ),
+					'menu-item-status'    => 'publish',
+					'menu-item-type'      => 'post_type',
+					'menu-item-object'    => 'page',
+					'menu-item-object-id' => $ids['exnami'],
+					'menu-item-parent-id' => $parent_id,
+				] );
+			}
+		}
+	}
+
+	update_option( 'datalkemi_product_pages_version', 2 );
 }
 add_action( 'init', 'datalkemi_ensure_product_pages', 25 );
 
