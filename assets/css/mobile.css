@@ -671,7 +671,6 @@ picture img { display: block; width: 100%; height: auto; }
 	.cfg-choice-desc { font-size: 0.8125rem; }
 
 	.cfg-choice-grid--two { grid-template-columns: repeat(2, 1fr); }
-	.cfg-choice-grid--three { grid-template-columns: repeat(3, 1fr); }
 
 	.cfg-opt-card .cfg-opt-inner { padding: 0.875rem 1rem; gap: 0.75rem; }
 	.cfg-opt-desc { font-size: 0.8125rem; }
