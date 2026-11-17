@@ -214,6 +214,7 @@ a:hover { color: var(--color-accent) !important; }
   background: linear-gradient(135deg, var(--tint), transparent);
   opacity: 0;
   transition: opacity 0.35s ease;
+  pointer-events: none; /* decorative: never block clicks on links and buttons inside the card */
 }
 
 .dk-card:hover {
