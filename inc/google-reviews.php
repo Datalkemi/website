@@ -54,8 +54,9 @@ function datalkemi_fetch_google_place( $key, $place_id ) {
 		'timeout' => 12,
 		'headers' => [
 			'X-Goog-Api-Key'   => $key,
-			'X-Goog-FieldMask' => 'id,displayName,rating,userRatingCount,googleMapsUri,reviews',
-			'Referer'          => home_url( '/' ),
+			// Same request shape as the OzViz site, which receives review text:
+			// review sub fields listed one by one, and no Referer header.
+			'X-Goog-FieldMask' => 'id,displayName,rating,userRatingCount,googleMapsUri,reviews.rating,reviews.text,reviews.originalText,reviews.relativePublishTimeDescription,reviews.publishTime,reviews.authorAttribution,reviews.googleMapsUri',
 		],
 	] );
 	if ( is_wp_error( $res ) ) {
