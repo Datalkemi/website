@@ -21,7 +21,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const DATALKEMI_REVIEWS_CACHE = 'datalkemi_google_reviews';
+const DATALKEMI_REVIEWS_CACHE = 'datalkemi_google_reviews_v2';
 const DATALKEMI_REVIEWS_LAST  = 'datalkemi_google_reviews_last';
 const DATALKEMI_REVIEWS_ERROR = 'datalkemi_google_reviews_error';
 
