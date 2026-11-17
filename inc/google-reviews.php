@@ -90,6 +90,9 @@ function datalkemi_fetch_google_place( $key, $place_id ) {
 		'maps_uri' => (string) ( $body['googleMapsUri'] ?? '' ),
 		'reviews'  => $reviews,
 		'fetched'  => time(),
+		// Diagnostics shown on the settings page: what Google actually sent
+		'raw_reviews' => count( (array) ( $body['reviews'] ?? [] ) ),
+		'raw_fields'  => implode( ', ', array_keys( $body ) ),
 	];
 }
 
@@ -393,6 +396,7 @@ function datalkemi_reviews_admin_page() {
 			<tr><th scope="row"><?php esc_html_e( 'Business', 'datalkemi' ); ?></th><td><?php echo is_array( $last ) && $last['name'] ? esc_html( $last['name'] ) : esc_html__( 'Not connected', 'datalkemi' ); ?></td></tr>
 			<?php if ( is_array( $last ) ) : ?>
 				<tr><th scope="row"><?php esc_html_e( 'Rating', 'datalkemi' ); ?></th><td><?php echo esc_html( number_format( (float) $last['rating'], 1 ) . ' from ' . (int) $last['count'] . ' reviews, ' . count( $last['reviews'] ) . ' shown' ); ?></td></tr>
+				<tr><th scope="row"><?php esc_html_e( 'Google sent', 'datalkemi' ); ?></th><td><?php echo esc_html( sprintf( '%d reviews, %d with text. Fields: %s', (int) ( $last['raw_reviews'] ?? 0 ), count( array_filter( (array) $last['reviews'], function ( $r ) { return '' !== trim( $r['text'] ); } ) ), (string) ( $last['raw_fields'] ?? 'not recorded yet, click Refresh now' ) ) ); ?></td></tr>
 				<tr><th scope="row"><?php esc_html_e( 'Last updated', 'datalkemi' ); ?></th><td><?php echo esc_html( wp_date( 'j M Y, g:i a', (int) $last['fetched'] ) ); ?></td></tr>
 			<?php endif; ?>
 			<?php if ( is_array( $error ) ) : ?>
