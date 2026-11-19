@@ -146,6 +146,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Google reviews slider (Trustindex): looping autoplay ────────────────
+  // Steps forward every 5 seconds, returns to the first review after the
+  // last one, and pauses while the visitor hovers, focuses, or the tab is hidden.
+  const tiSection = document.querySelector('.dk-reviews--trustindex');
+  if (tiSection && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let paused = false;
+    ['mouseenter', 'focusin', 'touchstart'].forEach((ev) => tiSection.addEventListener(ev, () => { paused = true; }, { passive: true }));
+    ['mouseleave', 'focusout'].forEach((ev) => tiSection.addEventListener(ev, () => { paused = false; }));
+    tiSection.addEventListener('touchend', () => { setTimeout(() => { paused = false; }, 4000); }, { passive: true });
+    const shown = (el) => !!el && el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden' && getComputedStyle(el).opacity !== '0';
+    setInterval(() => {
+      if (paused || document.hidden) return;
+      const next = tiSection.querySelector('.ti-next');
+      const prev = tiSection.querySelector('.ti-prev');
+      if (shown(next)) { next.click(); return; }
+      // At the end: step back to the first review
+      let guard = 0;
+      const rewind = () => {
+        if (shown(prev) && guard++ < 20) { prev.click(); setTimeout(rewind, 120); }
+      };
+      rewind();
+    }, 5000);
+  }
+
   // ── Smooth scroll for anchor links ──────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {

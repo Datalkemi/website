@@ -11,6 +11,9 @@
  */
 
 $dk_trustindex = shortcode_exists( 'trustindex' ) ? do_shortcode( '[trustindex no-registration=google]' ) : '';
+// The widget's own autoplay stops at the last review. Turn it off; main.js
+// runs a looping autoplay instead (see "Google reviews slider").
+$dk_trustindex = preg_replace( '/data-pager-autoplay-timeout="\d+"/', 'data-pager-autoplay-timeout="0"', $dk_trustindex );
 
 if ( '' !== trim( $dk_trustindex ) ) : ?>
 	<section class="dk-reviews dk-reviews--trustindex" aria-labelledby="dk-reviews-title">

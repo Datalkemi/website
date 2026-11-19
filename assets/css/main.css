@@ -4566,3 +4566,27 @@ html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
 /* Open questions show a minus sign instead of a rotated plus */
 .faq-question[aria-expanded="true"] .faq-icon { transform: none !important; font-size: 0; }
 .faq-question[aria-expanded="true"] .faq-icon::before { content: "\2212"; font-size: 1.25rem; }
+
+/* ── Google reviews (Trustindex widget) in the site's colours ─────────── */
+.dk-reviews--trustindex .dk-reviews-head { margin-bottom: 2rem; }
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-footer,
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-footer .ti-rating-text,
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-footer .ti-rating,
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-footer .ti-name,
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-footer span:not(.ti-star):not(.ti-stars) { color: var(--text) !important; }
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-footer .ti-rating-text strong,
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-footer .ti-rating { font-family: var(--font-display) !important; }
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-review-item > .ti-inner {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+}
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-review-item .ti-name { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 500 !important; }
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-review-item .ti-date { color: var(--text-muted) !important; }
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-review-content,
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-review-content * { color: var(--text) !important; font-family: var(--font-body) !important; }
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-read-more,
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-read-more * { color: var(--link) !important; }
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-controls .ti-next,
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-controls .ti-prev { background-color: var(--surface) !important; border: 1px solid var(--border) !important; box-shadow: none !important; }
