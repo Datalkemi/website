@@ -36,7 +36,7 @@ $logos = [
 	<div class="hp-container">
 
 		<p class="hp-logos-label">
-			<?php esc_html_e( 'Working with businesses across Australia.', 'datalkemi' ); ?>
+			<?php esc_html_e( 'Working with businesses in Australia, India and beyond.', 'datalkemi' ); ?>
 		</p>
 
 		<div class="hp-logos-marquee" aria-label="<?php esc_attr_e( 'Client logos', 'datalkemi' ); ?>">

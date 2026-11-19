@@ -30,7 +30,7 @@
 		</a>
 
 		<p class="hp-final-note">
-			<?php esc_html_e( '30-minute call. No obligation. Perth-based, working Australia-wide.', 'datalkemi' ); ?>
+			<?php esc_html_e( '30-minute call. No obligation. Perth-based, working with clients worldwide.', 'datalkemi' ); ?>
 		</p>
 
 	</div><!-- /.hp-container -->

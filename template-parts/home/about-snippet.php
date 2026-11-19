@@ -75,7 +75,7 @@
 						</span>
 						<div>
 							<strong><?php esc_html_e( 'Perth-based', 'datalkemi' ); ?></strong>
-							<span><?php esc_html_e( 'Working with clients across Australia and beyond', 'datalkemi' ); ?></span>
+							<span><?php esc_html_e( 'Working with clients worldwide', 'datalkemi' ); ?></span>
 						</div>
 					</li>
 
