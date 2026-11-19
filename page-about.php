@@ -38,10 +38,11 @@ $values = [
 ];
 
 $stats = [
-	[ 'number' => '50+',  'label' => 'Projects Delivered' ],
-	[ 'number' => '98%',  'label' => 'Client Satisfaction' ],
-	[ 'number' => '6+',   'label' => 'Years of Expertise' ],
-	[ 'number' => '12+',  'label' => 'Industries Served' ],
+	// Facts the site can back up: Google rating, client countries, starting price, included fixes
+	[ 'number' => '5.0',     'label' => 'Google rating from clients' ],
+	[ 'number' => '2',       'label' => 'Countries: Australia and India' ],
+	[ 'number' => 'A$500',   'label' => 'Websites start from' ],
+	[ 'number' => '30 days', 'label' => 'Of fixes included after launch' ],
 ];
 
 $process = [
