@@ -29,7 +29,7 @@ function datalkemi_faq_groups(): array {
 		[
 			'title' => 'Pricing',
 			'items' => [
-				[ 'q' => 'How much does a website cost?', 'a' => 'Small to medium business websites start from A$500. Personal portfolios, online stores, web applications, dashboards, and automation projects start from A$1,000. Enterprise platforms are scoped and quoted by our team. The project estimator shows a price in AUD, USD, or INR as you choose features.' ],
+				[ 'q' => 'How much does a website cost?', 'a' => 'Small to medium business websites and personal portfolios start from A$500, dashboards from A$600, web applications from A$800, and online stores and automation projects from A$1,000. Enterprise platforms are scoped and quoted by our team. The project estimator shows a price in AUD, USD, or INR as you choose features.' ],
 				[ 'q' => 'Is the estimate the final price?', 'a' => 'The estimator gives a starting figure. After a 30-minute scoping call we confirm the price in a written quote with the pages, features, and timeline listed, and work starts only once you approve it.' ],
 				[ 'q' => 'Do you charge GST?', 'a' => 'Prices for Australian clients are shown excluding GST. Your written quote shows any GST that applies. Clients outside Australia are quoted in USD or INR.' ],
 				[ 'q' => 'Are there ongoing costs after launch?', 'a' => 'Every website needs a domain name and hosting, which are paid to those providers in your name. Support and updates after the included post-launch period are optional and quoted separately, so you only pay for help when you want it.' ],

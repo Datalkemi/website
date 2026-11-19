@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'DATALKEMI_CONTENT_VERSION', 1 );
+define( 'DATALKEMI_CONTENT_VERSION', 2 );
 
 /**
  * @return array<int, array{slug: string, title: string, excerpt: string, category: string, date: string, content: string}>
@@ -38,7 +38,7 @@ function datalkemi_insights_articles(): array {
 <tbody>
 <tr><td>Small to medium business website</td><td>A$2,000 to A$8,000</td><td>From A$500</td></tr>
 <tr><td>Online store</td><td>A$2,000 to A$10,000</td><td>From A$1,000</td></tr>
-<tr><td>Web application or client portal</td><td>A$10,000 and up</td><td>From A$1,000</td></tr>
+<tr><td>Web application or client portal</td><td>A$10,000 and up</td><td>From A$800</td></tr>
 <tr><td>Enterprise platform</td><td>A$50,000 and up</td><td>Quoted after scoping</td></tr>
 </tbody>
 </table></div>
@@ -131,6 +131,14 @@ function datalkemi_ensure_content() {
 	foreach ( datalkemi_insights_articles() as $article ) {
 		$existing = get_posts( [ 'name' => $article['slug'], 'post_type' => 'post', 'post_status' => 'any', 'numberposts' => 1 ] );
 		if ( $existing ) {
+			// Version 2: the web application starting price dropped to A$800
+			$old = '<td>Web application or client portal</td><td>A$10,000 and up</td><td>From A$1,000</td>';
+			if ( false !== strpos( $existing[0]->post_content, $old ) ) {
+				wp_update_post( [
+					'ID'           => $existing[0]->ID,
+					'post_content' => str_replace( $old, '<td>Web application or client portal</td><td>A$10,000 and up</td><td>From A$800</td>', $existing[0]->post_content ),
+				] );
+			}
 			continue;
 		}
 		$cat = get_category_by_slug( $article['category'] );

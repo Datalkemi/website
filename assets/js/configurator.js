@@ -1,7 +1,7 @@
 /**
  * Datalkemi Project Configurator Wizard v3
  *
- * Flow: purpose, currency, then the sections that purpose uses, then the
+ * Flow: currency, purpose, then the sections that purpose uses, then the
  * estimate. Prices arrive in AUD from inc/configurator-data.php and are
  * shown in AUD, USD, or INR, each with its own rate, rounding, and digit
  * grouping.
@@ -35,7 +35,7 @@
   function money(aud) { return cur().symbol + fmt(toLocal(aud)); }
 
   function isQuote() { return !!(purpose && purpose.quote); }
-  function totalSteps() { return isQuote() ? 2 : 2 + stepKeys.length + 1; }
+  function totalSteps() { return isQuote() ? 3 : 2 + stepKeys.length + 1; }
   function finalIndex() { return totalSteps() - 1; }
 
   /* Options visible for the chosen purpose, with per-purpose prices applied */
@@ -71,7 +71,7 @@
     requestAnimationFrame(step);
   }
 
-  /* Step 0: purpose */
+  /* Step 1: purpose */
   function renderPurposes() {
     var grid = document.getElementById('cfg-purpose-grid');
     if (!grid) return;
@@ -98,7 +98,7 @@
     });
   }
 
-  /* Step 1: currency */
+  /* Step 0: currency */
   function renderCurrencies() {
     var grid = document.getElementById('cfg-currency-grid');
     if (!grid) return;
@@ -311,7 +311,7 @@
   }
 
   function stepNames() {
-    var names = [ 'Purpose', 'Currency' ];
+    var names = [ 'Currency', 'Purpose' ];
     stepKeys.forEach(function (k) { names.push(SECTIONS[k].label); });
     names.push('Your estimate');
     return names;
@@ -338,7 +338,7 @@
     var names = stepNames();
     var pct = (currentStep / (totalSteps() - 1)) * 100;
     if (progressFill) progressFill.style.width = (purpose ? pct : 0) + '%';
-    if (stepLabel) stepLabel.textContent = purpose ? 'Step ' + (currentStep + 1) + ' of ' + totalSteps() : 'Step 1';
+    if (stepLabel) stepLabel.textContent = purpose ? 'Step ' + (currentStep + 1) + ' of ' + totalSteps() : 'Step ' + (currentStep + 1);
     if (stepName)  stepName.textContent  = names[currentStep] || '';
     document.querySelectorAll('.cfg-step-dot').forEach(function (dot, i) {
       dot.classList.toggle('is-done',   i < currentStep);
@@ -351,7 +351,7 @@
     if (prevBtn) prevBtn.hidden = currentStep === 0;
     if (!nextBtn) return;
     nextBtn.hidden   = isFinal;
-    nextBtn.disabled = currentStep === 0 && !purpose;
+    nextBtn.disabled = currentStep === 1 && !purpose;
     nextBtn.classList.toggle('is-ready', !nextBtn.disabled);
     var label = currentStep === finalIndex() - 1 ? 'See my estimate' : 'Continue';
     nextBtn.innerHTML = label + ' <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>';

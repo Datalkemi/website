@@ -36,31 +36,31 @@ $config_json = wp_json_encode( $config );
 				</div>
 				<div class="cfg-progress-meta">
 					<span class="cfg-progress-label" id="cfg-step-label">Step 1</span>
-					<span class="cfg-progress-name"  id="cfg-step-name">Purpose</span>
+					<span class="cfg-progress-name"  id="cfg-step-name">Currency</span>
 				</div>
 			</div>
 
 			<!-- ── Step panels ──────────────────────────────────── -->
 			<div class="cfg-steps-wrap" id="cfg-steps-wrap">
 
-				<!-- STEP 0: Purpose -->
+				<!-- STEP 0: Currency -->
 				<div class="cfg-step" data-step="0" id="cfg-step-0">
-					<div class="cfg-step-header">
-						<h2><?php echo esc_html( $config['purposes']['label'] ); ?></h2>
-						<p class="cfg-step-note"><?php echo esc_html( $config['purposes']['note'] ); ?></p>
-					</div>
-					<div class="cfg-choice-grid" id="cfg-purpose-grid">
-						<!-- populated by JS -->
-					</div>
-				</div>
-
-				<!-- STEP 1: Currency -->
-				<div class="cfg-step" data-step="1" id="cfg-step-1">
 					<div class="cfg-step-header">
 						<h2>Which currency should we show?</h2>
 						<p class="cfg-step-note">Our prices are set in Australian dollars. US dollars are shown at an indicative rate, and clients in India get our Indian rupee pricing.</p>
 					</div>
 					<div class="cfg-choice-grid cfg-choice-grid--three" id="cfg-currency-grid">
+						<!-- populated by JS -->
+					</div>
+				</div>
+
+				<!-- STEP 1: Purpose -->
+				<div class="cfg-step" data-step="1" id="cfg-step-1">
+					<div class="cfg-step-header">
+						<h2><?php echo esc_html( $config['purposes']['label'] ); ?></h2>
+						<p class="cfg-step-note"><?php echo esc_html( $config['purposes']['note'] ); ?></p>
+					</div>
+					<div class="cfg-choice-grid" id="cfg-purpose-grid">
 						<!-- populated by JS -->
 					</div>
 				</div>
