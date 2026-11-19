@@ -80,7 +80,7 @@ $config_json = wp_json_encode( $config );
 							<div class="cfg-total-card">
 								<p class="cfg-total-eyebrow">Enterprise platform</p>
 								<p class="cfg-quote-title">Quote on request</p>
-								<p class="cfg-total-note">Enterprise platforms are scoped with our sales team. Tell us a little about the project and we will book a scoping call within one business day.</p>
+								<p class="cfg-total-note">Larger platforms are priced with our team. Tell us a little about the project and we will book a call within one business day.</p>
 							</div>
 							<ul class="cfg-quote-list">
 								<li>Multi-tenant architecture, single sign-on, and tenant data isolation</li>
@@ -97,7 +97,7 @@ $config_json = wp_json_encode( $config );
 								<div class="cfg-total-amount">
 									<span id="cfg-currency-symbol">A$</span><span id="cfg-total-num">0</span>
 								</div>
-								<p class="cfg-total-note" id="cfg-total-note">Starting estimate in Australian dollars, excluding GST. Confirmed after a 30-minute scoping call.</p>
+								<p class="cfg-total-note" id="cfg-total-note">Starting estimate in Australian dollars, excluding GST. Confirmed after a free 30-minute call.</p>
 							</div>
 							<div class="cfg-summary-breakdown" id="cfg-summary-breakdown">
 								<!-- populated by JS -->

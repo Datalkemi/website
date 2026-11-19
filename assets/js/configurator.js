@@ -216,11 +216,11 @@
     var hnote      = document.querySelector('#cfg-step-final .cfg-step-header .cfg-step-note');
     if (quotePanel) quotePanel.hidden = !isQuote();
     if (sumPanel)   sumPanel.hidden   = isQuote();
-    if (titleEl)    titleEl.textContent = isQuote() ? 'Request a scoping call' : 'Send me this quote';
+    if (titleEl)    titleEl.textContent = isQuote() ? 'Request a call' : 'Send me this quote';
     if (cnoteEl)    cnoteEl.textContent = isQuote() ? 'Share what you can. A senior engineer will reply within one business day to arrange a call.' : 'We review every submission personally and reply within one business day.';
     if (btnLabel)   btnLabel.textContent = isQuote() ? 'Request a call' : 'Send My Quote';
     if (heading)    heading.textContent = isQuote() ? 'Talk to our sales team' : 'Your project estimate';
-    if (hnote)      hnote.textContent   = isQuote() ? 'Enterprise work is priced after a scoping conversation, not from a list.' : 'Review your build below, then send it to us for a full proposal.';
+    if (hnote)      hnote.textContent   = isQuote() ? 'Larger projects are priced after a short conversation, not from a list.' : 'Check your choices below, then send it to us for a full proposal.';
     if (isQuote()) return;
 
     var totalAUD = getTotalAUD();
@@ -232,10 +232,10 @@
     var noteEl = document.getElementById('cfg-total-note');
     if (noteEl) {
       noteEl.textContent = currency === 'AUD'
-        ? 'Starting estimate in Australian dollars, excluding GST. Confirmed after a 30-minute scoping call.'
+        ? 'Starting estimate in Australian dollars, excluding GST. Confirmed after a free 30-minute call.'
         : currency === 'INR'
-          ? 'Starting estimate in Indian rupees at our pricing for clients in India. Confirmed in writing after a 30-minute scoping call.'
-          : 'Indicative figure converted from Australian dollars. Confirmed in writing after a 30-minute scoping call.';
+          ? 'Starting estimate in Indian rupees at our pricing for clients in India. Confirmed in writing after a free 30-minute call.'
+          : 'Approximate figure converted from Australian dollars. Confirmed in writing after a free 30-minute call.';
     }
 
     var el = document.getElementById('cfg-summary-breakdown');
