@@ -4591,3 +4591,32 @@ html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
 .dk-reviews--trustindex .ti-widget.ti-goog .ti-controls .ti-next,
 .dk-reviews--trustindex .ti-widget.ti-goog .ti-controls .ti-prev { background-color: var(--surface) !important; border: 1px solid var(--border) !important; box-shadow: none !important; }
 .dk-reviews--trustindex .ti-widget.ti-goog .ti-footer *:not(img) { color: var(--text) !important; }
+
+/* ── Header dropdowns (desktop): stay open while moving to the sub items ──
+   An invisible bridge covers the gap under the menu item, and closing waits
+   briefly so a small slip of the pointer does not hide the list. */
+@media (min-width: 1024px) {
+  .nav-has-dropdown > .nav-dropdown {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, visibility 0s linear 0.35s;
+    transition-delay: 0.25s, 0.35s;
+  }
+  .nav-has-dropdown:hover > .nav-dropdown,
+  .nav-has-dropdown:focus-within > .nav-dropdown {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0s, 0s;
+  }
+  .nav-dropdown::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.75rem;
+    height: 0.75rem;
+  }
+}
