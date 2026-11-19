@@ -8,27 +8,22 @@ get_header();
 
 <?php if ( ! is_user_logged_in() ) : ?>
 
-	<!-- Login gate -->
-	<section style="min-height:100vh; display:flex; align-items:center; background:var(--bg); position:relative; overflow:hidden;">
-		<div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--tint) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;"></div>
-		<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,var(--tint) 0%,transparent 60%);pointer-events:none;"></div>
-		<div class="dk-container" style="position:relative;z-index:2;display:flex;justify-content:center;padding:2rem 1.5rem;">
-			<div class="dk-glass portal-login-card">
-				<div style="text-align:center; margin-bottom:2rem;">
-					<div style="width:52px;height:52px;border-radius:var(--radius);background:var(--tint);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--action);" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-					</div>
-					<h1 style="font-size:1.625rem !important; font-weight:500 !important; color:var(--text) !important; margin:0 0 0.5rem !important; -webkit-text-fill-color:var(--text) !important;">
-						<?php esc_html_e( 'Client Portal', 'datalkemi' ); ?>
-					</h1>
-					<p style="color:var(--color-text-muted); font-size:0.9375rem; margin:0;">
-						<?php esc_html_e( 'Sign in to access your projects, documents, and support.', 'datalkemi' ); ?>
-					</p>
-				</div>
+	<!-- Login gate: the standard page hero, then a compact sign-in card -->
+	<section class="page-hero">
+		<div class="page-hero-overlay"></div>
+		<div class="dk-container page-hero-content">
+			<p class="page-hero-eyebrow"><?php esc_html_e( 'Clients', 'datalkemi' ); ?></p>
+			<h1 class="page-hero-title"><?php esc_html_e( 'Client portal', 'datalkemi' ); ?></h1>
+			<p class="page-hero-subtitle"><?php esc_html_e( 'Sign in to see your projects, documents, and support.', 'datalkemi' ); ?></p>
+		</div>
+	</section>
 
-				<?php
-				// Show login errors if any
-				if ( isset( $_GET['login'] ) && $_GET['login'] === 'failed' ) : ?>
+	<section class="dk-section portal-signin">
+		<div class="dk-container">
+			<div class="portal-signin-card">
+				<h2 class="portal-signin-title"><?php esc_html_e( 'Sign in', 'datalkemi' ); ?></h2>
+
+				<?php if ( isset( $_GET['login'] ) && 'failed' === $_GET['login'] ) : ?>
 					<div class="portal-alert portal-alert--error">
 						<?php esc_html_e( 'Incorrect email or password. Please try again.', 'datalkemi' ); ?>
 					</div>
@@ -37,24 +32,21 @@ get_header();
 				<?php wp_login_form( [
 					'redirect'       => home_url( '/client-portal/' ),
 					'form_id'        => 'dk-portal-login',
-					'label_username' => __( 'Email Address', 'datalkemi' ),
+					'label_username' => __( 'Email address', 'datalkemi' ),
 					'label_password' => __( 'Password', 'datalkemi' ),
 					'label_remember' => __( 'Keep me signed in', 'datalkemi' ),
-					'label_log_in'   => __( 'Sign In to Portal', 'datalkemi' ),
+					'label_log_in'   => __( 'Sign in', 'datalkemi' ),
 					'remember'       => true,
 				] ); ?>
 
-				<div style="text-align:center; margin-top:1.5rem; font-size:0.875rem; color:var(--color-text-muted);">
-					<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" style="color:var(--color-primary) !important;">
-						<?php esc_html_e( 'Forgot your password?', 'datalkemi' ); ?>
-					</a>
-					<span style="margin:0 0.75rem;">|</span>
-					<?php esc_html_e( 'Not a client yet?', 'datalkemi' ); ?>
-					<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" style="color:var(--color-primary) !important;">
-						<?php esc_html_e( 'Get in touch', 'datalkemi' ); ?>
-					</a>
-				</div>
+				<p class="portal-signin-links">
+					<a href="<?php echo esc_url( wp_lostpassword_url( home_url( '/client-portal/' ) ) ); ?>"><?php esc_html_e( 'Forgot your password?', 'datalkemi' ); ?></a>
+				</p>
 			</div>
+			<p class="portal-signin-note">
+				<?php esc_html_e( 'Not a client yet?', 'datalkemi' ); ?>
+				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Get in touch', 'datalkemi' ); ?></a>
+			</p>
 		</div>
 	</section>
 
