@@ -193,11 +193,15 @@ function datalkemi_quote_pdf_class() {
 			}
 			$this->SetFont( 'Inter', '', 8.5 );
 			$this->rgb( self::MUTED );
-			$lines = [ 'datalkemi.com', 'info@datalkemi.com', 'Perth, Western Australia' ];
+			$lines = [
+				[ 'www.datalkemi.com', 'https://www.datalkemi.com/' ],
+				[ 'info@datalkemi.com', 'mailto:info@datalkemi.com' ],
+				[ 'Perth, Western Australia', '' ],
+			];
 			$y     = 13.5;
 			foreach ( $lines as $l ) {
 				$this->SetXY( 110, $y );
-				$this->Cell( 82, 4.4, $l, 0, 0, 'R' );
+				$this->Cell( 82, 4.4, $l[0], 0, 0, 'R', false, $l[1] );
 				$y += 4.4;
 			}
 			$this->rgb( self::AZURE, 'draw' );
@@ -214,11 +218,18 @@ function datalkemi_quote_pdf_class() {
 			$this->SetXY( 18, 283 );
 			$this->SetFont( 'Inter', '', 7.5 );
 			$this->rgb( self::MUTED );
-			$left = 'Datalkemi  |  info@datalkemi.com  |  datalkemi.com';
+			// Footer line: each part is its own cell so the email and website are links
+			$parts = [ [ 'Datalkemi', '' ], [ 'info@datalkemi.com', 'mailto:info@datalkemi.com' ], [ 'www.datalkemi.com', 'https://www.datalkemi.com/' ] ];
 			if ( defined( 'DATALKEMI_ABN' ) && '' !== DATALKEMI_ABN ) {
-				$left .= '  |  ABN ' . DATALKEMI_ABN;
+				$parts[] = [ 'ABN ' . DATALKEMI_ABN, '' ];
 			}
-			$this->Cell( 140, 4, $left, 0, 0, 'L' );
+			foreach ( $parts as $i => $part ) {
+				if ( $i > 0 ) {
+					$this->Cell( $this->GetStringWidth( '  |  ' ), 4, '  |  ', 0, 0, 'L' );
+				}
+				$this->Cell( $this->GetStringWidth( $part[0] ), 4, $part[0], 0, 0, 'L', false, $part[1] );
+			}
+			$this->SetX( 158 );
 			$this->Cell( 34, 4, 'Page ' . $this->PageNo() . ' of {nb}', 0, 0, 'R' );
 		}
 
