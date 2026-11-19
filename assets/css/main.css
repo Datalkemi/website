@@ -4654,3 +4654,8 @@ html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
 .contact-form-field textarea,
 .quote-form-field input,
 .quote-form-field textarea { caret-color: var(--action); }
+
+/* Astra sets body { overflow-x: hidden }, which makes the body a scroll box and
+   stops sticky elements (the estimator top bar) from sticking on phones.
+   clip keeps the same protection against sideways scrolling without that. */
+body:not(.nav-open) { overflow-x: clip; }
