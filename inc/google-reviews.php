@@ -315,6 +315,7 @@ function datalkemi_reviews_admin_page() {
 		'searched'  => __( 'Search complete. Pick your business below.', 'datalkemi' ),
 		'nokey'     => __( 'Save an API key first.', 'datalkemi' ),
 		'failed'    => __( 'Google returned an error. See the status below.', 'datalkemi' ),
+		'diagnosed' => __( 'Diagnostics finished. Results are at the bottom of the page.', 'datalkemi' ),
 	];
 	?>
 	<div class="wrap">
@@ -409,6 +410,30 @@ function datalkemi_reviews_admin_page() {
 			<input type="hidden" name="action" value="dk_reviews_refresh">
 			<?php submit_button( __( 'Refresh now', 'datalkemi' ), 'secondary', 'submit', false ); ?>
 		</form>
+
+		<h2 id="dk-diag"><?php esc_html_e( '4. Diagnostics', 'datalkemi' ); ?></h2>
+		<p><?php esc_html_e( 'Asks Google for your reviews in several ways and shows exactly what comes back. The API key is never shown.', 'datalkemi' ); ?></p>
+		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+			<?php wp_nonce_field( 'dk_reviews_diagnose' ); ?>
+			<input type="hidden" name="action" value="dk_reviews_diagnose">
+			<?php submit_button( __( 'Run diagnostics', 'datalkemi' ), 'secondary', 'submit', false ); ?>
+		</form>
+		<?php $diag = get_transient( 'datalkemi_reviews_diag' ); if ( is_array( $diag ) ) : ?>
+			<p><?php echo esc_html( 'Last run ' . wp_date( 'j M Y, g:i a', (int) $diag['time'] ) ); ?></p>
+			<table class="widefat striped" style="max-width:960px;">
+				<thead><tr><th>Request</th><th>HTTP</th><th>Reviews returned</th><th>Google's answer (start)</th></tr></thead>
+				<tbody>
+				<?php foreach ( $diag['rows'] as $row ) : ?>
+					<tr>
+						<td><?php echo esc_html( $row['label'] ); ?></td>
+						<td><?php echo esc_html( (string) $row['code'] ); ?></td>
+						<td><strong><?php echo esc_html( (string) $row['reviews'] ); ?></strong></td>
+						<td><code style="white-space:pre-wrap;word-break:break-all;font-size:11px;"><?php echo esc_html( mb_substr( (string) $row['body'], 0, 400 ) ); ?></code></td>
+					</tr>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
 	</div>
 	<?php
 }
@@ -465,5 +490,74 @@ add_action( 'admin_post_dk_reviews_refresh', function () {
 	check_admin_referer( 'dk_reviews_refresh' );
 	$data = datalkemi_get_google_reviews( true );
 	wp_safe_redirect( datalkemi_reviews_admin_url( [ 'dk_notice' => $data && ! get_option( DATALKEMI_REVIEWS_ERROR ) ? 'refreshed' : 'failed' ] ) );
+	exit;
+} );
+
+/* --------------------------------------------------------------------------
+   Diagnostics: try several request variations and keep Google's raw answers
+   -------------------------------------------------------------------------- */
+
+function datalkemi_reviews_run_diagnostics() {
+	$s   = datalkemi_reviews_settings();
+	$out = [];
+	if ( ! $s['key'] ) {
+		return [ [ 'label' => 'No API key saved', 'code' => 0, 'reviews' => 0, 'body' => '' ] ];
+	}
+	$mask_full = 'id,displayName,rating,userRatingCount,reviews';
+	$ids       = array_filter( [ $s['place_id'] ] );
+
+	// Every listing Google finds for the business name, including service area listings
+	$search = wp_remote_post( 'https://places.googleapis.com/v1/places:searchText', [
+		'timeout' => 15,
+		'headers' => [
+			'Content-Type'     => 'application/json',
+			'X-Goog-Api-Key'   => $s['key'],
+			'X-Goog-FieldMask' => 'places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.reviews',
+		],
+		'body'    => wp_json_encode( [ 'textQuery' => 'Datalkemi', 'includePureServiceAreaBusinesses' => true ] ),
+	] );
+	$sbody = is_wp_error( $search ) ? $search->get_error_message() : wp_remote_retrieve_body( $search );
+	$sjson = json_decode( $sbody, true );
+	$out[] = [
+		'label'   => 'Text search "Datalkemi" with reviews field',
+		'code'    => is_wp_error( $search ) ? 0 : (int) wp_remote_retrieve_response_code( $search ),
+		'reviews' => array_sum( array_map( function ( $pl ) { return count( (array) ( $pl['reviews'] ?? [] ) ); }, (array) ( $sjson['places'] ?? [] ) ) ),
+		'body'    => $sbody,
+	];
+	foreach ( (array) ( $sjson['places'] ?? [] ) as $pl ) {
+		if ( ! empty( $pl['id'] ) && ! in_array( $pl['id'], $ids, true ) ) {
+			$ids[] = $pl['id'];
+		}
+	}
+
+	$variants = [
+		'English'       => '?languageCode=en',
+		'No language'   => '',
+		'Region AU'     => '?regionCode=AU',
+	];
+	foreach ( array_slice( $ids, 0, 3 ) as $id ) {
+		foreach ( $variants as $name => $qs ) {
+			$res  = wp_remote_get( 'https://places.googleapis.com/v1/places/' . rawurlencode( $id ) . $qs, [
+				'timeout' => 15,
+				'headers' => [ 'X-Goog-Api-Key' => $s['key'], 'X-Goog-FieldMask' => $mask_full ],
+			] );
+			$body = is_wp_error( $res ) ? $res->get_error_message() : wp_remote_retrieve_body( $res );
+			$json = json_decode( $body, true );
+			$out[] = [
+				'label'   => 'Place ' . $id . ( $id === $s['place_id'] ? ' (saved)' : '' ) . ', ' . $name,
+				'code'    => is_wp_error( $res ) ? 0 : (int) wp_remote_retrieve_response_code( $res ),
+				'reviews' => count( (array) ( $json['reviews'] ?? [] ) ),
+				'body'    => $body,
+			];
+		}
+	}
+	return $out;
+}
+
+add_action( 'admin_post_dk_reviews_diagnose', function () {
+	if ( ! current_user_can( 'manage_options' ) ) { wp_die( 'Forbidden', 403 ); }
+	check_admin_referer( 'dk_reviews_diagnose' );
+	set_transient( 'datalkemi_reviews_diag', [ 'time' => time(), 'rows' => datalkemi_reviews_run_diagnostics() ], DAY_IN_SECONDS );
+	wp_safe_redirect( datalkemi_reviews_admin_url( [ 'dk_notice' => 'diagnosed' ] ) . '#dk-diag' );
 	exit;
 } );
