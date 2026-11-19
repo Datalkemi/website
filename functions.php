@@ -17,6 +17,7 @@ require_once DATALKEMI_DIR . '/inc/service-data.php';
 require_once DATALKEMI_DIR . '/inc/client-portal.php';
 require_once DATALKEMI_DIR . '/inc/admin-clients.php';
 require_once DATALKEMI_DIR . '/inc/configurator-data.php';
+require_once DATALKEMI_DIR . '/inc/quote-pdf.php';
 require_once DATALKEMI_DIR . '/inc/smtp.php';
 require_once DATALKEMI_DIR . '/inc/india-data.php';
 require_once DATALKEMI_DIR . '/inc/faq-data.php';
@@ -274,48 +275,58 @@ add_filter( 'pings_open',    'datalkemi_disable_comments_non_posts', 20, 2 );
 function datalkemi_configurator_submit() {
 	check_ajax_referer( 'dk_configurator_submit', 'nonce' );
 
-	$name    = sanitize_text_field( $_POST['name']    ?? '' );
-	$email   = sanitize_email(      $_POST['email']   ?? '' );
-	$company = sanitize_text_field( $_POST['company'] ?? '' );
-	$notes   = sanitize_textarea_field( $_POST['notes'] ?? '' );
-	$summary = sanitize_textarea_field( $_POST['summary'] ?? '' );
-	$total   = absint( $_POST['total'] ?? 0 ); // AUD
-	$display = sanitize_text_field( $_POST['display'] ?? ( 'A$' . number_format( $total ) ) );
-	$purpose = sanitize_text_field( $_POST['purpose'] ?? '' );
+	$name     = sanitize_text_field( $_POST['name']    ?? '' );
+	$email    = sanitize_email(      $_POST['email']   ?? '' );
+	$company  = sanitize_text_field( $_POST['company'] ?? '' );
+	$notes    = sanitize_textarea_field( $_POST['notes'] ?? '' );
+	$currency = strtoupper( sanitize_key( $_POST['currency'] ?? 'AUD' ) );
+	$purpose  = sanitize_key( $_POST['purpose_id'] ?? '' );
+	$picked   = json_decode( wp_unslash( $_POST['selections'] ?? '{}' ), true );
+	$picked   = is_array( $picked ) ? $picked : [];
 
 	if ( ! $name || ! is_email( $email ) ) {
 		wp_send_json_error( 'Invalid submission.' );
 	}
 
-	$admin_email = get_option( 'admin_email' );
-	$subject     = 'New project estimate ' . $display . ( $purpose ? ' for a ' . lcfirst( $purpose ) : '' ) . ' from ' . $name;
-
-	$body  = "New project quote request received via the Datalkemi configurator.\n\n";
-	$body .= "Name:    {$name}\n";
-	$body .= "Email:   {$email}\n";
-	$body .= "Company: {$company}\n\n";
-	$body .= $summary . "\n\n";
-	if ( $notes ) {
-		$body .= "Additional notes:\n{$notes}\n\n";
+	// Rebuild the estimate from the price list, never from browser totals
+	$q = datalkemi_quote_build( $purpose, $picked, $currency );
+	if ( ! $q ) {
+		wp_send_json_error( 'Please choose what the project is for.' );
 	}
-	$body .= "---\nReply to this email to follow up with " . $name . " directly.\n";
 
-	$headers = [
-		'Content-Type: text/plain; charset=UTF-8',
-		'Reply-To: ' . $name . ' <' . $email . '>',
-	];
+	$number  = 'DK-' . wp_date( 'ymd' ) . '-' . strtoupper( substr( wp_hash( $email . microtime() ), 0, 4 ) );
+	$total   = $q['quote'] ? 'Quote on request' : datalkemi_quote_money( $q['total_aud'], $q['currency'] );
+	$summary = datalkemi_quote_text( $q );
+	$pdf     = datalkemi_quote_pdf( $q, [ 'name' => $name, 'email' => $email, 'company' => $company, 'notes' => $notes ], $number );
+	$files   = $pdf ? [ $pdf ] : [];
 
-	$sent = wp_mail( $admin_email, $subject, $body, $headers );
+	// To Datalkemi
+	$admin_email = get_option( 'admin_email' );
+	$subject     = 'New project estimate ' . $number . ': ' . $total . ' for a ' . lcfirst( $q['purpose'] ) . ' from ' . $name;
+	$body        = "New project estimate from the website.\n\n";
+	$body       .= "Estimate: {$number}\nName:     {$name}\nEmail:    {$email}\nCompany:  {$company}\n\n";
+	$body       .= $summary . "\n\n";
+	if ( $notes ) {
+		$body .= "Their notes:\n{$notes}\n\n";
+	}
+	$body .= $pdf ? "The PDF they received is attached.\n" : "The PDF could not be created, so it is not attached.\n";
+	$body .= "Reply to this email to answer {$name} directly.\n";
+	$sent  = wp_mail( $admin_email, $subject, $body, [ 'Content-Type: text/plain; charset=UTF-8', 'Reply-To: ' . $name . ' <' . $email . '>' ], $files );
 
-	// Confirmation to client
-	$client_body  = "Hi {$name},\n\n";
-	$client_body .= "Thank you for configuring your project with Datalkemi.\n\n";
-	$client_body .= "We have received your estimate of " . $display . " and will review it personally.\n";
-	$client_body .= "A member of our team will be in touch within one business day.\n\n";
-	$client_body .= $summary . "\n\n";
-	$client_body .= "Questions? Just reply to this email.\n\nThe Datalkemi Team\nhttps://datalkemi.com\n";
+	// To the client
+	$client  = "Hi {$name},\n\n";
+	$client .= "Thank you for planning your project with Datalkemi. Your estimate {$number} is attached as a PDF.\n\n";
+	$client .= "Estimated total: {$total}\n\n";
+	$client .= "What happens next:\n1. We review your choices and reply within one business day.\n2. We have a free 30-minute call to confirm what you need.\n3. You receive a fixed written quote. Work starts only once you approve it.\n\n";
+	if ( ! $pdf ) {
+		$client .= $summary . "\n\n";
+	}
+	$client .= "Questions? Just reply to this email.\n\nThe Datalkemi team\nhttps://datalkemi.com\n";
+	wp_mail( $email, 'Your Datalkemi project estimate ' . $number, $client, [ 'Content-Type: text/plain; charset=UTF-8', 'Reply-To: Datalkemi <info@datalkemi.com>' ], $files );
 
-	wp_mail( $email, 'Your Datalkemi project estimate', $client_body, [ 'Content-Type: text/plain; charset=UTF-8' ] );
+	if ( $pdf && file_exists( $pdf ) ) {
+		unlink( $pdf );
+	}
 
 	if ( $sent ) {
 		wp_send_json_success( 'Quote sent.' );

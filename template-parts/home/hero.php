@@ -64,10 +64,10 @@
 					A: We build custom web applications, data platforms, and operational software for businesses that need purpose-built systems. Perth-based, working with clients across Australia and beyond.
 					B: Web applications, data platforms, document intelligence, and internal tools, built properly, integrated end-to-end. Perth-based, working with clients across Australia and beyond.
 					C: Custom software and data systems, built end-to-end by people who understand both. Perth-based, working with clients across Australia and beyond.
-					D (active): Websites, custom software, and data systems, built end-to-end by people who understand all three. Perth-based, working with clients across Australia and India.
+					D (active): Websites, custom software, and data systems, built end-to-end by people who understand all three. Perth-based, working with clients in Australia, India, and worldwide.
 				-->
 				<p class="hp-hero-sub">
-					<?php esc_html_e( 'Websites, custom software, and data systems, built end-to-end by people who understand all three. Perth-based, working with clients across Australia and India.', 'datalkemi' ); ?>
+					<?php esc_html_e( 'Websites, custom software, and data systems, built end-to-end by people who understand all three. Perth-based, working with clients in Australia, India, and worldwide.', 'datalkemi' ); ?>
 				</p>
 
 				<div class="hp-hero-actions">

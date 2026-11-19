@@ -385,6 +385,11 @@
       currency: currency,
       display:  isQuote() ? 'Quote on request' : money(getTotalAUD()),
       purpose:  purpose ? purpose.label : '',
+      purpose_id: purpose ? purpose.id : '',
+      selections: JSON.stringify(Object.keys(selections).reduce(function (acc, key) {
+        acc[key] = (selections[key] || []).map(function (i) { return i.id; });
+        return acc;
+      }, {})),
     });
 
     function reset() {

@@ -40,7 +40,7 @@ $values = [
 $stats = [
 	// Facts the site can back up: Google rating, client countries, starting price, included fixes
 	[ 'number' => '5.0',     'label' => 'Google rating from clients' ],
-	[ 'number' => '2',       'label' => 'Countries: Australia and India' ],
+	[ 'number' => '3',       'label' => 'Currencies quoted: AUD, USD and INR' ],
 	[ 'number' => 'A$500',   'label' => 'Websites start from' ],
 	[ 'number' => '30 days', 'label' => 'Of fixes included after launch' ],
 ];

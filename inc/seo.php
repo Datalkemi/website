@@ -30,19 +30,19 @@ function datalkemi_seo_pages(): array {
 	return [
 		'home' => [
 			'title' => 'Website Development Company in Australia and India | Datalkemi',
-			'desc'  => 'Datalkemi builds fast, search-ready websites, web applications and data systems for businesses in Perth, across Australia and in India. Websites from A$500.',
+			'desc'  => 'Datalkemi builds fast, search-ready websites, web applications and data systems for businesses in Perth, across Australia, in India and worldwide. Websites from A$500.',
 		],
 		'about' => [
 			'title' => 'About Datalkemi | Website and Software Developers in Perth',
-			'desc'  => 'Datalkemi is a Perth web development and data agency. We design, build and look after websites, web apps and reporting for businesses in Australia and India.',
+			'desc'  => 'Datalkemi is a Perth web development and data agency. We design, build and look after websites, web apps and reporting for businesses in Australia, India and worldwide.',
 		],
 		'services' => [
 			'title' => 'Website Development, SEO and Data Services | Datalkemi',
-			'desc'  => 'Website design, full-stack web development, SEO, data analytics, business intelligence and custom dashboards, delivered from Perth to clients in Australia and India.',
+			'desc'  => 'Website design, full-stack web development, SEO, data analytics, business intelligence and custom dashboards, delivered from Perth to clients worldwide.',
 		],
 		'projects' => [
 			'title' => 'Website and Software Projects | Datalkemi Case Studies',
-			'desc'  => 'Websites, booking platforms and web applications we have built for businesses in Australia and India, with the brief, what we built and the outcome.',
+			'desc'  => 'Websites, booking platforms and web applications we have built for businesses in Australia, India and beyond, with the brief, what we built and the outcome.',
 		],
 		'insights' => [
 			'title' => 'Insights on Websites, SEO and Data | Datalkemi',
@@ -50,7 +50,7 @@ function datalkemi_seo_pages(): array {
 		],
 		'contact' => [
 			'title' => 'Contact Datalkemi | Website Development Enquiries',
-			'desc'  => 'Talk to Datalkemi about a new website, web application or data project. Based in Perth, Western Australia, working with clients across Australia and India.',
+			'desc'  => 'Talk to Datalkemi about a new website, web application or data project. Based in Perth, Western Australia, working with clients worldwide.',
 		],
 		'products' => [
 			'title' => 'Our Products | Software Built by Datalkemi',
@@ -192,7 +192,7 @@ function datalkemi_seo_context(): array {
 		$ctx['desc']   = $term->description
 			? datalkemi_seo_trim( $term->description )
 			: ( $is_project
-				? sprintf( '%s projects by Datalkemi: websites, web applications and data systems for businesses in Australia and India.', $term->name )
+				? sprintf( '%s projects by Datalkemi: websites, web applications and data systems for businesses in Australia, India and worldwide.', $term->name )
 				: sprintf( 'Datalkemi articles about %s.', $term->name ) );
 		$ctx['url']    = get_term_link( $term );
 		$parent        = $is_project
@@ -427,7 +427,7 @@ function datalkemi_seo_schema( array $ctx ): array {
 				'@type'             => 'ContactPoint',
 				'email'             => 'info@datalkemi.com',
 				'contactType'       => 'sales',
-				'areaServed'        => [ 'AU', 'IN' ],
+				'areaServed'        => 'Worldwide',
 				'availableLanguage' => [ 'English' ],
 			],
 		],
@@ -439,7 +439,7 @@ function datalkemi_seo_schema( array $ctx ): array {
 			'email'              => 'info@datalkemi.com',
 			'image'              => DATALKEMI_URI . '/assets/img/og-home.jpg',
 			'logo'               => DATALKEMI_URI . '/assets/brand/app/icon-512.png',
-			'description'        => 'Website development, custom software, SEO and data systems for businesses in Perth, across Australia and in India.',
+			'description'        => 'Website development, custom software, SEO and data systems for businesses in Perth, across Australia, in India and worldwide.',
 			'parentOrganization' => [ '@id' => $org_id ],
 			'priceRange'         => 'From A$500',
 			'currenciesAccepted' => 'AUD, USD',
@@ -449,7 +449,7 @@ function datalkemi_seo_schema( array $ctx ): array {
 				'addressRegion'   => 'WA',
 				'addressCountry'  => 'AU',
 			],
-			'areaServed'         => array_values( $countries ),
+			'areaServed'         => array_merge( array_values( $countries ), [ 'Worldwide' ] ),
 			'knowsAbout'         => [
 				'Website development',
 				'Web application development',

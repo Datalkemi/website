@@ -21,7 +21,7 @@ function datalkemi_faq_groups(): array {
 			'title' => 'Working with Datalkemi',
 			'items' => [
 				[ 'q' => 'What does Datalkemi do?', 'a' => 'Datalkemi is a Perth web development and data agency. We design and build business websites, online stores, web applications, and client portals, and we set up the SEO, analytics, dashboards, and reporting that sit behind them.' ],
-				[ 'q' => 'Where are you based, and who do you work with?', 'a' => 'We are based in Perth, Western Australia, and work with businesses across Australia and in India. Most projects run entirely online, with video calls, email, and shared preview links at every stage.' ],
+				[ 'q' => 'Where are you based, and who do you work with?', 'a' => 'We are based in Perth, Western Australia, and work with businesses anywhere in the world, including clients in Australia and India. Most projects run entirely online, with video calls, email, and shared preview links at every stage.' ],
 				[ 'q' => 'Do I need to know what technology I want?', 'a' => 'No. Tell us what the website needs to do and who it is for. We recommend the platform, usually WordPress for content-led sites or a custom React build for web applications, and explain why in plain language before you commit.' ],
 				[ 'q' => 'Can you take over or redesign an existing website?', 'a' => 'Yes. We start with a review of the current site, including speed, search visibility, and how it is maintained, then recommend whether to improve it or rebuild it. We can move your content across and keep your existing search rankings by redirecting old addresses.' ],
 			],
