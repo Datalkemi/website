@@ -4590,3 +4590,4 @@ html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
 .dk-reviews--trustindex .ti-widget.ti-goog .ti-read-more * { color: var(--link) !important; }
 .dk-reviews--trustindex .ti-widget.ti-goog .ti-controls .ti-next,
 .dk-reviews--trustindex .ti-widget.ti-goog .ti-controls .ti-prev { background-color: var(--surface) !important; border: 1px solid var(--border) !important; box-shadow: none !important; }
+.dk-reviews--trustindex .ti-widget.ti-goog .ti-footer *:not(img) { color: var(--text) !important; }
