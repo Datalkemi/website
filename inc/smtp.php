@@ -71,6 +71,24 @@ function datalkemi_send_via_brevo_api( $null, array $atts ): bool|null {
 		$body['replyTo'] = $reply_to;
 	}
 
+	// Attachments (for example the estimate PDF): Brevo takes them base64 encoded
+	$files = $atts['attachments'] ?? [];
+	if ( is_string( $files ) ) {
+		$files = array_filter( array_map( 'trim', explode( "\n", str_replace( "\r\n", "\n", $files ) ) ) );
+	}
+	$attachments = [];
+	foreach ( (array) $files as $file ) {
+		if ( is_string( $file ) && is_readable( $file ) ) {
+			$attachments[] = [
+				'name'    => basename( $file ),
+				'content' => base64_encode( (string) file_get_contents( $file ) ),
+			];
+		}
+	}
+	if ( $attachments ) {
+		$body['attachment'] = $attachments;
+	}
+
 	$response = wp_remote_post( 'https://api.brevo.com/v3/smtp/email', [
 		'headers' => [
 			'api-key'      => DK_BREVO_API_KEY,
@@ -78,7 +96,7 @@ function datalkemi_send_via_brevo_api( $null, array $atts ): bool|null {
 			'Accept'       => 'application/json',
 		],
 		'body'    => wp_json_encode( $body ),
-		'timeout' => 15,
+		'timeout' => 30,
 	] );
 
 	if ( is_wp_error( $response ) ) {
