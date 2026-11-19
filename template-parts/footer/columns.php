@@ -30,7 +30,7 @@
 					</a>
 
 					<p class="ft-tagline">
-						<?php esc_html_e( 'We build the software and data systems businesses depend on. Perth-based, working with clients worldwide.', 'datalkemi' ); ?>
+						<?php esc_html_e( 'We build the software and data systems businesses depend on, for clients around the world.', 'datalkemi' ); ?>
 					</p>
 				</div><!-- /.ft-brand-top -->
 

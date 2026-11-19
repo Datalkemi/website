@@ -42,7 +42,7 @@ $stats = [
 	[ 'number' => '5.0',     'label' => 'Google rating from clients' ],
 	[ 'number' => '3',       'label' => 'Currencies quoted: AUD, USD and INR' ],
 	[ 'number' => 'A$500',   'label' => 'Websites start from' ],
-	[ 'number' => '30 days', 'label' => 'Of fixes included after launch' ],
+	[ 'number' => '30 days', 'label' => 'Post-launch support included' ],
 ];
 
 $process = [

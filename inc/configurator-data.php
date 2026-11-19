@@ -184,9 +184,9 @@ function datalkemi_get_configurator_data(): array {
 			'support' => [
 				'label' => 'Help after launch',
 				'type'  => 'radio',
-				'note'  => 'Every project includes 30 days of fixes after it goes live.',
+				'note'  => 'Every project includes 30 days of post-launch support.',
 				'options' => [
-					[ 'id' => 'support-none',   'label' => 'Just the launch',                     'desc' => 'The included 30 days of fixes, nothing ongoing.',          'price' => 0 ],
+					[ 'id' => 'support-none',   'label' => 'Just the launch',                     'desc' => 'The included 30 days of post-launch support, with no ongoing plan.',          'price' => 0 ],
 					[ 'id' => 'support-3',      'label' => '3 months of help',             'desc' => 'Updates, small changes and quick replies when you need us.',            'price' => 150,  'prices' => [ 'portfolio' => 80, 'webapp' => 500, 'enterprise' => 4500 ] ],
 					[ 'id' => 'support-12',     'label' => '12 months of help',            'desc' => 'A monthly check-in, security updates and time set aside for changes.', 'price' => 550, 'prices' => [ 'portfolio' => 300, 'webapp' => 1700, 'enterprise' => 15000 ] ],
 				],

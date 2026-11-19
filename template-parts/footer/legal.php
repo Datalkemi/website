@@ -29,10 +29,6 @@
 					</span>
 				<?php endif; ?>
 
-				<span class="ft-legal-sep" aria-hidden="true">&middot;</span>
-				<span class="ft-location">
-					<?php esc_html_e( 'Perth, Western Australia', 'datalkemi' ); ?>
-				</span>
 			</div><!-- /.ft-legal-left -->
 
 			<div class="ft-legal-right">

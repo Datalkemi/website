@@ -214,7 +214,7 @@ function datalkemi_quote_pdf_class() {
 			$this->SetXY( 18, 283 );
 			$this->SetFont( 'Inter', '', 7.5 );
 			$this->rgb( self::MUTED );
-			$left = 'Datalkemi  |  Perth, Western Australia  |  info@datalkemi.com  |  datalkemi.com';
+			$left = 'Datalkemi  |  info@datalkemi.com  |  datalkemi.com';
 			if ( defined( 'DATALKEMI_ABN' ) && '' !== DATALKEMI_ABN ) {
 				$left .= '  |  ABN ' . DATALKEMI_ABN;
 			}
