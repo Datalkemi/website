@@ -12,7 +12,7 @@
  */
 get_header();
 
-$updated = '8 November 2026';
+$updated = '20 November 2026';
 ?>
 
 <section class="page-hero">
@@ -80,7 +80,7 @@ $updated = '8 November 2026';
 			<h2><?php esc_html_e( 'Services that do not set cookies here', 'datalkemi' ); ?></h2>
 			<ul>
 				<li><strong><?php esc_html_e( 'Google Fonts.', 'datalkemi' ); ?></strong> <?php esc_html_e( 'Our typefaces load from Google\'s servers, which receive your IP address to deliver them. No cookies are set.', 'datalkemi' ); ?></li>
-				<li><strong><?php esc_html_e( 'Google reviews.', 'datalkemi' ); ?></strong> <?php esc_html_e( 'When shown, review text is fetched by our server from Google and displayed on our page. Reviewer photos load from Google\'s servers without cookies.', 'datalkemi' ); ?></li>
+				<li><strong><?php esc_html_e( 'Google reviews.', 'datalkemi' ); ?></strong> <?php esc_html_e( 'Our Google reviews are shown with a widget from Trustindex. It loads its script and styles from Trustindex\'s servers (cdn.trustindex.io) and reviewer photos from Google\'s servers, which receive your IP address to deliver them. The widget does not set cookies.', 'datalkemi' ); ?></li>
 				<li><strong><?php esc_html_e( 'Hosting and caching.', 'datalkemi' ); ?></strong> <?php esc_html_e( 'The site is hosted by Hostinger and cached with LiteSpeed. These do not set cookies for visitors who are not signed in.', 'datalkemi' ); ?></li>
 			</ul>
 

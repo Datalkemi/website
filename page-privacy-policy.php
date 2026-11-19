@@ -12,7 +12,7 @@
  */
 get_header();
 
-$updated = '8 November 2026';
+$updated = '20 November 2026';
 ?>
 
 <section class="page-hero">
@@ -58,6 +58,7 @@ $updated = '8 November 2026';
 				<li><strong>HubSpot</strong> <?php esc_html_e( 'manages newsletter subscriptions, enquiry records, meeting bookings, and, with your consent, website analytics.', 'datalkemi' ); ?></li>
 				<li><strong>Brevo</strong> <?php esc_html_e( 'delivers the emails the website sends, such as estimate confirmations.', 'datalkemi' ); ?></li>
 				<li><strong>Google</strong> <?php esc_html_e( 'serves the fonts used on the site, and provides the review content we display.', 'datalkemi' ); ?></li>
+				<li><strong>Trustindex</strong> <?php esc_html_e( 'provides the widget that displays our Google reviews, and receives your IP address when the widget loads.', 'datalkemi' ); ?></li>
 			</ul>
 			<p><?php esc_html_e( 'Some of these providers store data outside Australia, including in the United States, Europe, and Singapore. We choose providers with recognised security practices and take reasonable steps to make sure they protect your information. We may also disclose information where the law requires it.', 'datalkemi' ); ?></p>
 
