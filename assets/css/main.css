@@ -4659,3 +4659,7 @@ html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
    stops sticky elements (the estimator top bar) from sticking on phones.
    clip keeps the same protection against sideways scrolling without that. */
 body:not(.nav-open) { overflow-x: clip; }
+
+/* About page facts: number on its own line, label underneath */
+.stats-section .stat-number { display: block; line-height: 1.1; margin-bottom: 0.5rem; font-weight: 500 !important; font-family: var(--font-display); }
+.stats-section .stat-label { display: block; font-size: 0.75rem !important; line-height: 1.6; font-family: var(--font-mono); }
