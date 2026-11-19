@@ -4620,3 +4620,37 @@ html:not([data-theme="dark"]) .dk-shot--dark { display: none !important; }
     height: 0.75rem;
   }
 }
+
+/* ── Estimator: Back and Continue at the top, no empty space, readable inputs ── */
+#cfg-wizard { scroll-margin-top: calc(var(--dk-header-h, 72px) + 0.5rem); }
+.cfg-topbar {
+  position: sticky;
+  top: var(--dk-header-h, 72px);
+  z-index: 5;
+  background: var(--bg);
+  padding: 0.75rem 0 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.cfg-topbar .cfg-progress-wrap { margin-bottom: 1rem; }
+.cfg-topbar .cfg-nav-wrap { margin-top: 0; padding-top: 0; border-top: none; }
+.cfg-steps-wrap { min-height: 0; }
+
+/* Astra turns typed text slate grey on focus; keep it the site text colour */
+.cfg-field input:focus,
+.cfg-field textarea:focus,
+.contact-form-field input:focus,
+.contact-form-field textarea:focus,
+.quote-form-field input:focus,
+.quote-form-field textarea:focus,
+.config-field input:focus,
+.config-field textarea:focus {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+.cfg-field input,
+.cfg-field textarea,
+.contact-form-field input,
+.contact-form-field textarea,
+.quote-form-field input,
+.quote-form-field textarea { caret-color: var(--action); }

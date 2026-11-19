@@ -28,6 +28,8 @@ $config_json = wp_json_encode( $config );
 	<div class="dk-container">
 		<div class="cfg-wizard" id="cfg-wizard">
 
+			<!-- ── Top bar: progress and Back / Continue stay together at the top ── -->
+			<div class="cfg-topbar">
 			<!-- ── Progress ─────────────────────────────────────── -->
 			<div class="cfg-progress-wrap">
 				<div class="cfg-step-dots" id="cfg-step-dots"><!-- JS renders dots --></div>
@@ -38,6 +40,19 @@ $config_json = wp_json_encode( $config );
 					<span class="cfg-progress-label" id="cfg-step-label">Step 1</span>
 					<span class="cfg-progress-name"  id="cfg-step-name">Currency</span>
 				</div>
+			</div>
+
+			<!-- ── Navigation ───────────────────────────────────── -->
+			<div class="cfg-nav-wrap" id="cfg-nav-wrap">
+				<button class="cfg-nav-btn cfg-nav-prev" id="cfg-prev" hidden aria-label="Previous step">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+					Back
+				</button>
+				<button class="cfg-nav-btn cfg-nav-next" id="cfg-next" disabled aria-label="Next step">
+					Continue
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+				</button>
+			</div>
 			</div>
 
 			<!-- ── Step panels ──────────────────────────────────── -->
@@ -144,18 +159,6 @@ $config_json = wp_json_encode( $config );
 				</div><!-- #cfg-step-final -->
 
 			</div><!-- .cfg-steps-wrap -->
-
-			<!-- ── Navigation ───────────────────────────────────── -->
-			<div class="cfg-nav-wrap" id="cfg-nav-wrap">
-				<button class="cfg-nav-btn cfg-nav-prev" id="cfg-prev" hidden aria-label="Previous step">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-					Back
-				</button>
-				<button class="cfg-nav-btn cfg-nav-next" id="cfg-next" disabled aria-label="Next step">
-					Continue
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-				</button>
-			</div>
 
 		</div><!-- .cfg-wizard -->
 	</div>
